@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <!--<typeAlias type=""-->
+        <!--<typeAlias type="me.riverslob.webChat.core.pojo.WebChatMsgContent" alias="webChatMsgContent"/>-->
+        <!--<typeAlias type="com.springapp.mvc.mobile.webChat.pojo.WebChatAutoReply" alias="webChatAutoReply"/>-->
+    </typeAliases>
+</configuration>

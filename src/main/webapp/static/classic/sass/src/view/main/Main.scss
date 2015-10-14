@@ -1,0 +1,321 @@
+/**
+ * Generates a set of style rules for the "navigation" tab UI.
+ */
+@include extjs-tab-panel-ui(
+    $ui: 'navigation',
+    $ui-tab-background-color: transparent,
+    $ui-tab-background-color-over: #505050,
+    $ui-tab-background-color-active: #303030,
+    $ui-tab-background-gradient: 'none',
+    $ui-tab-background-gradient-over: 'none',
+    $ui-tab-background-gradient-active: 'none',
+    $ui-tab-color: #acacac,
+    $ui-tab-color-over: #c4c4c4,
+    $ui-tab-color-active: #fff,
+    $ui-tab-glyph-color: #acacac,
+    $ui-tab-glyph-color-over: #c4c4c4,
+    $ui-tab-glyph-color-active: #fff,
+    $ui-tab-glyph-opacity: 1,
+    $ui-tab-border-radius: 0,
+    $ui-tab-border-width: 0,
+    $ui-tab-inner-border-width: 0,
+    $ui-tab-padding: 24px,
+    $ui-tab-margin: 0,
+    $ui-tab-font-size: 15px,
+    $ui-tab-font-size-over: 15px,
+    $ui-tab-font-size-active: 15px,
+    $ui-tab-line-height: 19px,
+    $ui-tab-font-weight: bold,
+    $ui-tab-font-weight-over: bold,
+    $ui-tab-font-weight-active: bold,
+    $ui-tab-icon-width: 24px,
+    $ui-tab-icon-height: 24px,
+    $ui-tab-icon-spacing: 5px,
+    $ui-bar-background-color: #404040,
+    $ui-bar-background-gradient: 'none',
+    $ui-bar-padding: 0,
+    $ui-strip-height: 0
+);
+
+/**
+ * Generates a set of style rules for the "navigation" panel UI.
+ */
+@include extjs-panel-ui(
+    $ui: 'navigation',
+    $ui-header-color: #fff,
+    $ui-header-glyph-color: #fff,
+    $ui-header-glyph-opacity: 1,
+    $ui-header-font-size: 20px,
+    $ui-header-line-height: 24px,
+    $ui-header-font-weight: bold,
+    $ui-header-icon-height: 24px,
+    $ui-header-icon-width: 24px,
+    $ui-header-icon-spacing: 15px,
+    $ui-header-background-color: $base-color,
+    $ui-header-padding: 0,
+    $ui-header-text-margin: 20px,
+    $ui-header-noborder-adjust: false
+);
+
+.x-title-icon-navigation {
+    font-family: FontAwesome;
+    color: #fff;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.x-tab-icon-el-navigation {
+    font-family: FontAwesome;
+    color: #acacac;
+
+    .x-tab-over & {
+        color: #c4c4c4;
+    }
+
+    .x-tab-active & {
+        color: #fff;
+    }
+}
+
+.x-panel-header-title-navigation > .x-title-text-navigation:after {
+    top: 30px;
+    right: -24px;
+}
+
+@include treelist-ui(
+$ui: 'nav',
+
+    // Extra padding left/right
+$padding: 0 10px,
+
+    // Black-ish background color
+$background-color: #32404e,
+$toolstrip-background-color: #32404e,
+
+$tool-selected-color: #f0f0f0,
+$tool-selected-background-color: #5fa2dd,
+
+$tool-float-indicator-width: 4px,
+$tool-float-indicator-color: #5fa2dd,
+
+    // Darker background for expanded subtrees
+$item-expanded-background-color: #2c3845,
+
+    // Taller line height
+$item-line-height : 36px,
+
+    // Off-white text
+$item-icon-color: #ADB3B8,
+$item-expander-color: #ADB3B8,
+$item-text-color: #ADB3B8,
+
+    // Brighter when hovered
+$row-over-background-color: #4f606f,
+$item-icon-over-color: #fff,
+$item-expander-over-color: #fff,
+$item-text-over-color: #fff,
+
+$row-indicator-width: 6px,
+$row-indicator-selected-color: #5fa2dd,
+$row-indicator-selected-over-color: lighten(#5fa2dd, 10%),
+$row-indicator-over-color: lighten(#5fa2dd, 10%),
+
+    // Various sizes for the pieces:
+$item-icon-font-size: 18px,
+$item-icon-width: 24px,
+$item-expander-font-size: 16px,
+$item-expander-width: 24px,
+
+$row-selected-background-color: #3f505f
+);
+
+.treelist-with-nav .#{$prefix}panel-body {
+    background-color: #32404e;
+}
+
+.wrapper-menu-btn{
+    text-align: center;
+    margin-top: 10em;
+}
+
+.menu-btn{
+    display: inline-block;
+    margin: 6em;
+    padding: 38px 26px;
+    background-color: #4995C8;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 1px;
+    box-shadow: 1px 1px 1px #CCC;
+    transition: all 300ms;
+}
+
+.menu-btn:hover{
+    background-color: #1A76B9;
+}
+
+
+.statis_div{
+    margin-top: 12em;
+}
+
+.statis_div h1{
+    width: 100%;
+    text-align: center;
+    font-size: 6em;
+    font-weight: 900;
+    color: #85bf32;
+}
+
+.statis_div h1:first-child{
+    margin-bottom: 1.4em;
+}
+
+.wrapper_div{
+    padding: 1em 1.6em;
+}
+
+.wrapper_div *{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.wrapper_div div{
+    width: 100%;
+    display: table;
+    margin: 0.6em 0;
+}
+
+.wrapper_div div span{
+    display: table-cell;
+    width: 50%;
+    padding: 0.8em 1em;
+}
+
+.wrapper_div div span:first-child{
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+.wrapper_div div span:last-child{
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+}
+
+
+.wrap_center{
+    width: 80%;
+    margin: 2px auto;
+}
+
+td input{
+    border:none;
+    width:100%;
+    height:150%;
+}
+
+td textarea{
+    border:none;
+    width:100%;
+    height:125%;
+}
+
+.enter_table{
+    border-collapse: collapse;
+    width: 80%;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 2em;
+    background-color: #ecf2fb;
+}
+
+
+.enter_table input, .enter_table td, .enter_table textarea{
+    background-color: white;
+}
+
+.enter_table textarea{
+    background-color: #ecf2fb;
+}
+
+.enter_table td, .enter_table th{
+    border: 1px solid #9ABCE6;
+    border-collapse: collapse;
+    padding: 9px 8px 8px 8px;
+}
+
+.enter_table th{
+    width: 10em;
+}
+
+.enter_table td{
+    width: 20em;
+}
+
+.enter_table .table_header{
+    background-color: #9ABCE6;
+}
+
+.enter_table_sh{
+    border-collapse: collapse;
+    width: 1200px;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 2em;
+    background-color: #ecf2fb;
+}
+
+
+.enter_table_sh input{
+    background-color: #ecf2fb;
+}
+
+.enter_table_sh textarea{
+    background-color: #ecf2fb;
+}
+
+.enter_table_sh td, .enter_table_sh th{
+    border: 1px solid #9ABCE6;
+    border-collapse: collapse;
+    padding: 9px 8px 8px 8px;
+}
+
+.enter_table_sh th{
+    width: 10em;
+}
+
+.enter_table_sh td{
+    width: 20em;
+    contenteditable :'true';
+}
+
+.enter_table_sh .table_header{
+    background-color: #9ABCE6;
+}
+
+#enter_menu_list ul li{
+    list-style: none;
+    border: 1px solid white;
+}
+
+#enter_menu_list a{
+    display: block;
+    background-color: #3291D5;
+    padding: 0.5em;
+    text-decoration: none;
+    color: white;
+    transition: all 300ms;
+}
+
+#enter_menu_list ul a:hover{
+    background-color: #006699;
+}
+
+.mobile_head{
+    color: red;
+}
