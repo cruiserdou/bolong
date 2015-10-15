@@ -59,7 +59,6 @@ public class ExportXlsCorpS {
             String sql = "select RANK() OVER(ORDER BY id) as 序号,buslicno as 营业执照号码,name as 企业名称,unit as 单位类别,legrep as  法定代表人," +
                     " nos as 公司简称,postal as 邮政编码,nature as 企业性质,regcap as 注册资本（万元）,regdt as 注册日期,remark as 备注 " +
                     " from work.tb_corp  where id in("+id_list+")";
-            System.out.print(sql);
             rs = stmt.executeQuery(sql);
 
             //创建新的Excel工作薄

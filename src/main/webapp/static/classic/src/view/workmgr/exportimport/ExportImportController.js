@@ -90,7 +90,6 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
                 var row = rows[i];
                 id_list = id_list + ',' + row.get('id');
             }
-            alert(id_list)
             Ext.create('widget.window', {
                 xtype: 'form',
                 frame: true,
@@ -108,7 +107,7 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
                         xtype: 'panel',
                         bodyPadding: '20',
                         flex: 1,
-                        html: '<a onclick="corp_s_export(id_list);"  href="#"><img style="height: 32px; margin-left: 50px;" />导出</a><br/>'
+                        html: "<a onclick='corps_export(\""+id_list+"\");' ><img style='height: 32px; margin-left: 50px;' />导出</a><br/>"
                     },
                     {
                         xtype: 'panel',
@@ -161,7 +160,7 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
     }
 });
 
-function corp_s_export(id_list) {
+function corps_export(id_list) {
     Ext.Ajax.request({
         url: '/bolong/import_corp_s',
         params: {
