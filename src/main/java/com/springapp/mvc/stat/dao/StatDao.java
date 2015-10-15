@@ -40,7 +40,7 @@ public interface StatDao {
 
     class StatInvDaoEmberSql {
         public String listStatInvInfo() {
-            return " select count(*) as corp_num  from where  corp.type_investors=TRUE";
+            return " select count(*) as corp_num  from work.tb_corp corp where  corp.type_investors=TRUE";
         }
     }
 
@@ -49,7 +49,7 @@ public interface StatDao {
 
     class StatRefiDaoEmberSql {
         public String listStatRefiInfo() {
-            return " select count(*) as corp_num  from  where corp.demand_rz=TRUE ";
+            return " select count(*) as corp_num  from work.tb_corp corp where corp.demand_rz=TRUE ";
         }
     }
 

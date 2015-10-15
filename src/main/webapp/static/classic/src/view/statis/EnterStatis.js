@@ -6,5 +6,45 @@ Ext.define('app.view.statis.EnterStatis', {
     xtype: 'enterstatis',
     closable: true,
     title: '企业信息统计',
-    html: '<div class="statis_div"><h1>企业数量</h1><h1>1234567890</h1></div>'
+
+    requires: [
+        'app.store.stat.CorpStatStore',
+        'app.xtemplate.stat_view',
+        'Ext.grid.filters.Filters'
+    ],
+    store: {
+        type: 'corpstatstore'
+    },
+
+    listeners: {
+        afterrender: function (_this) {
+
+            var store = Ext.create('Ext.data.Store', {
+                extend: 'Ext.data.Store',
+                model: 'app.model.stat.CorpStatModel',
+                proxy: {
+                    type: 'ajax',
+                    api: {
+                        read: '/bolong/statlist'
+                    },
+                    reader: {
+                        type: 'json',
+                        rootProperty: 'list'
+                    }
+                }
+            });
+
+
+            store.load({
+                callback: function (records, operation, success) {
+                    store.each(function (item) {
+                        //record=item.get('corp_num');
+                        corpdmstatis_tpl.append('corp_statis',item.getData());
+                    });
+                }
+            });
+
+        }
+    },
+    html: '<div id="corp_statis"></div>'
 });

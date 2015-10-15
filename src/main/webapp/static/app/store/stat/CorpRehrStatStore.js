@@ -1,6 +1,6 @@
 Ext.define('app.store.stat.CorpRehrStatStore', {
     extend: 'Ext.data.Store',
-    model: 'app.model.stat.CorpRehrStatStore',
+    model:  'app.model.stat.CorpStatModel',
     alias: 'store.corprehrstatstore',
     proxy: {
         type: 'ajax',
