@@ -59,7 +59,7 @@ Ext.define('app.view.system.sysdict.SysdictAddView', {
                     var form = this.up('form').getForm();
                     if (form.isValid()){
                         form.submit({
-                            url: '/enter/add_dicts_info',
+                            url: '/bolong/add_dicts_info',
                             waitMsg: '正在保存数据...',
                             success: function(form, action){
                                 Ext.Msg.alert("成功", "数据保存成功!");

@@ -68,7 +68,7 @@ Ext.define('app.view.workmgr.msg.MsgAddView', {
                     var form = this.up('form').getForm();
                     if (form.isValid()){
                         form.submit({
-                            url: '/enter/add_msg_info',
+                            url: '/bolong/add_msg_info',
                             waitMsg: '正在保存数据...',
                             success: function(form, action){
                                 Ext.Msg.alert("成功", "数据保存成功!");

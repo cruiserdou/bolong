@@ -59,7 +59,7 @@ Ext.define('app.view.system.role.RoleController', {
                         var row = rows[i];
                         var id = row.get('id');
                         Ext.Ajax.request({
-                            url: '/enter/deleterole',
+                            url: '/bolong/deleterole',
                             params: {
                                 "id": id
                             },

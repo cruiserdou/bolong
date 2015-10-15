@@ -61,7 +61,7 @@ Ext.define('app.view.system.sec.SecController', {
                         var roleid = row.get('roleid');
                         var userid = row.get('userid');
                         Ext.Ajax.request({
-                            url: '/enter/deleteuserroles',
+                            url: '/bolong/deleteuserroles',
                             params: {
                                 "roleid": roleid,
                                 "userid": userid

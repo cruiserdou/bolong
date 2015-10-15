@@ -59,7 +59,7 @@ Ext.define('app.view.system.user.UserController', {
                         var row = rows[i];
                         var id = row.get('id');
                         Ext.Ajax.request({
-                            url: '/enter/deleteuser',
+                            url: '/bolong/deleteuser',
                             params: {
                                 "id": id
                             },

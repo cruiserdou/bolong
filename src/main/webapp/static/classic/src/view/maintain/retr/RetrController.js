@@ -204,7 +204,7 @@ Ext.define('app.view.maintain.retr.RetrController', {
                         var row = rows[i];
                         var id = row.get('id');
                         Ext.Ajax.request({
-                            url: '/enter/deletecorp',
+                            url: '/bolong/deletecorp',
                             params: {
                                 "id": id
                             },

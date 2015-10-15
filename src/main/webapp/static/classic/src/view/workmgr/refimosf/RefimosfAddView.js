@@ -100,7 +100,7 @@ Ext.define('app.view.workmgr.refimosf.RefimosfAddView', {
                     var form = this.up('form').getForm();
                     if (form.isValid()){
                         form.submit({
-                            url: '/enter/add_refi_mos_info',
+                            url: '/bolong/add_refi_mos_info',
                             waitMsg: '正在保存数据...',
                             success: function(form, action){
                                 Ext.Msg.alert("成功", "数据保存成功!");

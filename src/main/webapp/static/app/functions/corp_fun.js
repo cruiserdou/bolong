@@ -22,7 +22,7 @@ function obt_corp_government_manage_update(gov_id) {
             gov_tel : form_obt_edit['gov_tel'].value,
             gov_remark : form_obt_edit['gov_remark'].value
         },
-        url: '/enter/update_corp_government_info',
+        url: '/bolong/update_corp_government_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
             Ext.getCmp('govmtgridview_id').getStore().reload();
@@ -62,7 +62,7 @@ function obt_corp_investors_manage_update(inv_id) {
             inv_tel : form_obt_edit['inv_tel'].value,
             inv_remark : form_obt_edit['inv_remark'].value
         },
-        url: '/enter/update_corp_investors_info',
+        url: '/bolong/update_corp_investors_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
             Ext.getCmp('investormtgridview_id').getStore().reload();
@@ -92,7 +92,7 @@ function obt_corp_service_manage_update(srv_id) {
             srv_descs : form_obt_edit['srv_descs'].value,
             srv_remark : form_obt_edit['srv_remark'].value
         },
-        url: '/enter/update_corp_service_info',
+        url: '/bolong/update_corp_service_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
             Ext.getCmp('servicemtgridview_id').getStore().reload();
@@ -118,7 +118,7 @@ function obt_corp_rehr_manage_update(rehr_id) {
             rehr_age_req : form_obt_edit['rehr_age_req'].value,
             rehr_requests : form_obt_edit['rehr_requests'].value
         },
-        url: '/enter/update_corp_rehr_info',
+        url: '/bolong/update_corp_rehr_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
             Ext.getCmp('rehrgridview_id').getStore().reload();
@@ -146,7 +146,7 @@ function obt_corp_refinancing_manage_update(refi_id) {
             refi_deadline : form_obt_edit['refi_deadline'].value,
             refi_desc : form_obt_edit['refi_desc'].value
         },
-        url: '/enter/update_corp_refinancing_info',
+        url: '/bolong/update_corp_refinancing_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
             Ext.getCmp('refigridview_id').getStore().reload();
@@ -171,7 +171,7 @@ function obt_corp_retrain_manage_update(retra_id) {
             retra_dt : form_obt_edit['retra_dt'].value,
             retra_requests : form_obt_edit['retra_requests'].value
         },
-        url: '/enter/update_corp_retrain_info',
+        url: '/bolong/update_corp_retrain_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
             Ext.getCmp('retrgridview_id').getStore().reload();
@@ -235,7 +235,7 @@ function obt_corp_update(corp_id) {
             demand_rl : form_obt_edit['demand_rl'].checked
             //inputdt : form_obt_edit['inputdt'].value
         },
-        url: '/enter/update_corp_info',
+        url: '/bolong/update_corp_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -266,7 +266,7 @@ function obt_corp_contact_update(cont_id) {
             cont_tel : form_obt_edit['cont_tel'].value,
             cont_bz : form_obt_edit['cont_bz'].value
         },
-        url: '/enter/update_corp_contact_info',
+        url: '/bolong/update_corp_contact_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -309,7 +309,7 @@ function obt_corp_shareholder_update(gd_id) {
                     gd_doctype : "",
                     gd_docnum : ""
                 },
-                url: '/enter/update_corp_shareholder_info',
+                url: '/bolong/update_corp_shareholder_info',
                 success: function () {
                     Ext.Msg.alert("提示", "保存成功！");
                 },
@@ -458,7 +458,7 @@ function obt_corp_finance_update(finid) {
             st_hj_fz_owner_right : form_obt_edit['st_hj_fz_owner_right'].value,
             end_hj_fz_owner_right : form_obt_edit['end_hj_fz_owner_right'].value
         },
-        url: '/enter/update_corp_finance_info',
+        url: '/bolong/update_corp_finance_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -496,7 +496,7 @@ function obt_corp_maintain_update(mai_id) {
             mai_webchat : form_obt_edit['mai_webchat'].value,
             mai_bz : form_obt_edit['mai_bz'].value
         },
-        url: '/enter/update_corp_maintain_info',
+        url: '/bolong/update_corp_maintain_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -529,7 +529,7 @@ function obt_corp_government_update(gov_id) {
             gov_tel : form_obt_edit['gov_tel'].value,
             gov_remark : form_obt_edit['gov_remark'].value
         },
-        url: '/enter/update_corp_government_info',
+        url: '/bolong/update_corp_government_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -568,7 +568,7 @@ function obt_corp_investors_update(inv_id) {
             inv_tel : form_obt_edit['inv_tel'].value,
             inv_remark : form_obt_edit['inv_remark'].value
         },
-        url: '/enter/update_corp_investors_info',
+        url: '/bolong/update_corp_investors_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -597,7 +597,7 @@ function obt_corp_service_update(srv_id) {
             srv_descs : form_obt_edit['srv_descs'].value,
             srv_remark : form_obt_edit['srv_remark'].value
         },
-        url: '/enter/update_corp_service_info',
+        url: '/bolong/update_corp_service_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -623,7 +623,7 @@ function obt_corp_refinancing_update(refi_id) {
             refi_deadline : form_obt_edit['refi_deadline'].value,
             refi_desc : form_obt_edit['refi_desc'].value
         },
-        url: '/enter/update_corp_refinancing_info',
+        url: '/bolong/update_corp_refinancing_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -648,7 +648,7 @@ function obt_corp_rehr_update(rehr_id) {
             rehr_age_req : form_obt_edit['rehr_age_req'].value,
             rehr_requests : form_obt_edit['rehr_requests'].value
         },
-        url: '/enter/update_corp_rehr_info',
+        url: '/bolong/update_corp_rehr_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -672,7 +672,7 @@ function obt_corp_retrain_update(retra_id) {
             retra_dt : form_obt_edit['retra_dt'].value,
             retra_requests : form_obt_edit['retra_requests'].value
         },
-        url: '/enter/update_corp_retrain_info',
+        url: '/bolong/update_corp_retrain_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -732,7 +732,7 @@ function obt_corp_add(corp_id) {
             demand_px : document.getElementById('demand_px').checked,
             demand_rl : document.getElementById('demand_rl').checked
         },
-        url: '/enter/add_corp_info',
+        url: '/bolong/add_corp_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -759,7 +759,7 @@ function obt_corp_contact_add(corp_id) {
             cont_tel : document.getElementById('cont_tel').value,
             cont_bz : document.getElementById('cont_bz').value
         },
-        url: '/enter/add_corp_contact_info',
+        url: '/bolong/add_corp_contact_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -795,7 +795,7 @@ function obt_corp_shareholder_add(corp_id) {
                     gd_doctype : "",
                     gd_docnum : ""
                 },
-                url: '/enter/add_corp_shareholder_info',
+                url: '/bolong/add_corp_shareholder_info',
                 success: function () {
                     Ext.Msg.alert("提示", "保存成功！");
                 },
@@ -940,7 +940,7 @@ function obt_corp_finance_add(corp_id) {
             st_hj_fz_owner_right : document.getElementById('st_hj_fz_owner_right').value,
             end_hj_fz_owner_right : document.getElementById('end_hj_fz_owner_right').value
         },
-        url: '/enter/add_corp_finance_info',
+        url: '/bolong/add_corp_finance_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -974,7 +974,7 @@ function obt_corp_maintain_add(corp_id) {
             mai_webchat : document.getElementById('mai_webchat').value,
             mai_bz : document.getElementById('mai_bz').value
         },
-        url: '/enter/add_corp_maintain_info',
+        url: '/bolong/add_corp_maintain_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -1003,7 +1003,7 @@ function obt_corp_government_add(corp_id) {
             gov_tel : document.getElementById('gov_tel').value,
             gov_remark : document.getElementById('gov_remark').value
         },
-        url: '/enter/add_corp_government_info',
+        url: '/bolong/add_corp_government_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -1038,7 +1038,7 @@ function obt_corp_investors_add(corp_id) {
             inv_tel : document.getElementById('inv_tel').value,
             inv_remark : document.getElementById('inv_remark').value
         },
-        url: '/enter/add_corp_investors_info',
+        url: '/bolong/add_corp_investors_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -1063,7 +1063,7 @@ function obt_corp_service_add(corp_id) {
             srv_descs : document.getElementById('srv_descs').value,
             srv_remark : document.getElementById('srv_remark').value
         },
-        url: '/enter/add_corp_service_info',
+        url: '/bolong/add_corp_service_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -1085,7 +1085,7 @@ function obt_corp_refinancing_add(corp_id) {
             refi_deadline : document.getElementById('refi_deadline').value,
             refi_desc : document.getElementById('refi_desc').value
         },
-        url: '/enter/add_corp_refinancing_info',
+        url: '/bolong/add_corp_refinancing_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -1106,7 +1106,7 @@ function obt_corp_rehr_add(corp_id) {
             rehr_age_req : document.getElementById('rehr_age_req').value,
             rehr_requests : document.getElementById('rehr_requests').value
         },
-        url: '/enter/add_corp_rehr_info',
+        url: '/bolong/add_corp_rehr_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },
@@ -1126,7 +1126,7 @@ function obt_corp_retrain_add(corp_id) {
             retra_dt : document.getElementById('retra_dt').value,
             retra_requests : document.getElementById('retra_requests').value
         },
-        url: '/enter/add_corp_retrain_info',
+        url: '/bolong/add_corp_retrain_info',
         success: function () {
             Ext.Msg.alert("提示", "保存成功！");
         },

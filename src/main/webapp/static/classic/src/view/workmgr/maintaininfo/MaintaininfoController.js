@@ -59,7 +59,7 @@ Ext.define('app.view.workmgr.maintaininfo.MaintaininfoController', {
                         var row = rows[i];
                         var mi_id = row.get('mi_id');
                         Ext.Ajax.request({
-                            url: '/enter/deletemaintaininfo',
+                            url: '/bolong/deletemaintaininfo',
                             params: {
                                 "mi_id": mi_id
                             },

@@ -61,7 +61,7 @@ Ext.define('app.view.system.act.ActController', {
                         var roleid = row.get('roleid');
                         var treeid = row.get('treeid');
                         Ext.Ajax.request({
-                            url: '/enter/deleteroleperm',
+                            url: '/bolong/deleteroleperm',
                             params: {
                                 "roleid": roleid,
                                 "treeid": treeid

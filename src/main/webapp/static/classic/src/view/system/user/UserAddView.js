@@ -154,7 +154,7 @@ Ext.define('app.view.system.user.UserAddView', {
                     var form = this.up('form').getForm();
                     if (form.isValid()){
                         form.submit({
-                            url: '/enter/add_users_info',
+                            url: '/bolong/add_users_info',
                             waitMsg: '正在保存数据...',
                             success: function(form, action){
                                 Ext.Msg.alert("成功", "数据保存成功!");

@@ -64,7 +64,7 @@ Ext.define('app.view.workmgr.refimosf.RefimosfController', {
                         var row = rows[i];
                         var mos_id = row.get('mos_id');
                         Ext.Ajax.request({
-                            url: '/enter/deleterefimos',
+                            url: '/bolong/deleterefimos',
                             params: {
                                 "mos_id": mos_id
                             },

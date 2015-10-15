@@ -145,7 +145,7 @@ function add_refi_rop(id) {
                             var form = this.up('form').getForm();
                             if (form.isValid()) {
                                 form.submit({
-                                    url: '/enter/add_refi_rop_info',
+                                    url: '/bolong/add_refi_rop_info',
                                     method: 'POST',
                                     params: {
                                         rop_mos_id: id

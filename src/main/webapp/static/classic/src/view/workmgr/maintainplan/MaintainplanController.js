@@ -59,7 +59,7 @@ Ext.define('app.view.workmgr.maintainplan.MaintainplanController', {
                         var row = rows[i];
                         var mp_id = row.get('mp_id');
                         Ext.Ajax.request({
-                            url: '/enter/deletemaintainplan',
+                            url: '/bolong/deletemaintainplan',
                             params: {
                                 "mp_id": mp_id
                             },

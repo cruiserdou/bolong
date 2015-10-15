@@ -205,7 +205,7 @@ Ext.define('app.view.maintain.investormt.InvestorMtController', {
                         var row = rows[i];
                         var id = row.get('id');
                         Ext.Ajax.request({
-                            url: '/enter/deletecorp',
+                            url: '/bolong/deletecorp',
                             params: {
                                 "id": id
                             },

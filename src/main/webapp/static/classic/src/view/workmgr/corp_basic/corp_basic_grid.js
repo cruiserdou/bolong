@@ -362,7 +362,7 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_grid', {
                     read: 'POST'
                 },
                 api: {
-                    read: '/enter/corplist'
+                    read: '/bolong/corplist'
                 },
                 reader: {
                     type: 'json',

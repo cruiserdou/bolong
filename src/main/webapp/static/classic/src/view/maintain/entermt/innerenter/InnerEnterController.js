@@ -272,7 +272,7 @@ function buslicno_check_edit(id) {
             buslicno: form_obt_edit['buslicno'].value,
             id : id
         },
-        url: '/enter/check_buslicno_info',
+        url: '/bolong/check_buslicno_info',
         success: function (response,opts) {
             var obj=Ext.decode(response.responseText);
 

@@ -348,7 +348,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterGridView', {
                     read: 'POST'
                 },
                 api: {
-                    read: '/enter/corplist'
+                    read: '/bolong/corplist'
                 },
                 reader: {
                     type: 'json',

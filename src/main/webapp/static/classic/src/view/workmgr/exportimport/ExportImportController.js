@@ -54,7 +54,7 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
                                 var form = this.up('form').getForm();
                                 if (form.isValid()){
                                     form.submit({
-                                        url: '/enter/import_corp_xlsa',
+                                        url: '/bolong/import_corp_xlsa',
                                         waitMsg: '正在保存数据...',
                                         success: function(form, action){
                                             Ext.Msg.alert("成功", "数据保存成功!");
@@ -163,7 +163,7 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
 
 function corp_s_export(id_list) {
     Ext.Ajax.request({
-        url: '/enter/import_corp_s',
+        url: '/bolong/import_corp_s',
         params: {
             "id_list": id_list,
             "fileName":"coprs.xls"

@@ -59,7 +59,7 @@ Ext.define('app.view.system.menu.MenuController', {
                         var row = rows[i];
                         var id = row.get('id');
                         Ext.Ajax.request({
-                            url: '/enter/deletemenu',
+                            url: '/bolong/deletemenu',
                             params: {
                                 "id": id
                             },
