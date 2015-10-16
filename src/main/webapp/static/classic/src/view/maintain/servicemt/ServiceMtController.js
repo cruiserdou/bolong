@@ -107,13 +107,6 @@ Ext.define('app.view.maintain.servicemt.ServiceMtController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="service_manage_corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
                     id: 'corp_service_panel',
                     html: '<div id="service_manage_corp_service">' +
                     '</div>'

@@ -50,7 +50,7 @@ Ext.define('app.view.query.investorq.InvestorQController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_panel',
+                    id: 'corp_ivn_q_panel',
                     html: '<div id="investors_query_corp">' +
                     '</div>'
                 },
@@ -101,13 +101,6 @@ Ext.define('app.view.query.investorq.InvestorQController', {
                     border: false,
                     id: 'corp_maintain_panel',
                     html: '<div id="investors_query_corp_maintain">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="investors_query_corp_finance">' +
                     '</div>'
                 },
                 {

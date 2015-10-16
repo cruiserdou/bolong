@@ -113,13 +113,6 @@ Ext.define('app.view.query.govq.GovQController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="government_query_corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
                     id: 'corp_government_panel',
                     html: '<div id="government_query_corp_government">' +
                     '</div>'

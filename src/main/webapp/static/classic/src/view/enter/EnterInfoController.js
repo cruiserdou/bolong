@@ -119,13 +119,6 @@ Ext.define('app.view.enter.EnterInfoController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
                     id: 'corp_service_panel',
                     html: '<div id="corp_service">' +
                     '</div>'

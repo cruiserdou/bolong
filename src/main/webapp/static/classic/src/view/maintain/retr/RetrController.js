@@ -107,13 +107,6 @@ Ext.define('app.view.maintain.retr.RetrController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="retrain_manage_corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
                     id: 'corp_retrain_panel',
                     html: '<div id="retrain_manage_corp_retrain">' +
                     '</div>'

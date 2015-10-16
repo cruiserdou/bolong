@@ -113,13 +113,6 @@ Ext.define('app.view.query.rehr.RehrQController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="rehr_query_corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
                     id: 'corp_rehr_panel',
                     html: '<div id="rehr_query_corp_rehr">' +
                     '</div>'

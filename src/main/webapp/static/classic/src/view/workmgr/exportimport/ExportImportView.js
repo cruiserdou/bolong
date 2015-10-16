@@ -20,8 +20,12 @@ Ext.define('app.view.workmgr.exportimport.ExportImportView', {
             border: false,
             items: [
                 {
-                    text: '导入',
-                    handler: 'import'
+                    text: '批量导入',
+                    handler: 'imports'
+                },
+                {
+                    text: '批量导出',
+                    handler: 'exports'
                 },
                 {
                     text: '导出',

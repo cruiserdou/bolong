@@ -110,13 +110,6 @@ Ext.define('app.view.maintain.govmt.GovMtController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="government_manage_corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
                     id: 'corp_government_panel',
                     html: '<div id="government_manage_corp_government">' +
                     '</div>'

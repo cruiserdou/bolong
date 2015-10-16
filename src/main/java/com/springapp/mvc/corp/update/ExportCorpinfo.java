@@ -55,19 +55,19 @@ public class ExportCorpinfo {
             String projectPath_target = request.getSession().getServletContext().getRealPath("/static/upload/");
 //            String projectPath_template= request.getSession().getServletContext().getRealPath("/WEB-INF/static/export_template/");
 
-            File xlsFile =new File(projectPath_target + "/" + "企业信息.xls");
+            File xlsFile =new File(projectPath_target + "/" + "copr.xls");
             FileInputStream fin=new FileInputStream(xlsFile);
             HSSFWorkbook workbook=new HSSFWorkbook(fin);
             HSSFSheet sheet=workbook.getSheetAt(0);
 
 
-            String sql = "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*,corp_shareholder.*," +
+            String sql = "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
                     "     inner join work.tb_corp_finance corp_finance on corp.id=corp_finance.fin_corp_id " +
                     "     inner join work.tb_corp_maintain corp_maintain on corp.id=corp_maintain.mai_corp_id " +
-                    "     inner join work.tb_corp_shareholder corp_shareholder on corp.id=corp_shareholder.gd_corp_id " +
+//                    "     inner join work.tb_corp_shareholder corp_shareholder on corp.id=corp_shareholder.gd_corp_id " +
                     "     inner join work.tb_corp_government corp_government on corp.id=corp_government.gov_corp_id " +
                     "     inner join work.tb_corp_service corp_service on corp.id=corp_service.srv_corp_id " +
                     "     inner join work.tb_corp_investors corp_investors on corp.id=corp_investors.inv_corp_id " +
@@ -268,9 +268,56 @@ public class ExportCorpinfo {
 //
 //                HSSFCell cell_creditremark = sheet.getRow(41).getCell(1);
 //                cell_creditremark.setCellValue(rs.getString( "creditremark" ));
+
+
+                HSSFCell cell_retra_mode = sheet.getRow(95).getCell(1);
+                cell_retra_mode.setCellValue(rs.getString("retra_mode"));
+
+
+                HSSFCell cell_retra_dt = sheet.getRow(96).getCell(1);
+                if(rs.getDate("retra_dt") == null){
+                    cell_retra_dt.setCellValue("");
+                }else{
+                    cell_retra_dt.setCellValue(rs.getString("retra_dt"));
+                }
+
+
+                HSSFCell cell_retra_acc_cost = sheet.getRow(96).getCell(3);
+                cell_retra_acc_cost.setCellValue(rs.getString( "retra_acc_cost" ));
+
+                HSSFCell cell_retra_content = sheet.getRow(97).getCell(1);
+                cell_retra_content.setCellValue(rs.getString("retra_content"));
+
+                HSSFCell cell_retra_requests = sheet.getRow(98).getCell(1);
+                cell_retra_requests.setCellValue(rs.getString("retra_requests"));
+
+                HSSFCell cell_rehr_post = sheet.getRow(101).getCell(1);
+                cell_rehr_post.setCellValue(rs.getString("rehr_post"));
+
+                HSSFCell cell_rehr_num= sheet.getRow(101).getCell(3);
+                cell_rehr_num.setCellValue(rs.getString( "rehr_num" ));
+
+                HSSFCell cell_rehr_salary = sheet.getRow(102).getCell(1);
+                cell_rehr_salary.setCellValue(rs.getString("rehr_salary"));
+
+                HSSFCell cell_rehr_sex_req = sheet.getRow(102).getCell(3);
+                cell_rehr_sex_req.setCellValue(rs.getString( "rehr_sex_req" ));
+
+                HSSFCell cell_rehr_age_req = sheet.getRow(103).getCell(1);
+                cell_rehr_age_req.setCellValue(rs.getString("rehr_age_req"));
+
+                HSSFCell cell_rehr_requests = sheet.getRow(103).getCell(3);
+                cell_rehr_requests.setCellValue(rs.getString( "rehr_requests" ));
+
+
+
+
+
+
+
             }
 
-            FileOutputStream fOut = new FileOutputStream(projectPath_target + "/" +"企业信息new.xls");
+            FileOutputStream fOut = new FileOutputStream(projectPath_target + "/" +"coprinfo.xls");
 
             //把相应的Excel工作薄存盘
             workbook.write(fOut);

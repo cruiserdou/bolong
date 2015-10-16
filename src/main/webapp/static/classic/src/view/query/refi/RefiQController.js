@@ -113,13 +113,6 @@ Ext.define('app.view.query.refi.RefiQController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="refinancing_query_corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
                     id: 'corp_refinancing_panel',
                     html: '<div id="refinancing_query_corp_refinancing">' +
                     '</div>'

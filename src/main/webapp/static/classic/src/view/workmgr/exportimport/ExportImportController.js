@@ -11,7 +11,7 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
         vPanel.tpl.overwrite(vPanel.body, record_.data);
     },
 
-    import: function () {
+    imports: function () {
         Ext.create('widget.window', {
             title: '导入企业信息',
             modal: true,
@@ -81,7 +81,7 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
         }).show(Ext.get('corp_import'));
     },
 
-    export: function () {
+    exports: function () {
         var sm = Ext.getCmp('exportimportgridview_id').getSelectionModel();
         var rows = sm.getSelection();
         var id_list = "";
@@ -117,8 +117,55 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
                     }
                 ]
 
+            }).show(Ext.get('corp_exports'));
+
+        }else{
+            Ext.Msg.alert('提示', '请选择要导出数据！');
+        }
+    },
+
+    export: function () {
+        var sm = Ext.getCmp('exportimportgridview_id').getSelectionModel();
+        var rows = sm.getSelection();
+        var id = "";
+        if (rows.length ==1) {
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                id =  row.get('id');
+            }
+
+            Ext.create('widget.window', {
+                xtype: 'form',
+                frame: true,
+                modal: true,
+                width: 200,
+                height: 200,
+                title: '导出',
+                layout: {
+                    type: 'vbox',
+                    align: 'stretch',
+                    pack: 'start'
+                },
+                items: [
+                    {
+                        xtype: 'panel',
+                        bodyPadding: '20',
+                        flex: 1,
+                        html: "<a onclick='corp_export(\""+id+"\");' ><img style='height: 32px; margin-left: 50px;' />导出</a><br/>"
+                    },
+                    {
+                        xtype: 'panel',
+                        flex: 1,
+                        bodyPadding: '20',
+                        html: '<a href="upload/coprs.xls"><img style="width: 32px; margin-left: 50px;"  />下载</a>'
+                    }
+                ]
+
             }).show(Ext.get('corp_export'));
 
+        }else if(rows.length > 0){
+            Ext.Msg.alert('提示', '请选择一条数据进行导出！');
         }else{
             Ext.Msg.alert('提示', '请选择要导出数据！');
         }
@@ -169,7 +216,23 @@ function corps_export(id_list) {
         },
         waitMsg: '正在导出数据...',
         success: function () {
-            Ext.getCmp('exportimportgridview_id').getStore().load();
+            Ext.Msg.alert("成功", "数据导出成功!");
+        },
+        failure: function () {
+            Ext.Msg.alert("失败", "数据导出失败!");
+        }
+    });
+
+}
+
+function corp_export(id) {
+    Ext.Ajax.request({
+        url: '/bolong/export_corp_info',
+        params: {
+            "id": id
+        },
+        waitMsg: '正在导出数据...',
+        success: function () {
             Ext.Msg.alert("成功", "数据导出成功!");
         },
         failure: function () {

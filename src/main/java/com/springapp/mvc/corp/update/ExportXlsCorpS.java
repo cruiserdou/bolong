@@ -54,12 +54,15 @@ public class ExportXlsCorpS {
             String projectPath_target = request.getSession().getServletContext().getRealPath("/static/upload/");
 
             id_list=id_list.substring(1);
-            System.out.println(id_list);
 
-            String sql = "select RANK() OVER(ORDER BY id) as 序号,buslicno as 营业执照号码,name as 企业名称,unit as 单位类别,legrep as  法定代表人," +
-                    " nos as 公司简称,postal as 邮政编码,nature as 企业性质,regcap as 注册资本（万元）,regdt as 注册日期,remark as 备注 " +
+            String sql = "select RANK() OVER(ORDER BY id) as 序号,buslicno as 营业执照号码,name as 企业名称,unit as 单位类别,legrep as  法定代表人,province||city||county as 地域, " +
+                    "  nos as 公司简称,postal as 邮政编码,nature as 企业性质,regcap as 注册资本（万元）,bustermfdt as 营业期限自,bustremtdt as 营业期限至,regdt as 注册日期," +
+                    " list_area as 挂牌区域,listcode as 挂牌代码,listprice as 挂牌出资（元）, listdt as 挂牌日期,channels as 推荐单位,webchat as 微信号,staffnum as 员工人数," +
+                    " regist_organ as 登记机关,regaddr as 注册地址,offaddr as 办公地址,scope as 经营范围,mbus as 主营业务,eprofile as 企业简介,remark as 备注 " +
                     " from work.tb_corp  where id in("+id_list+")";
             rs = stmt.executeQuery(sql);
+
+
 
             //创建新的Excel工作薄
 //            XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(projectPath_template + "/" + "s_data.xlsx"));
@@ -113,7 +116,7 @@ public class ExportXlsCorpS {
             HSSFRow row=sheet.createRow(1);
             sheet.setColumnWidth(0,1500);
             sheet.setColumnWidth(1,3000);
-            sheet.setColumnWidth(2,5000);
+            sheet.setColumnWidth(2,8000);
             sheet.setColumnWidth(3,3000);
             sheet.setColumnWidth(4,4000);
             sheet.setColumnWidth(5,3000);
@@ -122,6 +125,26 @@ public class ExportXlsCorpS {
             sheet.setColumnWidth(8,3000);
             sheet.setColumnWidth(9,3000);
             sheet.setColumnWidth(10,3000);
+            sheet.setColumnWidth(11,3000);
+            sheet.setColumnWidth(12,3000);
+            sheet.setColumnWidth(13,3000);
+            sheet.setColumnWidth(14,3000);
+            sheet.setColumnWidth(15,3000);
+            sheet.setColumnWidth(16,3000);
+            sheet.setColumnWidth(17,3000);
+            sheet.setColumnWidth(18,3000);
+            sheet.setColumnWidth(19,3000);
+            sheet.setColumnWidth(20,3000);
+            sheet.setColumnWidth(21,3000);
+            sheet.setColumnWidth(22,3000);
+            sheet.setColumnWidth(23,3000);
+            sheet.setColumnWidth(24,3000);
+            sheet.setColumnWidth(25,3000);
+            sheet.setColumnWidth(26,3000);
+//            sheet.setColumnWidth(27,5000);
+
+
+
             row.setHeight((short) 550);
 
             HSSFCell cell ;

@@ -43,7 +43,7 @@ Ext.define('app.view.maintain.investormt.InvestorMtController', {
                 {
                     xtype: 'panel',
                     border: false,
-                    id: 'corp_panel',
+                    id: 'corp_ivn_panel',
                     html: '<div id="investors_manage_corp">' +
                     '</div>'
                 },
@@ -82,6 +82,8 @@ Ext.define('app.view.maintain.investormt.InvestorMtController', {
                     html: '<div id="investors_manage_corp_contact">' +
                     '</div>'
                 },
+
+
                 {
                     xtype: 'panel',
                     border: false,
@@ -103,13 +105,13 @@ Ext.define('app.view.maintain.investormt.InvestorMtController', {
                     html: '<div id="investors_manage_corp_finance">' +
                     '</div>'
                 },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="investors_manage_corp_finance">' +
-                    '</div>'
-                },
+                //{
+                //    xtype: 'panel',
+                //    border: false,
+                //    id: 'corp_finance_panel',
+                //    html: '<div id="investors_manage_corp_finance">' +
+                //    '</div>'
+                //},
                 {
                     xtype: 'panel',
                     border: false,
