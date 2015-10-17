@@ -29,7 +29,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
             margin: '0 60 0 0',
             iconAlign: 'top',
             handler: function () {
-                win_enterapplyview.show(Ext.get('add_enter_btn_id'));
+                win_enterapplyview.show();
             }
         }, {
             xtype: 'button',
@@ -41,7 +41,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                 var window_inner = Ext.create('app.view.maintain.entermt.innerenter.InnerEnterView', {
                     maximized: true
                 });
-                window_inner.show(Ext.get('innerenterview_id'));
+                window_inner.show();
             }
         }]
     }

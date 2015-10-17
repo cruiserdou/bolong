@@ -619,6 +619,7 @@ $include-app-xtemplate-corp_apply: dynamic(false);;
 $include-app-xtemplate-corp_contact: dynamic(false);;
 $include-app-xtemplate-corp_edit: dynamic(false);;
 $include-app-xtemplate-corp_view: dynamic(false);;
+$include-app-xtemplate-stat_view: dynamic(false);;
 
 
 /* ======================== ETC ======================== */

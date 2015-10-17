@@ -76,6 +76,23 @@ Ext.define('app.view.main.TreeListController', {
                                 return;
                             }
 
+                            Ext.getCmp('main_window').add({
+                                region: 'west',
+                                width: 250,
+                                reference: 'treelistContainer',
+                                layout: {
+                                    type: 'vbox',
+                                    align: 'stretch'
+                                },
+                                border: false,
+                                scrollable: 'y',
+                                items: [{
+                                    xtype: 'treelist',
+                                    reference: 'treelist',
+                                    bind: '{navItems}'
+                                }]
+                            });
+
                             Ext.getCmp('enter_grid_id').getStore().load();
                             loginWindow.close();
                         }

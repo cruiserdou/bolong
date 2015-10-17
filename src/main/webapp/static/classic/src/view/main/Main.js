@@ -8,7 +8,7 @@
 Ext.define('app.view.main.Main', {
     extend: 'Ext.panel.Panel',
     xtype: 'app-main',
-
+    id: 'main_window',
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
@@ -66,21 +66,9 @@ Ext.define('app.view.main.Main', {
     ui: 'navigation',
 
     layout: 'border',
-    items: [{
-        region: 'west',
-        width: 250,
-        reference: 'treelistContainer',
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
-        border: false,
-        scrollable: 'y',
-        items: [{
-            xtype: 'treelist',
-            reference: 'treelist',
-            bind: '{navItems}'
-        }]
+    items: [
+        {
+
     }, {
         region: 'center',
         bodyStyle: 'background-color: #CCC;background-image: url(/bolong/static/resources/panel_back.png)',
