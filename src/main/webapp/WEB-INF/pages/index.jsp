@@ -18,6 +18,7 @@
             text-decoration: none;
         }
     </style>
+
 </head>
 <body>
 <h1><a href="/bolong/static/index.html">甘肃中小企业信息系统<br>点击进入</a></h1>
