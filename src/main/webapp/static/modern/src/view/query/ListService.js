@@ -19,6 +19,7 @@ Ext.define('app.view.query.ListService', {
         itemclick: 'itemclick'
     },
 
+
     selModel: {
         type: 'spreadsheet',
         // Disables sorting by header click, though it will be still available via menu
