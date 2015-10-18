@@ -1,16 +1,16 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('app.view.query.ListGov', {
+Ext.define('app.view.main.ListEnter', {
     extend: 'Ext.grid.Grid',
-    xtype: 'listgov',
+    xtype: 'listenter',
 
     columnLines: true,
     requires: [
         'app.store.gov.GovStore'
     ],
 
-    title: '政府部门',
+    title: '企业信息',
 
     store: {
         type: 'govstore'
@@ -50,8 +50,8 @@ Ext.define('app.view.query.ListGov', {
 
     listeners: {
         painted: function () {
-            c_compnent_id = "listgov_id";
-            Ext.getCmp('listgov_id').getStore().load();
+            c_compnent_id = "listenter_id";
+            Ext.getCmp('listenter_id').getStore().load();
         }
     }
 });

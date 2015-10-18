@@ -6,25 +6,34 @@ Ext.define('app.view.main.List', {
     xtype: 'mainlist',
 
     requires: [
-        'app.store.Personnel'
+        'app.store.Personnel',
+        'app.store.workmgr.msg.MsgStore'
     ],
 
-    title: 'Personnel',
+    title: '站内信息',
 
     store: {
-        type: 'personnel'
+        type: 'msgstore'
     },
 
     columns: [
-        { text: 'Name',  dataIndex: 'name', width: 100 },
-        { text: 'Email', dataIndex: 'email', width: 230 },
-        { text: 'Phone', dataIndex: 'phone', width: 150 }
+        {text: 'ID', width: 80, dataIndex: 'id',hidden:true},
+        {text: '状态', width: 101, dataIndex: 'stat'},
+        {text: '接收人', width: 100, dataIndex: 'ruser_id',hidden:true},
+        {text: '发送人', width: 80, dataIndex: 'user_id',hidden:true},
+        {text: '发送人', width: 120, dataIndex: 'user_name'},
+        {text: '内容', flex: 1, dataIndex: 'content'},
+        {text: '期限', width: 100, dataIndex: 'deadline',hidden:true},
+        {text: '发送时间', width: 200, dataIndex: 'rtdate'},
+        {text: '类型', width: 100, dataIndex: 'type'},
+        {text: '备注', width: 100, dataIndex: 'remark',hidden:true}
     ],
 
     listeners: {
+        select: 'onItemSelected',
         painted: function () {
-            c_compnent_id = "listenter_id";
-            Ext.getCmp('listenter_id').getStore().load();
+            c_compnent_id = "grid_t";
+            Ext.getCmp('grid_t').getStore().load();
         }
     }
 });

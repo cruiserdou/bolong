@@ -88,11 +88,11 @@ Ext.define('app.view.main.LoginForm', {
                         );
                     }
 
-                    if (Ext.getCmp('inputnum_id') == null) {
+                    if (Ext.getCmp('grid_t') == null) {
                         Ext.getCmp('mobile_id').remove(Ext.getCmp(c_compnent_id));
                         Ext.getCmp('mobile_id').add({
-                            xtype: 'inputnum',
-                            id: 'inputnum_id',
+                            xtype: 'mainlist',
+                            id: 'grid_t',
                             flex: 1
                         });
                     }

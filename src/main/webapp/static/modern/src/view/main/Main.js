@@ -20,7 +20,10 @@ Ext.define('app.view.main.Main', {
         'app.view.main.MainController',
         'app.view.main.MainModel',
         'app.view.main.List',
+        'app.view.main.ListEnter',
         'app.view.query.ListGov',
+        'app.view.query.ListInvestor',
+        'app.view.query.ListService',
         'app.view.main.InputNum',
         'app.view.main.LoginForm'
     ],
