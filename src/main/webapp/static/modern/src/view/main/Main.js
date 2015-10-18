@@ -66,32 +66,39 @@ Ext.define('app.view.main.Main', {
             });
         }
     },
+
+    listeners: {
+        painted: function(){
+            Ext.fly("h3_text").setStyle({display: "none"});
+        }
+    },
+
     getMenuCfg: function (side) {
         return {
             items: [{
-                text: '输入数据',
-                iconCls: 'x-fa fa-edit',
+                text: '站内信息',
+                iconCls: 'x-fa fa-comments',
                 scope: this,
                 handler: function () {
-                    if (Ext.getCmp('inputnum_id') == null) {
+                    if (Ext.getCmp('grid_t') == null) {
                         Ext.getCmp('mobile_id').remove(Ext.getCmp(c_compnent_id));
                         Ext.getCmp('mobile_id').add({
-                            xtype: 'inputnum',
-                            id: 'inputnum_id',
+                            xtype: 'mainlist',
+                            id: 'grid_t',
                             flex: 1
                         });
                     }
                     Ext.Viewport.hideMenu(side);
                 }
             }, {
-                text: '生成数据',
-                iconCls: 'x-fa fa-gear',
+                text: '企业信息',
+                iconCls: 'x-fa fa-search',
                 scope: this,
                 handler: function () {
                     if (Ext.getCmp('listenter_id') == null) {
                         Ext.getCmp('mobile_id').remove(Ext.getCmp(c_compnent_id));
                         Ext.getCmp('mobile_id').add({
-                            xtype: 'mainlist',
+                            xtype: 'listenter',
                             id: 'listenter_id',
                             flex: 1
                         });
@@ -99,8 +106,38 @@ Ext.define('app.view.main.Main', {
                     }
                 }
             }, {
-                text: '统计',
-                iconCls: 'x-fa fa-line-chart',
+                text: '服务机构',
+                iconCls: 'x-fa fa-search',
+                scope: this,
+                handler: function () {
+                    if (Ext.getCmp('listservice_id') == null) {
+                        Ext.getCmp('mobile_id').remove(Ext.getCmp(c_compnent_id));
+                        Ext.getCmp('mobile_id').add({
+                            xtype: 'listservice',
+                            id: 'listservice_id',
+                            flex: 1
+                        });
+                        Ext.Viewport.hideMenu(side);
+                    }
+                }
+            }, {
+                text: '投资人',
+                iconCls: 'x-fa fa-search',
+                scope: this,
+                handler: function () {
+                    if (Ext.getCmp('listinvestor_id') == null) {
+                        Ext.getCmp('mobile_id').remove(Ext.getCmp(c_compnent_id));
+                        Ext.getCmp('mobile_id').add({
+                            xtype: 'listinvestor',
+                            id: 'listinvestor_id',
+                            flex: 1
+                        });
+                        Ext.Viewport.hideMenu(side);
+                    }
+                }
+            }, {
+                text: '政府部门',
+                iconCls: 'x-fa fa-search',
                 scope: this,
                 handler: function () {
                     if (Ext.getCmp('listgov_id') == null) {

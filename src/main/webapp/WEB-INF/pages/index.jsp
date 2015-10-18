@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="/bolong/static/resources/wq-icon.png" rel="shortcut icon">
-    <title>甘肃中小企业信息系统</title>
+    <title>中小企业</title>
 
     <style>
         h1 {
@@ -20,6 +20,6 @@
     </style>
 </head>
 <body>
-<h1><a href="/bolong/static/index.html">甘肃中小企业信息系统</a></h1>
+<h1><a href="/bolong/static/index.html">甘肃中小企业信息系统<br>点击进入</a></h1>
 </body>
 </html>
