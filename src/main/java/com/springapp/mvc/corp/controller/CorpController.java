@@ -23,13 +23,14 @@ public class CorpController {
             @RequestParam(value = "name", required = false, defaultValue = "") String name,
             @RequestParam(value = "nos", required = false, defaultValue = "") String nos,
             @RequestParam(value = "buslicno", required = false, defaultValue = "") String buslicno,
+            @RequestParam(value = "search_val", required = false, defaultValue = "no")String search_val,
             @RequestParam(value = "listcode", required = false, defaultValue = "") String listcode,
 
             @RequestParam(value = "start", required = false)String start,
             @RequestParam(value = "limit", required = false)String limit
     ) throws Exception {
         DataShop dataShop = new DataShop();
-        List list = corpService.list(name, nos, buslicno, listcode, start, limit);
+        List list = corpService.list(name, nos, buslicno, listcode, start, limit, search_val);
         int count = corpService.getCorpCount(name, nos, buslicno, listcode, start, limit);
         dataShop.setSuccess(true);
         dataShop.setList(list);

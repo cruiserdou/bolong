@@ -21,7 +21,8 @@ public interface CorpDao {
             @Param(value = "buslicno") String buslicno,
             @Param(value = "listcode") String listcode,
             @Param(value = "start") String start,
-            @Param(value = "limit") String limit
+            @Param(value = "limit") String limit,
+            @Param(value = "search_val")String search_val
     );
 
     @SelectProvider(type = CorpDaoEmberSql.class, method = "countCorp")
@@ -37,6 +38,8 @@ public interface CorpDao {
     class CorpDaoEmberSql {
         public String listCorp(Map<String, Object> para) {
             String where = "";
+            if (!para.get("search_val").equals("no"))
+                where += " and name like '%" + para.get("search_val").toString() + "%' ";
             if (null != para.get("name").toString() && 0 != para.get("name").toString().length())
                 where += " and name like '%" + para.get("name").toString() + "%' ";
             if (null != para.get("nos").toString() && 0 != para.get("nos").toString().length())
@@ -87,12 +90,15 @@ public interface CorpDao {
             @Param(value = "name") String name,
             @Param(value = "nos") String nos,
             @Param(value = "buslicno") String buslicno,
-            @Param(value = "listcode") String listcode
+            @Param(value = "listcode") String listcode,
+            @Param(value = "search_val")String search_val
     );
 
     class CorpGovDaoEmberSql {
         public String listGovCorp(Map<String, Object> para) {
             String where = "";
+            if (!para.get("search_val").equals("no"))
+                where += " and name like '%" + para.get("search_val").toString() + "%' ";
             if (null != para.get("name").toString() && 0 != para.get("name").toString().length())
                 where += " and name like '%" + para.get("name").toString() + "%' ";
             if (null != para.get("nos").toString() && 0 != para.get("nos").toString().length())
@@ -125,12 +131,15 @@ public interface CorpDao {
             @Param(value = "name") String name,
             @Param(value = "nos") String nos,
             @Param(value = "buslicno") String buslicno,
-            @Param(value = "listcode") String listcode
+            @Param(value = "listcode") String listcode,
+            @Param(value = "search_val")String search_val
     );
 
     class CorpInvDaoEmberSql {
         public String listInvCorp(Map<String, Object> para) {
             String where = "";
+            if (!para.get("search_val").equals("no"))
+                where += " and name like '%" + para.get("search_val").toString() + "%' ";
             if (null != para.get("name").toString() && 0 != para.get("name").toString().length())
                 where += " and name like '%" + para.get("name").toString() + "%' ";
             if (null != para.get("nos").toString() && 0 != para.get("nos").toString().length())
