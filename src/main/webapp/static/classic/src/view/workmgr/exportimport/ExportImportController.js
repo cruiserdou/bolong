@@ -161,7 +161,6 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
                         html: '<a href="upload/coprinfo.xls"><img style="width: 32px; margin-left: 50px;"  />下载</a>'
                     }
                 ]
-
             }).show(Ext.get('corp_export'));
 
         }else if(rows.length > 0){

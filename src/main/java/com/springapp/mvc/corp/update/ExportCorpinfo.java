@@ -502,6 +502,7 @@ public class ExportCorpinfo {
             }
             FileOutputStream fOut = new FileOutputStream(projectPath_target + "/" +"coprinfo.xls");
 
+
             //把相应的Excel工作薄存盘
             workbook.write(fOut);
             fOut.flush();
