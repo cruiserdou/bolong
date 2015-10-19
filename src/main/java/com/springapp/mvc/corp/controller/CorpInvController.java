@@ -15,7 +15,6 @@ import java.util.List;
 public class CorpInvController {
     @Autowired
     private CorpService corpService;
-
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
