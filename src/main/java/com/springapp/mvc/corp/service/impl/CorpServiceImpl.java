@@ -17,8 +17,8 @@ public class CorpServiceImpl implements CorpService {
     private CorpDao corpDao;
 
     @Override
-    public List<Corp> list(String name, String nos, String buslicno, String listcode, String start, String limit){
-        return corpDao.list(name, nos, buslicno, listcode, start, limit);
+    public List<Corp> list(String name, String nos, String buslicno, String listcode, String start, String limit, String search_val){
+        return corpDao.list(name, nos, buslicno, listcode, start, limit, search_val);
     }
 
     public int getCorpCount(String name, String nos, String buslicno, String listcode, String start, String limit){
@@ -26,12 +26,12 @@ public class CorpServiceImpl implements CorpService {
     }
 
 
-    public List<Corp> listGov(String name, String nos, String buslicno, String listcode){
-        return corpDao.listGov(name, nos, buslicno, listcode);
+    public List<Corp> listGov(String name, String nos, String buslicno, String listcode, String search_val){
+        return corpDao.listGov(name, nos, buslicno, listcode, search_val);
     }
 
-    public List<Corp> listInv(String name, String nos, String buslicno, String listcode){
-        return corpDao.listInv(name, nos, buslicno, listcode);
+    public List<Corp> listInv(String name, String nos, String buslicno, String listcode, String search_val){
+        return corpDao.listInv(name, nos, buslicno, listcode, search_val);
     }
 
     public List<Corp> listRefi(String name, String nos, String buslicno, String listcode){

@@ -76,13 +76,37 @@ Ext.define('app.view.main.LoginForm', {
                     if (Ext.getCmp('menu_menu_id') == null) {
                         Ext.getCmp('top_toolbar_id').add(
                             {
-                                text: '菜 单',
                                 iconCls: 'x-fa fa-list',
                                 id: 'menu_menu_id',
                                 ui: 'back',
                                 hidden: (Ext.theme.name == "Blackberry") ? true : false,
                                 handler: function () {
                                     Ext.Viewport.toggleMenu('left');
+                                }
+                            }
+                        );
+
+                        Ext.getCmp('top_toolbar_id').add(
+                            {
+                                xtype: 'searchfield',
+                                id: 'searchfield_id',
+                                placeHolder: '搜索',
+                                width: 160
+                            }, "->"
+                        );
+
+                        Ext.getCmp('top_toolbar_id').add(
+                            {
+                                iconCls: 'x-fa fa-search',
+                                id: 'search_btn_id',
+                                ui: 'back',
+                                handler: function () {
+                                    var search_val = Ext.getCmp('searchfield_id').getValue();
+                                    Ext.getCmp(c_compnent_id).getStore().load({
+                                        params: {
+                                            "search_val": search_val
+                                        }
+                                    });
                                 }
                             }
                         );

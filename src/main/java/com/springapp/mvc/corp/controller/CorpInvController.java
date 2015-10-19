@@ -23,10 +23,11 @@ public class CorpInvController {
             @RequestParam(value = "name", required = false, defaultValue = "") String name,
             @RequestParam(value = "nos", required = false, defaultValue = "") String nos,
             @RequestParam(value = "buslicno", required = false, defaultValue = "") String buslicno,
+            @RequestParam(value = "search_val", required = false, defaultValue = "no")String search_val,
             @RequestParam(value = "listcode", required = false, defaultValue = "") String listcode
     ) throws Exception {
         DataShop dataShop = new DataShop();
-        List list = corpService.listInv(name, nos, buslicno, listcode);
+        List list = corpService.listInv(name, nos, buslicno, listcode, search_val);
         dataShop.setList(list);
         dataShop.setSuccess(true);
         return dataShop;
