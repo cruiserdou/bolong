@@ -158,7 +158,7 @@ Ext.define('app.view.workmgr.exportimport.ExportImportController', {
                         xtype: 'panel',
                         flex: 1,
                         bodyPadding: '20',
-                        html: '<a href="upload/coprs.xls"><img style="width: 32px; margin-left: 50px;"  />下载</a>'
+                        html: '<a href="upload/coprinfo.xls"><img style="width: 32px; margin-left: 50px;"  />下载</a>'
                     }
                 ]
 
