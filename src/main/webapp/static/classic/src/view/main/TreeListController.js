@@ -12,6 +12,12 @@ Ext.define('app.view.main.TreeListController', {
         treelist.setConfig(menuitem.config, menuitem.checked);
     },
 
+    onQrBtn: function (menuitem) {
+        if (window.localStorage) {
+            localStorage.qr_dis= menuitem.checked;
+        }
+    },
+
     onLogin: function () {
         Ext.fly("h3_text").setStyle({display: "none"});
         var loginWindow = Ext.create('Ext.window.Window', {
@@ -79,7 +85,7 @@ Ext.define('app.view.main.TreeListController', {
 
                             Ext.getCmp('main_window').add({
                                 region: 'west',
-                                width: 220,
+                                width: 210,
                                 reference: 'treelistContainer',
                                 layout: 'border',
                                 border: false,
@@ -92,9 +98,19 @@ Ext.define('app.view.main.TreeListController', {
                                         items: [{
                                             xtype: 'image',
                                             src: '/bolong/static/resources/wechat.png',
-                                            width: 220,
-                                            height: 220
-                                        }]
+                                            width: 210,
+                                            height: 210
+                                        }],
+                                        listeners: {
+                                            beforerender: function(){
+                                                //if (window.localStorage) {
+                                                //    console.log(localStorage.qr_dis)
+                                                //    if (localStorage.qr_dis != undefined){
+                                                //        this.setHidden(!localStorage.qr_dis);
+                                                //    }
+                                                //}
+                                            }
+                                        }
                                     },
                                     {
                                         xtype: 'panel',
@@ -124,6 +140,80 @@ Ext.define('app.view.main.TreeListController', {
                             }
 
                             Ext.getCmp('enter_grid_id').getStore().load();
+                            loginWindow.close();
+                        }
+                    }
+                ]
+            }
+        }).show();
+    },
+
+
+    onLogout: function () {
+        Ext.fly("h3_text").setStyle({display: "none"});
+        var loginWindow = Ext.create('Ext.window.Window', {
+            height: 230,
+            width: 320,
+            id: 'loginwindow',
+            title: '登录窗口',
+            constrain: true,
+            closable: false,
+            modal: true,
+            layout: 'fit',
+            items: {  // Let's put an empty grid in just to illustrate fit layout
+                xtype: 'form',
+                defaultType: 'textfield',
+                bodyPadding: 20,
+                defaults: {
+                    labelWidth: 80,
+                    anchor: '100%'
+                },
+                items: [{
+                    allowBlank: false,
+                    fieldLabel: '用户名',
+                    id: 'account_id',
+                    name: 'account',
+                    value: localStorage.getItem('account'),
+                    emptyText: '用户名'
+                }, {
+                    allowBlank: false,
+                    fieldLabel: '密码',
+                    id: 'password_id',
+                    name: 'password',
+                    emptyText: 'password',
+                    inputType: 'password'
+                }, {
+                    xtype: 'checkbox',
+                    id: 'rem_id',
+                    checked: true,
+                    name: 'rem',
+                    fieldLabel: '记住我'
+                }],
+                buttons: [
+                    {
+                        text: '重置',
+                        handler: function () {
+                            this.up('form').getForm().reset();
+                        }
+                    },
+                    {
+                        text: '登 录',
+                        handler: function () {
+                            if (Ext.getCmp('rem_id').getValue() == true) {
+                                if (window.localStorage) {
+                                    localStorage.account = Ext.getCmp('account_id').getValue();
+                                }
+                            }
+
+                            if (Ext.getCmp('account_id').getValue() != 'admin') {
+                                Ext.Msg.alert('失败', '用户名或密码错误!');
+                                return;
+                            }
+                            if (Ext.getCmp('password_id').getValue() != '1') {
+                                Ext.Msg.alert('失败', '用户名或密码错误!')
+                                return;
+                            }
+
                             loginWindow.close();
                         }
                     }
