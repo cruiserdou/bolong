@@ -49,13 +49,17 @@ public class ExportCorpinfo {
         String url = connstr.getUrl();
         String user = connstr.getUser();
         String password = connstr.getPassword();
+
+         new ExportCorpfinanceinfo().exportCorpfinanceinfo(request, id);
+         new ExportCorpGDinfo().exportCorpshareholderinfo(request, id);
+
         try {
             conn = DriverManager.getConnection(url, user, password);
             stmt = conn.createStatement();
             String projectPath_target = request.getSession().getServletContext().getRealPath("/static/upload/");
 //            String projectPath_template= request.getSession().getServletContext().getRealPath("/WEB-INF/static/export_template/");
 
-            File xlsFile =new File(projectPath_target + "/" + "copr.xls");
+            File xlsFile =new File(projectPath_target + "/" + "coprinfo.xls");
             FileInputStream fin=new FileInputStream(xlsFile);
             HSSFWorkbook workbook=new HSSFWorkbook(fin);
             HSSFSheet sheet=workbook.getSheetAt(0);
@@ -485,20 +489,7 @@ public class ExportCorpinfo {
 
                 HSSFCell cell_rehr_requests = sheet.getRow(90).getCell(10);
                 cell_rehr_requests.setCellValue(rs.getString("rehr_requests"));
-
-                HSSFCell cell_start_time = sheet.getRow(93).getCell(3);
-                if(rs.getDate("start_time") == null){
-                    cell_start_time.setCellValue("");
-                }else{
-                    cell_start_time.setCellValue(rs.getString("start_time"));
-                }
-
-                HSSFCell cell_end_time = sheet.getRow(93).getCell(10);
-                if(rs.getDate("end_time") == null){
-                    cell_end_time.setCellValue("");
-                }else{
-                    cell_end_time.setCellValue(rs.getString("end_time"));
-                }
+                
             }
             FileOutputStream fOut = new FileOutputStream(projectPath_target + "/" +"coprinfo.xls");
 
@@ -507,6 +498,7 @@ public class ExportCorpinfo {
             workbook.write(fOut);
             fOut.flush();
             fOut.close();
+
 
         } catch (SQLException e) {
             System.out.print(e.getMessage());
@@ -524,4 +516,6 @@ public class ExportCorpinfo {
 
         return dataShop;
     }
+
+
 }
