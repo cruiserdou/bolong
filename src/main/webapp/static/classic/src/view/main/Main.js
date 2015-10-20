@@ -66,10 +66,32 @@ Ext.define('app.view.main.Main', {
     ui: 'navigation',
 
     layout: 'border',
-    items: [
-        {
+    header: {
+        items: [{
+            xtype: 'button',
+            text: '设置',
+            menu: [{
+                text: 'Expander Only',
+                checked: true,
+                handler: 'onToggleConfig',
+                config: 'expanderOnly'
+            }, {
+                text: 'Single Expand',
+                checked: true,
+                handler: 'onToggleConfig',
+                config: 'singleExpand'
+            }]
+        }, {
 
-    }, {
+            xtype: 'button',
+            iconCls: 'x-fa fa-power-off',
+            text: '注销',
+            enableToggle: true,
+            toggleHandler: 'onToggleMicro'
+        }]
+    },
+
+    items: [{
         region: 'center',
         bodyStyle: 'background-color: #CCC;background-image: url(/bolong/static/resources/panel_back.png)',
         bodyPadding: 8,

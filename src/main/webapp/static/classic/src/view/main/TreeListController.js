@@ -12,7 +12,8 @@ Ext.define('app.view.main.TreeListController', {
         treelist.setConfig(menuitem.config, menuitem.checked);
     },
 
-    onLogin: function(){
+    onLogin: function () {
+        Ext.fly("h3_text").setStyle({display: "none"});
         var loginWindow = Ext.create('Ext.window.Window', {
             height: 230,
             width: 320,
@@ -78,20 +79,49 @@ Ext.define('app.view.main.TreeListController', {
 
                             Ext.getCmp('main_window').add({
                                 region: 'west',
-                                width: 250,
+                                width: 220,
                                 reference: 'treelistContainer',
-                                layout: {
-                                    type: 'vbox',
-                                    align: 'stretch'
-                                },
+                                layout: 'border',
                                 border: false,
                                 scrollable: 'y',
-                                items: [{
-                                    xtype: 'treelist',
-                                    reference: 'treelist',
-                                    bind: '{navItems}'
-                                }]
+                                items: [
+                                    {
+                                        xtype: 'panel',
+                                        region: 'south',
+                                        layout: 'center',
+                                        items: [{
+                                            xtype: 'image',
+                                            src: '/bolong/static/resources/wechat.png',
+                                            width: 220,
+                                            height: 220
+                                        }]
+                                    },
+                                    {
+                                        xtype: 'panel',
+                                        region: 'center',
+                                        layout: 'fit',
+                                        items: [{
+                                            xtype: 'treelist',
+                                            singleExpand: true,
+                                            reference: 'treelist',
+                                            bind: '{navItems}'
+                                        }]
+
+                                    }
+                                ]
                             });
+
+                            var treelist = Ext.getCmp('main_window').lookupReference('treelist'),
+                                ct = Ext.getCmp('main_window').lookupReference('treelistContainer');
+
+                            treelist.setExpanderFirst(!true);
+                            treelist.setUi(true ? 'nav' : null);
+                            treelist.setHighlightPath(true);
+                            ct[true ? 'addCls' : 'removeCls']('treelist-with-nav');
+
+                            if (Ext.isIE8) {
+                                this.repaintList(treelist);
+                            }
 
                             Ext.getCmp('enter_grid_id').getStore().load();
                             loginWindow.close();
@@ -146,8 +176,8 @@ Ext.define('app.view.main.TreeListController', {
         }
     },
 
-    repaintList: function(treelist, microMode) {
-        treelist.getStore().getRoot().cascadeBy(function(node) {
+    repaintList: function (treelist, microMode) {
+        treelist.getStore().getRoot().cascadeBy(function (node) {
             var item, toolElement;
 
             item = treelist.getItem(node);

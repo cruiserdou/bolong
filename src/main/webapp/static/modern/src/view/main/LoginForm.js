@@ -71,7 +71,7 @@ Ext.define('app.view.main.LoginForm', {
                     Ext.getCmp('mobile_id').add({
                         xtype: 'toolbar',
                         id: 'top_toolbar_id',
-                        docked: 'top'
+                        docked: 'bottom'
                     });
                     if (Ext.getCmp('menu_menu_id') == null) {
                         Ext.getCmp('top_toolbar_id').add(

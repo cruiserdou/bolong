@@ -84,14 +84,13 @@ Ext.define('app.view.main.TreeListModel', {
                                 itype: 'retrqview',
                                 leaf: true
                             }, {
-                                text: '人力资源需求查询',
+                                text: '人力资源需求',
                                 itype: 'rehrqview',
                                 leaf: true
                             }]
                         }]
                     }, {
                         text: '信息管理',
-                        expanded: true,
                         itype: 'nleaf',
                         children: [{
                             text: '企业信息管理',
@@ -106,7 +105,7 @@ Ext.define('app.view.main.TreeListModel', {
                             itype: 'investormtview',
                             leaf: true
                         }, {
-                            text: '政府部门信息管理',
+                            text: '政府部门管理',
                             itype: 'govmtview',
                             leaf: true
                         }, {
@@ -121,7 +120,7 @@ Ext.define('app.view.main.TreeListModel', {
                                 itype: 'retrview',
                                 leaf: true
                             }, {
-                                text: '人力资源需求管理',
+                                text: '人力资源管理',
                                 itype: 'rehrview',
                                 leaf: true
                             }]
@@ -158,7 +157,7 @@ Ext.define('app.view.main.TreeListModel', {
                                 itype: 'traindmstatis',
                                 leaf: true
                             }, {
-                                text: '人力资源需求统计',
+                                text: '人力资源需求',
                                 itype: 'hrdmstatis',
                                 leaf: true
                             }]
