@@ -25,7 +25,6 @@ public class CorpController {
             @RequestParam(value = "buslicno", required = false, defaultValue = "") String buslicno,
             @RequestParam(value = "search_val", required = false, defaultValue = "no")String search_val,
             @RequestParam(value = "listcode", required = false, defaultValue = "") String listcode,
-
             @RequestParam(value = "start", required = false)String start,
             @RequestParam(value = "limit", required = false)String limit
     ) throws Exception {

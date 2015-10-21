@@ -47,11 +47,5 @@ Ext.define('app.view.query.investorq.InvestorQView', {
                 store.load();
             }
         }
-    },{
-        xtype: 'investorqdetailview',
-        region: 'east',
-        id: 'investorqdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

@@ -42,7 +42,6 @@ Ext.define('app.view.main.Main', {
         'app.view.statis.demand.HrDmStatis',
 
         'app.view.workmgr.FinService',
-
         'app.view.workmgr.InnerInfo',
         'app.view.workmgr.msg.MsgView',
         'app.view.workmgr.maintaininfo.MaintaininfoView',

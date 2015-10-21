@@ -40,17 +40,9 @@ Ext.define('app.view.enter.EnterInfoView', {
     layout: 'border',
     items: [
         {
-        xtype: 'entergridview',
-        margin : '1 1 0 0',
-        region: 'center',
-        id: 'enter_grid_id'
-    }
-    //    ,{
-    //    xtype: 'enterdetailview',
-    //    id: 'enterdetailview_id',
-    //    region: 'east',
-    //    margin: '1 0 0 0',
-    //    width:  360
-    //}
-    ]
+            xtype: 'entergridview',
+            margin: '1 1 0 0',
+            region: 'center',
+            id: 'enter_grid_id'
+        }]
 });

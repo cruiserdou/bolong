@@ -19,14 +19,6 @@ public class UserServiceImpl implements UserService {
         return userDao.list(name);
     }
 
-
-
-
-//    @Override
-//    public User getById(long userId) {
-//        return userDao.getById(userId);
-//    }
-
     @Override
     public boolean validUser(String account, String password) {
         int valid = userDao.validUser(account, password);
@@ -39,5 +31,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Integer id){
         userDao.delete(id);
+    }
+
+    @Override
+    public boolean userValid(String account, String password){
+        int val = userDao.userValid(account, password);
+        if (val == 1)
+            return true;
+        else return false;
     }
 }

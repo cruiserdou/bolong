@@ -7,9 +7,9 @@ import java.util.List;
 public interface UserService {
     List<User> list(String name);
 
-//    User getById(long userId);
-
     boolean validUser(String account, String password);
 
     public void delete(Integer id);
+
+    public boolean userValid(String account, String password);
 }

@@ -36,8 +36,7 @@ Ext.define('app.view.query.retr.RetrQView', {
         }
     ],
     layout: 'border',
-    items: [
-        {
+    items: [{
         xtype: 'retrqgridview',
         region: 'center',
         id: 'retrqgridview_id',
@@ -47,11 +46,5 @@ Ext.define('app.view.query.retr.RetrQView', {
                 store.load();
             }
         }
-    },{
-        xtype: 'retrqdetailview',
-        region: 'east',
-        id: 'retrqdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

@@ -16,7 +16,6 @@ Ext.define('app.view.query.retr.RetrQGridView', {
         type: 'corpretrallstore'
     },
     listeners: {
-        itemclick: 'itemclick',
         itemdblclick:'itemdblclick'
     },
 

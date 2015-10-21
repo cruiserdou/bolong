@@ -2,6 +2,7 @@ package com.springapp.mvc.system.dao;
 
 import com.springapp.mvc.system.pojo.User;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.stereotype.Repository;
@@ -33,8 +34,6 @@ public interface UserDao {
         }
     }
 
-
-
     @SelectProvider(type = UserVldEmberSql.class, method = "validUser")
     int validUser(String account, String password);
 
@@ -49,5 +48,13 @@ public interface UserDao {
 
     @Delete(" Delete FROM work.users  where id = #{id}")
     void delete(@Param(value = "id") Integer id);
+
+    @Select("SELECT count(*) " +
+            "  FROM work.users " +
+            "  WHERE account = #{account} and password = #{password};")
+    int userValid(
+            @Param(value = "account") String account,
+            @Param(value = "password") String password
+    );
 }
 

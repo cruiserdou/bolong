@@ -47,11 +47,5 @@ Ext.define('app.view.query.serviceq.ServiceQView', {
                 store.load();
             }
         }
-    },{
-        xtype: 'serviceqdetailview',
-        region: 'east',
-        id: 'serviceqdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

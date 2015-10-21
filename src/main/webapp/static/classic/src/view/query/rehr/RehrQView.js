@@ -36,22 +36,16 @@ Ext.define('app.view.query.rehr.RehrQView', {
         }
     ],
     layout: 'border',
-    items: [ {
+    items: [{
         xtype: 'rehrqgridview',
         region: 'center',
         id: 'rehrqgridview_id',
-        margin : '1 1 0 0',
+        margin: '1 1 0 0',
         listeners: {
             afterrender: function (_this) {
                 var store = _this.getStore();
                 store.load();
             }
         }
-    },{
-        xtype: 'rehrqdetailview',
-        region: 'east',
-        id: 'rehrqdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

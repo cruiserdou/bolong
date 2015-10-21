@@ -36,23 +36,17 @@ Ext.define('app.view.query.govq.GovQView', {
         }
     ],
     layout: 'border',
-    items: [ {
+    items: [{
         xtype: 'govqgridview',
         region: 'center',
         id: 'govqgridview_id',
-        margin : '1 1 0 0',
+        margin: '1 1 0 0',
         listeners: {
             afterrender: function (_this) {
                 var store = _this.getStore();
                 store.load();
             }
         }
-    },{
-        xtype: 'govqdetailview',
-        region: 'east',
-        id: 'govqdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 
 });

@@ -36,22 +36,16 @@ Ext.define('app.view.query.refi.RefiQView', {
         }
     ],
     layout: 'border',
-    items: [ {
+    items: [{
         xtype: 'refiqgridview',
         region: 'center',
         id: 'refiqgridview_id',
-        margin : '1 1 0 0',
+        margin: '1 1 0 0',
         listeners: {
             afterrender: function (_this) {
                 var store = _this.getStore();
                 store.load();
             }
         }
-    },{
-        xtype: 'refiqdetailview',
-        region: 'east',
-        id: 'refiqdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

@@ -16,7 +16,6 @@ Ext.define('app.view.query.rehr.RehrQGridView', {
         type: 'corprehrallstore'
     },
     listeners: {
-        itemclick: 'itemclick',
         itemdblclick:'itemdblclick'
     },
 

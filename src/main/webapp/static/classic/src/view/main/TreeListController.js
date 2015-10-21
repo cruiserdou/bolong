@@ -14,7 +14,7 @@ Ext.define('app.view.main.TreeListController', {
 
     onQrBtn: function (menuitem) {
         if (window.localStorage) {
-            localStorage.qr_dis= menuitem.checked;
+            localStorage.qr_dis = menuitem.checked;
         }
     },
 
@@ -41,14 +41,12 @@ Ext.define('app.view.main.TreeListController', {
                     allowBlank: false,
                     fieldLabel: '用户名',
                     id: 'account_id',
-                    name: 'account',
                     value: localStorage.getItem('account'),
                     emptyText: '用户名'
                 }, {
                     allowBlank: false,
                     fieldLabel: '密码',
                     id: 'password_id',
-                    name: 'password',
                     emptyText: 'password',
                     inputType: 'password'
                 }, {
@@ -58,92 +56,94 @@ Ext.define('app.view.main.TreeListController', {
                     name: 'rem',
                     fieldLabel: '记住我'
                 }],
-                buttons: [
-                    {
-                        text: '重置',
-                        handler: function () {
-                            this.up('form').getForm().reset();
-                        }
-                    },
-                    {
-                        text: '登 录',
-                        handler: function () {
-                            if (Ext.getCmp('rem_id').getValue() == true) {
-                                if (window.localStorage) {
-                                    localStorage.account = Ext.getCmp('account_id').getValue();
-                                }
-                            }
-
-                            if (Ext.getCmp('account_id').getValue() != 'admin') {
-                                Ext.Msg.alert('失败', '用户名或密码错误!');
-                                return;
-                            }
-                            if (Ext.getCmp('password_id').getValue() != '1') {
-                                Ext.Msg.alert('失败', '用户名或密码错误!')
-                                return;
-                            }
-
-                            Ext.getCmp('main_window').add({
-                                region: 'west',
-                                width: 210,
-                                reference: 'treelistContainer',
-                                layout: 'border',
-                                border: false,
-                                scrollable: 'y',
-                                items: [
-                                    {
-                                        xtype: 'panel',
-                                        region: 'south',
-                                        layout: 'center',
-                                        items: [{
-                                            xtype: 'image',
-                                            src: '/bolong/static/resources/wechat.png',
-                                            width: 210,
-                                            height: 210
-                                        }],
-                                        listeners: {
-                                            beforerender: function(){
-                                                //if (window.localStorage) {
-                                                //    console.log(localStorage.qr_dis)
-                                                //    if (localStorage.qr_dis != undefined){
-                                                //        this.setHidden(!localStorage.qr_dis);
-                                                //    }
-                                                //}
-                                            }
-                                        }
-                                    },
-                                    {
-                                        xtype: 'panel',
-                                        region: 'center',
-                                        layout: 'fit',
-                                        items: [{
-                                            xtype: 'treelist',
-                                            singleExpand: true,
-                                            reference: 'treelist',
-                                            bind: '{navItems}'
-                                        }]
-
-                                    }
-                                ]
-                            });
-
-                            var treelist = Ext.getCmp('main_window').lookupReference('treelist'),
-                                ct = Ext.getCmp('main_window').lookupReference('treelistContainer');
-
-                            treelist.setExpanderFirst(!true);
-                            treelist.setUi(true ? 'nav' : null);
-                            treelist.setHighlightPath(true);
-                            ct[true ? 'addCls' : 'removeCls']('treelist-with-nav');
-
-                            if (Ext.isIE8) {
-                                this.repaintList(treelist);
-                            }
-
-                            Ext.getCmp('enter_grid_id').getStore().load();
-                            loginWindow.close();
-                        }
+                buttons: [{
+                    text: '重置',
+                    handler: function () {
+                        this.up('form').getForm().reset();
                     }
-                ]
+                }, {
+                    text: '登 录',
+                    handler: function () {
+                        if (Ext.getCmp('rem_id').getValue() == true) {
+                            if (window.localStorage) {
+                                localStorage.account = Ext.getCmp('account_id').getValue();
+                            }
+                        }
+
+                        Ext.Ajax.request({
+                            url: '/bolong/user_valid',
+                            method: 'POST',
+                            params: {
+                                account: Ext.getCmp('account_id').getValue(),
+                                password: Ext.getCmp('password_id').getValue()
+                            },
+                            success: function (response, opts) {
+                                var obj = Ext.decode(response.responseText);
+                                console.log(obj);
+                                if (obj.success == false) {
+                                    Ext.Msg.alert('失败', '用户名或密码错误!');
+                                    return;
+                                }
+
+                                Ext.getCmp('main_window').add({
+                                    region: 'west',
+                                    width: 210,
+                                    reference: 'treelistContainer',
+                                    layout: 'border',
+                                    border: false,
+                                    scrollable: 'y',
+                                    items: [
+                                        {
+                                            xtype: 'panel',
+                                            region: 'south',
+                                            layout: 'center',
+                                            items: [{
+                                                xtype: 'image',
+                                                src: '/bolong/static/resources/wechat.png',
+                                                width: 210,
+                                                height: 210
+                                            }],
+                                            listeners: {
+                                                beforerender: function () {
+                                                }
+                                            }
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            region: 'center',
+                                            layout: 'fit',
+                                            items: [{
+                                                xtype: 'treelist',
+                                                singleExpand: true,
+                                                reference: 'treelist',
+                                                bind: '{navItems}'
+                                            }]
+
+                                        }
+                                    ]
+                                });
+
+                                var treelist = Ext.getCmp('main_window').lookupReference('treelist'),
+                                    ct = Ext.getCmp('main_window').lookupReference('treelistContainer');
+
+                                treelist.setExpanderFirst(!true);
+                                treelist.setUi(true ? 'nav' : null);
+                                treelist.setHighlightPath(true);
+                                ct[true ? 'addCls' : 'removeCls']('treelist-with-nav');
+
+                                if (Ext.isIE8) {
+                                    this.repaintList(treelist);
+                                }
+
+                                Ext.getCmp('enter_grid_id').getStore().load();
+                                loginWindow.close();
+                            },
+                            failure: function (response, opts) {
+                                console.log('Valid failure');
+                            }
+                        });
+                    }
+                }]
             }
         }).show();
     },
@@ -172,14 +172,12 @@ Ext.define('app.view.main.TreeListController', {
                     allowBlank: false,
                     fieldLabel: '用户名',
                     id: 'account_id',
-                    name: 'account',
                     value: localStorage.getItem('account'),
                     emptyText: '用户名'
                 }, {
                     allowBlank: false,
                     fieldLabel: '密码',
                     id: 'password_id',
-                    name: 'password',
                     emptyText: 'password',
                     inputType: 'password'
                 }, {
@@ -205,16 +203,27 @@ Ext.define('app.view.main.TreeListController', {
                                 }
                             }
 
-                            if (Ext.getCmp('account_id').getValue() != 'admin') {
-                                Ext.Msg.alert('失败', '用户名或密码错误!');
-                                return;
-                            }
-                            if (Ext.getCmp('password_id').getValue() != '1') {
-                                Ext.Msg.alert('失败', '用户名或密码错误!')
-                                return;
-                            }
+                            Ext.Ajax.request({
+                                url: '/bolong/user_valid',
+                                method: 'POST',
+                                params: {
+                                    account: Ext.getCmp('account_id').getValue(),
+                                    password: Ext.getCmp('password_id').getValue()
+                                },
+                                success: function (response, opts) {
+                                    var obj = Ext.decode(response.responseText);
+                                    console.log(obj);
+                                    if (obj.success == false) {
+                                        Ext.Msg.alert('失败', '用户名或密码错误!');
+                                        return;
+                                    }
 
-                            loginWindow.close();
+                                    loginWindow.close();
+                                },
+                                failure: function (response, opts) {
+                                    console.log('Valid failure');
+                                }
+                            });
                         }
                     }
                 ]

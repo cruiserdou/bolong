@@ -16,7 +16,6 @@ Ext.define('app.view.query.refi.RefiQGridView', {
         type: 'corprefiallstore'
     },
     listeners: {
-        itemclick: 'itemclick',
         itemdblclick:'itemdblclick'
     },
 
