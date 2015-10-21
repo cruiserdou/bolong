@@ -56,5 +56,11 @@ public interface UserDao {
             @Param(value = "account") String account,
             @Param(value = "password") String password
     );
+
+    @Select(" SELECT id, account, password, sex, phone, address, deptid, remark, name, " +
+            " nos, img, lastip, lastvisit " +
+            " FROM work.users" +
+            " WHERE account=#{account};")
+    User getUserByAccount(@Param(value = "account")String account);
 }
 

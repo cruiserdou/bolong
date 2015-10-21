@@ -5,6 +5,7 @@ import common.util.DataShop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -26,7 +27,8 @@ public class CorpController {
             @RequestParam(value = "search_val", required = false, defaultValue = "no")String search_val,
             @RequestParam(value = "listcode", required = false, defaultValue = "") String listcode,
             @RequestParam(value = "start", required = false)String start,
-            @RequestParam(value = "limit", required = false)String limit
+            @RequestParam(value = "limit", required = false)String limit,
+            HttpSession session
     ) throws Exception {
         DataShop dataShop = new DataShop();
         List list = corpService.list(name, nos, buslicno, listcode, start, limit, search_val);
@@ -34,6 +36,7 @@ public class CorpController {
         dataShop.setSuccess(true);
         dataShop.setList(list);
         dataShop.setTotal(count);
+        System.out.println(session.getAttribute("account"));
         return dataShop;
     }
 
