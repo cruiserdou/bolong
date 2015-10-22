@@ -2,36 +2,55 @@
  * This view is an example list of people.
  */
 Ext.define('app.view.system.sec.SecDetailView', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.tree.Panel',
+
+    requires: [
+        'Ext.data.TreeStore'
+    ],
     xtype: 'secdetailview',
 
-    scrollable: true,
-    requires: [
-        'app.view.system.sec.SecModel',
-        'app.view.system.sec.SecController'
-    ],
+    rootVisible: false,
+    useArrows: true,
+    width: 280,
+    bufferedRenderer: false,
+    animate: true,
 
-    controller: 'seccontroller',
-    viewModel: 'secmodel',
-    listeners: {
-        afterrender: function (_this) {
-            var data = {};
-            _this.updateDetail(data);
-        }
+    initComponent: function(){
+        Ext.apply(this, {
+            store: new Ext.data.TreeStore({
+                proxy: {
+                    type: 'ajax',
+                    url: '/bolong/static/resources/check-nodes.json'
+                },
+                sorters: [{
+                    property: 'leaf',
+                    direction: 'ASC'
+                }, {
+                    property: 'text',
+                    direction: 'ASC'
+                }]
+            }),
+            tbar: [{
+                text: '保存',
+                scope: this,
+                handler: this.onCheckedNodesClick
+            }]
+        });
+        this.callParent();
     },
-    tpl: Ext.create('Ext.XTemplate', [
-        '<div class="wrapper_div">' +
-        '<div><span>角色ID</span><span>{roleid}</span></div>' +
-        '<div><span>用户ID</span><span>{userid}</span></div>' +
-        '<div><span>角色名称</span><span>{rolename}</span></div>' +
-        '<div><span>用户名</span><span>{username}</span></div>' +
-        '</div>'
-    ]),
-    updateDetail: function (data) {
-        this.tpl.overwrite(this.body, data);
-    },
-    bind: {
-        html: '{loremIpsum}'
 
+    onCheckedNodesClick: function(){
+        var records = this.getView().getChecked(),
+            names = [];
+
+        Ext.Array.each(records, function(rec){
+            names.push(rec.get('text'));
+        });
+
+        Ext.MessageBox.show({
+            title: 'Selected Nodes',
+            msg: names.join('<br />'),
+            icon: Ext.MessageBox.INFO
+        });
     }
 });

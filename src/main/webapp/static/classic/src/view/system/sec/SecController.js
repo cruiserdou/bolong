@@ -7,8 +7,7 @@ Ext.define('app.view.system.sec.SecController', {
     alias: 'controller.seccontroller',
 
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('secdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+
     },
 
     btnAdd: function(){

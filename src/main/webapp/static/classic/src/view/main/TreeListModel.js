@@ -53,6 +53,11 @@ Ext.define('app.view.main.TreeListModel', {
                 expanded: true,
                 children: [
                     {
+                        text: 'Test',
+                        itype: 'maintree',
+                        leaf: true
+                    },
+                    {
                         text: '信息查询',
                         expanded: true,
                         itype: 'nleaf',

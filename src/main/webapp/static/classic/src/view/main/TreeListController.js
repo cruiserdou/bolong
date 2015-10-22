@@ -79,7 +79,6 @@ Ext.define('app.view.main.TreeListController', {
                             },
                             success: function (response, opts) {
                                 var obj = Ext.decode(response.responseText);
-                                console.log(obj);
                                 if (obj.success == false) {
                                     Ext.Msg.alert('失败', '用户名或密码错误!');
                                     return;
@@ -107,8 +106,7 @@ Ext.define('app.view.main.TreeListController', {
                                                 beforerender: function () {
                                                 }
                                             }
-                                        },
-                                        {
+                                        }, {
                                             xtype: 'panel',
                                             region: 'center',
                                             layout: 'fit',
@@ -118,22 +116,20 @@ Ext.define('app.view.main.TreeListController', {
                                                 reference: 'treelist',
                                                 bind: '{navItems}'
                                             }]
-
-                                        }
-                                    ]
+                                        }]
                                 });
 
-                                var treelist = Ext.getCmp('main_window').lookupReference('treelist'),
-                                    ct = Ext.getCmp('main_window').lookupReference('treelistContainer');
-
-                                treelist.setExpanderFirst(!true);
-                                treelist.setUi(true ? 'nav' : null);
-                                treelist.setHighlightPath(true);
-                                ct[true ? 'addCls' : 'removeCls']('treelist-with-nav');
-
-                                if (Ext.isIE8) {
-                                    this.repaintList(treelist);
-                                }
+                                //var treelist = Ext.getCmp('main_window').lookupReference('treelist'),
+                                //    ct = Ext.getCmp('main_window').lookupReference('treelistContainer');
+                                //
+                                //treelist.setExpanderFirst(!true);
+                                //treelist.setUi(true ? 'nav' : null);
+                                //treelist.setHighlightPath(true);
+                                //ct[true ? 'addCls' : 'removeCls']('treelist-with-nav');
+                                //
+                                //if (Ext.isIE8) {
+                                //    this.repaintList(treelist);
+                                //}
 
                                 Ext.getCmp('enter_grid_id').getStore().load();
                                 loginWindow.close();

@@ -10,10 +10,14 @@ Ext.define('app.view.system.sec.SecView', {
         'app.view.system.sec.SecGridView',
         'app.view.system.sec.SecDetailView',
         'app.view.system.sec.SecAddView',
+        'app.view.system.sec.SecModel',
         'app.view.system.sec.SecQueryView'
     ],
 
     controller: 'seccontroller',
+    viewModel: {
+        type: 'checktree'
+    },
     dockedItems: [
         {
             xtype: 'toolbar',
@@ -51,11 +55,24 @@ Ext.define('app.view.system.sec.SecView', {
                 store.load();
             }
         }
-    },{
-        xtype: 'secdetailview',
+    }, {
+        xtype: 'treepanel',
         region: 'east',
-        id: 'secdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
+        margin : '1 1 0 0',
+        width: 360,
+        store: Ext.create('Ext.data.TreeStore', {
+            root: {
+                expanded: true,
+                children: [
+                    { text: 'detention', leaf: true },
+                    { text: 'homework', expanded: true, children: [
+                        { text: 'book report', leaf: true },
+                        { text: 'algebra', leaf: true}
+                    ] },
+                    { text: 'buy lottery tickets', leaf: true }
+                ]
+            }
+        }),
+        rootVisible: false,
     }]
 });

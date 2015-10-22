@@ -2,26 +2,28 @@
  * This view is an example list of people.
  */
 Ext.define('app.view.main.List', {
-    extend: 'Ext.grid.Panel',
-    xtype: 'mainlist',
+    extend: 'Ext.tree.Panel',
+    xtype: 'maintree',
 
-    requires: [
-        'app.store.Personnel'
-    ],
+    rootVisible: false,
 
-    title: 'Personnel',
+    initComponent: function() {
+        var store = Ext.create('Ext.data.TreeStore', {
+            root: {
+                expanded: true,
+                children: [
+                    { text: 'detention', leaf: true },
+                    { text: 'homework', expanded: true, children: [
+                        { text: 'book report', leaf: true },
+                        { text: 'algebra', leaf: true}
+                    ] },
+                    { text: 'buy lottery tickets', leaf: true }
+                ]
+            }
+        });
+        this.store = store;
 
-    store: {
-        type: 'personnel'
-    },
 
-    columns: [
-        { text: 'Name',  dataIndex: 'name' },
-        { text: 'Email', dataIndex: 'email', flex: 1 },
-        { text: 'Phone', dataIndex: 'phone', flex: 1 }
-    ],
-
-    listeners: {
-        select: 'onItemSelected'
+        this.callParent();
     }
 });

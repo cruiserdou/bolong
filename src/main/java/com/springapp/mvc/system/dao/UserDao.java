@@ -63,4 +63,3 @@ public interface UserDao {
             " WHERE account=#{account};")
     User getUserByAccount(@Param(value = "account")String account);
 }
-
