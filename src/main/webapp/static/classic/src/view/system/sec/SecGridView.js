@@ -29,8 +29,8 @@ Ext.define('app.view.system.sec.SecGridView', {
 
     columns: [
         {text: '角色ID', width: 120, dataIndex: 'roleid',hidden:true},
-        {text: '用户ID', flex: 1, dataIndex: 'userid',hidden:true},
-        {text: '角色名称', width: 120, dataIndex: 'rolename'},
+        {text: '用户ID', width: 120, dataIndex: 'userid',hidden:true},
+        {text: '角色名称', flex: 1, dataIndex: 'rolename'},
         {text: '用户名', flex: 1, dataIndex: 'username'}
     ]
 });

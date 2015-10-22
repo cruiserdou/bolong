@@ -59,19 +59,19 @@ Ext.define('app.view.system.sec.SecView', {
         xtype: 'treepanel',
         region: 'east',
         margin : '1 1 0 0',
-        width: 360,
-        store: Ext.create('Ext.data.TreeStore', {
-            root: {
-                expanded: true,
-                children: [
-                    { text: 'detention', leaf: true },
-                    { text: 'homework', expanded: true, children: [
-                        { text: 'book report', leaf: true },
-                        { text: 'algebra', leaf: true}
-                    ] },
-                    { text: 'buy lottery tickets', leaf: true }
-                ]
-            }
+        width: 460,
+        store: new Ext.data.TreeStore({
+            proxy: {
+                type: 'ajax',
+                url: '/bolong/static/resources/check-nodes.json'
+            },
+            sorters: [{
+                property: 'leaf',
+                direction: 'ASC'
+            }, {
+                property: 'text',
+                direction: 'ASC'
+            }]
         }),
         rootVisible: false,
     }]
