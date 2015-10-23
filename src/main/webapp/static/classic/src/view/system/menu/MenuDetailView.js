@@ -26,7 +26,7 @@ Ext.define('app.view.system.menu.MenuDetailView', {
         '<div><span>是否叶子</span><span>{leaf}</span></div>' +
         '<div><span>菜单父ID</span><span>{parent_id}</span></div>' +
         '<div><span>菜单链接地址</span><span>{itype}</span></div>' +
-        '<div><span>图标</span><span>{iconcls}</span></div>' +
+        //'<div><span>图标</span><span>{iconcls}</span></div>' +
         '<div><span>根（元）</span><span>{root}</span></div>' +
         '<div><span>备注</span><span>{remark}</span></div>' +
         '</div>'

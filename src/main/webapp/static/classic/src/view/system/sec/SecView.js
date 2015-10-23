@@ -11,7 +11,8 @@ Ext.define('app.view.system.sec.SecView', {
         'app.view.system.sec.SecDetailView',
         'app.view.system.sec.SecAddView',
         'app.view.system.sec.SecModel',
-        'app.view.system.sec.SecQueryView'
+        'app.view.system.sec.SecQueryView',
+        'app.store.tree.MenuTree'
     ],
 
     controller: 'seccontroller',
@@ -58,12 +59,16 @@ Ext.define('app.view.system.sec.SecView', {
     }, {
         xtype: 'treepanel',
         region: 'east',
+        id: 'sectree_id',
         margin : '1 1 0 0',
         width: 460,
         store: new Ext.data.TreeStore({
             proxy: {
                 type: 'ajax',
-                url: '/bolong/static/resources/check-nodes.json'
+                actionMethods: {
+                    read: 'POST'
+                },
+                url: '/bolong/ojson'
             },
             sorters: [{
                 property: 'leaf',
@@ -73,6 +78,6 @@ Ext.define('app.view.system.sec.SecView', {
                 direction: 'ASC'
             }]
         }),
-        rootVisible: false,
+        rootVisible: false
     }]
 });

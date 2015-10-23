@@ -55,8 +55,6 @@ public class UserValidateFilter implements Filter {
         String jl_url="webchat";
         String url = checkEmpty(req.getRequestURI(), "");
 
-		System.out.println("contextPath\t" + contextPath);
-		System.out.println("url\t" + url);
 
         if(contextPath.equals(url) || isIgnorableUrl(url) || loginCorrect(req)){
 			result = true;
@@ -88,7 +86,6 @@ public class UserValidateFilter implements Filter {
 	public void init(FilterConfig filterConfig) throws ServletException {
         contextPath = filterConfig.getServletContext().getContextPath()+"/";
 
-		System.out.println(contextPath);
         if(isEmpty(contextPath)) {
             contextPath = "/";
         }

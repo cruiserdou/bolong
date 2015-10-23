@@ -34,7 +34,7 @@ Ext.define('app.view.system.menu.MenuGridView', {
         {text: '是否叶子', width: 100, dataIndex: 'leaf'},
         {text: '菜单父ID', width: 120, dataIndex: 'parent_id'},
         {text: '菜单链接地址', width: 300, dataIndex: 'itype'},
-        {text: '图标', width: 100, dataIndex: 'iconcls'},
+        //{text: '图标', width: 100, dataIndex: 'iconcls'},
         {text: '根（元）', width: 100, dataIndex: 'root'},
         {text: '备注', flex: 1, dataIndex: 'remark'}
     ]

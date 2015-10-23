@@ -86,7 +86,7 @@ Ext.define('app.view.main.TreeListController', {
 
                                 Ext.getCmp('main_window').add({
                                     region: 'west',
-                                    width: 210,
+                                    width: 226,
                                     reference: 'treelistContainer',
                                     layout: 'border',
                                     border: false,
@@ -99,8 +99,8 @@ Ext.define('app.view.main.TreeListController', {
                                             items: [{
                                                 xtype: 'image',
                                                 src: '/bolong/static/resources/wechat.png',
-                                                width: 210,
-                                                height: 210
+                                                width: 226,
+                                                height: 226
                                             }],
                                             listeners: {
                                                 beforerender: function () {
@@ -111,10 +111,36 @@ Ext.define('app.view.main.TreeListController', {
                                             region: 'center',
                                             layout: 'fit',
                                             items: [{
-                                                xtype: 'treelist',
-                                                singleExpand: true,
-                                                reference: 'treelist',
-                                                bind: '{navItems}'
+                                                xtype: 'treepanel',
+                                                region: 'east',
+                                                id: 'sectree_id',
+                                                margin : '1 1 0 0',
+                                                width: 230,
+                                                store: new Ext.data.TreeStore({
+                                                    proxy: {
+                                                        type: 'ajax',
+                                                        actionMethods: {
+                                                            read: 'POST'
+                                                        },
+                                                        url: '/bolong/ojson'
+                                                    }
+                                                }),
+                                                rootVisible: false,
+                                                listeners: {
+                                                    itemclick: function (view, rec) {
+                                                        var itemid = rec.get('itype') + '_id';
+                                                        var tabitem = Ext.getCmp(itemid);
+                                                        if (!tabitem && rec.get('itype') != "no") {
+                                                            tabitem = Ext.getCmp('mTabpanel').add({
+                                                                xtype: rec.get('itype'),
+                                                                id: itemid,
+                                                                title: rec.get('text'),
+                                                                closable: true
+                                                            });
+                                                        }
+                                                        Ext.getCmp('mTabpanel').setActiveTab(tabitem);
+                                                    }
+                                                }
                                             }]
                                         }]
                                 });
