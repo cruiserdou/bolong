@@ -2,13 +2,15 @@
   {
     "text": "信息查询",
     "expanded": true,
+    "visible": true,
     "itype": "nleaf",
     "children": [
       {
         "text": "企业信息查询",
         "itype": "enterinfoview",
         "checked": true,
-        "leaf": true
+        "leaf": true,
+        "visible": true
       },
       {
         "text": "服务机构查询",

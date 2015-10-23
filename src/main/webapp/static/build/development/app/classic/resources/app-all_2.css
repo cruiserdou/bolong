@@ -6992,6 +6992,154 @@ div.x-border-layout-ct {
     -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 2px;
     box-shadow: rgba(0, 0, 0, 0.5) 0 2px 2px;
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:1 */
+.wrapper_div {
+    padding: 1em 1.6em;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:5 */
+.wrapper_div * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:11 */
+.wrapper_div div {
+    width: 100%;
+    display: table;
+    margin: 0.6em 0;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:17 */
+.wrapper_div div span {
+    display: table-cell;
+    width: 50%;
+    padding: 0.8em 1em;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:23 */
+.wrapper_div div span:first-child {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:29 */
+.wrapper_div div span:last-child {
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:37 */
+.wrap_center {
+    width: 80%;
+    margin: 2px auto;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:44 */
+.enter_table {
+    border-collapse: collapse;
+    width: 80%;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 2em;
+    background-color: #ecf2fb;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:53 */
+.enter_table td input {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:60 */
+.enter_table td textarea {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:67 */
+.enter_table input,
+.enter_table td,
+.enter_table textarea {
+    background-color: white;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:71 */
+.enter_table textarea {
+    background-color: #ecf2fb;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:75 */
+.enter_table td,
+.enter_table th {
+    border: 1px solid #9abce6;
+    border-collapse: collapse;
+    padding: 9px 8px 8px 8px;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:81 */
+.enter_table th {
+    width: 10em;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:85 */
+.enter_table td {
+    width: 20em;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:89 */
+.enter_table .table_header {
+    background-color: #9abce6;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:93 */
+.enter_table_sh {
+    border-collapse: collapse;
+    width: 1200px;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 2em;
+    background-color: #ecf2fb;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:103 */
+.enter_table_sh input {
+    background-color: #ecf2fb;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:107 */
+.enter_table_sh textarea {
+    background-color: #ecf2fb;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:111 */
+.enter_table_sh td,
+.enter_table_sh th {
+    border: 1px solid #9abce6;
+    border-collapse: collapse;
+    padding: 9px 8px 8px 8px;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:117 */
+.enter_table_sh th {
+    width: 10em;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:121 */
+.enter_table_sh td {
+    width: 20em;
+    contenteditable: 'true';
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:126 */
+.enter_table_sh .table_header {
+    background-color: #9abce6;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:130 */
+#enter_menu_list ul li {
+    list-style: none;
+    border: 1px solid white;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:135 */
+#enter_menu_list a {
+    display: block;
+    background-color: #3291d5;
+    padding: 0.5em;
+    text-decoration: none;
+    color: white;
+    transition: all 300ms;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:144 */
+#enter_menu_list ul a:hover {
+    background-color: #069;
+}
 /* http://localhost:1841/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-tab-navigation-top {
     -webkit-border-radius: 0;
@@ -8966,27 +9114,27 @@ div.x-border-layout-ct {
     border-color: #5fa2dd !important;
     border-width: 1px !important;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:382 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:207 */
 .x-title-icon-navigation {
     font-family: FontAwesome;
     color: #fff;
     font-size: 24px;
     line-height: 24px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:389 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:214 */
 .x-tab-icon-el-navigation {
     font-family: FontAwesome;
     color: #acacac;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:393 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:218 */
 .x-tab-over .x-tab-icon-el-navigation {
     color: #c4c4c4;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:397 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:222 */
 .x-tab-active .x-tab-icon-el-navigation {
     color: #fff;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:402 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:227 */
 .x-panel-header-title-navigation > .x-title-text-navigation:after {
     top: 30px;
     right: -24px;
