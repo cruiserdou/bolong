@@ -25070,3 +25070,11 @@ div.x-border-layout-ct {
     top: 30px;
     right: -24px;
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:232 */
+#menutree_id .x-tree-icon-leaf {
+    display: none;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:236 */
+#menutree_id .x-tree-icon {
+    display: none;
+}

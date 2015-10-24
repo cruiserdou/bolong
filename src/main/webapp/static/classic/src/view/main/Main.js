@@ -70,13 +70,7 @@ Ext.define('app.view.main.Main', {
         items: [{
             xtype: 'button',
             text: '设置',
-            menu: [
-                //{
-                //text: '显示手持地址二维码',
-                //checked: true,
-                //handler: 'onQrBtn'
-            //},
-                {
+            menu: [{
                 text: 'Single Expand',
                 checked: true,
                 handler: 'onToggleConfig',

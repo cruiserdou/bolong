@@ -91,22 +91,21 @@ Ext.define('app.view.main.TreeListController', {
                                     layout: 'border',
                                     border: false,
                                     scrollable: 'y',
-                                    items: [
-                                        {
-                                            xtype: 'panel',
-                                            region: 'south',
-                                            layout: 'center',
-                                            items: [{
-                                                xtype: 'image',
-                                                src: '/bolong/static/resources/wechat.png',
-                                                width: 226,
-                                                height: 226
-                                            }],
-                                            listeners: {
-                                                beforerender: function () {
-                                                }
-                                            }
-                                        }, {
+                                    items: [{
+                                        //    xtype: 'panel',
+                                        //    region: 'south',
+                                        //    layout: 'center',
+                                        //    items: [{
+                                        //        xtype: 'image',
+                                        //        src: '/bolong/static/resources/wechat.png',
+                                        //        width: 226,
+                                        //        height: 226
+                                        //    }],
+                                        //    listeners: {
+                                        //        beforerender: function () {
+                                        //        }
+                                        //    }
+                                        //}, {
                                             xtype: 'panel',
                                             region: 'center',
                                             layout: 'fit',

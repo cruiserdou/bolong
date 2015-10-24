@@ -20,15 +20,15 @@ var enterapplyview_new = Ext.create('Ext.panel.Panel', {
     }
 });
 
-Ext.define('app.view.enter.EnterApplyView', {
+Ext.define('app.view.maintain.entermt.innerenter.EnterApplyView', {
     requires: [
         'app.xtemplate.corp_apply'
     ]
 });
 
-function areaCh(){
-    alert("Hello");
-}
+function areaCh() {
+    Ext.select('#city').first().insertHtml("afterBegin", "<option>兰州</option>");
+};
 
 var win_enterapplyview = new Ext.Window({
     id: 'cust_add_id',
@@ -43,10 +43,6 @@ var win_enterapplyview = new Ext.Window({
         enterapplyview_new
     ]
 });
-
-function win_close() {
-    Ext.getCmp('cust_add_id').close();
-};
 
 function save_cust_add() {
     if (document.getElementById("buslicno").value == "") {
@@ -155,7 +151,6 @@ function card_check_apply() {
 };
 
 function corp_img_upload(id) {
-
     Ext.create('widget.window', {
         title: '企业图片',
         id: 'corp_find_window',

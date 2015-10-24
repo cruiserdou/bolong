@@ -9,7 +9,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
     requires: [
         'app.view.main.MainModel',
         'app.view.maintain.entermt.innerenter.InnerEnterView',
-        'app.view.enter.EnterApplyView'
+        'app.view.maintain.entermt.innerenter.EnterApplyView'
     ],
     viewModel: 'main',
     layout: 'center',
