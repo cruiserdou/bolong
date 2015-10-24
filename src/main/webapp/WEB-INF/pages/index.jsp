@@ -9,18 +9,33 @@
     <title>中小企业</title>
 
     <style>
+        body{
+            background-color: #efebe3;
+        }
         h1 {
             text-align: center;
             margin-top: 6em;
         }
 
         a{
+            box-shadow:  0 0 6px #CCCCCC;
             text-decoration: none;
+            font-family: '微软雅黑', 'Microsoft YaHei', 'Source Han Sans CN ExtraLight';
+            font-size: 1.2em;
+            border-radius: 0.2em;
+            background-color: white;
+            color: #666;
+            padding: 0.4em;
+            transition: all 200ms;
+        }
+
+        a:hover{
+            color: #333;
+            background-color: whitesmoke;
         }
     </style>
-
 </head>
 <body>
-<h1><a href="/bolong/static/index.html">甘肃中小企业信息系统<br>点击进入</a></h1>
+<h1><a href="/bolong/static/index.html">“甘肃中小企业信息系统”&nbsp;&nbsp;点击进入</a></h1>
 </body>
 </html>

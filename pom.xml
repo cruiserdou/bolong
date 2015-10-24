@@ -8,7 +8,7 @@
     <name>bolong</name>
 
     <properties>
-        <spring.version>4.0.5.RELEASE</spring.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
         <slf4j.version>1.7.7</slf4j.version>
         <jackson.version>2.5.0</jackson.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -259,6 +259,7 @@
     </dependencies>
 
     <build>
+        <defaultGoal>compile</defaultGoal>
         <finalName>bolong</finalName>
         <plugins>
             <plugin>

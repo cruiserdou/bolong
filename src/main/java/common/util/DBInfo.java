@@ -10,7 +10,7 @@ public class DBInfo {
     String password;
 
     public DBInfo() {
-        url = "jdbc:postgresql://localhost:5432/equity";
+        url = "jdbc:postgresql://localhost:5432/bolong";
         user = "postgres";
         password = "postgres";
     }

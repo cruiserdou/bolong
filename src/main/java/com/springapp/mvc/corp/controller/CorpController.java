@@ -36,7 +36,6 @@ public class CorpController {
         dataShop.setSuccess(true);
         dataShop.setList(list);
         dataShop.setTotal(count);
-        System.out.println(session.getAttribute("account"));
         return dataShop;
     }
 

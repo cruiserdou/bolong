@@ -113,7 +113,8 @@ Ext.define('app.view.main.TreeListController', {
                                             items: [{
                                                 xtype: 'treepanel',
                                                 region: 'east',
-                                                id: 'sectree_id',
+                                                id: 'menutree_id',
+                                                lines: true,
                                                 margin : '1 1 0 0',
                                                 width: 230,
                                                 store: new Ext.data.TreeStore({

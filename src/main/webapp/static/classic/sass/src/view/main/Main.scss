@@ -228,3 +228,11 @@ $ui-header-noborder-adjust: false
   top: 30px;
   right: -24px;
 }
+
+#menutree_id .x-tree-icon-leaf{
+    display: none;
+}
+
+#menutree_id .x-tree-icon{
+    display: none;
+}
