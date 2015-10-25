@@ -27,7 +27,7 @@ Ext.define('app.view.maintain.entermt.innerenter.EnterApplyView', {
 });
 
 
-function areaCh() {
+function areaCh(val) {
     var county = {
         "兰州": ["城关区", "七里河", "西固区", "安宁区", "红古区", "永登县", "皋兰县", "榆中县"],
         "嘉峪关市": ["嘉峪关市"],
@@ -36,7 +36,7 @@ function areaCh() {
         "天水市": ["秦州区", "麦积区", "清水县", "秦安县", "甘谷县", "武山县", "张家川回族自治县"],
         "武威市": ["凉州区", "民勤县", "古浪县", "天祝藏族自治县"],
         "张掖市": ["甘州区", "民乐县", "临泽县", "高台县", "山丹县", "肃南裕固族自治县"],
-//        "平凉市": ["崆峒区", "泾川县", "灵台县", "崇信县", "华亭县", "庄浪县,　"静宁县"],
+        "平凉市": ["崆峒区", "泾川县", "灵台县", "崇信县", "华亭县", "庄浪县", "静宁县"],
         "酒泉市": ["肃州区", "玉门市", "敦煌市", "金塔县", "瓜州县", "肃北蒙古族自治县", "阿克塞哈萨克族自治县"],
         "庆阳市": ["西峰区", "庆城县", "环　县", "华池县", "合水县", "正宁县", "宁　县", "镇原县"],
         "定西市": ["安定区", "通渭县", "陇西县", "渭源县", "临洮县", "漳　县", "岷　县"],
@@ -45,9 +45,12 @@ function areaCh() {
         "甘南州": ["合作市", "临潭县", "卓尼县", "舟曲县", "迭部县", "玛曲县", "碌曲县", "夏河县"]
     }
 
-    Ext.select('#city').first().insertHtml("afterBegin", "<option>兰州</option>");
-}
-;
+    Ext.select('#country option').remove();
+
+    for (var i = 0; i < county[val].length; i++){
+        Ext.select('#country').first().insertHtml("afterBegin", "<option>" + county[val][i] + "</option>");
+    }
+};
 
 var win_enterapplyview = new Ext.Window({
     id: 'cust_add_id',
