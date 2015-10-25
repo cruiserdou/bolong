@@ -20,7 +20,7 @@
         a{
             box-shadow:  0 0 6px #CCCCCC;
             text-decoration: none;
-            font-family: '微软雅黑', 'Microsoft YaHei', 'Source Han Sans CN ExtraLight';
+            font-family: '微软雅黑', 'Microsoft YaHei', 'Source Han Sans CN ExtraLight', 'Noto Sans S Chinese Light';
             font-size: 1.2em;
             border-radius: 0.2em;
             background-color: white;
