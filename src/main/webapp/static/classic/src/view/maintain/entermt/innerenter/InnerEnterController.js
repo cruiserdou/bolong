@@ -30,11 +30,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
                 afterrender: function (_this){
-                    corp_edit_con_tpl.append('corp_edit',record.data);
-                    //setup();preselect('甘肃省');
-                    //setup_cl();preselect_cl('农、林、牧、渔业');
-                    //setup_zjh();type_zjh('农、林、牧、渔业');
-                    //setup_edit();preselect_edit(record.get("province"));
+                    corp_edit_con_tpl.append('corp_edit',record.data); 
                 }
             },
             autoScroll: true,

@@ -30,6 +30,7 @@ Ext.define('app.view.maintain.investormt.InvestorMtController', {
                     corp_maintain_tpl.append('investors_manage_corp_maintain',record.data);
                     corp_finance_tpl.append('investors_manage_corp_finance',record.data);
                     corp_investors_con_tpl.append('investors_manage_corp_investors',record.data);
+                    //setup_zjh_investors();type_zjh('农、林、牧、渔业');
 
                 }
             },
