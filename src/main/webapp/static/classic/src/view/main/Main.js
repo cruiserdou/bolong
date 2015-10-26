@@ -27,6 +27,7 @@ Ext.define('app.view.main.Main', {
         'app.view.query.retr.RetrQView',
 
         'app.view.maintain.entermt.EnterMtView',
+        'app.view.maintain.enterme.EntermeView',
         'app.view.maintain.govmt.GovMtView',
         'app.view.maintain.investormt.InvestorMtView',
         'app.view.maintain.servicemt.ServiceMtView',

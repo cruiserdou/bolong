@@ -963,6 +963,7 @@ $include-app-view-main-maincontroller: dynamic(true);;
 $include-app-view-main-mainmodel: dynamic(true);;
 $include-app-view-main-treelistcontroller: dynamic(true);;
 $include-app-view-main-treelistmodel: dynamic(true);;
+$include-app-view-maintain-enterme-entermeview: dynamic(true);;
 $include-app-view-maintain-entermt-entermtview: dynamic(true);;
 $include-app-view-maintain-entermt-innerenter-enterapplyview: dynamic(true);;
 $include-app-view-maintain-entermt-innerenter-innerentercontroller: dynamic(true);;
@@ -1147,6 +1148,7 @@ $include-app-xtemplate-corp_apply: dynamic(true);;
 $include-app-xtemplate-corp_contact: dynamic(true);;
 $include-app-xtemplate-corp_edit: dynamic(true);;
 $include-app-xtemplate-corp_view: dynamic(true);;
+$include-app-xtemplate-select_zjh: dynamic(true);;
 $include-app-xtemplate-stat_view: dynamic(true);;
 
 

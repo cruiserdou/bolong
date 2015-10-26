@@ -6,13 +6,14 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
     xtype: 'entermtview',
     id: 'entermtview_id',
     closable: true,
+
     requires: [
         'app.view.main.MainModel',
         'app.view.maintain.entermt.innerenter.InnerEnterView',
         'app.view.maintain.entermt.innerenter.EnterApplyView'
     ],
     viewModel: 'main',
-    layout: 'center',
+    //layout: 'center',
     items: {
         xtype: 'panel',
         layout: {
@@ -45,5 +46,4 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
             }
         }]
     }
-
 });
