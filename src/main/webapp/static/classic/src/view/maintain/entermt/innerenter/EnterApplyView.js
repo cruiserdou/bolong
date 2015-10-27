@@ -1,8 +1,6 @@
 /**
  * This view is an example list of people.
  */
-
-
 Ext.define('app.view.maintain.entermt.innerenter.EnterApplyView', {
     requires: [
         'app.xtemplate.corp_apply',
@@ -10,43 +8,37 @@ Ext.define('app.view.maintain.entermt.innerenter.EnterApplyView', {
     ]
 });
 
-//var enterapplyview_new = Ext.create('Ext.panel.Panel', {
-    var enterapplyview_new = new Ext.form.FormPanel({
-        id: 'applyf_panel_id',
-        bodyPadding: 10,
-        bodyStyle: 'overflow-y:scroll',
-        listeners: {
-            afterrender: function () {
-                //var obtain_panel = Ext.getCmp('applyf_panel_id');
-                //corp_apply_con_tpl.overwrite(obtain_panel.body, {});
-                corp_apply_con_tpl.append('apply_view_corp',{});
-
-            }
-        },
-        frame: false,
-        border: false,
-        autoScroll: true,
-        layout: {
-            type: 'vbox',
-            align: 'stretch',
-            pack: 'start'
-        },
+var enterapplyview_new = new Ext.form.FormPanel({
+    id: 'applyf_panel_id',
+    bodyPadding: 10,
+    bodyStyle: 'overflow-y:scroll',
+    listeners: {
+        afterrender: function () {
+            corp_apply_con_tpl.append('apply_view_corp', {});
+        }
+    },
+    frame: false,
+    border: false,
+    autoScroll: true,
+    layout: {
+        type: 'vbox',
+        align: 'stretch',
+        pack: 'start'
+    },
 
 
-        items: [
-            {
-                xtype: 'panel',
-                border: false,
-                id: 'corp_panel',
-                html: '<div id="apply_view_corp">' +
-                '</div>'
-            }
-        ]
-    });
-
+    items: [
+        {
+            xtype: 'panel',
+            border: false,
+            id: 'corp_panel',
+            html: '<div id="apply_view_corp">' +
+            '</div>'
+        }
+    ]
+});
 
 var win_enterapplyview = new Ext.Window({
-    //id: 'cust_add_id',
     modal: true,
     title: '新增企业',
     closeAction: 'close',
@@ -57,9 +49,6 @@ var win_enterapplyview = new Ext.Window({
     items: [
         enterapplyview_new
     ]
-
-
-
 });
 
 function save_cust_add() {

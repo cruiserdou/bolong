@@ -22,6 +22,7 @@
             text-decoration: none;
             font-family: '微软雅黑', 'Microsoft YaHei', 'Source Han Sans CN ExtraLight', 'Noto Sans S Chinese Light';
             font-size: 1.2em;
+            font-weight: 100;
             border-radius: 0.2em;
             background-color: white;
             color: #666;

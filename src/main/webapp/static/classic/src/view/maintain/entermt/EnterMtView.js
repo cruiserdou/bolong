@@ -14,7 +14,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
     ],
     viewModel: 'main',
     layout: 'fit',
-    bodyPadding: 360,
+    bodyPadding: 160,
     items: {
         xtype: 'panel',
         layout: {
