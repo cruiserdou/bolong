@@ -1,70 +1,73 @@
 /**
  * Created by xwq on 15/9/5.
  */
-Ext.define('app.view.system.user.UserController', {
+Ext.define('app.view.system.secb.SecBController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.usercontroller',
+    alias: 'controller.secbcontroller',
 
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('userdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+
     },
 
-    btnAdd: function () {
-        Ext.create('app.view.system.user.UserAddView', {}).show(Ext.get('user_add_id'));
+    btnAdd: function(){
+        Ext.create('app.view.system.secb.SecBAddView',{
+        }).show(Ext.get('secb_add_id'));
     },
 
     btnRefresh: function () {
-        Ext.getCmp('usergridview_id').getStore().load();
+        Ext.getCmp('secbgridview_id').getStore().load();
     },
 
-    btnFind: function () {
-        Ext.getCmp('usergridview_id').getStore().load({
+    btnFind: function(){
+        Ext.getCmp('secbgridview_id').getStore().load({
             params: {
-                name: Ext.getCmp('query_user_name_id').getValue()
+                rolename: Ext.getCmp('query_secb_rolename_id').getValue(),
+                username: Ext.getCmp('query_secb_username_id').getValue()
             }
         });
     },
 
-    btnReset: function (_this) {
+    btnReset: function(_this) {
         _this.up('form').getForm().reset();
-        Ext.getCmp('usergridview_id').getStore().load();
+        Ext.getCmp('secbgridview_id').getStore().load();
     },
 
     btnSearch: function (_this) {
-        if (!Ext.getCmp('userqueryview_id')) {
+        if (!Ext.getCmp('secbqueryview_id')) {
             _this.up().up().add(
                 {
-                    xtype: 'userqueryview',
-                    id: 'userqueryview_id',
+                    xtype: 'secbqueryview',
+                    id: 'secbqueryview_id',
                     region: 'north',
                     margin: '1 0 0 0'
                 }
             );
-        } else {
-            _this.up().up().remove(Ext.getCmp('userqueryview_id'));
+        }else{
+            _this.up().up().remove(Ext.getCmp('secbqueryview_id'));
         }
     },
 
     delete: function () {
         Ext.Msg.confirm('信息', '确定要删除所选信息吗？', function (btn) {
             if (btn == 'yes') {
-                var sm = Ext.getCmp('usergridview_id').getSelectionModel();
+                var sm = Ext.getCmp('secbgridview_id').getSelectionModel();
                 var rows = sm.getSelection();
 
                 if (rows.length > 0) {
                     for (var i = 0; i < rows.length; i++) {
                         var row = rows[i];
-                        var id = row.get('id');
+                        var roleid = row.get('roleid');
+                        var userid = row.get('userid');
                         Ext.Ajax.request({
-                            url: '/bolong/deleteuser',
+                            url: '/bolong/deleteuserroles',
                             params: {
-                                "id": id
+                                "roleid": roleid,
+                                "userid": userid
                             },
                             waitMsg: '正在删除数据...',
                             success: function () {
-                                Ext.getCmp('usergridview_id').getStore().load();
+                                Ext.getCmp('secbgridview_id').getStore().load();
                                 Ext.Msg.alert("成功", "数据删除成功!");
                             },
                             failure: function () {

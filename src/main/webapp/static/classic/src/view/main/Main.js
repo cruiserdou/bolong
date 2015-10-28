@@ -55,6 +55,7 @@ Ext.define('app.view.main.Main', {
         'app.view.system.menu.MenuView',
         'app.view.system.sysdict.SysdictView',
         'app.view.system.act.ActView',
+        'app.view.system.secb.SecBView',
         'app.view.system.sec.SecView'
     ],
 

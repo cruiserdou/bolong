@@ -20,4 +20,14 @@ public class LoginLogServiceImpl implements LoginLogService {
     public List<LoginLog> list(){
         return loginLogDao.list();
     }
+
+    @Override
+    public List<LoginLog> listLog(String start, String limit){
+        return loginLogDao.listLog(start, limit);
+    }
+
+    @Override
+    public int getLogCount(){
+        return loginLogDao.getLogCount();
+    }
 }

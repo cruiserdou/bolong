@@ -9,8 +9,7 @@ Ext.define('app.view.system.log.LoginLogController', {
 
     alias: 'controller.loginlog',
 
-    onClick: function () {
-        var store = Ext.getCmp('loginlog_id').getStore();
-        store.load();
+    onAfterrender: function (self) {
+        self.getStore().load();
     }
 });

@@ -9,4 +9,9 @@ import java.util.List;
  */
 public interface LoginLogService {
     List<LoginLog> list();
+
+    List<LoginLog> listLog(String start, String limit);
+
+    int getLogCount();
+
 }
