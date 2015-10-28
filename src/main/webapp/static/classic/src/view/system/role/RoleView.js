@@ -27,6 +27,7 @@ Ext.define('app.view.system.role.RoleView', {
                 },
                 {
                     text: '编辑',
+                    id: 'role_edit_id',
                     handler: 'btnEdit'
                 },
                 {

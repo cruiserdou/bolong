@@ -101,7 +101,7 @@ Ext.define('app.view.workmgr.maintaininfo.MaintaininfoAddView', {
             name: 'mi_mt_date',
             fieldLabel: '维护时间',
             value: new Date(),
-            format: 'Y-m-d H:i:s',
+            format: 'Y-m-d',
             allowBlank: false
         },
         {

@@ -65,7 +65,31 @@ Ext.define('app.view.workmgr.refimosf.RefimosfAddView', {
                     }
                 }
             ]
-        },{
+        },
+            {
+                xtype: 'textfield',
+                hidden: true,
+                fieldLabel: '挂牌代码',
+                id: 'corp_listcode_id'
+            }, {
+                xtype: 'textfield',
+                hidden: true,
+                fieldLabel: '省',
+                id:'corp_province_id'
+            },
+            {
+                hidden: true,
+                xtype: 'textfield',
+                fieldLabel: '市',
+                id:'corp_city_id'
+            },
+            {
+                hidden: true,
+                xtype: 'textfield',
+                fieldLabel: '县',
+                id:'corp_county_id'
+            },
+            {
             xtype: 'textfield',
             name: 'mos_cots',
             fieldLabel: '融资产品',

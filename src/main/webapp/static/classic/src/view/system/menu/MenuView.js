@@ -27,6 +27,7 @@ Ext.define('app.view.system.menu.MenuView', {
                 },
                 {
                     text: '编辑',
+                    id: 'menu_edit_id',
                     handler: 'btnEdit'
                 },
                 {

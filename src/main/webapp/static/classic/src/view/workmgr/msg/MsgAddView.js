@@ -5,7 +5,7 @@ Ext.define('app.view.workmgr.msg.MsgAddView', {
     extend: 'Ext.window.Window',
     xtype: 'msgaddview',
     width: 400,
-    title: '添加站内',
+    title: '添加站内信',
     constrain: true,
     closable: true,
     modal: true,
@@ -23,7 +23,7 @@ Ext.define('app.view.workmgr.msg.MsgAddView', {
         items: [{
             xtype: 'combobox',
             name: 'ruser_id',
-            fieldLabel: '用户',
+            fieldLabel: '接受人',
             allowBlank: false,
             //store: 'userstore',
             store: {

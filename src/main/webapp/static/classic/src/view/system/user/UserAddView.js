@@ -4,7 +4,7 @@
 Ext.define('app.view.system.user.UserAddView', {
     extend: 'Ext.window.Window',
     xtype: 'useraddview',
-    width: 400,
+    width: 600,
     title: '添加用户',
     constrain: true,
     closable: true,
@@ -14,7 +14,7 @@ Ext.define('app.view.system.user.UserAddView', {
         xtype: 'form',
         bodyPadding: 10,
         layout: 'form',
-
+        columns: 2,
         items: [
         //    {
         //    xtype: 'textfield',

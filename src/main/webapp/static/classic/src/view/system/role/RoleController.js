@@ -28,6 +28,86 @@ Ext.define('app.view.system.role.RoleController', {
         });
     },
 
+    btnEdit: function(_this) {
+        var sm = Ext.getCmp('rolegridview_id').getSelectionModel();
+        var record = sm.getSelection()[0];
+
+        if(!record){
+            Ext.Msg.alert('信息','请选择要编辑的数据');
+            return;
+        }
+        var record = sm.getSelection()[0];
+
+        var editForm = null;
+        var editWindow = null;
+        editForm = new Ext.form.FormPanel({
+            xtype: 'form',
+            bodyPadding: 10,
+            layout: 'form',
+            items: [
+                {
+                    xtype: 'textfield',
+                    name: 'id',
+                    hidden: true,
+                    fieldLabel: '角色ID'
+                },
+                {
+                    xtype: 'textfield',
+                    name: 'rolename',
+                    fieldLabel: '角色名称'
+                }, {
+                    xtype: 'textareafield',
+                    name: 'roledesc',
+                    fieldLabel: '角色描述'
+                }, {
+                    xtype: 'textareafield',
+                    name: 'remark',
+                    fieldLabel: '备注'
+                }
+            ],
+            buttonAlign : "center",
+            buttons: [
+                {
+                    text: '保存',
+                    handler: function(){
+                        var form = this.up('form').getForm();
+                        if (form.isValid()){
+                            form.submit({
+                                url: '/bolong/update_roles_info',
+                                waitMsg: '正在保存数据...',
+                                success: function(form, action){
+                                    Ext.Msg.alert("成功", "数据保存成功!");
+                                    Ext.getCmp('rolegridview_id').getStore().reload();
+                                },
+                                failure: function(form, action){
+                                    Ext.Msg.alert("失败", "数据保存失败!");
+                                }
+                            });
+                        }
+                    }
+                },
+                {
+                    text: '重置',
+                    handler: function () {
+                        this.up('form').getForm().reset();
+                    }
+                }
+            ]
+        });
+        editWindow = new Ext.Window({
+            constrain: true,
+            closable: true,
+            modal: true,
+            layout: 'fit',
+            width: 400,
+            height: 400,
+            title: '修改信息',
+            items: [editForm]
+        });
+        editWindow.show(Ext.get('menu_edit_id'));
+        editForm.getForm().loadRecord(record);
+    },
+
     btnReset: function(_this) {
         _this.up('form').getForm().reset();
         Ext.getCmp('rolegridview_id').getStore().load();

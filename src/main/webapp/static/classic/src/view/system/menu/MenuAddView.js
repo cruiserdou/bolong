@@ -4,7 +4,7 @@
 Ext.define('app.view.system.menu.MenuAddView', {
     extend: 'Ext.window.Window',
     xtype: 'menuaddview',
-    width: 360,
+    width: 400,
     title: '添加菜单',
     constrain: true,
     closable: true,
@@ -18,8 +18,10 @@ Ext.define('app.view.system.menu.MenuAddView', {
             {
             xtype: 'textfield',
             name: 'id',
-            fieldLabel: '菜单ID'
-        }, {
+            fieldLabel: '菜单ID',
+            allowBlank: false
+        },
+            {
             xtype: 'textfield',
             name: 'text',
             fieldLabel: '菜单标题',

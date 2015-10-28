@@ -29,9 +29,19 @@ Ext.define('app.view.workmgr.msg.MsgView', {
                     text: '删除',
                     handler: 'delete'
                 },
+                //{
+                //    text: '编辑',
+                //    id: 'msg_edit_id',
+                //    handler: 'btnEdit'
+                //},
                 {
                     text: '刷新',
-                    handler: 'refresh'  },
+                    handler: 'refresh'
+                },
+                {
+                    text: '已阅',
+                    handler: 'btnRead'
+                },
                 {
                     text: '查询', 
                     handler: 'btnSearch'

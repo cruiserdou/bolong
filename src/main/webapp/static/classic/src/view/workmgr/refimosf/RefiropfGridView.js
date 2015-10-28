@@ -32,6 +32,37 @@ Ext.define('app.view.workmgr.refimosf.RefiropfGridView', {
         {text: '完成时间',  width: 120, dataIndex: 'rop_endt'},
         {text: '需解决问题', width: 120, dataIndex: 'rop_crb'},
         {text: '是否完成', width: 100, dataIndex: 'rop_stat'},
-        {text: '备注', flex: 1, dataIndex: 'rop_remark'}
+        {text: '备注', flex: 1, dataIndex: 'rop_remark'},
+        {
+            text: "删除",
+            width: 130,
+            dataIndex: 'rop_id',
+            align: "center",
+            renderer: function (v, cellmeta) {
+                var returnStr = "<INPUT type='button' value='删除'  onclick='delete_refi_rop(\""+v+"\")'>";
+                return returnStr;
+            }
+        }
     ]
 });
+
+function delete_refi_rop(id) {
+    Ext.Msg.confirm('信息', '确定要删除所选信息吗？', function (btn) {
+        if (btn == 'yes') {
+                    Ext.Ajax.request({
+                        url: '/bolong/deleterefirop',
+                        params: {
+                            "rop_id": id
+                        },
+                        waitMsg: '正在删除数据...',
+                        success: function () {
+                            Ext.getCmp('refiropfgridview_id').getStore().load();
+                            Ext.Msg.alert("成功", "数据删除成功!");
+                        },
+                        failure: function () {
+                            Ext.Msg.alert("失败", "数据删除失败!");
+                        }
+                    });
+                }
+    });
+}

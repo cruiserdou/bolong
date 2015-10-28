@@ -27,6 +27,7 @@ Ext.define('app.view.system.sysdict.SysdictView', {
                 },
                 {
                     text: '编辑',
+                    id: 'sysdict_edit_id',
                     handler: 'btnEdit'
                 },
                 {

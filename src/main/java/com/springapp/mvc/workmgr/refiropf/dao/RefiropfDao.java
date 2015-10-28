@@ -34,5 +34,5 @@ public interface RefiropfDao {
     }
 
     @Delete(" delete from work.tb_refi_rop where rop_id  = #{rop_id}")
-    void delete(@Param(value = "mos_id") Integer rop_id);
+    void delete(@Param(value = "rop_id") Integer rop_id);
 }

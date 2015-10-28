@@ -26,6 +26,11 @@ Ext.define('app.view.system.user.UserView', {
                     handler: 'btnAdd'
                 },
                 {
+                    text: '编辑',
+                    id: 'user_edit_id',
+                    handler: 'btnEdit'
+                },
+                {
                     text: '删除',
                     handler: 'delete'
                 },
