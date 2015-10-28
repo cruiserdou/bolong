@@ -21,11 +21,6 @@ Ext.define('app.view.enter.EnterAddView', {
             name: 'periods',
             required: true
         }, {
-        //    xtype: 'textfield',
-        //    required: true,
-        //    fieldLabel: '开奖时间',
-        //    name: 'open_time'
-        //}, {
             xtype: 'numberfield',
             require: true,
             name: 'five',
