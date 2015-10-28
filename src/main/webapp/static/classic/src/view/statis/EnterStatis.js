@@ -18,7 +18,6 @@ Ext.define('app.view.statis.EnterStatis', {
 
     listeners: {
         afterrender: function (_this) {
-
             var store = Ext.create('Ext.data.Store', {
                 extend: 'Ext.data.Store',
                 model: 'app.model.stat.CorpStatModel',
@@ -34,12 +33,10 @@ Ext.define('app.view.statis.EnterStatis', {
                 }
             });
 
-
             store.load({
                 callback: function (records, operation, success) {
                     store.each(function (item) {
-                        //record=item.get('corp_num');
-                        corpdmstatis_tpl.append('corp_statis',item.getData());
+                        corpdmstatis_tpl.append('corp_statis', item.getData());
                     });
                 }
             });

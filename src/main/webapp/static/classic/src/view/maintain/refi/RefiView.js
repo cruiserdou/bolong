@@ -25,7 +25,8 @@ Ext.define('app.view.maintain.refi.RefiView', {
                 },
                 {
                     text: '刷新',
-                    handler: 'refresh' },
+                    handler: 'refresh'
+                },
                 {
                     text: '查询',
                     handler: 'btnSearch'
@@ -38,18 +39,12 @@ Ext.define('app.view.maintain.refi.RefiView', {
         xtype: 'refigridview',
         region: 'center',
         id: 'refigridview_id',
-        margin : '1 1 0 0',
+        margin: '1 1 0 0',
         listeners: {
             afterrender: function (_this) {
                 var store = _this.getStore();
                 store.load();
             }
         }
-    },{
-        xtype: 'refidetailview',
-        region: 'east',
-        id: 'refidetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

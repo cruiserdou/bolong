@@ -8,7 +8,6 @@ Ext.define('app.view.maintain.servicemt.ServiceMtView', {
     requires: [
         'app.view.maintain.servicemt.ServiceMtController',
         'app.view.maintain.servicemt.ServiceMtGridView',
-        'app.view.maintain.servicemt.ServiceMtDetailView',
         'app.view.maintain.servicemt.ServiceMtQueryView'
     ],
 
@@ -45,11 +44,5 @@ Ext.define('app.view.maintain.servicemt.ServiceMtView', {
                 store.load();
             }
         }
-    },{
-        xtype: 'servicemtdetailview',
-        region: 'east',
-        id: 'servicemtdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

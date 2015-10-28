@@ -9147,3 +9147,24 @@ div.x-border-layout-ct {
 #menutree_id .x-tree-icon {
     display: none;
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:240 */
+.statis_div {
+    width: 28em;
+    height: 28em;
+    padding: 9.6em 0;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #e7e952;
+    margin: 6em auto;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:250 */
+.statis_div h1 {
+    font-family: '微软雅黑', 'Microsoft YaHei', 'Source Han Sans CN ExtraLight', 'Noto Sans S Chinese Light';
+    font-weight: 100;
+    color: #666;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:256 */
+.statis_div h1:last-child {
+    font-weight: 800;
+    font-size: 3em;
+}

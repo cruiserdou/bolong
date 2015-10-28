@@ -15,9 +15,8 @@ Ext.define('app.view.statis.demand.TrainDmStatis', {
         type: 'corpretrstatstore'
     },
 
-       listeners: {
-           afterrender: function (_this) {
-
+    listeners: {
+        afterrender: function (_this) {
             var store = Ext.create('Ext.data.Store', {
                 extend: 'Ext.data.Store',
                 model: 'app.model.stat.CorpStatModel',
@@ -33,16 +32,13 @@ Ext.define('app.view.statis.demand.TrainDmStatis', {
                 }
             });
 
-
-               store.load({
-                   callback: function (records, operation, success) {
-                       store.each(function (item) {
-                           //record=item.get('corp_num');
-                           traindmstatis_tpl.append('train_statis',item.getData());
-                       });
-                   }
-               });
-
+            store.load({
+                callback: function (records, operation, success) {
+                    store.each(function (item) {
+                        traindmstatis_tpl.append('train_statis', item.getData());
+                    });
+                }
+            });
         }
     },
     html: '<div id="train_statis"></div>'

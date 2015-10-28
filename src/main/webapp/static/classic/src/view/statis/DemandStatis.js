@@ -15,23 +15,6 @@ Ext.define('app.view.statis.DemandStatis', {
     animateShadow: true,
     shadow: true,
     shadowOffset: 2,
-    dockedItems: [
-        {
-            xtype: 'toolbar',
-            dock: 'top',
-            border: false,
-            items: [
-                {
-                    text: '刷新',
-                    listeners: {
-                        click: function(){
-                            alert("Hello")
-                        }
-                    }
-                }
-            ]
-        }
-    ],
     store: {
         type: 'menustore'
     },

@@ -18,7 +18,7 @@ Ext.define('app.view.main.Main', {
         'app.view.main.MainController',
         'app.view.main.MainModel',
 
-        'app.view.enter.EnterInfoView',
+        'app.view.query.enter.EnterInfoView',
         'app.view.query.serviceq.ServiceQView',
         'app.view.query.investorq.InvestorQView',
         'app.view.query.govq.GovQView',

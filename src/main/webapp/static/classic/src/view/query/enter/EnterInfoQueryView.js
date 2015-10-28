@@ -1,7 +1,7 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('app.view.enter.EnterInfoQueryView', {
+Ext.define('app.view.query.enter.EnterInfoQueryView', {
     extend: 'Ext.form.Panel',
     xtype: 'enterinfoqueryview',
 

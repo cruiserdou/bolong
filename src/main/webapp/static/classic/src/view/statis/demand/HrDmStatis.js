@@ -18,7 +18,6 @@ Ext.define('app.view.statis.demand.HrDmStatis', {
 
     listeners: {
         afterrender: function (_this) {
-
             var store = Ext.create('Ext.data.Store', {
                 extend: 'Ext.data.Store',
                 model: 'app.model.stat.CorpStatModel',
@@ -34,16 +33,13 @@ Ext.define('app.view.statis.demand.HrDmStatis', {
                 }
             });
 
-
             store.load({
                 callback: function (records, operation, success) {
                     store.each(function (item) {
-                        //record=item.get('corp_num');
-                        rehrdmstatis_tpl.append('rehr_statis',item.getData());
+                        rehrdmstatis_tpl.append('rehr_statis', item.getData());
                     });
                 }
             });
-
         }
     },
     html: '<div id="rehr_statis"></div>'

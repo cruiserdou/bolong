@@ -18,7 +18,6 @@ Ext.define('app.view.statis.ServiceStatis', {
 
     listeners: {
         afterrender: function (_this) {
-
             var store = Ext.create('Ext.data.Store', {
                 extend: 'Ext.data.Store',
                 model: 'app.model.stat.CorpStatModel',
@@ -34,17 +33,13 @@ Ext.define('app.view.statis.ServiceStatis', {
                 }
             });
 
-
-
             store.load({
                 callback: function (records, operation, success) {
                     store.each(function (item) {
-                        //record=item.get('corp_num');
-                        serverdmstatis_tpl.append('server_statis',item.getData());
+                        serverdmstatis_tpl.append('server_statis', item.getData());
                     });
                 }
             });
-
         }
     },
     html: '<div id="server_statis"></div>'

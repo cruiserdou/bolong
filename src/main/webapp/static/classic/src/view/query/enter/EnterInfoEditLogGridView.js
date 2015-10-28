@@ -1,7 +1,7 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('app.view.enter.EnterInfoEditLogGridView', {
+Ext.define('app.view.query.enter.EnterInfoEditLogGridView', {
     extend: 'Ext.grid.Panel',
     xtype: 'entereditloggridview',
     id:'entereditloggridview_id',
@@ -9,7 +9,7 @@ Ext.define('app.view.enter.EnterInfoEditLogGridView', {
     columnLines: true,
     requires: [
         'app.store.changelist.CorpChangeStore',
-        'app.view.enter.EnterInfoController',
+        'app.view.query.enter.EnterInfoController',
         'Ext.grid.filters.Filters'
     ],
     controller: 'enterinfocontroller',

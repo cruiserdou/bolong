@@ -30,8 +30,8 @@ Ext.define('app.view.query.investorq.InvestorQGridView', {
 
     columns: [
         {text: '企业ID',  width: 120, dataIndex: 'id', hidden: true},
-        {text: '营业执照号码', width: 120, dataIndex: 'buslicno'},
-        {text: '企业名称', width: 120, dataIndex: 'name'},
+        {text: '营业执照号码', width: 180, dataIndex: 'buslicno'},
+        {text: '企业名称', width: 200, dataIndex: 'name'},
         {text: '单位类别', width: 120, dataIndex: 'unit', hidden: true},
         {text: '法定代表人', width: 120, dataIndex: 'legrep', hidden: true},
         {text: '省', width: 120, dataIndex: 'province', hidden: true},

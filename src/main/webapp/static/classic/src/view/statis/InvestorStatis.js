@@ -17,7 +17,6 @@ Ext.define('app.view.statis.InvestorStatis', {
 
     listeners: {
         afterrender: function (_this) {
-
             var store = Ext.create('Ext.data.Store', {
                 extend: 'Ext.data.Store',
                 model: 'app.model.stat.CorpStatModel',
@@ -32,15 +31,14 @@ Ext.define('app.view.statis.InvestorStatis', {
                     }
                 }
             });
+
             store.load({
                 callback: function (records, operation, success) {
                     store.each(function (item) {
-                        //record=item.get('corp_num');
-                        invdmstatis_tpl.append('inv_statis',item.getData());
+                        invdmstatis_tpl.append('inv_statis', item.getData());
                     });
                 }
             });
-
         }
     },
     html: '<div id="inv_statis"></div>'

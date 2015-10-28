@@ -1,7 +1,7 @@
 /**
  * Created by xwq on 15/9/5.
  */
-Ext.define('app.view.enter.EnterInfoController', {
+Ext.define('app.view.query.enter.EnterInfoController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.enterinfocontroller',

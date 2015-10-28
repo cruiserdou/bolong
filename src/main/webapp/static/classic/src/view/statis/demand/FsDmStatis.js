@@ -18,7 +18,6 @@ Ext.define('app.view.statis.demand.FsDmStatis', {
 
     listeners: {
         afterrender: function (_this) {
-
             var store = Ext.create('Ext.data.Store', {
                 extend: 'Ext.data.Store',
                 model: 'app.model.stat.CorpStatModel',
@@ -34,12 +33,10 @@ Ext.define('app.view.statis.demand.FsDmStatis', {
                 }
             });
 
-
             store.load({
                 callback: function (records, operation, success) {
                     store.each(function (item) {
-                        //record=item.get('corp_num');
-                        refidmstatis_tpl.append('refi_statis',item.getData());
+                        refidmstatis_tpl.append('refi_statis', item.getData());
                     });
                 }
             });

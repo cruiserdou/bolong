@@ -25,7 +25,8 @@ Ext.define('app.view.maintain.retr.RetrView', {
                 },
                 {
                     text: '刷新',
-                    handler: 'refresh' },
+                    handler: 'refresh'
+                },
                 {
                     text: '查询',
                     handler: 'btnSearch'
@@ -38,18 +39,12 @@ Ext.define('app.view.maintain.retr.RetrView', {
         xtype: 'retrgridview',
         region: 'center',
         id: 'retrgridview_id',
-        margin : '1 1 0 0',
+        margin: '1 1 0 0',
         listeners: {
             afterrender: function (_this) {
                 var store = _this.getStore();
                 store.load();
             }
         }
-    },{
-        xtype: 'retrdetailview',
-        region: 'east',
-        id: 'retrdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

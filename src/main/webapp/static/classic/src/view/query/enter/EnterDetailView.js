@@ -1,14 +1,13 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('app.view.enter.EnterDetailView', {
+Ext.define('app.view.query.enter.EnterDetailView', {
     extend: 'Ext.panel.Panel',
     xtype: 'enterdetailview',
 
     scrollable: true,
     requires: [
-        'app.view.enter.EnterLModel',
-        'app.view.enter.EnterInfoController'
+        'app.view.query.enter.EnterInfoController'
     ],
 
     controller: 'enterinfocontroller',
@@ -50,9 +49,5 @@ Ext.define('app.view.enter.EnterDetailView', {
     ]),
     updateDetail: function (data) {
         this.tpl.overwrite(this.body, data);
-    },
-    bind: {
-        html: '{loremIpsum}'
-
     }
 });

@@ -1,17 +1,16 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('app.view.enter.EnterInfoView', {
+Ext.define('app.view.query.enter.EnterInfoView', {
     extend: 'Ext.panel.Panel',
     xtype: 'enterinfoview',
     id: 'enterinfoview_id',
     closable: true,
     requires: [
-        'app.view.enter.EnterInfoGridView',
-        'app.view.enter.EnterInfoEditLogGridView',
-        'app.view.enter.EnterInfoQueryView',
-        'app.view.enter.EnterInfoController',
-        'app.view.enter.EnterDetailView'
+        'app.view.query.enter.EnterInfoGridView',
+        'app.view.query.enter.EnterInfoEditLogGridView',
+        'app.view.query.enter.EnterInfoQueryView',
+        'app.view.query.enter.EnterInfoController'
     ],
 
     title: '企业信息查询',

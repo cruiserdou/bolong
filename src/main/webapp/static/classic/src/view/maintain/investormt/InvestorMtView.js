@@ -8,7 +8,6 @@ Ext.define('app.view.maintain.investormt.InvestorMtView', {
     requires: [
         'app.view.maintain.investormt.InvestorMtController',
         'app.view.maintain.investormt.InvestorMtGridView',
-        'app.view.maintain.investormt.InvestorMtDetailView',
         'app.view.maintain.investormt.InvestorMtQueryView'
     ],
 
@@ -25,7 +24,8 @@ Ext.define('app.view.maintain.investormt.InvestorMtView', {
                 },
                 {
                     text: '刷新',
-                    handler: 'refresh' },
+                    handler: 'refresh'
+                },
                 {
                     text: '查询',
                     handler: 'btnSearch'
@@ -38,18 +38,12 @@ Ext.define('app.view.maintain.investormt.InvestorMtView', {
         xtype: 'investormtgridview',
         region: 'center',
         id: 'investormtgridview_id',
-        margin : '1 1 0 0',
+        margin: '1 1 0 0',
         listeners: {
             afterrender: function (_this) {
                 var store = _this.getStore();
                 store.load();
             }
         }
-    },{
-        xtype: 'investormtdetailview',
-        region: 'east',
-        id: 'investormtdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

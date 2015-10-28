@@ -8,7 +8,6 @@ Ext.define('app.view.maintain.govmt.GovMtView', {
     requires: [
         'app.view.maintain.govmt.GovMtController',
         'app.view.maintain.govmt.GovMtGridView',
-        'app.view.maintain.govmt.GovMtDetailView',
         'app.view.maintain.govmt.GovMtQueryView'
     ],
 
@@ -25,7 +24,8 @@ Ext.define('app.view.maintain.govmt.GovMtView', {
                 },
                 {
                     text: '刷新',
-                    handler: 'refresh' },
+                    handler: 'refresh'
+                },
                 {
                     text: '查询',
                     handler: 'btnSearch'
@@ -38,18 +38,12 @@ Ext.define('app.view.maintain.govmt.GovMtView', {
         xtype: 'govmtgridview',
         region: 'center',
         id: 'govmtgridview_id',
-        margin : '1 1 0 0',
+        margin: '1 1 0 0',
         listeners: {
             afterrender: function (_this) {
                 var store = _this.getStore();
                 store.load();
             }
         }
-    },{
-        xtype: 'govmtdetailview',
-        region: 'east',
-        id: 'govmtdetailview_id',
-        margin: '0 0 0 1',
-        width:  360
     }]
 });

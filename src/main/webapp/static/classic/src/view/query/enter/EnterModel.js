@@ -1,7 +1,7 @@
 /**
  * This class is the view model for the Main view of the application.
  */
-Ext.define('app.view.enter.EnterLModel', {
+Ext.define('app.view.query.enter.EnterLModel', {
     extend: 'Ext.app.ViewModel',
 
     alias: 'viewmodel.enterlmodel',
