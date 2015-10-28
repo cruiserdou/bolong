@@ -22,15 +22,13 @@ Ext.define('app.view.maintain.govmt.GovMtController', {
             border: false,
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
-                afterrender: function (_this){
-                    corp_tpl.append('government_manage_corp',record.data);
-                    corp_contact_tpl.append('government_manage_corp_contact',record.data);
-                    //corp_shareholder_tpl.append('government_manage_corp_shareholder',record.data);
-                    corp_acount_tpl.append('government_manage_corp_acount',record.data);
-                    corp_maintain_tpl.append('government_manage_corp_maintain',record.data);
-                    corp_finance_tpl.append('government_manage_corp_finance',record.data);
-                    corp_government_con_tpl.append('government_manage_corp_government',record.data);
-
+                afterrender: function (_this) {
+                    corp_tpl.append('government_manage_corp', record.data);
+                    corp_contact_tpl.append('government_manage_corp_contact', record.data);
+                    corp_acount_tpl.append('government_manage_corp_acount', record.data);
+                    corp_maintain_tpl.append('government_manage_corp_maintain', record.data);
+                    corp_finance_tpl.append('government_manage_corp_finance', record.data);
+                    corp_government_con_tpl.append('government_manage_corp_government', record.data);
                 }
             },
             autoScroll: true,
@@ -39,98 +37,55 @@ Ext.define('app.view.maintain.govmt.GovMtController', {
                 align: 'stretch',
                 pack: 'start'
             },
-            items: [
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_panel',
-                    html: '<div id="government_manage_corp">' +
-                    '</div>'
-                },
-                //{
-                //    xtype: 'panel',
-                //    height: 250,
-                //    //autoScroll: true,
-                //    frame: false,
-                //    border: false,
-                //    bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
-                //    listeners: {
-                //        afterrender: function (_this) {
-                //            corp_shareholder_list_store.load({
-                //                params: {
-                //                    gd_corp_id: record.get("id")
-                //                },
-                //                callback: function (records, operation, success) {
-                //                    if (success) {
-                //                        var myarray = new Array();
-                //                        for (var i = 0; i < corp_shareholder_list_store.getCount(); i++) {
-                //                            myarray[i] = corp_shareholder_list_store.getAt(i).getData();
-                //                        }
-                //
-                //
-                //                        corp_shareholder_list_tpl.overwrite(_this.body, myarray[0]);
-                //                    }
-                //                }
-                //            })
-                //        }
-                //    }
-                //},
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_contact_panel',
-                    html: '<div id="government_manage_corp_contact">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_acount_panel',
-                    html: '<div id="government_manage_corp_acount">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_maintain_panel',
-                    html: '<div id="government_manage_corp_maintain">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="government_manage_corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_government_panel',
-                    html: '<div id="government_manage_corp_government">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'government_manage_corp_panel',
-                    html:
-                    '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">'+
+            items: [{
+                xtype: 'panel',
+                border: false,
+                html: '<div id="government_manage_corp">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="government_manage_corp_contact">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="government_manage_corp_acount">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                id: 'corp_maintain_panel',
+                html: '<div id="government_manage_corp_maintain">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="government_manage_corp_finance">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="government_manage_corp_government">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
 
-                    '<ul>'+
-                    '<li><a href="#table_base" style="font-size:18px;">基本信息</a></li>' +
-                    '<li><a href="#table_sh"  style="font-size:18px;">股东名册</a></li>' +
-                    '<li><a href="#table_link"  style="font-size:18px;">法定代表人</a></li>' +
-                    '<li><a href="#table_acount"  style="font-size:18px;">行业分类</a></li>' +
-                    '<li><a href="#table_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
-                    '<li><a href="#table_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
-                    '<li><a href="#table_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
-                    '<li><a href="#table_govermt"  style="font-size:18px;">政府部门</a></li>' +
-                    '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="government_close_edit()">关闭</a></li>' +
-                    '</ul>' +
-                    '</div>'
-                }
-            ]
+                '<ul>' +
+                '<li><a href="#table_base" style="font-size:18px;">基本信息</a></li>' +
+                '<li><a href="#table_sh"  style="font-size:18px;">股东名册</a></li>' +
+                '<li><a href="#table_link"  style="font-size:18px;">法定代表人</a></li>' +
+                '<li><a href="#table_acount"  style="font-size:18px;">行业分类</a></li>' +
+                '<li><a href="#table_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
+                '<li><a href="#table_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
+                '<li><a href="#table_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
+                '<li><a href="#table_govermt"  style="font-size:18px;">政府部门</a></li>' +
+                '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="government_close_edit()">关闭</a></li>' +
+                '</ul>' +
+                '</div>'
+            }]
         });
 
         var editWindow = new Ext.Window({
@@ -151,7 +106,7 @@ Ext.define('app.view.maintain.govmt.GovMtController', {
         Ext.getCmp('govmtgridview_id').getStore().load();
     },
 
-    btnFind: function(){
+    btnFind: function () {
         Ext.getCmp('govmtgridview_id').getStore().load({
             params: {
                 name: Ext.getCmp('query_gov_mt_name_id').getValue(),
@@ -163,7 +118,7 @@ Ext.define('app.view.maintain.govmt.GovMtController', {
         });
     },
 
-    btnReset: function(_this) {
+    btnReset: function (_this) {
         _this.up('form').getForm().reset();
         Ext.getCmp('govmtgridview_id').getStore().load();
     },
@@ -178,7 +133,7 @@ Ext.define('app.view.maintain.govmt.GovMtController', {
                     margin: '1 0 0 0'
                 }
             );
-        }else{
+        } else {
             _this.up().up().remove(Ext.getCmp('govmtqueryview_id'));
         }
     },

@@ -6,7 +6,6 @@ function obt_corp_government_manage_update(gov_id) {
         method: "POST",
         params: {
             gov_id : gov_id,
-            //gov_corp_id : corp_id,
             gov_domain : form_obt_edit['gov_domain'].value,
             gov_office : form_obt_edit['gov_office'].value,
             gov_desc : form_obt_edit['gov_desc'].value,

@@ -15,7 +15,6 @@ Ext.define('app.view.query.retr.RetrQController', {
         Ext.getCmp('corpretreditloggridview_id').getStore().load({
             params: {
                 corp_id: record_.get('id')
-
             }
         });
     },
@@ -29,14 +28,13 @@ Ext.define('app.view.query.retr.RetrQController', {
             border: false,
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
-                afterrender: function (_this){
-                    corp_tpl.append('retrain_query_corp',record.data);
-                    corp_contact_tpl.append('retrain_query_corp_contact',record.data);
-                    //corp_shareholder_tpl.append('retrain_query_corp_shareholder',record.data);
-                    corp_acount_tpl.append('retrain_query_corp_acount',record.data);
-                    corp_maintain_tpl.append('retrain_query_corp_maintain',record.data);
-                    corp_finance_tpl.append('retrain_query_corp_finance',record.data);
-                    corp_retrain_tpl.append('retrain_query_corp_retrain',record.data);
+                afterrender: function (_this) {
+                    corp_tpl.append('retrain_query_corp', record.data);
+                    corp_contact_tpl.append('retrain_query_corp_contact', record.data);
+                    corp_acount_tpl.append('retrain_query_corp_acount', record.data);
+                    corp_maintain_tpl.append('retrain_query_corp_maintain', record.data);
+                    corp_finance_tpl.append('retrain_query_corp_finance', record.data);
+                    corp_retrain_tpl.append('retrain_query_corp_retrain', record.data);
 
                 }
             },
@@ -46,98 +44,53 @@ Ext.define('app.view.query.retr.RetrQController', {
                 align: 'stretch',
                 pack: 'start'
             },
-            items: [
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_panel',
-                    html: '<div id="retrain_query_corp">' +
-                    '</div>'
-                },
-                //{
-                //    xtype: 'panel',
-                //    height: 250,
-                //    //autoScroll: true,
-                //    frame: false,
-                //    border: false,
-                //    bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
-                //    listeners: {
-                //        afterrender: function (_this) {
-                //            corp_shareholder_list_store.load({
-                //                params: {
-                //                    gd_corp_id: record.get("id")
-                //                },
-                //                callback: function (records, operation, success) {
-                //                    if (success) {
-                //                        var myarray = new Array();
-                //                        for (var i = 0; i < corp_shareholder_list_store.getCount(); i++) {
-                //                            myarray[i] = corp_shareholder_list_store.getAt(i).getData();
-                //                        }
-                //
-                //
-                //                        corp_shareholder_list_tpl.overwrite(_this.body, myarray[0]);
-                //                    }
-                //                }
-                //            })
-                //        }
-                //    }
-                //},
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_contact_panel',
-                    html: '<div id="retrain_query_corp_contact">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_acount_panel',
-                    html: '<div id="retrain_query_corp_acount">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_maintain_panel',
-                    html: '<div id="retrain_query_corp_maintain">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="retrain_query_corp_finance">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_retrain_panel',
-                    html: '<div id="retrain_query_corp_retrain">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'retrain_query_corp_panel',
-                    html:
-                    '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">'+
-
-                    '<ul>'+
-                    '<li><a href="#table_base" style="font-size:18px;">基本信息</a></li>' +
-                    '<li><a href="#table_sh"  style="font-size:18px;">股东名册</a></li>' +
-                    '<li><a href="#table_link"  style="font-size:18px;">法定代表人</a></li>' +
-                    '<li><a href="#table_acount"  style="font-size:18px;">行业分类</a></li>' +
-                    '<li><a href="#table_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
-                    '<li><a href="#table_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
-                    '<li><a href="#table_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
-                    '<li><a href="#table_demand_px"  style="font-size:18px;">培训需求</a></li>' +
-                    '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="retrain_query_close()">关闭</a></li>' +
-                    '</ul>' +
-                    '</div>'
-                }
-            ]
+            items: [{
+                xtype: 'panel',
+                border: false,
+                html: '<div id="retrain_query_corp">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="retrain_query_corp_contact">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="retrain_query_corp_acount">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="retrain_query_corp_maintain">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="retrain_query_corp_finance">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="retrain_query_corp_retrain">' +
+                '</div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
+                '<ul>' +
+                '<li><a href="#table_base" style="font-size:18px;">基本信息</a></li>' +
+                '<li><a href="#table_sh"  style="font-size:18px;">股东名册</a></li>' +
+                '<li><a href="#table_link"  style="font-size:18px;">法定代表人</a></li>' +
+                '<li><a href="#table_acount"  style="font-size:18px;">行业分类</a></li>' +
+                '<li><a href="#table_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
+                '<li><a href="#table_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
+                '<li><a href="#table_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
+                '<li><a href="#table_demand_px"  style="font-size:18px;">培训需求</a></li>' +
+                '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="retrain_query_close()">关闭</a></li>' +
+                '</ul>' +
+                '</div>'
+            }]
         });
 
         var editWindow = new Ext.Window({
@@ -158,7 +111,7 @@ Ext.define('app.view.query.retr.RetrQController', {
         Ext.getCmp('retrqgridview_id').getStore().load();
     },
 
-    btnFind: function(){
+    btnFind: function () {
         Ext.getCmp('retrqgridview_id').getStore().load({
             params: {
                 name: Ext.getCmp('query_retr_q_name_id').getValue(),
@@ -170,7 +123,7 @@ Ext.define('app.view.query.retr.RetrQController', {
         });
     },
 
-    btnReset: function(_this) {
+    btnReset: function (_this) {
         _this.up('form').getForm().reset();
         Ext.getCmp('retrqgridview_id').getStore().load();
     },
@@ -185,7 +138,7 @@ Ext.define('app.view.query.retr.RetrQController', {
                     margin: '1 0 0 0'
                 }
             );
-        }else{
+        } else {
             _this.up().up().remove(Ext.getCmp('retrqqueryview_id'));
         }
     },
@@ -203,7 +156,7 @@ Ext.define('app.view.query.retr.RetrQController', {
                     height: 200
                 }
             );
-        }else{
+        } else {
             _this.up().up().remove(Ext.getCmp('corpretreditloggridview_id'));
         }
     },
