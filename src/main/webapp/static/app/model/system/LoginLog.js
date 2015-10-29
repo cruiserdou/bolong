@@ -7,6 +7,8 @@ Ext.define('app.model.system.LoginLog', {
         {name: 'login_log_id'},
         {name: 'user_id'},
         {name: 'ip'},
-        {name: 'login_datetime'}
+        {name: 'login_datetime'},
+        {name: 'name'},
+        {name: 'account'}
     ]
 });

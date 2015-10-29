@@ -38,7 +38,7 @@ Ext.define('app.view.system.log.LoginLog', {
     },
     columns: [
         {text: 'ID', width: 80, dataIndex: 'login_log_id', hidden: true},
-        {text: '登录人', flex: 1, dataIndex: 'user_id'},
+        {text: '登录人', flex: 1, dataIndex: 'name'},
         {text: 'IP', flex: 1, dataIndex: 'ip'},
         {text: '登录日期', flex: 1, dataIndex: 'login_datetime'}
     ],

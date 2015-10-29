@@ -4,7 +4,8 @@
 Ext.define('app.view.system.user.UserAddView', {
     extend: 'Ext.window.Window',
     xtype: 'useraddview',
-    width: 600,
+    width: 400,
+    height: 600,
     title: '添加用户',
     constrain: true,
     closable: true,
@@ -13,97 +14,76 @@ Ext.define('app.view.system.user.UserAddView', {
     items: {  // Let's put an empty grid in just to illustrate fit layout
         xtype: 'form',
         bodyPadding: 10,
+        scrollable: true,
         layout: 'form',
         columns: 2,
         items: [
-        //    {
-        //    xtype: 'textfield',
-        //    name: 'id',
-        //    fieldLabel: '用户ID',
-        //    hidden: 'true'
-        //},
-
             {
-            xtype: 'textfield',
-            name: 'account',
-            fieldLabel: '帐号',
-            allowBlank: false
-        }, {
-            xtype: 'textfield',
-            name: 'password',
-            inputType: 'password',
-            fieldLabel: '密码',
-            allowBlank: false
-        }, {
-            xtype: 'textfield',
-            name: 'name',
-            fieldLabel: '姓名',
-            allowBlank: false
-        },
-        //    {
-        //    xtype: 'radiofield',
-        //    name: 'sex',
-        //    value: '男',
-        //    fieldLabel: '性别',
-        //    boxLabel: '男'
-        //}, {
-        //    xtype: 'radiofield',
-        //    name: 'sex',
-        //    value: '女',
-        //    fieldLabel: '',
-        //    labelSeparator: '',
-        //    hideEmptyLabel: false,
-        //    boxLabel: '女'
-        //},
-            {
-                xtype: 'container',
-                anchor: '100%',
-                layout: 'column',
-                items: [
-                    {
-                        layout: "column",
-                        fieldLabel: '性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp别',
-                        labelAlign: 'left',
-                        xtype: 'radiogroup',  columns: 120, items: [
-                        {boxLabel: "男", name: 'sex', inputValue: '男',checked: true},
-                        {boxLabel: "女", name: 'sex', inputValue: '女'}
-                    ]
-                    }
-                ]
+                xtype: 'textfield',
+                name: 'account',
+                fieldLabel: '帐号',
+                allowBlank: false
+            }, {
+                xtype: 'textfield',
+                name: 'password',
+                inputType: 'password',
+                fieldLabel: '密码',
+                allowBlank: false
+            }, {
+                xtype: 'textfield',
+                name: 'name',
+                fieldLabel: '姓名',
+                allowBlank: false
             },
             {
-            xtype: 'textfield',
-            name: 'phone',
-            fieldLabel: '手机号',
-            allowBlank: false
-        },{
-            xtype: 'textareafield',
-            name: 'address',
-            fieldLabel: '联系地址',
-            allowBlank: false
-        },{
-            xtype: 'textareafield',
-            name: 'remark',
-            fieldLabel: '备注'
-        } ,
+                xtype: 'radiofield',
+                name: 'sex',
+                value: '男',
+                fieldLabel: '性别',
+                boxLabel: '男',
+                checked: true
+            }, {
+                xtype: 'radiofield',
+                name: 'sex',
+                value: '女',
+                fieldLabel: '',
+                labelSeparator: '',
+                hideEmptyLabel: false,
+                boxLabel: '女'
+            },
+            {
+                xtype: 'textfield',
+                name: 'phone',
+                fieldLabel: '手机号',
+                allowBlank: false
+            }, {
+                xtype: 'textareafield',
+                name: 'address',
+                fieldLabel: '联系地址',
+                allowBlank: false
+            }, {
+                xtype: 'textareafield',
+                name: 'remark',
+                fieldLabel: '备注'
+            },
             {
                 xtype: 'container',
                 anchor: '100%',
                 layout: 'column',
                 items: [
                     {
-                        xtype:'filefield',
+                        xtype: 'filefield',
                         labelAlign: 'right',
-                        fieldLabel:'上传头像',
-                        name:'img',
-                        id:'img',
+                        fieldLabel: '上传头像',
+                        name: 'img',
+                        id: 'img',
                         anchor: '97%',
-                        buttonText:'',
-                        buttonConfig:{
-                            iconCls:'upload'
+                        buttonText: '',
+                        buttonConfig: {
+                            iconCls: 'upload'
                         },
-                        listeners:{
-                            change:function(btn,value){
+                        listeners: {
+                            change: function (btn, value) {
                                 //是否是规定的图片类型
                                 var img_reg = /\.([jJ][pP][gG])$|\.([jJ][pP][eE][gG])$|\.([gG][iI][fF])小贝$|\.([pP][nN][gG])$|\.([bB][mM][pP])$/;
                                 if (img_reg.test(value)) {
@@ -114,27 +94,27 @@ Ext.define('app.view.system.user.UserAddView', {
                                 } else {
                                     Ext.Msg.alert('提示', '请选择图片类型的文件！');
                                     Ext.getCmp('url').reset();
-                                    return ;
+                                    return;
                                 }
                             }
                         }
                     },
                     {
                         xtype: 'fieldset',
-                        width:255,
-                        margin:'10 10 10 10',
+                        margin: '10 10 10 10',
                         title: '图片预览',
-                        defaults: {margin:'10 0 10 20', width: 200,height:150},
+                        defaults: {margin: '10 0 10 20', height: 150},
                         items: [
                             {
                                 xtype: 'image',
                                 id: 'staffavatar',
-                                border:1,
+                                border: 1,
                                 src: 'upload/per.png',
                                 style: {
                                     borderColor: 'blue',
                                     borderStyle: 'solid'
-                                }}
+                                }
+                            }
                         ]
                     }
                 ]
@@ -152,16 +132,16 @@ Ext.define('app.view.system.user.UserAddView', {
                 text: '保存',
                 handler: function () {
                     var form = this.up('form').getForm();
-                    if (form.isValid()){
+                    if (form.isValid()) {
                         form.submit({
                             url: '/bolong/add_users_info',
                             waitMsg: '正在保存数据...',
-                            success: function(form, action){
+                            success: function (form, action) {
                                 Ext.Msg.alert("成功", "数据保存成功!");
                                 //重新载入渠道信息
                                 Ext.getCmp('usergridview_id').getStore().reload();
                             },
-                            failure: function(form, action){
+                            failure: function (form, action) {
                                 Ext.Msg.alert("失败", "数据保存失败!");
                             }
                         });

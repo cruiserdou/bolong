@@ -11,5 +11,9 @@ Ext.define('app.view.system.log.LoginLogController', {
 
     onAfterrender: function (self) {
         self.getStore().load();
+    },
+
+    onClick: function(){
+        Ext.getCmp('loginlog_id').getStore().load()
     }
 });

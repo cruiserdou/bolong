@@ -4,7 +4,6 @@
 Ext.define('app.view.workmgr.maintaininfo.MaintaininfoAddView', {
     extend: 'Ext.window.Window',
     xtype: 'maintaininfoaddview',
-    width: 600,
     title: '添加维护信息',
     constrain: true,
     closable: true,

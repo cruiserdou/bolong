@@ -27,15 +27,15 @@ Ext.define('app.view.system.user.UserController', {
         });
     },
 
-    btnEdit: function(_this) {
+    btnEdit: function (_this) {
         var win = Ext.create("Ext.Window", {
-            title: "complex form",
-            width: 500,
-            height: 700,
+            title: "修改用户信息",
+            width: 600,
+            height: 500,
             layout: "fit",
             items: {
                 xtype: "form",
-                bodyPadding:5,
+                bodyPadding: 5,
                 border: false,
                 layout: "form",
                 fieldDefaults: {
@@ -77,7 +77,7 @@ Ext.define('app.view.system.user.UserController', {
                                                 fieldLabel: '性别',
                                                 labelAlign: 'right',
                                                 xtype: 'radiogroup', columns: 50, items: [
-                                                {boxLabel: "男", name: 'sex', inputValue: '男',checked: true},
+                                                {boxLabel: "男", name: 'sex', inputValue: '男', checked: true},
                                                 {boxLabel: "女", name: 'sex', inputValue: '女'}
                                             ]
                                             }
@@ -88,7 +88,7 @@ Ext.define('app.view.system.user.UserController', {
                                         name: 'phone',
                                         fieldLabel: '手机号',
                                         allowBlank: false
-                                    },{
+                                    }, {
                                         xtype: 'textfield',
                                         name: 'address',
                                         fieldLabel: '联系地址',
@@ -96,24 +96,26 @@ Ext.define('app.view.system.user.UserController', {
                                     }
                                 ]
                             },
-
-
                             {
                                 xtype: 'container',
-                                layout: 'column',
+                                layout: {
+                                    type: 'vbox',
+                                    pack: 'start',
+                                    align: 'stretch'
+                                },
                                 items: [
                                     {
-                                        xtype:'filefield',
+                                        xtype: 'filefield',
                                         labelAlign: 'right',
-                                        fieldLabel:'上传头像',
-                                        name:'img',
-                                        id:'img',
-                                        buttonText:'',
-                                        buttonConfig:{
-                                            iconCls:'upload'
+                                        fieldLabel: '上传头像',
+                                        name: 'img',
+                                        id: 'img',
+                                        buttonText: '',
+                                        buttonConfig: {
+                                            iconCls: 'upload'
                                         },
-                                        listeners:{
-                                            change:function(btn,value){
+                                        listeners: {
+                                            change: function (btn, value) {
                                                 //是否是规定的图片类型
                                                 var img_reg = /\.([jJ][pP][gG])$|\.([jJ][pP][eE][gG])$|\.([gG][iI][fF])小贝$|\.([pP][nN][gG])$|\.([bB][mM][pP])$/;
                                                 if (img_reg.test(value)) {
@@ -124,28 +126,27 @@ Ext.define('app.view.system.user.UserController', {
                                                 } else {
                                                     Ext.Msg.alert('提示', '请选择图片类型的文件！');
                                                     Ext.getCmp('url').reset();
-                                                    return ;
+                                                    return;
                                                 }
                                             }
                                         }
-                                    },
-                                    {
+                                    }, {
                                         xtype: 'fieldset',
-                                        width:230,
-                                        height:195,
-                                        margin:'5 5 5 5',
+                                        flex: 1,
+                                        margin: '5 5 5 5',
                                         title: '图片预览',
-                                        defaults: {margin:'5 5 5 5', width: 200,height:160},
+                                        defaults: {margin: '5 5 5 5', height: 160},
                                         items: [
                                             {
                                                 xtype: 'image',
                                                 id: 'staffavatar',
-                                                border:1,
+                                                border: 1,
                                                 src: 'upload/per.png',
                                                 style: {
                                                     borderColor: 'blue',
                                                     borderStyle: 'solid'
-                                                }}
+                                                }
+                                            }
                                         ]
                                     }
                                 ]
@@ -166,8 +167,8 @@ Ext.define('app.view.system.user.UserController', {
                 ]
             },
             buttons: [
-                { text: "保存" },
-                { text: "取消" }
+                {text: "保存"},
+                {text: "取消"}
             ]
         });
         win.show();

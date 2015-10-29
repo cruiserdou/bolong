@@ -30,10 +30,20 @@ public interface LoginLogDao {
     class CorpDaoEmberSql {
         public String listLog(Map<String, Object> para) {
             String where = "";
-            return " SELECT login_log_id, user_id, ip, login_datetime " +
-                    " FROM work.t_login_log " +
-                    " WHERE 1 = 1  " +
+            return " SELECT " +
+                    " t_login_log.login_log_id, " +
+                    " t_login_log.user_id, " +
+                    " t_login_log.ip, " +
+                    " t_login_log.login_datetime, " +
+                    " users.name, " +
+                    " users.account " +
+                    " FROM " +
+                    " work.users, " +
+                    " work.t_login_log " +
+                    " WHERE " +
+                    " t_login_log.user_id = users.id " +
                     where +
+                    " order by login_datetime desc " +
                     " limit " + para.get("limit").toString() + " offset " + para.get("start").toString();
         }
 
