@@ -11,12 +11,12 @@ import java.util.List;
  * Created by dou on 15-9-2.
  */
 @RestController
-@RequestMapping("/actlist")
+//@RequestMapping("/actlist")
 public class ActController {
     @Autowired
     private ActService actService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/actlist",method = RequestMethod.GET)
     public
     @ResponseBody
     DataShop listMenu(
@@ -35,10 +35,7 @@ public class ActController {
             @RequestParam("roleid") Integer roleid,
             @RequestParam("treeid") Integer treeid
     )throws Exception{
-        System.out.println(roleid);
-        System.out.println(treeid);
         actService.delete(roleid,treeid);
-        System.out.println(treeid+treeid);
         return "success";
     }
 }

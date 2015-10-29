@@ -16,6 +16,7 @@ Ext.define('app.view.query.govq.GovQGridView', {
         type: 'corpgovallstore'
     },
     listeners: {
+        itemclick: 'itemclick',
         itemdblclick:'itemdblclick'
     },
 

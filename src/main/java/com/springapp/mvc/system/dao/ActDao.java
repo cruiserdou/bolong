@@ -39,6 +39,6 @@ public interface ActDao {
         }
     }
 
-    @Delete(" Delete FROM work.rolepermissions  where roleid = #{roleid} and userid = #{treeid}")
+    @Delete(" Delete FROM work.rolepermissions  where roleid = #{roleid} and treeid = #{treeid}")
     void delete(@Param(value = "roleid") Integer roleid, @Param(value = "treeid") Integer treeid);
 }
