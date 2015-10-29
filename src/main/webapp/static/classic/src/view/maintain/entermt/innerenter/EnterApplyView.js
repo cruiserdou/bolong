@@ -114,7 +114,7 @@ function save_cust_add() {
 };
 
 function NumberCheck(num) {
-    var no_regexp = /\d{6}[123]\d{7}[1-9]/;
+    var no_regexp = /\d{15}/;
     return no_regexp.exec(num) != null;
 };
 
@@ -152,7 +152,7 @@ function card_check_apply() {
             }
         },
         failure: function (response, opts) {
-            Ext.Msg.alert("提示", "错");
+            //Ext.Msg.alert("提示", "错");
         }
     });
 };

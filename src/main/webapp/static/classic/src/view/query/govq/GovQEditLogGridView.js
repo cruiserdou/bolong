@@ -14,7 +14,7 @@ Ext.define('app.view.query.govq.GovQEditLogGridView', {
     ],
     controller: 'govqcontroller',
     store: {
-        type: 'corpgovchangelist'
+        type: 'corpgovchangestore'
     },
 
     selModel: {

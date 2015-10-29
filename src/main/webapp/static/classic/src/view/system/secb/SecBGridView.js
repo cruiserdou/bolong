@@ -19,10 +19,12 @@ Ext.define('app.view.system.secb.SecBGridView', {
         itemclick: 'itemclick'
     },
 
+
     selModel: {
         type: 'spreadsheet',
         // Disables sorting by header click, though it will be still available via menu
         columnSelect: true,
+        checkboxSelect: true,
         pruneRemoved: false,
         extensible: 'y'
     },

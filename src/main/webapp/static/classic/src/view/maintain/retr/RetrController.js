@@ -10,8 +10,8 @@ Ext.define('app.view.maintain.retr.RetrController', {
         'app.functions.corp_fun'
     ],
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('retrdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('retrdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
     },
 
     itemdblclick: function (view, record, item, index, e) {

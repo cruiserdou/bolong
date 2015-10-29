@@ -56,28 +56,31 @@ Ext.define('app.view.system.sec.SecView', {
                 store.load();
             }
         }
-    }, {
-        xtype: 'treepanel',
-        region: 'east',
-        id: 'sectree_id',
-        margin : '1 1 0 0',
-        width: 460,
-        store: new Ext.data.TreeStore({
-            proxy: {
-                type: 'ajax',
-                actionMethods: {
-                    read: 'POST'
-                },
-                url: '/bolong/ojson'
-            },
-            sorters: [{
-                property: 'leaf',
-                direction: 'ASC'
-            }, {
-                property: 'text',
-                direction: 'ASC'
-            }]
-        }),
-        rootVisible: false
-    }]
+    }
+    //    ,
+    //    {
+    //    xtype: 'treepanel',
+    //    region: 'east',
+    //    id: 'sectree_id',
+    //    margin : '1 1 0 0',
+    //    width: 460,
+    //    store: new Ext.data.TreeStore({
+    //        proxy: {
+    //            type: 'ajax',
+    //            actionMethods: {
+    //                read: 'POST'
+    //            },
+    //            url: '/bolong/ojson'
+    //        },
+    //        sorters: [{
+    //            property: 'leaf',
+    //            direction: 'ASC'
+    //        }, {
+    //            property: 'text',
+    //            direction: 'ASC'
+    //        }]
+    //    }),
+    //    rootVisible: false
+    //}
+    ]
 });

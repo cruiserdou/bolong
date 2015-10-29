@@ -56,8 +56,9 @@ function delete_refi_rop(id) {
                         },
                         waitMsg: '正在删除数据...',
                         success: function () {
-                            Ext.getCmp('refiropfgridview_id').getStore().load();
+                            //Ext.getCmp('refiropfgridview_id').getStore().load();
                             Ext.Msg.alert("成功", "数据删除成功!");
+                            Ext.getCmp('refimosfgridview_id').getStore().load();
                         },
                         failure: function () {
                             Ext.Msg.alert("失败", "数据删除失败!");

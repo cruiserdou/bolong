@@ -9,8 +9,8 @@ Ext.define('app.view.maintain.govmt.GovMtController', {
         'app.xtemplate.corp_contact'
     ],
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('govmtdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('govmtdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
     },
 
     refresh: function () {

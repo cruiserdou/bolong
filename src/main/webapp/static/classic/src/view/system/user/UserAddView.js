@@ -63,8 +63,8 @@ Ext.define('app.view.system.user.UserAddView', {
                     {
                         layout: "column",
                         fieldLabel: '性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp别',
-                        labelAlign: 'right',
-                        xtype: 'radiogroup', anchor: '220%', columns: 20, items: [
+                        labelAlign: 'left',
+                        xtype: 'radiogroup',  columns: 120, items: [
                         {boxLabel: "男", name: 'sex', inputValue: '男',checked: true},
                         {boxLabel: "女", name: 'sex', inputValue: '女'}
                     ]

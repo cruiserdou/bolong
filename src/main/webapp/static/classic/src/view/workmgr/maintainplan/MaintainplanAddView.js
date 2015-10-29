@@ -30,6 +30,8 @@ Ext.define('app.view.workmgr.maintainplan.MaintainplanAddView', {
             },
 
             {
+                align: "left",
+                width: 350,
                 xtype: "fieldcontainer", layout: "hbox",
                 items: [
                     {
@@ -38,7 +40,8 @@ Ext.define('app.view.workmgr.maintainplan.MaintainplanAddView', {
                         fieldLabel: '企业名称',
                         name: 'corp_name',
                         xtype: 'textfield',
-                        labelAlign: 'right',
+                        labelAlign: 'left',
+                        labelWidth: 60,
                         id: 'corp_name_id'
                     },
                     {

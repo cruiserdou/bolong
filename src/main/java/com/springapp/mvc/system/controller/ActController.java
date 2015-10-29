@@ -35,7 +35,10 @@ public class ActController {
             @RequestParam("roleid") Integer roleid,
             @RequestParam("treeid") Integer treeid
     )throws Exception{
+        System.out.println(roleid);
+        System.out.println(treeid);
         actService.delete(roleid,treeid);
+        System.out.println(treeid+treeid);
         return "success";
     }
 }

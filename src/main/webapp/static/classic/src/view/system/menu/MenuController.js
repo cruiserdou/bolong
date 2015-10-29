@@ -55,12 +55,20 @@ Ext.define('app.view.system.menu.MenuController', {
                     name: 'text',
                     fieldLabel: '菜单标题',
                     allowBlank: false
-                }, {
-                    xtype: 'textfield',
+                },   {
+                    allowBlank: false,
+                    xtype: 'combo',
                     name: 'leaf',
-                    fieldLabel: '是否叶子',
-                    allowBlank: false
-                }, {
+                    fieldLabel: '菜单标题',
+                    autoRender: true,
+                    autoShow: true,
+                    store: Ext.create('Ext.data.Store', {
+                        fields: ['type'],
+                        data: [{'type':'false'}, {'type': 'true'}]
+                    }),
+                    displayField: 'type',
+                    valueField: 'type'
+                },{
                     xtype: 'textfield',
                     name: 'parent_id',
                     fieldLabel: '菜单父ID',

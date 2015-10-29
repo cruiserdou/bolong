@@ -9,8 +9,8 @@ Ext.define('app.view.maintain.servicemt.ServiceMtController', {
         'app.xtemplate.corp_contact'
     ],
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('servicemtdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('servicemtdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
     },
 
     itemdblclick: function (view, record, item, index, e) {

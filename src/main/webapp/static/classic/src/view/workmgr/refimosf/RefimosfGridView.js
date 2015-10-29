@@ -63,8 +63,8 @@ function add_refi_rop(id) {
         title: '添加进度',
         modal: true,
         id:'add_refi_rop_windows',
-        width: 370,
-        height: 520,
+        width: 400,
+        height: 550,
         border: false,
         layout: 'fit',
         defaults: {
@@ -153,7 +153,11 @@ function add_refi_rop(id) {
                                     waitMsg: '正在保存...',
                                     success: function (form, action) {
                                         Ext.Msg.alert("成功", "保存成功!");
-                                        //Ext.getCmp('add_refi_rop_windows').close();
+                                        Ext.getCmp('refiropfgridview_id').getStore().load({
+                                            params: {
+                                                rop_mos_id: id
+                                            }
+                                        });
                                     },
                                     failure: function (form, action) {
                                         Ext.Msg.alert("失败", "保存失败!");
