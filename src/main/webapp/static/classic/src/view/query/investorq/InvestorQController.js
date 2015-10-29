@@ -15,7 +15,6 @@ Ext.define('app.view.query.investorq.InvestorQController', {
         Ext.getCmp('corpinveditloggridview_id').getStore().load({
             params: {
                 corp_id: record_.get('id')
-
             }
         });
     },
