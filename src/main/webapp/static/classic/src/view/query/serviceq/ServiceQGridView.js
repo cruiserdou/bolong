@@ -8,6 +8,7 @@ Ext.define('app.view.query.serviceq.ServiceQGridView', {
     requires: [
         'app.view.query.serviceq.ServiceQController',
         'app.store.corpall.CorpServiceAllStore',
+        'app.store.changelist.CorpServerChangeStore',
         'Ext.grid.filters.Filters'
     ],
 
@@ -16,6 +17,7 @@ Ext.define('app.view.query.serviceq.ServiceQGridView', {
         type: 'corpserviceallstore'
     },
     listeners: {
+        itemclick: 'itemclick',
         itemdblclick:'itemdblclick'
     },
 

@@ -9,8 +9,8 @@ Ext.define('app.view.query.govq.GovQController', {
         'app.xtemplate.corp_view'
     ],
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('govqdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('govqdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
 
         Ext.getCmp('corpgoveditloggridview_id').getStore().load({
             params: {

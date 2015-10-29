@@ -9,8 +9,8 @@ Ext.define('app.view.query.serviceq.ServiceQController', {
         'app.xtemplate.corp_view'
     ],
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('serviceqdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('serviceqdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
 
         Ext.getCmp('corpservereditloggridview_id').getStore().load({
             params: {

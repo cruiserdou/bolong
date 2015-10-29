@@ -54,6 +54,23 @@ public class Corp {
     private Date inputdt;
     private int inputid;
 
+
+    private  int   srv_id;
+    private  int   srv_corp_id;
+    private  int   retra_id;
+    private  int   retra_corp_id;
+    private  int   rehr_id;
+    private  int   rehr_corp_id;
+    private  int   refi_id;
+    private  int   refi_corp_id;
+    private  int   inv_id;
+    private  int   inv_corp_id;
+    private  int   gov_id;
+    private  int   gov_corp_id;
+
+
+
+
     public int getId() {
         return id;
     }
@@ -429,4 +446,101 @@ public class Corp {
     public void setInputid(int inputid) {
         this.inputid = inputid;
     }
+
+    public int getGov_corp_id() {
+        return gov_corp_id;
+    }
+
+    public void setGov_corp_id(int gov_corp_id) {
+        this.gov_corp_id = gov_corp_id;
+    }
+
+    public int getSrv_id() {
+        return srv_id;
+    }
+
+    public void setSrv_id(int srv_id) {
+        this.srv_id = srv_id;
+    }
+
+    public int getSrv_corp_id() {
+        return srv_corp_id;
+    }
+
+    public void setSrv_corp_id(int srv_corp_id) {
+        this.srv_corp_id = srv_corp_id;
+    }
+
+    public int getRetra_id() {
+        return retra_id;
+    }
+
+    public void setRetra_id(int retra_id) {
+        this.retra_id = retra_id;
+    }
+
+    public int getRetra_corp_id() {
+        return retra_corp_id;
+    }
+
+    public void setRetra_corp_id(int retra_corp_id) {
+        this.retra_corp_id = retra_corp_id;
+    }
+
+    public int getRehr_id() {
+        return rehr_id;
+    }
+
+    public void setRehr_id(int rehr_id) {
+        this.rehr_id = rehr_id;
+    }
+
+    public int getRehr_corp_id() {
+        return rehr_corp_id;
+    }
+
+    public void setRehr_corp_id(int rehr_corp_id) {
+        this.rehr_corp_id = rehr_corp_id;
+    }
+
+    public int getRefi_id() {
+        return refi_id;
+    }
+
+    public void setRefi_id(int refi_id) {
+        this.refi_id = refi_id;
+    }
+
+    public int getRefi_corp_id() {
+        return refi_corp_id;
+    }
+
+    public void setRefi_corp_id(int refi_corp_id) {
+        this.refi_corp_id = refi_corp_id;
+    }
+
+    public int getInv_id() {
+        return inv_id;
+    }
+
+    public void setInv_id(int inv_id) {
+        this.inv_id = inv_id;
+    }
+
+    public int getInv_corp_id() {
+        return inv_corp_id;
+    }
+
+    public void setInv_corp_id(int inv_corp_id) {
+        this.inv_corp_id = inv_corp_id;
+    }
+
+    public int getGov_id() {
+        return gov_id;
+    }
+
+    public void setGov_id(int gov_id) {
+        this.gov_id = gov_id;
+    }
+
 }

@@ -9,8 +9,8 @@ Ext.define('app.view.query.refi.RefiQController', {
         'app.xtemplate.corp_view'
     ],
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('refiqdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('refiqdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
 
         Ext.getCmp('corprefieditloggridview_id').getStore().load({
             params: {
@@ -18,6 +18,23 @@ Ext.define('app.view.query.refi.RefiQController', {
 
             }
         });
+    },
+
+    btnFind: function () {
+        Ext.getCmp('refiqgridview_id').getStore().load({
+            params: {
+                name: Ext.getCmp('query_refi_q_name_id').getValue(),
+                nos: Ext.getCmp('query_refi_q_nos_id').getValue(),
+                buslicno: Ext.getCmp('query_refi_q_buslicno_id').getValue(),
+                listcode: Ext.getCmp('query_refi_q_listcode_id').getValue()
+
+            }
+        });
+    },
+
+    btnReset: function (_this) {
+        _this.up('form').getForm().reset();
+        Ext.getCmp('refiqgridview_id').getStore().load();
     },
 
     itemdblclick: function (view, record, item, index, e) {

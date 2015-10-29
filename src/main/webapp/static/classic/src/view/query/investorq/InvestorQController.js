@@ -9,8 +9,8 @@ Ext.define('app.view.query.investorq.InvestorQController', {
         'app.xtemplate.corp_view'
     ],
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('investorqdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('investorqdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
 
         Ext.getCmp('corpinveditloggridview_id').getStore().load({
             params: {

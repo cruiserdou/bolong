@@ -11,8 +11,8 @@ Ext.define('app.view.query.enter.EnterInfoController', {
     ],
 
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('enterdetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('enterdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
     },
 
     itemdblclick: function (view, record, item, index, e) {
