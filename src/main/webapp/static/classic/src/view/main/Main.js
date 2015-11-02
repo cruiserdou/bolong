@@ -51,6 +51,7 @@ Ext.define('app.view.main.Main', {
         'app.view.workmgr.exportimport.ExportImportView',
 
         'app.view.system.log.LoginLog',
+        'app.view.system.user.UserView',
         'app.view.system.role.RoleView',
         'app.view.system.menu.MenuView',
         'app.view.system.sysdict.SysdictView',

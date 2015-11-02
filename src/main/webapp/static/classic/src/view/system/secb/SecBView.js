@@ -17,7 +17,7 @@ Ext.define('app.view.system.secb.SecBView', {
 
     controller: 'secbcontroller',
     viewModel: {
-        type: 'checktree'
+        type: 'checkbtree'
     },
     dockedItems: [
         {

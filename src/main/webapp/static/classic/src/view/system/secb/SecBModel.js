@@ -3,7 +3,7 @@
  */
 Ext.define('app.view.system.secb.SecBModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.checktree',
+    alias: 'viewmodel.checkbtree',
     formulas: {
         selectionText: function (get) {
             var selection = get('treelist.selection');
@@ -18,7 +18,6 @@ Ext.define('app.view.system.secb.SecBModel', {
                                 xtype: selection.getData().itype,
                                 id: itemId,
                                 title: selection.getData().text
-                                //iconCls: selection.getData().iconCls
                             }
                         );
                     }
@@ -27,12 +26,10 @@ Ext.define('app.view.system.secb.SecBModel', {
                     var itemId = selection.getData().itype + '_id';
                     var tabItem = Ext.getCmp(itemId);
                     if (!tabItem && selection.getData().itype != 'nleaf') {
-                        tabItem = Ext.getCmp('mTabpanel').add(
-                            {
+                        tabItem = Ext.getCmp('mTabpanel').add({
                                 xtype: selection.getData().itype,
                                 id: itemId,
                                 title: selection.getData().text
-                                //iconCls: selection.getData().iconCls
                             }
                         );
                     }

@@ -101,18 +101,19 @@ Ext.define('app.view.system.user.UserAddView', {
                     },
                     {
                         xtype: 'fieldset',
-                        margin: '10 10 10 10',
+                        margin: '10 10',
                         title: '图片预览',
-                        defaults: {margin: '10 0 10 20', height: 150},
+                        defaults: {margin: '10 0 10 20', height: 160, width: 160},
                         items: [
                             {
                                 xtype: 'image',
                                 id: 'staffavatar',
                                 border: 1,
-                                src: 'upload/per.png',
+                                src: '/bolong/static/resources/per.png',
                                 style: {
-                                    borderColor: 'blue',
-                                    borderStyle: 'solid'
+                                    display: 'block',
+                                    margin: '0 auto',
+                                    width: '100%'
                                 }
                             }
                         ]
