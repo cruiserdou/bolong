@@ -43,7 +43,6 @@ var win_enterapplyview = new Ext.Window({
     title: '新增企业',
     closeAction: 'close',
     border: false,
-    maximizable: true,
     maximized: true,
     layout: 'fit',
     items: [
@@ -87,7 +86,7 @@ function save_cust_add() {
     } else {
         Ext.Ajax.request({
             method: "POST",
-            url: 'checked_corp_id_info',
+            url: '/bolong/checked_corp_id_info_me',
             success: function (response, opts) {
                 var obj = Ext.decode(response.responseText);
 

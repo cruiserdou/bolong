@@ -4,11 +4,9 @@
 Ext.define('app.view.maintain.entermt.innerenter.InnerEnterGridView', {
     extend: 'Ext.grid.Panel',
     xtype: 'innerentergridview',
-    bodyStyle: 'margin: 0 2px',
     columnLines: true,
     requires: [
         'app.store.corpall.CorpAllStore',
-        //'app.view.enter.EnterInfoController',
         'app.view.maintain.entermt.innerenter.InnerEnterController',
         'Ext.grid.filters.Filters',
 
@@ -19,7 +17,6 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterGridView', {
     ],
     controller: 'innerentercontroller',
     listeners: {
-        //itemclick: 'itemclick',
         itemdblclick:'itemdblclick'
     },
 

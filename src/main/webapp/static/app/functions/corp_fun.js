@@ -692,7 +692,7 @@ function obt_corp_add(corp_id) {
             legrep : document.getElementById('legrep').value,
             province : document.getElementById('province').value,
             city : document.getElementById('city').value,
-            county : document.getElementById('county').value,
+            county : document.getElementById('country').value,
             nos : document.getElementById('nos').value,
             postal : document.getElementById('postal').value,
             nature : document.getElementById('nature').value,

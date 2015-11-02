@@ -16,14 +16,29 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterView', {
     closable: true,
     modal: true,
     layout: 'border',
+    dockedItems: [
+        {
+            xtype: 'toolbar',
+            dock: 'top',
+            border: false,
+            items: [{
+                text: '删除',
+                handler: 'delete'
+            }, {
+                text: '刷新',
+                handler: 'btnClick'
+            }]
+        }
+    ],
     items: [{
         xtype: 'innerenterqueryview',
         id: 'innerenterqueryview_id',
+        margin: '1 0 0 0',
         region: 'north'
     }, {
         xtype: 'innerentergridview',
         id: 'innerentergridview_id',
-        margin : '1 1 0 0',
+        margin: '1 1 0 0',
         region: 'center',
         listeners: {
             afterrender: function (_this) {

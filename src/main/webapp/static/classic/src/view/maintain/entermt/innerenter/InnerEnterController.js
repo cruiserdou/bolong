@@ -8,20 +8,9 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
     requires: [
         'app.xtemplate.corp_edit'
     ],
-    //itemclick: function (this_, record_) {
-    //    var vPanel = Ext.getCmp('enterdetailview_id');
-    //    vPanel.tpl.overwrite(vPanel.body, record_.data);
-    //
-    //    Ext.getCmp('entereditloggridview_id').getStore().load({
-    //        params: {
-    //            corp_id: record_.get('id')
-    //        }
-    //    });
-    //},
-    itemdblclick: function (view, record, item, index, e) {
-
+    itemdblclick: function (view, record) {
         //呈现组件
-        var mypanel = new Ext.form.FormPanel({
+        var mypanel = Ext.create('Ext.panel.Panel', {
             id: "mypanel",
             width: 820,
             frame: false,
@@ -29,8 +18,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             border: false,
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
-                afterrender: function (_this){
-                    corp_edit_con_tpl.append('corp_edit',record.data); 
+                afterrender: function (_this) {
+                    corp_edit_con_tpl.append('corp_edit', record.data);
                 }
             },
             autoScroll: true,
@@ -51,10 +40,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                     xtype: 'panel',
                     border: false,
                     id: 'corp_edit_corp_panel',
-                    html:
-                    '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">'+
-
-                    '<ul>'+
+                    html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
+                    '<ul>' +
                     '<li><a href="#table_corp_base" style="font-size:18px;">基本信息</a></li>' +
                     '<li><a href="#table_corp_sh"  style="font-size:18px;">股东名册</a></li>' +
                     '<li><a href="#table_corp_link"  style="font-size:18px;">法定代表人</a></li>' +
@@ -68,7 +55,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                     '<li><a href="#table_corp_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
                     '<li><a href="#table_corp_demand_px"  style="font-size:18px;">培训需求</a></li>' +
                     '<li><a href="#table_corp_demand_rl"  style="font-size:18px;">人力资源需求</a></li>' +
-                    '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="win_close_edit()">关闭</a></li>' +
+                    '<li><a href="#" style="text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);  onclick="save_corp_edit({id},{cont_id},{finid},{mai_id},{gov_id},{inv_id},{srv_id},{refi_id},{rehr_id},{retra_id})">保存</a>'+
+                    '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 6px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="win_close_edit()">关闭</a></li>' +
 
                     '</ul>' +
                     '</div>'
@@ -84,7 +72,6 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             modal: true,
             title: '企业信息',
             maximized: true,
-            maximizable: true,
             items: [mypanel]
         });
         editWindow.show(Ext.get('body'));
@@ -92,7 +79,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
 
 
     btnClick: function () {
-        Ext.getCmp('innerenterqueryview_id').getStore().load();
+        Ext.getCmp('innerentergridview_id').getStore().load();
     },
 
     btnSearch: function (_this) {
@@ -105,11 +92,10 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                     margin: '1 0 0 0'
                 }
             );
-        }else{
+        } else {
             _this.up().up().remove(Ext.getCmp('innerenterqueryview_id'));
         }
     },
-
 
 
     btnFind: function () {
@@ -129,92 +115,71 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
         Ext.getCmp('innerentergridview_id').getStore().load();
     },
 
-    onToggleConfig: function (menuitem) {
-        var treelist = this.lookupReference('treelist');
+    delete: function () {
+        Ext.Msg.confirm('信息', '确定要删除所选信息吗？', function (btn) {
+            if (btn == 'yes') {
+                var sm = Ext.getCmp('innerentergridview_id').getSelectionModel();
+                var rows = sm.getSelection();
 
-        treelist.setConfig(menuitem.config, menuitem.checked);
-    },
-
-    onToggleMicro: function (button, pressed) {
-        var treelist = this.lookupReference('treelist'),
-            navBtn = this.lookupReference('navBtn'),
-            ct = treelist.ownerCt;
-
-        treelist.setMicro(pressed);
-
-        if (pressed) {
-            navBtn.setPressed(true);
-            navBtn.disable();
-            this.oldWidth = ct.width;
-            ct.setWidth(44);
-        } else {
-            ct.setWidth(this.oldWidth);
-            navBtn.enable();
-        }
-
-        // IE8 has an odd bug with handling font icons in pseudo elements;
-        // it will render the icon once and not update it when something
-        // like text color is changed via style addition or removal.
-        // We have to force icon repaint by adding a style with forced empty
-        // pseudo element content, (x-sync-repaint) and removing it back to work
-        // around this issue.
-        // See this: https://github.com/FortAwesome/Font-Awesome/issues/954
-        // and this: https://github.com/twbs/bootstrap/issues/13863
-        if (Ext.isIE8) {
-            this.repaintList(treelist, pressed);
-        }
-    },
-
-    onToggleNav: function (button, pressed) {
-        var treelist = this.lookupReference('treelist'),
-            ct = this.lookupReference('treelistContainer');
-
-        treelist.setExpanderFirst(!pressed);
-        treelist.setUi(pressed ? 'nav' : null);
-        treelist.setHighlightPath(pressed);
-        ct[pressed ? 'addCls' : 'removeCls']('treelist-with-nav');
-
-        if (Ext.isIE8) {
-            this.repaintList(treelist);
-        }
+                if (rows.length > 0) {
+                    for (var i = 0; i < rows.length; i++) {
+                        var row = rows[i];
+                        var id = row.get('id');
+                        Ext.Ajax.request({
+                            url: '/bolong/deletecorp',
+                            params: {
+                                "id": id
+                            },
+                            waitMsg: '正在删除数据...',
+                            success: function () {
+                                Ext.getCmp('innerentergridview_id').getStore().load();
+                                Ext.Msg.alert("成功", "数据删除成功!");
+                            },
+                            failure: function () {
+                                Ext.Msg.alert("失败", "数据删除失败!");
+                            }
+                        });
+                    }
+                } else {
+                    Ext.Msg.alert('提示', '请选择要删除的记录');
+                }
+            }
+        });
     }
 });
-
 
 function win_close_edit() {
     Ext.getCmp('enterprise_edit_id').close();
 }
 
-
-
-function save_corp_edit(id,finid,mai_id,gov_id,inv_id,srv_id,refi_id,rehr_id,retra_id){
+function save_corp_edit(id, finid, mai_id, gov_id, inv_id, srv_id, refi_id, rehr_id, retra_id) {
     var form_obt_edit = document.getElementById("apply_corp_form_edit");
 
     if (form_obt_edit['buslicno'].value == "") {
         Ext.Msg.alert("提示", "<span style='color: red;'>营业执照号码不能为空！</span>")
         return;
     }
-    if (form_obt_edit['name'].value  == "") {
+    if (form_obt_edit['name'].value == "") {
         Ext.Msg.alert("提示", "<span style='color: red;'>企业名称不能为空！</span>")
         return;
     }
-    if (form_obt_edit['unit'].value   == "") {
+    if (form_obt_edit['unit'].value == "") {
         Ext.Msg.alert("提示", "<span style='color: red;'>单位类别不能为空！</span>")
         return;
     }
-    if (form_obt_edit['legrep'].value  == "") {
+    if (form_obt_edit['legrep'].value == "") {
         Ext.Msg.alert("提示", "<span style='color: red;'>法定代表人不能为空！</span>")
         return;
     }
-    if (form_obt_edit['nature'].value  == "") {
+    if (form_obt_edit['nature'].value == "") {
         Ext.Msg.alert("提示", "<span style='color: red;'>企业性质不能为空！</span>")
         return;
     }
-    if (form_obt_edit['regcap'].value   == "") {
+    if (form_obt_edit['regcap'].value == "") {
         Ext.Msg.alert("提示", "<span style='color: red;'>注册资本不能为空！</span>")
         return;
     }
-    if (form_obt_edit['regdt'].value  == "") {
+    if (form_obt_edit['regdt'].value == "") {
         Ext.Msg.alert("提示", "<span style='color: red;'>注册日期不能为空！</span>")
         return;
     }
@@ -236,8 +201,7 @@ function save_corp_edit(id,finid,mai_id,gov_id,inv_id,srv_id,refi_id,rehr_id,ret
 }
 
 
-function buslicnoCheck(num)
-{
+function buslicnoCheck(num) {
     var no_regexp = /\d{6}[123]\d{7}[1-9]/;
     return no_regexp.exec(num) != null;
 }
@@ -248,16 +212,14 @@ function buslicno_check_edit(id) {
         Ext.Msg.alert("提示", "<span style='color: red;'>营业执照号码不能为空！</span>");
         return;
     }
-    if(document.getElementById('apply_corp_form_edit')['buslicno'].value.length!=15)
-    {
+    if (document.getElementById('apply_corp_form_edit')['buslicno'].value.length != 15) {
         Ext.Msg.alert("提示", "<span style='color: red;'>营业执照号码格式不对！请重新输入！</span>");
-        document.getElementById('apply_corp_form_edit')['buslicno'].value="";
+        document.getElementById('apply_corp_form_edit')['buslicno'].value = "";
         return;
     }
-    if (!buslicnoCheck(document.getElementById('apply_corp_form_edit')['buslicno'].value))
-    {
+    if (!buslicnoCheck(document.getElementById('apply_corp_form_edit')['buslicno'].value)) {
         Ext.Msg.alert("提示", "<span style='color: red;'>营业执照号码格式不对！请重新输入！</span>");
-        document.getElementById('apply_corp_form_edit')['buslicno'].value="";
+        document.getElementById('apply_corp_form_edit')['buslicno'].value = "";
         return;
     }
 
@@ -266,19 +228,18 @@ function buslicno_check_edit(id) {
         method: "POST",
         params: {
             buslicno: form_obt_edit['buslicno'].value,
-            id : id
+            id: id
         },
         url: '/bolong/check_buslicno_info',
-        success: function (response,opts) {
-            var obj=Ext.decode(response.responseText);
+        success: function (response, opts) {
+            var obj = Ext.decode(response.responseText);
 
-            if(!obj.success)
-            {
+            if (!obj.success) {
                 Ext.Msg.alert("提示", "该营业执照号码已用！");
-                document.getElementById('apply_corp_form_edit')['buslicno'].value="";
+                document.getElementById('apply_corp_form_edit')['buslicno'].value = "";
             }
         },
-        failure: function (response,opts) {
+        failure: function (response, opts) {
             Ext.Msg.alert("提示", "错");
         }
     });

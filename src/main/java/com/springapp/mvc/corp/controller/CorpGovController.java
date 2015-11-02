@@ -22,7 +22,7 @@ public class CorpGovController {
     DataShop listCorp(
             @RequestParam(value = "name", required = false, defaultValue = "") String name,
             @RequestParam(value = "nos", required = false, defaultValue = "") String nos,
-            @RequestParam(value = "search_val", required = false, defaultValue = "no") String search_val,
+            @RequestParam(value = "search_val", required = false, defaultValue = "n o") String search_val,
             @RequestParam(value = "buslicno", required = false, defaultValue = "") String buslicno,
             @RequestParam(value = "listcode", required = false, defaultValue = "") String listcode
     ) throws Exception {

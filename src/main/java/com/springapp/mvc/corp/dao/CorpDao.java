@@ -22,7 +22,7 @@ public interface CorpDao {
             @Param(value = "listcode") String listcode,
             @Param(value = "start") String start,
             @Param(value = "limit") String limit,
-            @Param(value = "search_val")String search_val
+            @Param(value = "search_val") String search_val
     );
 
     @SelectProvider(type = CorpDaoEmberSql.class, method = "countCorp")
@@ -91,7 +91,7 @@ public interface CorpDao {
             @Param(value = "nos") String nos,
             @Param(value = "buslicno") String buslicno,
             @Param(value = "listcode") String listcode,
-            @Param(value = "search_val")String search_val
+            @Param(value = "search_val") String search_val
     );
 
     class CorpGovDaoEmberSql {
@@ -109,7 +109,7 @@ public interface CorpDao {
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
             where += " ;";
-            return  "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
+            return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
@@ -132,7 +132,7 @@ public interface CorpDao {
             @Param(value = "nos") String nos,
             @Param(value = "buslicno") String buslicno,
             @Param(value = "listcode") String listcode,
-            @Param(value = "search_val")String search_val
+            @Param(value = "search_val") String search_val
     );
 
     class CorpInvDaoEmberSql {
@@ -150,7 +150,7 @@ public interface CorpDao {
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
             where += " ;";
-            return  "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
+            return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
@@ -188,7 +188,7 @@ public interface CorpDao {
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
             where += " ;";
-            return  "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
+            return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
@@ -229,7 +229,7 @@ public interface CorpDao {
             where += " ;";
 
 
-            return   "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
+            return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
@@ -268,7 +268,7 @@ public interface CorpDao {
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
             where += " ;";
-            return  "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
+            return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
@@ -306,7 +306,7 @@ public interface CorpDao {
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
             where += " ;";
-            return  "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
+            return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
@@ -349,7 +349,4 @@ public interface CorpDao {
 
             " COMMIT;")
     void delete(@Param(value = "id") Integer id);
-
-
-
 }

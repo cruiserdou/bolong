@@ -1,4 +1,42 @@
 Ext.define('app.xtemplate.corp_apply', {});
+function addRow_edit(){
+    var oTable = document.getElementById("table_corp_sh");
+    var tBodies = oTable.tBodies;
+    var tbody = tBodies[0];
+    var tr = tbody.insertRow(tbody.rows.length);
+    var td_1 = tr.insertCell(0);
+    td_1.innerHTML = "";
+    var td_2 = tr.insertCell(1);
+    td_2.innerHTML = "";
+    var td_3 = tr.insertCell(2);
+    td_3.innerHTML = "";
+    var td_4 = tr.insertCell(3);
+    td_4.innerHTML = "";
+    var td_5 = tr.insertCell(4);
+    td_5.innerHTML = "";
+    var td_6 = tr.insertCell(5);
+    td_6.innerHTML = "";
+    var td_7 = tr.insertCell(6);
+    td_7.innerHTML = "";
+    var td_8 = tr.insertCell(7);
+    td_8.innerHTML = "";
+    var td_9 = tr.insertCell(8);
+    td_9.innerHTML = "";
+    var td_10 = tr.insertCell(9);
+    td_10.innerHTML = "";
+    var td_11 = tr.insertCell(10);
+    td_11.innerHTML = "";
+    var td_12 = tr.insertCell(11);
+    td_12.innerHTML = "";
+    var td_13 = tr.insertCell(12);
+    td_13.innerHTML = "";
+    var td_14 = tr.insertCell(13);
+    td_14.innerHTML = "";
+    var td_15 = tr.insertCell(14);
+    td_15.innerHTML = "";
+    var td_16 = tr.insertCell(15);
+    td_16.innerHTML = "<input type='button' onClick='delRow_edit();' style='font-size:16px;' value='-'/>";
+}
 var corp_apply_con_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<h2>企业信息</h2>',
@@ -1011,7 +1049,6 @@ var corp_apply_con_tpl = new Ext.XTemplate(
     '</tr>' +
     '</table>',
 
-    '<a href="#"  style="font-size:18px;text-decoration: none;text-align: center;color: #ffffff;  margin: 1em auto;width: 8em;border-radius: 5px;  padding: 0.5em 0;background-color: #38AD5A; border: 1px solid #38AD5A;display: block;  "  onclick="save_cust_add()">保存</a>' +
     '</div>',
     '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">',
     '<ul>',
@@ -1030,12 +1067,10 @@ var corp_apply_con_tpl = new Ext.XTemplate(
     '<li><a href="#table_apply_demand_rz"  style="font-size:18px;">融资需求</a></li>',
     '<li><a href="#table_apply_demand_px"  style="font-size:18px;">培训需求</a></li>',
     '<li><a href="#table_apply_demand_rl"  style="font-size:18px;">人力资源需求</a></li>',
+    '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);"  onclick="save_cust_add()">保 存</a></li>',
+    //'<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="win_close_ch()">关闭</a></li>' +
     '</ul>',
     '</div>',
     '</form>',
     '</div>'
 );
-
-
-
-
