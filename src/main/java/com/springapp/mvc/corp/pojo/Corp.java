@@ -7,115 +7,82 @@ import java.sql.Date;
  */
 public class Corp {
     private int id;
-    private String buslicno;
-    private String name;
-    private String unit;
-    private String legrep;
-    private String province;
-    private String city;
-    private String county;
-    private String nos;
-    private String postal;
-    private String nature;
-    private String regcap;
-    private Date bustermfdt;
-    private Date bustremtdt;
-    private Date regdt;
-    private String list_area;
-    private String listcode;
-    private String listprice;
-    private Date listdt;
-    private String channels;
-    private String webchat;
-    private String staffnum;
-    private String regist_organ;
-    private String regaddr;
-    private String offaddr;
-    private String scope;
-    private String mbus;
-    private String eprofile;
-    private String phoinf;
-    private String remark;
-    private String indclass1;
-    private String indclass2;
-    private String indclass3;
-    private String indclass4;
-    private String csrc_type1;
-    private String csrc_type2;
-    private String csrc_type3;
-    private String csrc_type4;
-    private boolean type_enterp;
-    private boolean type_server;
-    private boolean type_investors;
-    private boolean type_govermt;
-    private boolean demand_rz;
-    private boolean demand_px;
-    private boolean demand_rl;
-    private Date inputdt;
-    private int inputid;
+    private String buslicno;    //营业执照编号
+    private String name;    //企业名称
+    private String unit;    //单位类别
+    private String legrep;  //法定代表人
+    private String province;    //省
+    private String city;    //市
+    private String county;  //县
+    private String nos; //公司简称
+    private String postal;  //邮政编码
+    private String nature;  //企业性质
+    private String regcap;  //注册资本
+    private Date bustermfdt;    //营业期限自
+    private Date bustremtdt;    //营业期限至
+    private Date regdt;     //注册日期
+    private String list_area;   //挂牌区域
+    private String listcode;    //挂牌代码
+    private String listprice;   //挂牌出资
+    private Date listdt;    //挂牌日期
+    private String channels;    //推荐单位
+    private String webchat;     //微信号
+    private String staffnum;    //员工人数
+    private String regist_organ;    //登记机关
+    private String regaddr;     //注册地址
+    private String offaddr;     //办公地点
+    private String scope;   //经营范围
+    private String mbus;    //主营业务
+    private String eprofile;    //企业简介
+    private String phoinf;  //企业照片资料
+    private String remark;  //备注
+    private String indclass1;   //行业一级分类
+    private String indclass2;   //行业二级分类
+    private String indclass3;   //行业三级分类
+    private String indclass4;   //行业四级分类
+    private String csrc_type1;  //证监会行业分类1
+    private String csrc_type2;  //证监会行业分类2
+    private String csrc_type3;  //证监会行业分类3
+    private String csrc_type4;  //证监会行业分类4
+    private boolean type_enterp;    //一般企业
+    private boolean type_server;    //服务机构
+    private boolean type_investors; //投资人
+    private boolean type_govermt;   //政府机构
+    private boolean demand_rz;  //融资需求
+    private boolean demand_px;  //培训需求
+    private boolean demand_rl;  //人力需求
+    private Date inputdt;   //录入时间
+    private int inputid;    //录入人
 
-    private int   cont_id;
-    private int   cont_corp_id;
-    private  int   srv_id;
-    private  int   srv_corp_id;
-    private  int   retra_id;
-    private  int   retra_corp_id;
-    private  int   rehr_id;
-    private  int   rehr_corp_id;
-    private  int   refi_id;
-    private  int   refi_corp_id;
+    private int   cont_id;  //法人编号
+    private int   cont_corp_id; //企业编号
+    private String   cont_name; //法人姓名
+    private String   cont_psotion;  //法人职务
+    private String   cont_edoctype; //法人证件类型
+    private String   cont_edocnum;  //法人证件号码
+    private String   cont_ephone;   //法人手机号码
+    private String   cont_efax; //法人传真号码
+    private String   cont_eemail;   //法人邮箱
+    private String   cont_eqq;  //法人QQ
+    private String   cont_webchat;  //法人个人微信号
+    private String   cont_tel;  //联系人固话
+    private String   cont_bz;   //备注
+
+    private  int   srv_id;  //服务机构编号
+    private  int   srv_corp_id; //企业编号
+    private String    srv_name; //服务机构名称
+    private String    srv_type; //服务机构类别
+    private String    srv_content;  //业务内容
+    private String    srv_levels;   //级别
+    private String    srv_domain;   //专属领域
+    private String    srv_penalty;  //惩罚记录
+    private String    srv_examiner; //专申委员
+    private String    srv_post; //兼任职务
+    private String    srv_descs;    //简介
+    private String    srv_remark;   //备注
+
     private  int   inv_id;
     private  int   inv_corp_id;
-    private  int   gov_id;
-    private  int   gov_corp_id;
-
-    private String    srv_name;
-    private String    srv_type;
-    private String    srv_content;
-    private String    srv_levels;
-    private String    srv_domain;
-    private String    srv_penalty;
-    private String    srv_examiner;
-    private String    srv_post;
-    private String    srv_descs;
-    private String    srv_remark;
-
-    private String  retra_mode;
-    private String  retra_content;
-    private Double retra_acc_cost;
-    private Date   retra_dt;
-    private String  retra_requests;
-
-    private String  rehr_post;
-    private String  rehr_num;
-    private Double   rehr_salary;
-    private String  rehr_sex_req;
-    private String  rehr_age_req;
-    private String  rehr_requests;
-
-    private String  refi_amounts;
-    private String  refi_use;
-    private String  refi_financ;
-    private String  refi_security;
-    private String  refi_acc_cost;
-    private Date  refi_deadline;
-    private String  refi_desc;
-
-    private String  gov_domain;
-    private String  gov_office;
-    private String  gov_desc;
-    private String  gov_contact;
-    private String  gov_psotion;
-    private String  gov_doctype;
-    private String  gov_docnum;
-    private String  gov_phone;
-    private String  gov_fax;
-    private String  gov_email;
-    private String  gov_qq;
-    private String  gov_webchat;
-    private String  gov_tel;
-    private String  gov_remark;
-
     private String   inv_domain;
     private String   inv_csrc_type1;
     private String   inv_csrc_type2;
@@ -137,17 +104,50 @@ public class Corp {
     private String   inv_tel;
     private String   inv_remark;
 
-    private String   cont_name;
-    private String   cont_psotion;
-    private String   cont_edoctype;
-    private String   cont_edocnum;
-    private String   cont_ephone;
-    private String   cont_efax;
-    private String   cont_eemail;
-    private String   cont_eqq;
-    private String   cont_webchat;
-    private String   cont_tel;
-    private String   cont_bz;
+
+    private  int   gov_id;
+    private  int   gov_corp_id;
+    private String  gov_domain;
+    private String  gov_office;
+    private String  gov_desc;
+    private String  gov_contact;
+    private String  gov_psotion;
+    private String  gov_doctype;
+    private String  gov_docnum;
+    private String  gov_phone;
+    private String  gov_fax;
+    private String  gov_email;
+    private String  gov_qq;
+    private String  gov_webchat;
+    private String  gov_tel;
+    private String  gov_remark;
+
+    private  int   retra_id;    //培训需求ID
+    private  int   retra_corp_id;   //企业ID
+    private String  retra_mode; //培训方式
+    private String  retra_content;  //培训内容
+    private Double retra_acc_cost;  //可接受成本
+    private Date   retra_dt;    //有效时间
+    private String  retra_requests; //详细要求
+
+    private  int   rehr_id; //人力资源需求ID
+    private  int   rehr_corp_id;    //企业ID
+    private String  rehr_post;  //需求职位
+    private String  rehr_num;   //职位人数
+    private Double   rehr_salary;   //职位薪金
+    private String  rehr_sex_req;   //性别要求
+    private String  rehr_age_req;   //年龄要求
+    private String  rehr_requests;  //经验要求
+
+    private  int   refi_id; //融资需求ID
+    private  int   refi_corp_id;    //企业ID
+    private String  refi_amounts;   //融资金额
+    private String  refi_use;   //融资用途
+    private String  refi_financ;    //股份融资/债券融资
+    private String  refi_security;  //偿付保障
+    private String  refi_acc_cost;  //可接受成本
+    private Date  refi_deadline;    //融资期限
+    private String  refi_desc;  //融资用途详细说明
 
     private int   mai_changer_id;
     private String   mai_changer_dept;

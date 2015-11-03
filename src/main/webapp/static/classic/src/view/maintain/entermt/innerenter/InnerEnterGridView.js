@@ -365,5 +365,3 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterGridView', {
         this.callParent();
     }
 });
-
-

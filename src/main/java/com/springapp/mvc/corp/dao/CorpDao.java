@@ -55,7 +55,6 @@ public interface CorpDao {
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
                     "     inner join work.tb_corp_finance corp_finance on corp.id=corp_finance.fin_corp_id " +
                     "     left outer join work.tb_corp_maintain corp_maintain on corp.id=corp_maintain.mai_corp_id " +
-//                    "      left outer join work.tb_corp_shareholder corp_shareholder on corp.id=corp_shareholder.gd_corp_id " +
                     "     left join work.tb_corp_government corp_government on corp.id=corp_government.gov_corp_id " +
                     "     left join work.tb_corp_service corp_service on corp.id=corp_service.srv_corp_id " +
                     "     left join work.tb_corp_investors corp_investors on corp.id=corp_investors.inv_corp_id " +

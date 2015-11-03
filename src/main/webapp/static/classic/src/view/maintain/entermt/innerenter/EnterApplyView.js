@@ -166,116 +166,101 @@ function corp_img_upload(id) {
         frame: true,
         border: false,
         layout: 'border',
-        dockedItems: [
-            {
-                xtype: 'toolbar',
-                dock: 'top',
-                border: true,
-                items: [
-                    {
-                        text: '上传',
-                        id: 'corp_update_img_id',
-                        listeners: {
-                            click: function () {
-                                //Ext.Msg.alert("提示", "请填写营业执照号码！");
-
-                                Ext.create('widget.window', {
-                                    title: '资料上传',
-                                    width: 280,
-                                    height: 160,
-                                    modal: true,
-                                    border: false,
-                                    layout: 'fit',
-                                    items: [
-                                        {
-                                            xtype: 'form',
-                                            frame: true,
-                                            bodyPadding: 16,
-                                            defaults: {
-                                                labelWidth: 50
-                                            },
-                                            items: [
-                                                {
-                                                    xtype: 'filefield',
-                                                    allowBlank: false,
-                                                    fieldLabel: '文件',
-                                                    name: 'file',
-                                                    id: 'file',
-                                                    anchor: '100%',
-                                                    buttonText: '浏览...',
-                                                    buttonConfig: {
-                                                        iconCls: 'upload'
-                                                    },
-                                                    listeners: {
-                                                        change: function (btn, value) {
-                                                            //是否是规定的图片类型
-                                                            var img_reg = /\.([jJ][pP][gG])$|\.([jJ][pP][eE][gG])$|\.([gG][iI][fF])小贝$|\.([pP][nN][gG])$|\.([bB][mM][pP])$/;
-                                                            if (img_reg.test(value)) {
-                                                                var img = Ext.getCmp('file');
-                                                                var file = btn.fileInputEl.dom.files[0];
-                                                                var url = URL.createObjectURL(file);
-                                                                img.setSrc(url);
-                                                            } else {
-                                                                Ext.Msg.alert('提示', '请选择图片类型的文件！');
-                                                                Ext.getCmp('file').reset();
-                                                                return;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            ],
-                                            buttonAlign: "center",
-                                            buttons: [
-                                                {
-                                                    text: '保存',
-                                                    handler: function () {
-                                                        var form = this.up('form').getForm();
-                                                        if (form.isValid()) {
-                                                            form.submit({
-                                                                url: 'add_corp_img_info',
-                                                                params: {
-                                                                    img_corp_id: id
-                                                                },
-                                                                waitMsg: '正在保存数据...',
-                                                                success: function (response, action) {
-                                                                    Ext.Msg.alert("成功", "文件上传成功!");
-                                                                    Ext.getCmp('grid_corp_img').getStore().reload();
-                                                                },
-                                                                failure: function (form, action) {
-                                                                    Ext.Msg.alert("提示", "文件格式不正确，只能上传jpg,png格式的文件！");
-                                                                }
-                                                            });
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }).show(Ext.get(corp_update_img_id));
-
-
-                            }
-                        }
-                    }
-                ]
-            }
-        ],
-        items: [
-            {
-                xtype: 'corp_img_gridf',
-                region: 'center',
+        dockedItems: [{
+            xtype: 'toolbar',
+            dock: 'top',
+            border: true,
+            items: [{
+                text: '上传',
+                id: 'corp_update_img_id',
                 listeners: {
-                    afterrender: function () {
-                        Ext.getCmp('grid_corp_img').getStore().load();
-                        var store = Ext.getCmp('grid_corp_img').getStore();
-                        store.load({
-                            params: {
-                                img_corp_id: id
-                            }
-                        })
+                    click: function () {
+                        //Ext.Msg.alert("提示", "请填写营业执照号码！");
+                        Ext.create('widget.window', {
+                            title: '资料上传',
+                            width: 280,
+                            height: 160,
+                            modal: true,
+                            border: false,
+                            layout: 'fit',
+                            items: [{
+                                xtype: 'form',
+                                frame: true,
+                                bodyPadding: 16,
+                                defaults: {
+                                    labelWidth: 50
+                                },
+                                items: [{
+                                    xtype: 'filefield',
+                                    allowBlank: false,
+                                    fieldLabel: '文件',
+                                    name: 'file',
+                                    id: 'file',
+                                    anchor: '100%',
+                                    buttonText: '浏览...',
+                                    buttonConfig: {
+                                        iconCls: 'upload'
+                                    },
+                                    listeners: {
+                                        change: function (btn, value) {
+                                            //是否是规定的图片类型
+                                            var img_reg = /\.([jJ][pP][gG])$|\.([jJ][pP][eE][gG])$|\.([gG][iI][fF])小贝$|\.([pP][nN][gG])$|\.([bB][mM][pP])$/;
+                                            if (img_reg.test(value)) {
+                                                var img = Ext.getCmp('file');
+                                                var file = btn.fileInputEl.dom.files[0];
+                                                var url = URL.createObjectURL(file);
+                                                img.setSrc(url);
+                                            } else {
+                                                Ext.Msg.alert('提示', '请选择图片类型的文件！');
+                                                Ext.getCmp('file').reset();
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }],
+                                buttonAlign: "center",
+                                buttons: [{
+                                    text: '保存',
+                                    handler: function () {
+                                        var form = this.up('form').getForm();
+                                        if (form.isValid()) {
+                                            form.submit({
+                                                url: 'add_corp_img_info',
+                                                params: {
+                                                    img_corp_id: id
+                                                },
+                                                waitMsg: '正在保存数据...',
+                                                success: function (response, action) {
+                                                    Ext.Msg.alert("成功", "文件上传成功!");
+                                                    Ext.getCmp('grid_corp_img').getStore().reload();
+                                                },
+                                                failure: function (form, action) {
+                                                    Ext.Msg.alert("提示", "文件格式不正确，只能上传jpg,png格式的文件！");
+                                                }
+                                            });
+                                        }
+                                    }
+                                }]
+                            }]
+                        }).show();
                     }
                 }
+            }]
+        }],
+        items: [{
+            xtype: 'corp_img_gridf',
+            region: 'center',
+            listeners: {
+                afterrender: function () {
+                    Ext.getCmp('grid_corp_img').getStore().load();
+                    var store = Ext.getCmp('grid_corp_img').getStore();
+                    store.load({
+                        params: {
+                            img_corp_id: id
+                        }
+                    })
+                }
             }
-        ]
+        }]
     }).show(Ext.get('corp_find_window'));
 };

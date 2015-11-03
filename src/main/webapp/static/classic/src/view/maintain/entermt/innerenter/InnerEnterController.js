@@ -63,8 +63,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                 '<li><a href="#table_corp_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
                 '<li><a href="#table_corp_demand_px"  style="font-size:18px;">培训需求</a></li>' +
                 '<li><a href="#table_corp_demand_rl"  style="font-size:18px;">人力资源需求</a></li>' +
-                '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 6px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4); "  onclick="save_corp_edit({id},{gov_id},{inv_id},{srv_id},{refi_id},{rehr_id},{retra_id})">保存</a></li>' +
-                '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 2px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="win_close_edit()">关闭</a></li>' +
+                '<li><a href="#" class="win_save_btn" onclick="save_corp_edit({id},{gov_id},{inv_id},{srv_id},{refi_id},{rehr_id},{retra_id})">保存</a></li>' +
+                '<li><a href="#" class="win_save_btn" onclick="win_close_edit()">关闭</a></li>' +
                 '</ul>' +
                 '</div>'
             }]
