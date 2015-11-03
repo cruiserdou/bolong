@@ -22,15 +22,19 @@ public interface CorpChangeDao {
         public String listCorpChange(Map<String, Object> para) {
             Integer i_corp_id = 0;
 
-            if (0 != Integer.parseInt(para.get("nos").toString()) && null != para.get("nos").toString())
-                i_corp_id= Integer.parseInt(para.get("nos").toString());
+            if (0 != Integer.parseInt(para.get("corp_id").toString()) && null != para.get("corp_id").toString())
+                i_corp_id= Integer.parseInt(para.get("corp_id").toString());
 
-            return  "select id, changer_id,changer_dt,field,field_name,c_before,c_after from (" +
-                    "select id, changer_id,changer_dt,field,field_name,c_before,c_after from work.tb_corp_change   where corp_id=" +i_corp_id+
-                    "union all" +
-                    "select  id, changer_id,changer_dt,field,field_name,c_before,c_after  from work.tb_corp_contact_change   where cont_corp_id=" +i_corp_id+
-                    " as temp where c_before!=''    ORDER BY  ID DESC ";
+//            return  "select * from work.tb_corp_change   where corp_id =" +i_corp_id+" and c_before!=''    ORDER BY  ID DESC ";
+
+            return  " select * from (" +
+                    "  select id, changer_id,changer_dt,field,field_name,c_before,c_after from work.tb_corp_change   where corp_id=" +i_corp_id+
+                    "  union all" +
+                    "  select  id, changer_id,changer_dt,field,field_name,c_before,c_after  from work.tb_corp_contact_change   where cont_corp_id=" +i_corp_id+
+                    "  )as temp where c_before!=''    ORDER BY  ID DESC ";
 
         }
     }
 }
+
+

@@ -11,13 +11,13 @@ Ext.define('app.view.query.govq.GovQController', {
     itemclick: function (this_, record_) {
         //var vPanel = Ext.getCmp('govqdetailview_id');
         //vPanel.tpl.overwrite(vPanel.body, record_.data);
-
-        Ext.getCmp('corpgoveditloggridview_id').getStore().load({
-            params: {
-                corp_id: record_.get('id')
-
-            }
-        });
+        if (Ext.getCmp('corpgoveditloggridview_id')) {
+            Ext.getCmp('corpgoveditloggridview_id').getStore().load({
+                params: {
+                    corp_id: record_.get('id')
+                }
+            });
+        }
     },
 
     itemdblclick: function (view, record, item, index, e) {

@@ -11,12 +11,13 @@ Ext.define('app.view.query.rehr.RehrQController', {
     itemclick: function (this_, record_) {
         //var vPanel = Ext.getCmp('rehrqdetailview_id');
         //vPanel.tpl.overwrite(vPanel.body, record_.data);
-
-        Ext.getCmp('corprehreditloggridview_id').getStore().load({
-            params: {
-                corp_id: record_.get('id')
-            }
-        });
+        if (Ext.getCmp('corprehreditloggridview_id')) {
+            Ext.getCmp('corprehreditloggridview_id').getStore().load({
+                params: {
+                    corp_id: record_.get('id')
+                }
+            });
+        }
     },
 
     itemdblclick: function (view, record, item, index, e) {

@@ -17,6 +17,7 @@ Ext.define('app.view.query.enter.EnterInfoGridView', {
     ],
     controller: 'enterinfocontroller',
     listeners: {
+        itemclick: 'itemclick',
         itemdblclick:'itemdblclick'
     },
 

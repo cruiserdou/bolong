@@ -11,12 +11,13 @@ Ext.define('app.view.query.retr.RetrQController', {
     itemclick: function (this_, record_) {
         //var vPanel = Ext.getCmp('retrqdetailview_id');
         //vPanel.tpl.overwrite(vPanel.body, record_.data);
-
-        Ext.getCmp('corpretreditloggridview_id').getStore().load({
-            params: {
-                corp_id: record_.get('id')
-            }
-        });
+        if(Ext.getCmp('corpretreditloggridview_id')) {
+            Ext.getCmp('corpretreditloggridview_id').getStore().load({
+                params: {
+                    corp_id: record_.get('id')
+                }
+            });
+        }
     },
 
     itemdblclick: function (view, record, item, index, e) {

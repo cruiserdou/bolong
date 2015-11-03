@@ -11,12 +11,13 @@ Ext.define('app.view.query.serviceq.ServiceQController', {
     itemclick: function (this_, record_) {
         //var vPanel = Ext.getCmp('serviceqdetailview_id');
         //vPanel.tpl.overwrite(vPanel.body, record_.data);
-
-        Ext.getCmp('corpservereditloggridview_id').getStore().load({
-            params: {
-                corp_id: record_.get('id')
-            }
-        });
+        if(Ext.getCmp('corpservereditloggridview_id')){
+            Ext.getCmp('corpservereditloggridview_id').getStore().load({
+                params: {
+                    corp_id: record_.get('id')
+                }
+            });
+        }
     },
     itemdblclick: function (view, record, item, index, e) {
         var mypanel = new Ext.form.FormPanel({
