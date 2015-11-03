@@ -8,10 +8,10 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
     closable: true,
 
     requires: [
-        'app.view.main.MainModel',
         'app.view.maintain.entermt.innerenter.InnerEnterView',
         'app.view.maintain.entermt.innerenter.EnterApplyView'
     ],
+
     viewModel: 'main',
     layout: 'fit',
     bodyPadding: 160,
@@ -40,10 +40,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
             scale: 'large',
             iconAlign: 'top',
             handler: function () {
-                var window_inner = Ext.create('app.view.maintain.entermt.innerenter.InnerEnterView', {
-                    maximized: true
-                });
-                window_inner.show();
+                Ext.create('innerenterview', {maximized: true}).show();
             }
         }]
     }

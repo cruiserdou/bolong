@@ -4,6 +4,7 @@
 Ext.define('app.view.maintain.entermt.innerenter.InnerEnterView', {
     extend: 'Ext.window.Window',
     xtype: 'innerenterview',
+    alias: 'innerenterview',
     requires: [
         'app.view.maintain.entermt.innerenter.InnerEnterController',
         'app.view.maintain.entermt.innerenter.InnerEnterGridView',
@@ -15,21 +16,23 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterView', {
     constrain: true,
     closable: true,
     modal: true,
+    autoDestroy: true,
+    closeAction: 'destroy',
     layout: 'border',
-    dockedItems: [
-        {
-            xtype: 'toolbar',
-            dock: 'top',
-            border: false,
-            items: [{
-                text: '删除',
-                handler: 'delete'
-            }, {
-                text: '刷新',
-                handler: 'btnClick'
-            }]
-        }
-    ],
+
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'top',
+        border: false,
+        items: [{
+            text: '删除',
+            handler: 'delete'
+        }, {
+            text: '刷新',
+            handler: 'btnClick'
+        }]
+    }],
+
     items: [{
         xtype: 'innerenterqueryview',
         id: 'innerenterqueryview_id',
@@ -42,8 +45,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterView', {
         region: 'center',
         listeners: {
             afterrender: function (_this) {
-                var store = _this.getStore();
-                store.load();
+                _this.getStore().load();
             }
         }
     }]

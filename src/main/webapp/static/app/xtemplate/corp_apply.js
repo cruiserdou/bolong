@@ -1,5 +1,5 @@
 Ext.define('app.xtemplate.corp_apply', {});
-function addRow_edit(){
+function addRow_edit() {
     var oTable = document.getElementById("table_corp_sh");
     var tBodies = oTable.tBodies;
     var tbody = tBodies[0];
@@ -35,7 +35,7 @@ function addRow_edit(){
     var td_15 = tr.insertCell(14);
     td_15.innerHTML = "";
     var td_16 = tr.insertCell(15);
-    td_16.innerHTML = "<input type='button' onClick='delRow_edit();' style='font-size:16px;' value='-'/>";
+    td_16.innerHTML = "<input type='button' onClick='' style='font-size:16px;' value='-'/>";
 }
 var corp_apply_con_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
@@ -231,7 +231,6 @@ var corp_apply_con_tpl = new Ext.XTemplate(
     '</div>',
     '</div>',
 
-
     '<table class="enter_table" id="table_apply_link">',
     '<tr>',
     '<th class="table_header" colspan="4">法定代表人基本信息</th>',
@@ -271,7 +270,6 @@ var corp_apply_con_tpl = new Ext.XTemplate(
     '<td colspan="3"><textarea  style="background-color: white"  id="cont_bz" name="cont_bz"  type="text" value="{cont_bz}"></textarea></td>' +
     '</tr>' +
     '</table>' +
-
 
     '<table class="enter_table" id="table_apply_acount">',
     '<tr>',
@@ -333,18 +331,18 @@ var corp_apply_con_tpl = new Ext.XTemplate(
     '<th>证监会行业一级分类</th>',
     '<td>    ' +
     '<select onchange="areaZjh(this.value)" style="width: 230px" class="select" name="csrc_type1" id="csrc_type1">',
-    '<option>农、林、牧、渔业</option>' ,
-    '<option>采矿业</option>' ,
+    '<option>农、林、牧、渔业</option>',
+    '<option>采矿业</option>',
     '<option>制造业</option>',
-    '<option>电力、热力、燃气及水生产和供应业</option>' ,
-    '<option>建筑业</option>' ,
-    '<option>批发和零售业</option>'  ,
-    '<option>交通运输、仓储和邮政业</option>'  ,
-    '<option>住宿和餐饮业</option>'  ,
-    '<option>信息传输、软件和信息技术服务业</option> ' ,
-    '<option>金融业</option>'  ,
-    '<option>房地产业</option>' ,
-    '<option>租赁和商务服务业</option>' ,
+    '<option>电力、热力、燃气及水生产和供应业</option>',
+    '<option>建筑业</option>',
+    '<option>批发和零售业</option>',
+    '<option>交通运输、仓储和邮政业</option>',
+    '<option>住宿和餐饮业</option>',
+    '<option>信息传输、软件和信息技术服务业</option> ',
+    '<option>金融业</option>',
+    '<option>房地产业</option>',
+    '<option>租赁和商务服务业</option>',
     '<option>科学研究和技术服务业</option>',
     '<option>水利、环境和公共设施管理业</option>',
     '<option>居民服务、修理和其他服务业</option>',
@@ -845,18 +843,18 @@ var corp_apply_con_tpl = new Ext.XTemplate(
     '<th>证监会行业一级分类</th>',
     '<td>    ' +
     '<select onchange="inv_indclass1_select(this.value)" style="width: 230px" class="select" name="inv_indclass1" id="inv_indclass1">',
-    '<option>农、林、牧、渔业</option>' ,
-    '<option>采矿业</option>' ,
+    '<option>农、林、牧、渔业</option>',
+    '<option>采矿业</option>',
     '<option>制造业</option>',
-    '<option>电力、热力、燃气及水生产和供应业</option>' ,
-    '<option>建筑业</option>' ,
-    '<option>批发和零售业</option>'  ,
-    '<option>交通运输、仓储和邮政业</option>'  ,
-    '<option>住宿和餐饮业</option>'  ,
-    '<option>信息传输、软件和信息技术服务业</option> ' ,
-    '<option>金融业</option>'  ,
-    '<option>房地产业</option>' ,
-    '<option>租赁和商务服务业</option>' ,
+    '<option>电力、热力、燃气及水生产和供应业</option>',
+    '<option>建筑业</option>',
+    '<option>批发和零售业</option>',
+    '<option>交通运输、仓储和邮政业</option>',
+    '<option>住宿和餐饮业</option>',
+    '<option>信息传输、软件和信息技术服务业</option> ',
+    '<option>金融业</option>',
+    '<option>房地产业</option>',
+    '<option>租赁和商务服务业</option>',
     '<option>科学研究和技术服务业</option>',
     '<option>水利、环境和公共设施管理业</option>',
     '<option>居民服务、修理和其他服务业</option>',
@@ -1055,20 +1053,19 @@ var corp_apply_con_tpl = new Ext.XTemplate(
     '<br>',
     '<br>',
     '<li><a href="#table_apply_base" style="font-size:18px;">基本信息</a></li>',
-    '<li><a href="#table_apply_sh"  style="font-size:18px;">股东名册</a></li>',
-    '<li><a href="#table_apply_link"  style="font-size:18px;">法定代表人</a></li>',
-    '<li><a href="#table_apply_acount"  style="font-size:18px;">行业分类</a></li>',
-    '<li><a href="#table_apply_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>',
-    '<li><a href="#table_apply_ocompay"  style="font-size:18px;">企业维护信息</a></li>',
-    '<li><a href="#table_apply_assets_finance"  style="font-size:18px;">企业财务信息</a></li>',
-    '<li><a href="#table_apply_service"  style="font-size:18px;">服务机构</a></li>',
-    '<li><a href="#table_apply_investors"  style="font-size:18px;">投资人</a></li>',
-    '<li><a href="#table_apply_govermt"  style="font-size:18px;">政府部门</a></li>',
-    '<li><a href="#table_apply_demand_rz"  style="font-size:18px;">融资需求</a></li>',
-    '<li><a href="#table_apply_demand_px"  style="font-size:18px;">培训需求</a></li>',
-    '<li><a href="#table_apply_demand_rl"  style="font-size:18px;">人力资源需求</a></li>',
-    '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);"  onclick="save_cust_add()">保 存</a></li>',
-    //'<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="win_close_ch()">关闭</a></li>' +
+    '<li><a href="#table_apply_sh" style="font-size:18px;">股东名册</a></li>',
+    '<li><a href="#table_apply_link" style="font-size:18px;">法定代表人</a></li>',
+    '<li><a href="#table_apply_acount" style="font-size:18px;">行业分类</a></li>',
+    '<li><a href="#table_apply_csrc_type" style="font-size:18px;">证监会行业分类</a></li>',
+    '<li><a href="#table_apply_ocompay" style="font-size:18px;">企业维护信息</a></li>',
+    '<li><a href="#table_apply_assets_finance" style="font-size:18px;">企业财务信息</a></li>',
+    '<li><a href="#table_apply_service" style="font-size:18px;">服务机构</a></li>',
+    '<li><a href="#table_apply_investors" style="font-size:18px;">投资人</a></li>',
+    '<li><a href="#table_apply_govermt" style="font-size:18px;">政府部门</a></li>',
+    '<li><a href="#table_apply_demand_rz" style="font-size:18px;">融资需求</a></li>',
+    '<li><a href="#table_apply_demand_px" style="font-size:18px;">培训需求</a></li>',
+    '<li><a href="#table_apply_demand_rl" style="font-size:18px;">人力资源需求</a></li>',
+    '<li><a href="#" class="win_save_btn" onclick="save_cust_add()">保 存</a></li>',
     '</ul>',
     '</div>',
     '</form>',

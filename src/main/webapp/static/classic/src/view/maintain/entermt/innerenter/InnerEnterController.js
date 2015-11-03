@@ -9,7 +9,6 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
         'app.xtemplate.corp_edit'
     ],
     itemdblclick: function (view, record) {
-        //呈现组件
         var mypanel = Ext.create('Ext.panel.Panel', {
             id: "mypanel",
             width: 820,
@@ -18,8 +17,10 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             border: false,
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
-                afterrender: function (_this) {
+                afterrender: function () {
                     corp_edit_con_tpl.append('corp_edit', record.data);
+                    corp_shareholder_edit_tpl.append('shareholder_edit', record.data);
+                    corp_edit_other_tpl.append('corp_edit_other', record.data);
                 }
             },
             autoScroll: true,
@@ -28,43 +29,48 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                 align: 'stretch',
                 pack: 'start'
             },
-            items: [
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_edit_panel',
-                    html: '<div id="corp_edit">' +
-                    '</div>'
-                },
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_edit_corp_panel',
-                    html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
-                    '<ul>' +
-                    '<li><a href="#table_corp_base" style="font-size:18px;">基本信息</a></li>' +
-                    '<li><a href="#table_corp_sh"  style="font-size:18px;">股东名册</a></li>' +
-                    '<li><a href="#table_corp_link"  style="font-size:18px;">法定代表人</a></li>' +
-                    '<li><a href="#table_corp_acount"  style="font-size:18px;">行业分类</a></li>' +
-                    '<li><a href="#table_corp_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
-                    '<li><a href="#table_corp_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
-                    '<li><a href="#table_corp_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
-                    '<li><a href="#table_corp_service"  style="font-size:18px;">服务机构</a></li>' +
-                    '<li><a href="#table_corp_investors"  style="font-size:18px;">投资人</a></li>' +
-                    '<li><a href="#table_corp_govermt"  style="font-size:18px;">政府部门</a></li>' +
-                    '<li><a href="#table_corp_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
-                    '<li><a href="#table_corp_demand_px"  style="font-size:18px;">培训需求</a></li>' +
-                    '<li><a href="#table_corp_demand_rl"  style="font-size:18px;">人力资源需求</a></li>' +
-                    //'<li><a href="#" style="text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);  onclick="save_corp_edit({id},{gov_id},{inv_id},{srv_id},{refi_id},{rehr_id},{retra_id})">保存</a>'+
-                    '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 6px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="win_close_edit()">关闭</a></li>' +
-
-                    '</ul>' +
-                    '</div>'
-                }
-            ]
+            items: [{
+                xtype: 'panel',
+                border: false,
+                id: 'corp_edit_panel',
+                html: '<div id="corp_edit"></div>'
+            }, {
+                xtype: 'panel',
+                id: 'shareholder_panel_id',
+                border: false,
+                height: 300,
+                html: '<div id="shareholder_edit"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                html: '<div id="corp_edit_other"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                id: 'corp_edit_corp_panel',
+                html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
+                '<ul>' +
+                '<li><a href="#table_corp_base" style="font-size:18px;">基本信息</a></li>' +
+                '<li><a href="#table_corp_sh"  style="font-size:18px;">股东名册</a></li>' +
+                '<li><a href="#table_corp_link"  style="font-size:18px;">法定代表人</a></li>' +
+                '<li><a href="#table_corp_acount"  style="font-size:18px;">行业分类</a></li>' +
+                '<li><a href="#table_corp_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
+                '<li><a href="#table_corp_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
+                '<li><a href="#table_corp_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
+                '<li><a href="#table_corp_service"  style="font-size:18px;">服务机构</a></li>' +
+                '<li><a href="#table_corp_investors"  style="font-size:18px;">投资人</a></li>' +
+                '<li><a href="#table_corp_govermt"  style="font-size:18px;">政府部门</a></li>' +
+                '<li><a href="#table_corp_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
+                '<li><a href="#table_corp_demand_px"  style="font-size:18px;">培训需求</a></li>' +
+                '<li><a href="#table_corp_demand_rl"  style="font-size:18px;">人力资源需求</a></li>' +
+                '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 6px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4); "  onclick="save_corp_edit({id},{gov_id},{inv_id},{srv_id},{refi_id},{rehr_id},{retra_id})">保存</a></li>' +
+                '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 2px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="win_close_edit()">关闭</a></li>' +
+                '</ul>' +
+                '</div>'
+            }]
         });
 
-        var editWindow = new Ext.Window({
+        Ext.create('Ext.window.Window', {
             layout: 'fit',
             id: 'enterprise_edit_id',
             width: 830,
@@ -72,9 +78,10 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             modal: true,
             title: '企业信息',
             maximized: true,
+            autoDestroy: true,
+            closeAction: 'destroy',
             items: [mypanel]
-        });
-        editWindow.show(Ext.get('body'));
+        }).show();
     },
 
 
@@ -152,7 +159,7 @@ function win_close_edit() {
     Ext.getCmp('enterprise_edit_id').close();
 }
 
-function save_corp_edit(id,gov_id, inv_id, srv_id, refi_id, rehr_id, retra_id) {
+function save_corp_edit(id, gov_id, inv_id, srv_id, refi_id, rehr_id, retra_id) {
 
     var form_obt_edit = document.getElementById("apply_corp_form_edit");
 
@@ -245,4 +252,5 @@ function buslicno_check_edit(id) {
         }
     });
 }
+
 

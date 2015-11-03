@@ -87,7 +87,7 @@ function save_cust_add() {
         Ext.Ajax.request({
             method: "POST",
             url: '/bolong/checked_corp_id_info_me',
-            success: function (response, opts) {
+            success: function (response) {
                 var obj = Ext.decode(response.responseText);
 
                 if (obj.success) {
@@ -105,7 +105,7 @@ function save_cust_add() {
                 obt_corp_rehr_add(corp_id);
                 obt_corp_retrain_add(corp_id);
             },
-            failure: function (form, action) {
+            failure: function () {
                 Ext.Msg.alert("失败", "企业ID检验失败!");
             }
         });

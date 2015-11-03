@@ -1,5 +1,38 @@
 Ext.define('app.xtemplate.corp_edit', {});
-var  corp_edit_con_tpl = new Ext.XTemplate(
+var corp_shareholder_edit_tpl = new Ext.XTemplate(
+    '<div class="wrap_center">',
+    '<div style="overflow-x: auto; overflow-y: auto;  width:80%;">',
+    '<input type="button" onClick="addRow_edit();" style="font-size:16px;" value="+"/>',
+    '<div contenteditable="true">',
+    '<table class="enter_table_sh" id="table_corp_sh">',
+    '<tr>',
+    '<th class="table_header" colspan="16">股东名册  </th> ',
+    '</tr>',
+    '<tr>',
+    '<th><div contenteditable="false">股东类型</div></th>',
+    '<th><div contenteditable="false">股东</div></th>',
+    '<th><div contenteditable="false">证件类型</div></th>',
+    '<th><div contenteditable="false">证件号码</div></th>',
+    '<th><div contenteditable="false">持股数量</div></th>',
+    '<th><div contenteditable="false">流通数量</div></th>',
+    '<th><div contenteditable="false">冻结数量</div></th>',
+    '<th><div contenteditable="false">详情</div></th>',
+    '<th><div contenteditable="false">职务</div></th>',
+    '<th><div contenteditable="false">电话</div></th>',
+    '<th><div contenteditable="false">传真</div></th>',
+    '<th><div contenteditable="false">E-mail</div></th>',
+    '<th><div contenteditable="false">QQ</div></th>',
+    '<th><div contenteditable="false">个人微信号</div></th>',
+    '<th><div contenteditable="false">固定电话</div></th>',
+    '<th><div contenteditable="false">删除</div></th>',
+    '</tr>',
+    '</table>',
+    '</div>',
+    '</div>',
+    '</div>'
+);
+
+var corp_edit_con_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<form id="apply_corp_form_edit">',
     '<h2>企业信息</h2>',
@@ -129,59 +162,33 @@ var  corp_edit_con_tpl = new Ext.XTemplate(
     '<td colspan="3"><button type="button" onclick="corp_img_upload({id})">上传图片</button></td>',
     '</tr>',
     '</table>',
+    '</form>',
+    '</div>',
 
+    {
+        checktype_demand_rl: function (demand_rl) {
+            return demand_rl == true;
+        },
+        checktype_demand_px: function (demand_px) {
+            return demand_px == true;
+        },
+        checktype_demand_rz: function (demand_rz) {
+            return demand_rz == true;
+        },
+        checktype_type_server: function (type_server) {
+            return type_server == true;
+        },
+        checktype_type_investors: function (type_investors) {
+            return type_investors == true;
+        },
+        checktype_type_govermt: function (type_govermt) {
+            return type_govermt == true;
+        }
+    }
+);
 
-
-    //'<div style="overflow-x: auto; overflow-y: auto;  width:80%;">',
-    //'<input type="button" onClick="addRow_edit();" style="font-size:16px;" value="+"/>',
-    //'<div contenteditable="true">',
-    //'<table class="enter_table_sh" id="table_corp_sh">',
-    //'<tr>',
-    //'<th class="table_header" colspan="16">股东名册  </th> ',
-    //'</tr>',
-    //'<tr>',
-    //'<th><div contenteditable="false">股东类型</div></th>',
-    //'<th><div contenteditable="false">股东</div></th>',
-    //'<th><div contenteditable="false">证件类型</div></th>',
-    //'<th><div contenteditable="false">证件号码</div></th>',
-    //'<th><div contenteditable="false">持股数量</div></th>',
-    //'<th><div contenteditable="false">流通数量</div></th>',
-    //'<th><div contenteditable="false">冻结数量</div></th>',
-    //'<th><div contenteditable="false">详情</div></th>',
-    //'<th><div contenteditable="false">职务</div></th>',
-    //'<th><div contenteditable="false">电话</div></th>',
-    //'<th><div contenteditable="false">传真</div></th>',
-    //'<th><div contenteditable="false">E-mail</div></th>',
-    //'<th><div contenteditable="false">QQ</div></th>',
-    //'<th><div contenteditable="false">个人微信号</div></th>',
-    //'<th><div contenteditable="false">固定电话</div></th>',
-    //'<th><div contenteditable="false">删除</div></th>',
-    //'</tr>',
-    //'<tr>',
-    //'<td>{gd_shtype}</td>',
-    //'<td>{gd_shname}</td>',
-    //'<td>{gd_shdoctype}</td>',
-    //'<td>{gd_shdocnum}</td>',
-    //'<td>{gd_shareholdnum}</td>',
-    //'<td>{gd_currencynum}</td>',
-    //'<td>{gd_freezenum}</td>',
-    //'<td>{gd_remark}</td>',
-    //'<td>{gd_psotion}</td>',
-    //'<td>{gd_phone}</td>',
-    //'<td>{gd_fax}</td>',
-    //'<td>{gd_email}</td>',
-    //'<td>{gd_qq}</td>',
-    //'<td>{gd_webchat}</td>',
-    //'<td>{gd_tel}</td>',
-    //'<td><input type="button" onClick="delRow_edit();" style="font-size:16px;" value="-"/></td>',
-    //'</tr>',
-    //'</table>',
-    //'</div>',
-    //'</div>',
-
-
-
-
+var corp_edit_other_tpl = new Ext.XTemplate(
+    '<div class="wrap_center">',
     '<table class="enter_table" id="table_corp_link">',
     '<tr>',
     '<th class="table_header" colspan="4">法定代表人基本信息</th>',
@@ -221,8 +228,6 @@ var  corp_edit_con_tpl = new Ext.XTemplate(
     '<td colspan="3"><textarea id="cont_bz" name="cont_bz"  type="text" value="{cont_bz}">{cont_bz}</textarea></td>',
     '</tr>',
     '</table>',
-
-
 
 
     '<table class="enter_table" id="table_corp_acount">',
@@ -285,18 +290,18 @@ var  corp_edit_con_tpl = new Ext.XTemplate(
     '<th>证监会行业一级分类</th>',
     '<td>    ',
     '<select  onchange="areaZjh(this.value)"  style="width: 230px"  class="select" name="csrc_type1" id="csrc_type1">',
-    '<option>农、林、牧、渔业</option>' ,
-    '<option>采矿业</option>' ,
+    '<option>农、林、牧、渔业</option>',
+    '<option>采矿业</option>',
     '<option>制造业</option>',
-    '<option>电力、热力、燃气及水生产和供应业</option>' ,
-    '<option>建筑业</option>' ,
-    '<option>批发和零售业</option>'  ,
-    '<option>交通运输、仓储和邮政业</option>'  ,
-    '<option>住宿和餐饮业</option>'  ,
-    '<option>信息传输、软件和信息技术服务业</option> ' ,
-    '<option>金融业</option>'  ,
-    '<option>房地产业</option>' ,
-    '<option>租赁和商务服务业</option>' ,
+    '<option>电力、热力、燃气及水生产和供应业</option>',
+    '<option>建筑业</option>',
+    '<option>批发和零售业</option>',
+    '<option>交通运输、仓储和邮政业</option>',
+    '<option>住宿和餐饮业</option>',
+    '<option>信息传输、软件和信息技术服务业</option> ',
+    '<option>金融业</option>',
+    '<option>房地产业</option>',
+    '<option>租赁和商务服务业</option>',
     '<option>科学研究和技术服务业</option>',
     '<option>水利、环境和公共设施管理业</option>',
     '<option>居民服务、修理和其他服务业</option>',
@@ -796,18 +801,18 @@ var  corp_edit_con_tpl = new Ext.XTemplate(
     '<th>证监会行业一级分类</th>',
     '<td>    ',
     '<select onchange="inv_indclass1_select(this.value)"  style="width: 230px"  class="select" name="inv_indclass1" id="inv_indclass1">',
-    '<option>农、林、牧、渔业</option>' ,
-    '<option>采矿业</option>' ,
+    '<option>农、林、牧、渔业</option>',
+    '<option>采矿业</option>',
     '<option>制造业</option>',
-    '<option>电力、热力、燃气及水生产和供应业</option>' ,
-    '<option>建筑业</option>' ,
-    '<option>批发和零售业</option>'  ,
-    '<option>交通运输、仓储和邮政业</option>'  ,
-    '<option>住宿和餐饮业</option>'  ,
-    '<option>信息传输、软件和信息技术服务业</option> ' ,
-    '<option>金融业</option>'  ,
-    '<option>房地产业</option>' ,
-    '<option>租赁和商务服务业</option>' ,
+    '<option>电力、热力、燃气及水生产和供应业</option>',
+    '<option>建筑业</option>',
+    '<option>批发和零售业</option>',
+    '<option>交通运输、仓储和邮政业</option>',
+    '<option>住宿和餐饮业</option>',
+    '<option>信息传输、软件和信息技术服务业</option> ',
+    '<option>金融业</option>',
+    '<option>房地产业</option>',
+    '<option>租赁和商务服务业</option>',
     '<option>科学研究和技术服务业</option>',
     '<option>水利、环境和公共设施管理业</option>',
     '<option>居民服务、修理和其他服务业</option>',
@@ -858,7 +863,6 @@ var  corp_edit_con_tpl = new Ext.XTemplate(
     '<td colspan="3"><textarea id="inv_remark" name="inv_remark"  type="text" value="{inv_remark}">{inv_remark}</textarea></td>',
     '</tr>',
     '</table>',
-
 
 
     '<table class="enter_table" id="table_corp_govermt">',
@@ -1002,10 +1006,6 @@ var  corp_edit_con_tpl = new Ext.XTemplate(
     '</form>',
     '</div>',
 
-    
-    '<a   style="font-size:18px;text-decoration: none;text-align: center;color: #ffffff;  margin: 1em auto;width: 8em;border-radius: 5px;  padding: 0.5em 0;background-color: #38AD5A; border: 1px solid #38AD5A;display: block;  "  onclick="save_corp_edit({id},{gov_id},{inv_id},{srv_id},{refi_id},{rehr_id},{retra_id})">保存</a>',
-
-
     {
         checktype_demand_rl: function (demand_rl) {
             return demand_rl == true;
@@ -1027,8 +1027,6 @@ var  corp_edit_con_tpl = new Ext.XTemplate(
         }
     }
 );
-
-
 
 
 

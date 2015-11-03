@@ -1,207 +1,221 @@
-.wrapper_div{
-    padding: 1em 1.6em;
+.wrapper_div {
+  padding: 1em 1.6em;
 }
 
-.wrapper_div *{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.wrapper_div * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.wrapper_div div{
-    width: 100%;
-    display: table;
-    margin: 0.6em 0;
+.wrapper_div div {
+  width: 100%;
+  display: table;
+  margin: 0.6em 0;
 }
 
-.wrapper_div div span{
-    display: table-cell;
-    width: 50%;
-    padding: 0.8em 1em;
+.wrapper_div div span {
+  display: table-cell;
+  width: 50%;
+  padding: 0.8em 1em;
 }
 
-.wrapper_div div span:first-child{
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    text-align: left;
-}
-.wrapper_div div span:last-child{
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    text-align: right;
+.wrapper_div div span:first-child {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
 }
 
-
-.wrap_center{
-    width: 80%;
-    margin: 2px auto;
+.wrapper_div div span:last-child {
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  text-align: right;
 }
 
-
-
-.enter_table{
-    border-collapse: collapse;
-    width: 80%;
-    font-size: 12px;
-    text-align: left;
-    margin-bottom: 2em;
-    background-color: #ecf2fb;
+.wrap_center {
+  width: 80%;
+  margin: 2px auto;
 }
 
-.enter_table td input{
-    border:none;
-    width:100%;
-    height:100%;
-    background-color: white;
+.enter_table {
+  border-collapse: collapse;
+  width: 80%;
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 2em;
+  background-color: #ecf2fb;
 }
 
-.enter_table td textarea{
-    border:none;
-    width:100%;
-    height:100%;
-    background-color: white;
+.enter_table td input {
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
-.enter_table input, .enter_table td, .enter_table textarea{
-    background-color: white;
+.enter_table td textarea {
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
-.enter_table textarea{
-    background-color: #ecf2fb;
+.enter_table input, .enter_table td, .enter_table textarea {
+  background-color: white;
 }
 
-.enter_table td, .enter_table th{
-    border: 1px solid #9ABCE6;
-    border-collapse: collapse;
-    padding: 9px 8px 8px 8px;
+.enter_table textarea {
+  background-color: #ecf2fb;
 }
 
-.enter_table th{
-    width: 10em;
+.enter_table td, .enter_table th {
+  border: 1px solid #9ABCE6;
+  border-collapse: collapse;
+  padding: 9px 8px 8px 8px;
 }
 
-.enter_table td{
-    width: 20em;
+.enter_table th {
+  width: 10em;
 }
 
-.enter_table .table_header{
-    background-color: #9ABCE6;
+.enter_table td {
+  width: 20em;
 }
 
-.enter_table_sh{
-    border-collapse: collapse;
-    width: 1200px;
-    font-size: 12px;
-    text-align: left;
-    margin-bottom: 2em;
-    background-color: #ecf2fb;
+.enter_table .table_header {
+  background-color: #9ABCE6;
 }
 
-
-.enter_table_sh input{
-    background-color: #ecf2fb;
+.enter_table_sh {
+  border-collapse: collapse;
+  width: 1200px;
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 2em;
+  background-color: #ecf2fb;
 }
 
-.enter_table_sh textarea{
-    background-color: #ecf2fb;
+.enter_table_sh input {
+  background-color: #ecf2fb;
 }
 
-.enter_table_sh td, .enter_table_sh th{
-    border: 1px solid #9ABCE6;
-    border-collapse: collapse;
-    padding: 9px 8px 8px 8px;
+.enter_table_sh textarea {
+  background-color: #ecf2fb;
 }
 
-.enter_table_sh th{
-    width: 10em;
+.enter_table_sh td, .enter_table_sh th {
+  border: 1px solid #9ABCE6;
+  border-collapse: collapse;
+  padding: 9px 8px 8px 8px;
 }
 
-.enter_table_sh td{
-    width: 20em;
-    contenteditable :'true';
+.enter_table_sh th {
+  width: 10em;
 }
 
-.enter_table_sh .table_header{
-    background-color: #9ABCE6;
+.enter_table_sh td {
+  width: 20em;
+  contenteditable: 'true';
 }
 
-#enter_menu_list ul li{
-    list-style: none;
-    border: 1px solid white;
+.enter_table_sh .table_header {
+  background-color: #9ABCE6;
 }
 
-#enter_menu_list a{
-    display: block;
-    background-color: #3291D5;
-    padding: 0.5em;
-    text-decoration: none;
-    color: white;
-    transition: all 300ms;
+#enter_menu_list ul li {
+  list-style: none;
+  border: 1px solid white;
 }
 
-#enter_menu_list ul a:hover{
-    background-color: #006699;
+#enter_menu_list a {
+  display: block;
+  background-color: #3291D5;
+  padding: 0.5em;
+  text-decoration: none;
+  color: white;
+  transition: all 300ms;
+}
+
+#enter_menu_list ul a:hover {
+  background-color: #006699;
+}
+
+.win_save_btn {
+  text-align: center;
+  font-size: 18px;
+  display: block;
+  margin-top: 16px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  padding: 0.6em;
+  cursor: hand;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;
+  background-image: linear-gradient(#f27809, #e14100);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
 /**
  * Generates a set of style rules for the "navigation" tab UI.
  */
 @include extjs-tab-panel-ui(
-$ui: 'navigation',
-$ui-tab-background-color: transparent,
-$ui-tab-background-color-over: #505050,
-$ui-tab-background-color-active: #303030,
-$ui-tab-background-gradient: 'none',
-$ui-tab-background-gradient-over: 'none',
-$ui-tab-background-gradient-active: 'none',
-$ui-tab-color: #acacac,
-$ui-tab-color-over: #c4c4c4,
-$ui-tab-color-active: #fff,
-$ui-tab-glyph-color: #acacac,
-$ui-tab-glyph-color-over: #c4c4c4,
-$ui-tab-glyph-color-active: #fff,
-$ui-tab-glyph-opacity: 1,
-$ui-tab-border-radius: 0,
-$ui-tab-border-width: 0,
-$ui-tab-inner-border-width: 0,
-$ui-tab-padding: 24px,
-$ui-tab-margin: 0,
-$ui-tab-font-size: 15px,
-$ui-tab-font-size-over: 15px,
-$ui-tab-font-size-active: 15px,
-$ui-tab-line-height: 19px,
-$ui-tab-font-weight: bold,
-$ui-tab-font-weight-over: bold,
-$ui-tab-font-weight-active: bold,
-$ui-tab-icon-width: 24px,
-$ui-tab-icon-height: 24px,
-$ui-tab-icon-spacing: 5px,
-$ui-bar-background-color: #404040,
-$ui-bar-background-gradient: 'none',
-$ui-bar-padding: 0,
-$ui-strip-height: 0
+        $ui: 'navigation',
+        $ui-tab-background-color: transparent,
+        $ui-tab-background-color-over: #505050,
+        $ui-tab-background-color-active: #303030,
+        $ui-tab-background-gradient: 'none',
+        $ui-tab-background-gradient-over: 'none',
+        $ui-tab-background-gradient-active: 'none',
+        $ui-tab-color: #acacac,
+        $ui-tab-color-over: #c4c4c4,
+        $ui-tab-color-active: #fff,
+        $ui-tab-glyph-color: #acacac,
+        $ui-tab-glyph-color-over: #c4c4c4,
+        $ui-tab-glyph-color-active: #fff,
+        $ui-tab-glyph-opacity: 1,
+        $ui-tab-border-radius: 0,
+        $ui-tab-border-width: 0,
+        $ui-tab-inner-border-width: 0,
+        $ui-tab-padding: 24px,
+        $ui-tab-margin: 0,
+        $ui-tab-font-size: 15px,
+        $ui-tab-font-size-over: 15px,
+        $ui-tab-font-size-active: 15px,
+        $ui-tab-line-height: 19px,
+        $ui-tab-font-weight: bold,
+        $ui-tab-font-weight-over: bold,
+        $ui-tab-font-weight-active: bold,
+        $ui-tab-icon-width: 24px,
+        $ui-tab-icon-height: 24px,
+        $ui-tab-icon-spacing: 5px,
+        $ui-bar-background-color: #404040,
+        $ui-bar-background-gradient: 'none',
+        $ui-bar-padding: 0,
+        $ui-strip-height: 0
 );
 
 /**
  * Generates a set of style rules for the "navigation" panel UI.
  */
 @include extjs-panel-ui(
-$ui: 'navigation',
-$ui-header-color: #fff,
-$ui-header-glyph-color: #fff,
-$ui-header-glyph-opacity: 1,
-$ui-header-font-size: 20px,
-$ui-header-line-height: 24px,
-$ui-header-font-weight: bold,
-$ui-header-icon-height: 24px,
-$ui-header-icon-width: 24px,
-$ui-header-icon-spacing: 15px,
-$ui-header-background-color: $base-color,
-$ui-header-padding: 0,
-$ui-header-text-margin: 18px,
-$ui-header-noborder-adjust: false
+        $ui: 'navigation',
+        $ui-header-color: #fff,
+        $ui-header-glyph-color: #fff,
+        $ui-header-glyph-opacity: 1,
+        $ui-header-font-size: 20px,
+        $ui-header-line-height: 24px,
+        $ui-header-font-weight: bold,
+        $ui-header-icon-height: 24px,
+        $ui-header-icon-width: 24px,
+        $ui-header-icon-spacing: 15px,
+        $ui-header-background-color: $base-color,
+        $ui-header-padding: 0,
+        $ui-header-text-margin: 18px,
+        $ui-header-noborder-adjust: false
 );
 
 .x-title-icon-navigation {
@@ -229,31 +243,31 @@ $ui-header-noborder-adjust: false
   right: -24px;
 }
 
-#menutree_id .x-tree-icon-leaf{
-    display: none;
+#menutree_id .x-tree-icon-leaf {
+  display: none;
 }
 
-#menutree_id .x-tree-icon{
-    display: none;
+#menutree_id .x-tree-icon {
+  display: none;
 }
 
 .statis_div {
-    width: 28em;
-    height: 28em;
-    padding: 9.6em 0;
-    border-radius: 50%;
-    text-align: center;
-    background-color: #E7E952;
-    margin: 6em auto;
+  width: 28em;
+  height: 28em;
+  padding: 9.6em 0;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #E7E952;
+  margin: 6em auto;
 }
 
-.statis_div h1{
-    font-family: '微软雅黑', 'Microsoft YaHei', 'Source Han Sans CN ExtraLight', 'Noto Sans S Chinese Light';
-    font-weight: 100;
-    color: #666;
+.statis_div h1 {
+  font-family: '微软雅黑', 'Microsoft YaHei', 'Source Han Sans CN ExtraLight', 'Noto Sans S Chinese Light';
+  font-weight: 100;
+  color: #666;
 }
 
-.statis_div h1:last-child{
-    font-weight: 800;
-    font-size: 3em;
+.statis_div h1:last-child {
+  font-weight: 800;
+  font-size: 3em;
 }

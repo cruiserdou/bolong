@@ -15,7 +15,6 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterGridView', {
         'Ext.util.*',
         'Ext.toolbar.Paging'
     ],
-    controller: 'innerentercontroller',
     listeners: {
         itemdblclick:'itemdblclick'
     },

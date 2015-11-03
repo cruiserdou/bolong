@@ -10,14 +10,8 @@ Ext.define('app.view.query.enter.EnterInfoController', {
         'app.xtemplate.corp_edit'
     ],
 
-    itemclick: function (this_, record_) {
-        //var vPanel = Ext.getCmp('enterdetailview_id');
-        //vPanel.tpl.overwrite(vPanel.body, record_.data);
-    },
-
-    itemdblclick: function (view, record, item, index, e) {
-
-        var mypanel = new Ext.form.FormPanel({
+    itemdblclick: function (view, record) {
+        var mypanel = Ext.create('Ext.panel.Panel', {
             id: "mypanel",
             width: 820,
             frame: false,
@@ -25,7 +19,7 @@ Ext.define('app.view.query.enter.EnterInfoController', {
             border: false,
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
-                afterrender: function (_this) {
+                afterrender: function () {
                     corp_tpl.append('corp', record.data);
                     corp_contact_tpl.append('corp_contact', record.data);
                     corp_acount_tpl.append('corp_acount', record.data);
@@ -113,18 +107,19 @@ Ext.define('app.view.query.enter.EnterInfoController', {
             }]
         });
 
-        var editWindow = new Ext.Window({
+        Ext.create('Ext.window.Window',{
             layout: 'fit',
             id: 'enterprise_ch_id',
             width: 830,
             height: 650,
             modal: true,
-            title: '企业信息',
+            title: '企业信息查看',
             maximized: true,
             maximizable: true,
+            autoDestroy: true,
+            closeAction: 'destroy',
             items: [mypanel]
-        });
-        editWindow.show(Ext.get('body'));
+        }).show();
     },
 
 
