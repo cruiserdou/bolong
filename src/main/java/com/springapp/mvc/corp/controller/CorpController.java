@@ -12,7 +12,6 @@ import java.util.List;
  * Created by dou on 15-9-3.
  */
 @RestController
-//@RequestMapping("/corplist")
 public class CorpController {
     @Autowired
     private CorpService corpService;

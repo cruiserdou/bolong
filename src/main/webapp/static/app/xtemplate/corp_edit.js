@@ -188,7 +188,7 @@ var corp_edit_con_tpl = new Ext.XTemplate(
 
 var corp_edit_other_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
-    '<table class="enter_table" id="table_corp_link">',
+    '<table class="enter_table" data-cont-id="{cont_id}" id="table_corp_link">',
     '<tr>',
     '<th class="table_header" colspan="4">法定代表人基本信息</th>',
     '</tr>',
@@ -320,7 +320,7 @@ var corp_edit_other_tpl = new Ext.XTemplate(
     '</table>',
 
 
-    '<table  class="enter_table" id="table_corp_ocompay">',
+    '<table  class="enter_table" data-mai-id="{mai_id}" id="table_corp_ocompay">',
     '<tr>',
     '<th class="table_header" colspan="4">企业最近一次被关注信息</th>',
     '</tr>',
@@ -384,7 +384,7 @@ var corp_edit_other_tpl = new Ext.XTemplate(
     '</tr>',
     '</table>',
 
-    '<table class="enter_table" id="table_corp_assets_finance">',
+    '<table class="enter_table" data-fin-id="{finid}" id="table_corp_assets_finance">',
     '<tr>',
     '<th class="table_header" colspan="6">企业财务信息</th>',
     '</tr>',

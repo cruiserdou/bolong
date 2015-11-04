@@ -149,6 +149,7 @@ public class Corp {
     private Date  refi_deadline;    //融资期限
     private String  refi_desc;  //融资用途详细说明
 
+    private int mai_id;
     private int   mai_changer_id;
     private String   mai_changer_dept;
     private Date   mai_recomdt;
@@ -297,6 +298,13 @@ public class Corp {
     private Double  st_hj_fz_owner_right;
     private Double  end_hj_fz_owner_right;
 
+    public int getMai_id() {
+        return mai_id;
+    }
+
+    public void setMai_id(int mai_id) {
+        this.mai_id = mai_id;
+    }
 
     public int getId() {
         return id;

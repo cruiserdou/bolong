@@ -25,7 +25,6 @@ public class UpdateCorpMaintainInfo {
     DataShop getShopInJSON(
             HttpSession session,
             @RequestParam(value = "mai_id", required = false) Integer  mai_id,
-//            @RequestParam(value = "mai_corp_id", required = false) Integer  mai_corp_id,
             @RequestParam(value = "mai_changer_id", required = false) Integer mai_changer_id,
             @RequestParam(value = "mai_changer_dt", required = false) String mai_changer_dt,
             @RequestParam(value = "mai_changer_dept", required = false) String mai_changer_dept,

@@ -86,7 +86,15 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
 
 
     btnClick: function () {
-        Ext.getCmp('innerentergridview_id').getStore().load();
+        Ext.getCmp('innerentergridview_id').getStore().load({
+            params: {
+                name: Ext.getCmp('innerenter_query_name_id').getValue(),
+                nos: Ext.getCmp('innerenter_query_nos_id').getValue(),
+                buslicno: Ext.getCmp('innerenter_query_buslicno_id').getValue(),
+                listcode: Ext.getCmp('innerenter_query_listcode_id').getValue()
+
+            }
+        });
     },
 
     btnSearch: function (_this) {
@@ -194,10 +202,10 @@ function save_corp_edit(id) {
 
 
     obt_corp_update(Ext.get('apply_corp_form_edit').getAttribute('data-corp-id'));
-    //obt_corp_contact_update(cont_id);
-    ////obt_corp_shareholder_update(gd_id);
-    //obt_corp_finance_update(finid);
-    //obt_corp_maintain_update(mai_id);
+    obt_corp_contact_update(Ext.get('table_corp_link').getAttribute('data-cont-id'));
+    //obt_corp_shareholder_update(gd_id);
+    obt_corp_finance_update(Ext.get('table_corp_assets_finance').getAttribute('data-fin-id'));
+    obt_corp_maintain_update(Ext.get('table_corp_ocompay').getAttribute('data-mai-id'));
     obt_corp_government_update(Ext.get('type_govermt').getAttribute('data-gov-id'));
     obt_corp_investors_update(Ext.get('type_investors').getAttribute('data-inv-id'));
     obt_corp_service_update(Ext.get('type_server').getAttribute('data-srv-id'));

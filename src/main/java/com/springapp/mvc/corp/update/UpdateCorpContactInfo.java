@@ -25,8 +25,7 @@ public class UpdateCorpContactInfo {
     public
     @ResponseBody
     DataShop getShopInJSON(
-            @RequestParam(value = "cont_id", required = false) Integer  cont_id,
-//            @RequestParam(value = "cont_corp_id", required = false) Integer  cont_corp_id,
+            @RequestParam(value = "cont_id", required = false) Integer cont_id,
             @RequestParam(value = "cont_name", required = false) String cont_name,
             @RequestParam(value = "cont_psotion", required = false) String cont_psotion,
             @RequestParam(value = "cont_edoctype", required = false) String cont_edoctype,
@@ -39,7 +38,7 @@ public class UpdateCorpContactInfo {
             @RequestParam(value = "cont_tel", required = false) String cont_tel,
             @RequestParam(value = "cont_bz", required = false) String cont_bz
 
-            ) throws Exception{
+    ) throws Exception {
         DataShop dataShop = new DataShop();
         dataShop.setSuccess(true);
         Connection conn = null;
@@ -74,10 +73,10 @@ public class UpdateCorpContactInfo {
             pst.setString(8, cont_eqq);
             pst.setString(9, cont_webchat);
             pst.setString(10, cont_tel);
-            pst.setString(11, cont_bz);;
-            pst.setInt(11, cont_id);
+            pst.setString(11, cont_bz);
+            ;
+            pst.setInt(12, cont_id);
             pst.executeUpdate();
-
 
 
             dataShop.setSuccess(true);
@@ -85,12 +84,8 @@ public class UpdateCorpContactInfo {
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         } finally {
-            try {
-                if (pst != null) pst.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                System.out.print(e.getMessage());
-            }
+            if (pst != null) pst.close();
+            if (conn != null) conn.close();
         }
 
         return dataShop;
