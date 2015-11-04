@@ -229,7 +229,6 @@ function buslicno_check_edit(id) {
         return;
     }
 
-
     Ext.Ajax.request({
         method: "POST",
         params: {
