@@ -183,55 +183,55 @@ function obt_corp_retrain_manage_update(retra_id) {
 
 //企业基本信息更新
 function obt_corp_update(corp_id) {
-    var form_obt_edit = document.getElementById("apply_corp_form_edit");
+    //var form_obt_edit = document.getElementById("apply_corp_form_edit");
     Ext.Ajax.request({
         method: "POST",
         params: {
             id: corp_id,
-            buslicno: form_obt_edit['buslicno'].value,
-            name: form_obt_edit['name'].value,
-            unit: form_obt_edit['unit'].value,
-            legrep: form_obt_edit['legrep'].value,
-            province: form_obt_edit['province'].value,
-            city: form_obt_edit['city'].value,
-            county: form_obt_edit['county'].value,
-            nos: form_obt_edit['nos'].value,
-            postal: form_obt_edit['postal'].value,
-            nature: form_obt_edit['nature'].value,
-            regcap: form_obt_edit['regcap'].value,
-            bustermfdt: form_obt_edit['bustermfdt'].value,
-            bustremtdt: form_obt_edit['bustremtdt'].value,
-            regdt: form_obt_edit['regdt'].value,
-            list_area: form_obt_edit['list_area'].value,
-            listcode: form_obt_edit['listcode'].value,
-            listprice: form_obt_edit['listprice'].value,
-            listdt: form_obt_edit['listdt'].value,
-            channels: form_obt_edit['channels'].value,
-            webchat: form_obt_edit['webchat'].value,
-            staffnum: form_obt_edit['staffnum'].value,
-            regist_organ: form_obt_edit['regist_organ'].value,
-            regaddr: form_obt_edit['regaddr'].value,
-            offaddr: form_obt_edit['offaddr'].value,
-            scope: form_obt_edit['scope'].value,
-            mbus: form_obt_edit['mbus'].value,
-            eprofile: form_obt_edit['eprofile'].value,
-            remark: form_obt_edit['remark'].value,
+            buslicno: Ext.get('buslicno').getValue(),
+            name: Ext.get('name').getValue(),
+            unit: Ext.get('unit').getValue(),
+            legrep: Ext.get('legrep').getValue(),
+            province: Ext.get('province').getValue(),
+            city: Ext.get('city').getValue(),
+            county: Ext.get('county').getValue(),
+            nos: Ext.get('nos').getValue(),
+            postal: Ext.get('postal').getValue(),
+            nature: Ext.get('nature').getValue(),
+            regcap: Ext.get('regcap').getValue(),
+            bustermfdt: Ext.get('bustermfdt').getValue(),
+            bustremtdt: Ext.get('bustremtdt').getValue(),
+            regdt: Ext.get('regdt').getValue(),
+            list_area: Ext.get('list_area').getValue(),
+            listcode: Ext.get('listcode').getValue(),
+            listprice: Ext.get('listprice').getValue(),
+            listdt: Ext.get('listdt').getValue(),
+            channels: Ext.get('channels').getValue(),
+            webchat: Ext.get('webchat').getValue(),
+            staffnum: Ext.get('staffnum').getValue(),
+            regist_organ: Ext.get('regist_organ').getValue(),
+            regaddr: Ext.get('regaddr').getValue(),
+            offaddr: Ext.get('offaddr').getValue(),
+            scope: Ext.get('scope').getValue(),
+            mbus: Ext.get('mbus').getValue(),
+            eprofile: Ext.get('eprofile').getValue(),
+            remark: Ext.get('remark').getValue(),
             phoinf: "",
-            indclass1: form_obt_edit['indclass1'].value,
-            indclass2: form_obt_edit['indclass2'].value,
-            indclass3: form_obt_edit['indclass3'].value,
-            indclass4: form_obt_edit['indclass4'].value,
-            csrc_type1: form_obt_edit['csrc_type1'].value,
-            csrc_type2: form_obt_edit['csrc_type2'].value,
+            indclass1: Ext.get('indclass1').getValue(),
+            indclass2: Ext.get('indclass2').getValue(),
+            indclass3: Ext.get('indclass3').getValue(),
+            indclass4: Ext.get('indclass4').getValue(),
+            csrc_type1: Ext.get('csrc_type1').getValue(),
+            csrc_type2: Ext.get('csrc_type2').getValue(),
             csrc_type3: "",
             csrc_type4: "",
             type_enterp: true,
-            type_server: form_obt_edit['type_server'].checked,
-            type_investors: form_obt_edit['type_investors'].checked,
-            type_govermt: form_obt_edit['type_govermt'].checked,
-            demand_rz: form_obt_edit['demand_rz'].checked,
-            demand_px: form_obt_edit['demand_px'].checked,
-            demand_rl: form_obt_edit['demand_rl'].checked
+            type_server: Ext.get('type_server').getValue(),
+            type_investors: Ext.get('type_investors').getValue(),
+            type_govermt: Ext.get('type_govermt').getValue(),
+            demand_rz: Ext.get('demand_rz').getValue(),
+            demand_px: Ext.get('demand_px').getValue(),
+            demand_rl: Ext.get('demand_rl').getValue()
             //inputdt : form_obt_edit['inputdt'].value
         },
         url: '/bolong/update_corp_info',
@@ -246,8 +246,6 @@ function obt_corp_update(corp_id) {
 
 //联系人信息更新
 function obt_corp_contact_update(cont_id) {
-    var form_obt_edit = document.getElementById("apply_corp_form_edit");
-
     Ext.Ajax.request({
         method: "POST",
         params: {
@@ -473,7 +471,6 @@ function obt_corp_maintain_update(mai_id) {
         method: "POST",
         params: {
             mai_id: mai_id,
-            //mai_corp_id : corp_id,
             mai_changer_id: form_obt_edit['mai_changer_id'].value,
             mai_changer_dt: form_obt_edit['mai_changer_dt'].value,
             mai_changer_dept: form_obt_edit['mai_changer_dept'].value,
@@ -506,26 +503,24 @@ function obt_corp_maintain_update(mai_id) {
 
 //政府部门信息更新
 function obt_corp_government_update(gov_id) {
-    var form_obt_edit = document.getElementById("apply_corp_form_edit");
     Ext.Ajax.request({
         method: "POST",
         params: {
             gov_id: gov_id,
-            //gov_corp_id : corp_id,
-            gov_domain: form_obt_edit['gov_domain'].value,
-            gov_office: form_obt_edit['gov_office'].value,
-            gov_desc: form_obt_edit['gov_desc'].value,
-            gov_contact: form_obt_edit['gov_contact'].value,
-            gov_psotion: form_obt_edit['gov_psotion'].value,
-            gov_doctype: form_obt_edit['gov_doctype'].value,
-            gov_docnum: form_obt_edit['gov_docnum'].value,
-            gov_phone: form_obt_edit['gov_phone'].value,
-            gov_fax: form_obt_edit['gov_fax'].value,
-            gov_email: form_obt_edit['gov_email'].value,
-            gov_qq: form_obt_edit['gov_qq'].value,
-            gov_webchat: form_obt_edit['gov_webchat'].value,
-            gov_tel: form_obt_edit['gov_tel'].value,
-            gov_remark: form_obt_edit['gov_remark'].value
+            gov_domain: Ext.get('gov_domain').getValue(),
+            gov_office: Ext.get('gov_office').getValue(),
+            gov_desc: Ext.get('gov_desc').getValue(),
+            gov_contact: Ext.get('gov_contact').getValue(),
+            gov_psotion: Ext.get('gov_psotion').getValue(),
+            gov_doctype: Ext.get('gov_doctype').getValue(),
+            gov_docnum: Ext.get('gov_docnum').getValue(),
+            gov_phone: Ext.get('gov_phone').getValue(),
+            gov_fax: Ext.get('gov_fax').getValue(),
+            gov_email: Ext.get('gov_email').getValue(),
+            gov_qq: Ext.get('gov_qq').getValue(),
+            gov_webchat: Ext.get('gov_webchat').getValue(),
+            gov_tel: Ext.get('gov_tel').getValue(),
+            gov_remark: Ext.get('gov_remark').getValue()
         },
         url: '/bolong/update_corp_government_info',
         success: function () {
@@ -539,32 +534,31 @@ function obt_corp_government_update(gov_id) {
 
 //投资人信息更新
 function obt_corp_investors_update(inv_id) {
-    var form_obt_edit = document.getElementById("apply_corp_form_edit");
     Ext.Ajax.request({
         method: "POST",
         params: {
             inv_id: inv_id,
             //inv_corp_id :corp_id,
-            inv_domain: form_obt_edit['inv_domain'].value,
-            inv_csrc_type1: form_obt_edit['inv_csrc_type1'].value,
-            inv_csrc_type2: form_obt_edit['inv_csrc_type2'].value,
-            inv_csrc_type3: form_obt_edit['inv_csrc_type3'].value,
-            inv_csrc_type4: form_obt_edit['inv_csrc_type4'].value,
-            inv_indclass1: form_obt_edit['inv_indclass1'].value,
-            inv_indclass2: form_obt_edit['inv_indclass2'].value,
+            inv_domain: Ext.get('inv_domain').getValue(),
+            inv_csrc_type1: Ext.get('inv_csrc_type1').getValue(),
+            inv_csrc_type2: Ext.get('inv_csrc_type2').getValue(),
+            inv_csrc_type3: Ext.get('inv_csrc_type3').getValue(),
+            inv_csrc_type4: Ext.get('inv_csrc_type4').getValue(),
+            inv_indclass1: Ext.get('inv_indclass1').getValue(),
+            inv_indclass2: Ext.get('inv_indclass2').getValue(),
             inv_indclass3: "",
             inv_indclass4: "",
-            inv_contact: form_obt_edit['inv_contact'].value,
-            inv_psotion: form_obt_edit['inv_psotion'].value,
-            inv_doctype: form_obt_edit['inv_doctype'].value,
-            inv_docnum: form_obt_edit['inv_docnum'].value,
-            inv_phone: form_obt_edit['inv_phone'].value,
-            inv_fax: form_obt_edit['inv_fax'].value,
-            inv_email: form_obt_edit['inv_email'].value,
-            inv_qq: form_obt_edit['inv_qq'].value,
-            inv_webchat: form_obt_edit['inv_webchat'].value,
-            inv_tel: form_obt_edit['inv_tel'].value,
-            inv_remark: form_obt_edit['inv_remark'].value
+            inv_contact: Ext.get('inv_contact').getValue(),
+            inv_psotion: Ext.get('inv_psotion').getValue(),
+            inv_doctype: Ext.get('inv_doctype').getValue(),
+            inv_docnum: Ext.get('inv_docnum').getValue(),
+            inv_phone: Ext.get('inv_phone').getValue(),
+            inv_fax: Ext.get('inv_fax').getValue(),
+            inv_email: Ext.get('inv_email').getValue(),
+            inv_qq: Ext.get('inv_qq').getValue(),
+            inv_webchat: Ext.get('inv_webchat').getValue(),
+            inv_tel: Ext.get('inv_tel').getValue(),
+            inv_remark: Ext.get('inv_remark').getValue()
         },
         url: '/bolong/update_corp_investors_info',
         success: function () {
@@ -578,22 +572,21 @@ function obt_corp_investors_update(inv_id) {
 
 //服务机构信息更新
 function obt_corp_service_update(srv_id) {
-    var form_obt_edit = document.getElementById("apply_corp_form_edit");
     Ext.Ajax.request({
         method: "POST",
         params: {
             srv_id: srv_id,
             //srv_corp_id :corp_id,
-            srv_name: form_obt_edit['srv_name'].value,
-            srv_type: form_obt_edit['srv_type'].value,
-            srv_content: form_obt_edit['srv_content'].value,
-            srv_levels: form_obt_edit['srv_levels'].value,
-            srv_domain: form_obt_edit['srv_domain'].value,
-            srv_penalty: form_obt_edit['srv_penalty'].value,
-            srv_examiner: form_obt_edit['srv_examiner'].value,
-            srv_post: form_obt_edit['srv_post'].value,
-            srv_descs: form_obt_edit['srv_descs'].value,
-            srv_remark: form_obt_edit['srv_remark'].value
+            srv_name: Ext.get('srv_name').getValue(),
+            srv_type: Ext.get('srv_type').getValue(),
+            srv_content: Ext.get('srv_content').getValue(),
+            srv_levels: Ext.get('srv_levels').getValue(),
+            srv_domain: Ext.get('srv_domain').getValue(),
+            srv_penalty: Ext.get('srv_penalty').getValue(),
+            srv_examiner: Ext.get('srv_examiner').getValue(),
+            srv_post: Ext.get('srv_post').getValue(),
+            srv_descs: Ext.get('srv_descs').getValue(),
+            srv_remark: Ext.get('srv_remark').getValue()
         },
         url: '/bolong/update_corp_service_info',
         success: function () {
@@ -607,19 +600,17 @@ function obt_corp_service_update(srv_id) {
 
 //融资信息更新
 function obt_corp_refinancing_update(refi_id) {
-    var form_obt_edit = document.getElementById("apply_corp_form_edit");
     Ext.Ajax.request({
         method: "POST",
         params: {
             refi_id: refi_id,
-            //refi_corp_id :corp_id,
-            refi_amounts: form_obt_edit['refi_amounts'].value,
-            refi_use: form_obt_edit['refi_use'].value,
-            refi_financ: form_obt_edit['refi_financ'].value,
-            refi_security: form_obt_edit['refi_security'].value,
-            refi_acc_cost: form_obt_edit['refi_acc_cost'].value,
-            refi_deadline: form_obt_edit['refi_deadline'].value,
-            refi_desc: form_obt_edit['refi_desc'].value
+            refi_amounts: Ext.get('refi_amounts').getValue(),
+            refi_use: Ext.get('refi_use').getValue(),
+            refi_financ: Ext.get('refi_financ').getValue(),
+            refi_security: Ext.get('refi_security').getValue(),
+            refi_acc_cost: Ext.get('refi_acc_cost').getValue(),
+            refi_deadline: Ext.get('refi_deadline').getValue(),
+            refi_desc: Ext.get('refi_desc').getValue()
         },
         url: '/bolong/update_corp_refinancing_info',
         success: function () {
@@ -633,18 +624,16 @@ function obt_corp_refinancing_update(refi_id) {
 
 //人力资源信息更新
 function obt_corp_rehr_update(rehr_id) {
-    var form_obt_edit = document.getElementById("apply_corp_form_edit");
     Ext.Ajax.request({
         method: "POST",
         params: {
             rehr_id: rehr_id,
-            //rehr_corp_id : corp_id,
-            rehr_post: form_obt_edit['rehr_post'].value,
-            rehr_num: form_obt_edit['rehr_num'].value,
-            rehr_salary: form_obt_edit['rehr_salary'].value,
-            rehr_sex_req: form_obt_edit['rehr_sex_req'].value,
-            rehr_age_req: form_obt_edit['rehr_age_req'].value,
-            rehr_requests: form_obt_edit['rehr_requests'].value
+            rehr_post: Ext.get('rehr_post').getValue(),
+            rehr_num: Ext.get('rehr_num').getValue(),
+            rehr_salary: Ext.get('rehr_salary').getValue(),
+            rehr_sex_req: Ext.get('rehr_sex_req').getValue(),
+            rehr_age_req: Ext.get('rehr_age_req').getValue(),
+            rehr_requests: Ext.get('rehr_requests').getValue()
         },
         url: '/bolong/update_corp_rehr_info',
         success: function () {
@@ -658,17 +647,15 @@ function obt_corp_rehr_update(rehr_id) {
 
 //培训信息更新
 function obt_corp_retrain_update(retra_id) {
-    var form_obt_edit = document.getElementById("apply_corp_form_edit");
     Ext.Ajax.request({
         method: "POST",
         params: {
             retra_id: retra_id,
-            //retra_corp_id : corp_id,
-            retra_mode: form_obt_edit['retra_mode'].value,
-            retra_content: form_obt_edit['retra_content'].value,
-            retra_acc_cost: form_obt_edit['retra_acc_cost'].value,
-            retra_dt: form_obt_edit['retra_dt'].value,
-            retra_requests: form_obt_edit['retra_requests'].value
+            retra_mode: Ext.get('retra_mode').getValue(),
+            retra_content: Ext.get('retra_content').getValue(),
+            retra_acc_cost: Ext.get('retra_acc_cost').getValue(),
+            retra_dt: Ext.get('retra_dt').getValue(),
+            retra_requests: Ext.get('retra_requests').getValue()
         },
         url: '/bolong/update_corp_retrain_info',
         success: function () {

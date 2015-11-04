@@ -26,15 +26,13 @@ public class UpdateCorpRetrainInfo {
     public
     @ResponseBody
     DataShop getShopInJSON(
-            @RequestParam(value = "retra_id", required = false) Integer  retra_id,
-//            @RequestParam(value = "retra_corp_id", required = false) Integer  retra_corp_id,
-            @RequestParam(value = "retra_mode", required = false) String  retra_mode,
-            @RequestParam(value = "retra_content", required = false) String  retra_content,
+            @RequestParam(value = "retra_id", required = false) Integer retra_id,
+            @RequestParam(value = "retra_mode", required = false) String retra_mode,
+            @RequestParam(value = "retra_content", required = false) String retra_content,
             @RequestParam(value = "retra_acc_cost", required = false) BigDecimal retra_acc_cost,
-            @RequestParam(value = "retra_dt", required = false) String  retra_dt,
-            @RequestParam(value = "retra_requests", required = false) String  retra_requests
-
-            ) throws Exception{
+            @RequestParam(value = "retra_dt", required = false) String retra_dt,
+            @RequestParam(value = "retra_requests", required = false) String retra_requests
+    ) throws Exception {
         DataShop dataShop = new DataShop();
         dataShop.setSuccess(true);
         Connection conn = null;
@@ -58,18 +56,16 @@ public class UpdateCorpRetrainInfo {
                     "       retra_dt=?, retra_requests=? " +
                     "  where retra_id = ?";
             pst = conn.prepareStatement(sql);
-//            pst.setInt(1, retra_corp_id);
-            pst.setString(1,  retra_mode);
+            pst.setString(1, retra_mode);
             pst.setString(2, retra_content);
             pst.setBigDecimal(3, retra_acc_cost);
             java.sql.Date d_retra_dt = null;
-            if ( retra_dt != null &&  retra_dt.length() > 2)
-                d_retra_dt = java.sql.Date.valueOf( retra_dt);
+            if (retra_dt != null && retra_dt.length() > 2)
+                d_retra_dt = java.sql.Date.valueOf(retra_dt);
             pst.setDate(4, d_retra_dt);
-            pst.setString(5,  retra_requests);
+            pst.setString(5, retra_requests);
             pst.setInt(6, retra_id);
             pst.executeUpdate();
-
 
 
             dataShop.setSuccess(true);
@@ -77,12 +73,8 @@ public class UpdateCorpRetrainInfo {
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         } finally {
-            try {
-                if (pst != null) pst.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                System.out.print(e.getMessage());
-            }
+            if (pst != null) pst.close();
+            if (conn != null) conn.close();
         }
 
         return dataShop;

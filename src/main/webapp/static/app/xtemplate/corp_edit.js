@@ -34,7 +34,7 @@ var corp_shareholder_edit_tpl = new Ext.XTemplate(
 
 var corp_edit_con_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
-    '<form style="margin-top: 3em;;" id="apply_corp_form_edit">',
+    '<form style="margin-top: 3em;" data-corp-id="{id}" id="apply_corp_form_edit">',
 
     '<table class="enter_table" id="table_corp_base">',
     '<tr>',
@@ -74,7 +74,7 @@ var corp_edit_con_tpl = new Ext.XTemplate(
     '<option>武威市</option>',
     '<option>张掖市</option>',
     '</select>',
-    '<select style="width: 70px"  class="select" name="county" id="country">',
+    '<select style="width: 70px"  class="select" name="county" id="county">',
     '<option>城关区</option>',
     '<option>七里河</option>',
     '<option>西固区</option>',
@@ -693,7 +693,7 @@ var corp_edit_other_tpl = new Ext.XTemplate(
 
     '<table class="enter_table" id="table_corp_service">',
     '<tr>',
-    '<td  colspan="4"><input style="width:50px;height:14px;"  id="type_server"  name="type_server"  type="checkbox" value="{type_server}" <tpl if="this.checktype_type_server(type_server)">checked="checked"</tpl> />服务机构&nbsp;&nbsp;</td>',
+    '<td  colspan="4"><input style="width:50px;height:14px;" data-srv-id="{srv_id}"  id="type_server"  name="type_server"  type="checkbox" value="{type_server}" <tpl if="this.checktype_type_server(type_server)">checked="checked"</tpl> />服务机构&nbsp;&nbsp;</td>',
     '</tr>',
     '<tr>',
     '<th class="table_header" colspan="4">服务机构信息</th>',
@@ -735,7 +735,7 @@ var corp_edit_other_tpl = new Ext.XTemplate(
 
     '<table class="enter_table" id="table_corp_investors">',
     '<tr>',
-    '<td  colspan="4"><input style="width:50px;height:14px;"  id="type_investors" name="type_investors"  type="checkbox" value="{type_investors}" <tpl if="this.checktype_type_investors(type_investors)">checked="checked"</tpl>  />投资人&nbsp;&nbsp;</td>',
+    '<td  colspan="4"><input style="width:50px;height:14px;" data-inv-id="{inv_id}"  id="type_investors" name="type_investors"  type="checkbox" value="{type_investors}" <tpl if="this.checktype_type_investors(type_investors)">checked="checked"</tpl>  />投资人&nbsp;&nbsp;</td>',
     '</tr>',
     '<tr>',
     '<th class="table_header" colspan="4">投资人信息</th>',
@@ -861,7 +861,7 @@ var corp_edit_other_tpl = new Ext.XTemplate(
 
     '<table class="enter_table" id="table_corp_govermt">',
     '<tr>',
-    '<td  colspan="4"><input style="width:50px;height:14px;"  id="type_govermt"  name="type_govermt" type="checkbox" value="{type_govermt}" <tpl if="this.checktype_type_govermt(type_govermt)">checked="checked"</tpl> />政府机构&nbsp;&nbsp;</td>',
+    '<td  colspan="4"><input style="width:50px;height:14px;" data-gov-id="{gov_id}"  id="type_govermt"  name="type_govermt" type="checkbox" value="{type_govermt}" <tpl if="this.checktype_type_govermt(type_govermt)">checked="checked"</tpl> />政府机构&nbsp;&nbsp;</td>',
     '</tr>',
     '<tr>',
     '<th class="table_header" colspan="4">政府部门信息</th>',
@@ -921,7 +921,7 @@ var corp_edit_other_tpl = new Ext.XTemplate(
     '</tr>',
     '<tr>',
     '<th>融资金额</th>',
-    '<td><input id="refi_amounts" name="refi_amounts"  type="text" value="{refi_amounts}"/></td>',
+    '<td><input id="refi_amounts" data-refi-id="{refi_id}" name="refi_amounts"  type="text" value="{refi_amounts}"/></td>',
     '<th>融资用途</th>',
     '<td><input id="refi_use" name="refi_use"  type="text" value="{refi_use}"/></td>',
     '</tr>',
@@ -953,7 +953,7 @@ var corp_edit_other_tpl = new Ext.XTemplate(
     '</tr>',
     '<tr>',
     '<th>培训方式</th>',
-    '<td colspan="3"><input id="retra_mode" name="retra_mode"  type="text" value="{retra_mode}"/></td>',
+    '<td colspan="3"><input id="retra_mode" data-retra-id="{retra_id}" name="retra_mode"  type="text" value="{retra_mode}"/></td>',
     '</tr>',
     '<tr>',
     '<th>有效时间</th>',
@@ -980,7 +980,7 @@ var corp_edit_other_tpl = new Ext.XTemplate(
     '</tr>',
     '<tr>',
     '<th>需求职位</th>',
-    '<td><input id="rehr_post" name="rehr_post"  type="text" value="{rehr_post}"/></td>',
+    '<td><input id="rehr_post" data-rehr-id="{rehr_id}" name="rehr_post"  type="text" value="{rehr_post}"/></td>',
     '<th>职位人数</th>',
     '<td><input id="rehr_num" name="rehr_num"  type="text" value="{rehr_num}"/></td>',
     '</tr>',

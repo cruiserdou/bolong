@@ -67,9 +67,8 @@ public class UpdateCorpInfo {
             @RequestParam(value = "demand_rz", required = false) Boolean demand_rz,
             @RequestParam(value = "demand_px", required = false) Boolean demand_px,
             @RequestParam(value = "demand_rl", required = false) Boolean demand_rl
-//            @RequestParam(value = "inputdt", required = false) String inputdt
 
-            ) throws Exception{
+    ) throws Exception {
         DataShop dataShop = new DataShop();
         dataShop.setSuccess(true);
         Connection conn = null;
@@ -108,7 +107,7 @@ public class UpdateCorpInfo {
             pst.setString(5, province);
             pst.setString(6, city);
             pst.setString(7, county);
-            pst.setString(8 , nos);
+            pst.setString(8, nos);
             pst.setString(9, postal);
             pst.setString(10, nature);
             pst.setString(11, regcap);
@@ -162,18 +161,13 @@ public class UpdateCorpInfo {
             pst.executeUpdate();
 
 
-
             dataShop.setSuccess(true);
 
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         } finally {
-            try {
-                if (pst != null) pst.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                System.out.print(e.getMessage());
-            }
+            if (pst != null) pst.close();
+            if (conn != null) conn.close();
         }
 
         return dataShop;

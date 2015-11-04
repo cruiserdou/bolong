@@ -63,7 +63,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                 '<li><a href="#table_corp_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
                 '<li><a href="#table_corp_demand_px"  style="font-size:18px;">培训需求</a></li>' +
                 '<li><a href="#table_corp_demand_rl"  style="font-size:18px;">人力资源需求</a></li>' +
-                '<li><a href="#" class="win_save_btn" onclick="save_corp_edit({id},{gov_id},{inv_id},{srv_id},{refi_id},{rehr_id},{retra_id})">保存</a></li>' +
+                '<li><a href="#" class="win_save_btn" onclick="save_corp_edit({id})">保存</a></li>' +
                 '<li><a href="#" class="win_save_btn" onclick="win_close_edit()">关闭</a></li>' +
                 '</ul>' +
                 '</div>'
@@ -159,7 +159,7 @@ function win_close_edit() {
     Ext.getCmp('enterprise_edit_id').close();
 }
 
-function save_corp_edit(id, gov_id, inv_id, srv_id, refi_id, rehr_id, retra_id) {
+function save_corp_edit(id) {
 
     var form_obt_edit = document.getElementById("apply_corp_form_edit");
 
@@ -193,17 +193,17 @@ function save_corp_edit(id, gov_id, inv_id, srv_id, refi_id, rehr_id, retra_id) 
     }
 
 
-    obt_corp_update(id);
+    obt_corp_update(Ext.get('apply_corp_form_edit').getAttribute('data-corp-id'));
     //obt_corp_contact_update(cont_id);
     ////obt_corp_shareholder_update(gd_id);
     //obt_corp_finance_update(finid);
     //obt_corp_maintain_update(mai_id);
-    obt_corp_government_update(gov_id);
-    obt_corp_investors_update(inv_id);
-    obt_corp_service_update(srv_id);
-    obt_corp_refinancing_update(refi_id);
-    obt_corp_retrain_update(retra_id);
-    obt_corp_rehr_update(rehr_id);
+    obt_corp_government_update(Ext.get('type_govermt').getAttribute('data-gov-id'));
+    obt_corp_investors_update(Ext.get('type_investors').getAttribute('data-inv-id'));
+    obt_corp_service_update(Ext.get('type_server').getAttribute('data-srv-id'));
+    obt_corp_refinancing_update(Ext.get('refi_amounts').getAttribute('data-refi-id'));
+    obt_corp_retrain_update(Ext.get('retra_mode').getAttribute('data-retra-id'));
+    obt_corp_rehr_update(Ext.get('rehr_post').getAttribute('data-rehr-id'));
 
     Ext.getCmp('innerentergridview_id').getStore().reload();
 }
@@ -252,5 +252,3 @@ function buslicno_check_edit(id) {
         }
     });
 }
-
-
