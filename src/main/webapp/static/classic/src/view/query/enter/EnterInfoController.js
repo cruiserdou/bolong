@@ -9,7 +9,17 @@ Ext.define('app.view.query.enter.EnterInfoController', {
         'app.xtemplate.corp_apply',
         'app.xtemplate.corp_edit'
     ],
-
+    itemclick: function (this_, record_) {
+        //var vPanel = Ext.getCmp('investorqdetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
+        if (Ext.getCmp('entereditloggridview_id')) {
+            Ext.getCmp('entereditloggridview_id').getStore().load({
+                params: {
+                    corp_id: record_.get('id')
+                }
+            });
+        }
+    },
     itemdblclick: function (view, record) {
         var mypanel = Ext.create('Ext.panel.Panel', {
             id: "mypanel",

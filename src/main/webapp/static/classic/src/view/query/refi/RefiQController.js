@@ -11,13 +11,14 @@ Ext.define('app.view.query.refi.RefiQController', {
     itemclick: function (this_, record_) {
         //var vPanel = Ext.getCmp('refiqdetailview_id');
         //vPanel.tpl.overwrite(vPanel.body, record_.data);
+        if (Ext.getCmp('corprefieditloggridview_id')) {
+            Ext.getCmp('corprefieditloggridview_id').getStore().load({
+                params: {
+                    corp_id: record_.get('id')
 
-        Ext.getCmp('corprefieditloggridview_id').getStore().load({
-            params: {
-                corp_id: record_.get('id')
-
-            }
-        });
+                }
+            });
+        }
     },
 
     btnFind: function () {

@@ -9,6 +9,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
         'app.xtemplate.corp_edit'
     ],
     itemdblclick: function (view, record) {
+        //呈现组件
         var mypanel = Ext.create('Ext.panel.Panel', {
             id: "mypanel",
             width: 820,
@@ -17,10 +18,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             border: false,
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
-                afterrender: function () {
+                afterrender: function (_this) {
                     corp_edit_con_tpl.append('corp_edit', record.data);
-                    corp_shareholder_edit_tpl.append('shareholder_edit', record.data);
-                    corp_edit_other_tpl.append('corp_edit_other', record.data);
                 }
             },
             autoScroll: true,
@@ -70,7 +69,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             }]
         });
 
-        Ext.create('Ext.window.Window', {
+        var editWindow = new Ext.Window({
             layout: 'fit',
             id: 'enterprise_edit_id',
             width: 830,
@@ -78,10 +77,9 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             modal: true,
             title: '企业信息',
             maximized: true,
-            autoDestroy: true,
-            closeAction: 'destroy',
             items: [mypanel]
-        }).show();
+        });
+        editWindow.show(Ext.get('body'));
     },
 
 
@@ -159,7 +157,7 @@ function win_close_edit() {
     Ext.getCmp('enterprise_edit_id').close();
 }
 
-function save_corp_edit(id, gov_id, inv_id, srv_id, refi_id, rehr_id, retra_id) {
+function save_corp_edit(id,gov_id, inv_id, srv_id, refi_id, rehr_id, retra_id) {
 
     var form_obt_edit = document.getElementById("apply_corp_form_edit");
 
@@ -210,7 +208,7 @@ function save_corp_edit(id, gov_id, inv_id, srv_id, refi_id, rehr_id, retra_id) 
 
 
 function buslicnoCheck(num) {
-    var no_regexp = /\d{6}[123]\d{7}[1-9]/;
+    var no_regexp = /\d{15}/;
     return no_regexp.exec(num) != null;
 }
 
@@ -252,5 +250,4 @@ function buslicno_check_edit(id) {
         }
     });
 }
-
 

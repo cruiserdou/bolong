@@ -360,15 +360,19 @@ function industry1(val) {
 
 function industry2(val) {
     Ext.select('#indclass3 option').remove();
-    for (var i = 0; i < indclass3[val].length; i++){
-        Ext.select('#indclass3').first().insertHtml("afterBegin", "<option>" + indclass3[val][i] + "</option>");
+    if (indclass3[val].length != 0) {
+        for (var i = 0; i < indclass3[val].length; i++) {
+            Ext.select('#indclass3').first().insertHtml("afterBegin", "<option>" + indclass3[val][i] + "</option>");
+        }
     }
 };
 
 function industry3(val) {
     Ext.select('#indclass4 option').remove();
-    for (var i = 0; i < indclass4[val].length; i++){
-        Ext.select('#indclass4').first().insertHtml("afterBegin", "<option>" + indclass4[val][i] + "</option>");
+    if (indclass4[val].length != 0) {
+        for (var i = 0; i < indclass4[val].length; i++) {
+            Ext.select('#indclass4').first().insertHtml("afterBegin", "<option>" + indclass4[val][i] + "</option>");
+        }
     }
 };
 
@@ -381,16 +385,20 @@ function inv_csrc_type1_select(val) {
 
 function inv_csrc_type2_select(val) {
     Ext.select('#inv_csrc_type3 option').remove();
-    for (var i = 0; i < indclass3[val].length; i++){
-        Ext.select('#inv_csrc_type3').first().insertHtml("afterBegin", "<option>" + indclass3[val][i] + "</option>");
+    if (indclass3[val].length != 0) {
+        for (var i = 0; i < indclass3[val].length; i++) {
+            Ext.select('#inv_csrc_type3').first().insertHtml("afterBegin", "<option>" + indclass3[val][i] + "</option>");
+        }
     }
 };
 
 
 function inv_csrc_type3_select(val) {
     Ext.select('#inv_csrc_type4 option').remove();
-    for (var i = 0; i < indclass4[val].length; i++){
-        Ext.select('#inv_csrc_type4').first().insertHtml("afterBegin", "<option>" + indclass4[val][i] + "</option>");
+    if (indclass4[val].length != 0) {
+        for (var i = 0; i < indclass4[val].length; i++) {
+            Ext.select('#inv_csrc_type4').first().insertHtml("afterBegin", "<option>" + indclass4[val][i] + "</option>");
+        }
     }
 };
 
