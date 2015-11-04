@@ -1,0 +1,261 @@
+[
+  {
+    "text": "信息查询",
+    "expanded": true,
+    "visible": true,
+    "itype": "nleaf",
+    "children": [
+      {
+        "text": "企业信息查询",
+        "itype": "enterinfoview",
+        "checked": true,
+        "leaf": true,
+        "visible": true
+      },
+      {
+        "text": "服务机构查询",
+        "itype": "serviceqview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "投资人查询",
+        "itype": "investorqview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "政府部门信息查询",
+        "itype": "govqview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "需求查询",
+        "itype": "nleaf",
+        "children": [
+          {
+            "text": "融资需求查询",
+            "itype": "refiqview",
+            "checked": true,
+            "leaf": true
+          },
+          {
+            "text": "培训需求查询",
+            "itype": "retrqview",
+            "checked": true,
+            "leaf": true
+          },
+          {
+            "text": "人力资源需求",
+            "itype": "rehrqview",
+            "checked": true,
+            "leaf": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "信息管理",
+    "itype": "nleaf",
+    "expanded": true,
+    "children": [
+      {
+        "text": "企业信息管理",
+        "itype": "entermtview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "服务机构管理",
+        "itype": "servicemtview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "投资人管理",
+        "itype": "investormtview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "政府部门管理",
+        "itype": "govmtview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "需求管理",
+        "itype": "nleaf",
+        "children": [
+          {
+            "text": "融资需求管理",
+            "itype": "refiview",
+            "checked": true,
+            "leaf": true
+          },
+          {
+            "text": "培训需求管理",
+            "itype": "retrview",
+            "checked": true,
+            "leaf": true
+          },
+          {
+            "text": "人力资源管理",
+            "itype": "rehrview",
+            "checked": true,
+            "leaf": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "信息统计",
+    "expanded": true,
+    "itype": "nleaf",
+    "children": [
+      {
+        "text": "企业信息统计",
+        "itype": "enterstatis",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "服务机构统计",
+        "itype": "servicestatis",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "投资人统计",
+        "itype": "investorstatis",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "政府部门信息统计",
+        "itype": "govstatis",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "需求统计",
+        "itype": "nleaf",
+        "children": [
+          {
+            "text": "融资需求统计",
+            "itype": "fsdmstatis",
+            "checked": true,
+            "leaf": true
+          },
+          {
+            "text": "培训需求统计",
+            "itype": "traindmstatis",
+            "checked": true,
+            "leaf": true
+          },
+          {
+            "text": "人力资源需求",
+            "itype": "hrdmstatis",
+            "checked": true,
+            "leaf": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "工作管家",
+    "expanded": false,
+    "itype": "nleaf",
+    "children": [
+      {
+        "text": "企业维护",
+        "itype": "nleaf",
+        "children": [
+          {
+            "text": "维护计划",
+            "itype": "maintainplanview",
+            "checked": true,
+            "leaf": true
+          },
+          {
+            "text": "维护信息",
+            "itype": "maintaininfoview",
+            "checked": true,
+            "leaf": true
+          }
+        ]
+      },
+      {
+        "text": "融资服务",
+        "itype": "refimosfview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "导入导出",
+        "itype": "exportimportview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "站内信息",
+        "itype": "msgview",
+        "checked": true,
+        "leaf": true
+      }
+    ]
+  },
+  {
+    "text": "安全管理",
+    "expanded": false,
+    "itype": "nleaf",
+    "children": [
+      {
+        "text": "用户",
+        "itype": "userview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "菜单",
+        "itype": "menuview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "角色",
+        "itype": "roleview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "操作",
+        "itype": "actview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "权限",
+        "itype": "secview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "系统字典",
+        "itype": "sysdictview",
+        "checked": true,
+        "leaf": true
+      },
+      {
+        "text": "登录日志",
+        "itype": "loginlog",
+        "checked": true,
+        "leaf": true
+      }
+    ]
+  }
+]
