@@ -59,79 +59,54 @@ public class UpdateUsersInfo {
         SimpleDateFormat formats = new SimpleDateFormat("yyyyMMdd");
         String today = formats.format(time).toString();
         String filename = null;
-        String  max_id = null;
-        String  file_type = null;
+        String projectPath = request.getSession().getServletContext().getRealPath("/static/upload/annex/");
 
         try {
             conn = DriverManager.getConnection(url, user, password);
 
-            String sql = "select img from work.users  where nos = '"+session.getAttribute("nos").toString()+"'";
-            pst = conn.prepareStatement(sql);
+            String sql_photo = "select img from work.users where account = '" + session.getAttribute("account").toString() + "'";
+
+            pst = conn.prepareStatement(sql_photo);
             ResultSet rs = pst.executeQuery();
+            String photo_name = "";
             while (rs.next()) {
-
-                filename = rs.getString(1);
-
-                if (filename != null && (filename.length() > 0)) {
-                    int dot = filename.lastIndexOf('.');
-
-                    if ((dot >-1) && (dot < (filename.length()- 1))) {
-                        file_type= filename.substring(dot + 1);
+                photo_name = rs.getString(1);
+            }
+            if (photo_name != null && (photo_name.length() > 0)) {
+                File annexfile = new File(projectPath + "/" + account + ".jpg");
+                if (!file.isEmpty()) {
+                    if (annexfile.exists()) {
+                        annexfile.delete();
                     }
-                    if ((dot > -1) && (dot < (filename.length()))) {
-                        filename = filename.substring(0, dot);
-                    }
+                    file.transferTo(new File(projectPath + "/" + account + ".jpg"));
+                }
+                filename = file.getOriginalFilename();
+            } else {
+                if (!file.isEmpty()) {
+                    file.transferTo(new File(projectPath + "/" + account + ".jpg"));
+                    filename = file.getOriginalFilename();
+                } else {
+                    filename = "per.png";
                 }
             }
 
-            if (!file.isEmpty()) {
+                String sql_insert = "update work.users set " +
+                        "account=?, password=?, sex=?, phone=?, address=?, " +
+                        "    remark=?, name =?, img=? " +
+                        " where id = ?";
+                pst = conn.prepareStatement(sql_insert);
+                pst.setString(1, account);
+                pst.setString(2, pwd);
+                pst.setString(3, sex);
+                pst.setString(4, phone);
+                pst.setString(5, address);
+                pst.setString(6, remark);
+                pst.setString(7, name);
+                pst.setString(8, filename);
+                pst.setInt(9, id);
+                pst.executeUpdate();
 
-                int mul_dot = file.getOriginalFilename().lastIndexOf('.');
-                if ((mul_dot >-1) && (mul_dot < (file.getOriginalFilename().length() - 1))) {
-                    file_type= file.getOriginalFilename().substring(mul_dot + 1);
-                }
-                String projectPath = request.getSession().getServletContext().getRealPath("/static/upload/annex/");
-
-
-
-
-
-                projectPath=projectPath+"/"+filename;
-                File annexfile = new File(projectPath);
-                if(annexfile.exists()){
-                    annexfile.delete();
-                }
-
-                String projectPaths = request.getSession().getServletContext().getRealPath("/static/upload/annex/");
-                file.transferTo(new File(projectPaths + "/" + filename+"."+file_type));
-            }
-            if (filename != null && (filename.length() > 0) ){
-                filename=filename+"."+file_type;
-            }else{
-                filename="";
-            }
-
-
-            String sql_insert = "update work.users set " +
-                    "account=?, password=?, sex=?, phone=?, address=?, " +
-                    "    remark=?, name =?, img=? " +
-                    " where id = ?";
-            pst = conn.prepareStatement(sql_insert);
-            pst.setString(1, account);
-            pst.setString(2, pwd);
-            pst.setString(3, sex);
-            pst.setString(4, phone);
-            pst.setString(5, address);
-            pst.setString(6, remark);
-            pst.setString(7, name);
-            pst.setString(8, filename);
-            pst.setInt(9, id);
-            pst.executeUpdate();
-
-
-
-            dataShop.setSuccess(true);
-
+                dataShop.setSuccess(true);
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         } finally {
@@ -142,7 +117,6 @@ public class UpdateUsersInfo {
                 System.out.print(e.getMessage());
             }
         }
-
         return dataShop;
     }
 }

@@ -59,18 +59,15 @@ public class AddUsersInfo {
         SimpleDateFormat formats = new SimpleDateFormat("yyyyMMdd");
         String today = formats.format(time).toString();
         String filename = null;
-        String  max_id = null;
-        String  file_type = null;
 
         try {
             conn = DriverManager.getConnection(url, user, password);
 
             if (!file.isEmpty()) {
 
-
                 String projectPath = request.getSession().getServletContext().getRealPath("/static/upload/annex/");
 
-                file.transferTo(new File(projectPath + "/" + file.getOriginalFilename()));
+                file.transferTo(new File(projectPath + "/" + account+".jpg"));
 
                 filename = file.getOriginalFilename();
 
