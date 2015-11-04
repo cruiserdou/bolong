@@ -19,7 +19,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             listeners: {
                 afterrender: function () {
                     corp_edit_con_tpl.append('corp_edit', record.data);
-                    corp_shareholder_edit_tpl.append('shareholder_edit', record.data);
+                    corp_shareholder_edit_tpl.append('shareholder_edit', [{"a": 1}, {"a": 2}]);
                     corp_edit_other_tpl.append('corp_edit_other', record.data);
                 }
             },

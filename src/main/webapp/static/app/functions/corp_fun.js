@@ -273,40 +273,36 @@ function obt_corp_shareholder_update(gd_id) {
     var tab = document.getElementById("table_corp_sh");
     var rows = tab.rows;
     for (var i = 2; i < rows.length; i++) {
-
-        {
-            Ext.Ajax.request({
-                method: "POST",
-                params: {
-                    gd_id: gd_id,
-                    //gd_corp_id : corp_id,
-                    gd_shtype: rows[i].cells[0].innerHTML,
-                    gd_shname: rows[i].cells[1].innerHTML,
-                    gd_shdoctype: rows[i].cells[2].innerHTML,
-                    gd_shdocnum: rows[i].cells[3].innerHTML,
-                    gd_shareholdnum: rows[i].cells[4].innerHTML,
-                    gd_currencynum: rows[i].cells[5].innerHTML,
-                    gd_freezenum: rows[i].cells[6].innerHTML,
-                    gd_psotion: rows[i].cells[7].innerHTML,
-                    gd_phone: rows[i].cells[8].innerHTML,
-                    gd_fax: rows[i].cells[9].innerHTML,
-                    gd_email: rows[i].cells[10].innerHTML,
-                    gd_qq: rows[i].cells[11].innerHTML,
-                    gd_webchat: rows[i].cells[12].innerHTML,
-                    gd_tel: rows[i].cells[13].innerHTML,
-                    gd_remark: rows[i].cells[14].innerHTML,
-                    gd_doctype: "",
-                    gd_docnum: ""
-                },
-                url: '/bolong/update_corp_shareholder_info',
-                success: function () {
-                    Ext.Msg.alert("提示", "保存成功！");
-                },
-                failure: function () {
-                    Ext.Msg.alert("提示", "保存失败！");
-                }
-            });
-        }
+        Ext.Ajax.request({
+            method: "POST",
+            params: {
+                gd_id: gd_id,
+                gd_shtype: rows[i].cells[0].innerHTML,
+                gd_shname: rows[i].cells[1].innerHTML,
+                gd_shdoctype: rows[i].cells[2].innerHTML,
+                gd_shdocnum: rows[i].cells[3].innerHTML,
+                gd_shareholdnum: rows[i].cells[4].innerHTML,
+                gd_currencynum: rows[i].cells[5].innerHTML,
+                gd_freezenum: rows[i].cells[6].innerHTML,
+                gd_psotion: rows[i].cells[7].innerHTML,
+                gd_phone: rows[i].cells[8].innerHTML,
+                gd_fax: rows[i].cells[9].innerHTML,
+                gd_email: rows[i].cells[10].innerHTML,
+                gd_qq: rows[i].cells[11].innerHTML,
+                gd_webchat: rows[i].cells[12].innerHTML,
+                gd_tel: rows[i].cells[13].innerHTML,
+                gd_remark: rows[i].cells[14].innerHTML,
+                gd_doctype: "",
+                gd_docnum: ""
+            },
+            url: '/bolong/update_corp_shareholder_info',
+            success: function () {
+                Ext.Msg.alert("提示", "保存成功！");
+            },
+            failure: function () {
+                Ext.Msg.alert("提示", "保存失败！");
+            }
+        });
     }
 };
 
