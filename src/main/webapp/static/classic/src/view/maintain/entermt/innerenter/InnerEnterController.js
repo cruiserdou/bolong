@@ -218,7 +218,7 @@ function save_corp_edit(id) {
 
 
 function buslicnoCheck(num) {
-    var no_regexp = /\d{6}[123]\d{7}[1-9]/;
+    var no_regexp = /\d{15}/;
     return no_regexp.exec(num) != null;
 }
 

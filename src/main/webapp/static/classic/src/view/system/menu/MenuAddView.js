@@ -19,7 +19,9 @@ Ext.define('app.view.system.menu.MenuAddView', {
             xtype: 'textfield',
             name: 'id',
             fieldLabel: '菜单ID',
-            allowBlank: false
+            allowBlank: false,
+                regex : /^[0-9]*$/,
+                regexText : '请输入数字'
         },
             {
             xtype: 'textfield',
@@ -45,7 +47,9 @@ Ext.define('app.view.system.menu.MenuAddView', {
             xtype: 'textfield',
             name: 'parent_id',
             fieldLabel: '菜单父ID',
-            allowBlank: false
+            allowBlank: false,
+            regex : /^[0-9]*$/,
+            regexText : '请输入数字'
         },{
             xtype: 'textfield',
             name: 'itype',
@@ -55,7 +59,9 @@ Ext.define('app.view.system.menu.MenuAddView', {
             xtype: 'textfield',
             name: 'root',
             fieldLabel: '根',
-            allowBlank: false
+            allowBlank: false,
+                regex : /^[0-9]*$/,
+                regexText : '请输入数字'
         }, {
                 xtype: 'textfield',
                 fieldLabel: '图标',

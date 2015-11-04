@@ -25,7 +25,8 @@ Ext.define('app.view.system.role.RoleAddView', {
             {
             xtype: 'textfield',
             name: 'rolename',
-            fieldLabel: '角色名称'
+            fieldLabel: '角色名称',
+            allowBlank: false
         }, {
             xtype: 'textareafield',
             name: 'roledesc',

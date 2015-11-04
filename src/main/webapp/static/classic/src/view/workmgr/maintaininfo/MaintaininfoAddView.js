@@ -87,6 +87,7 @@ Ext.define('app.view.workmgr.maintaininfo.MaintaininfoAddView', {
                 xtype: 'textfield',
                 name: 'mi_city',
                 fieldLabel: '市',
+                readOnly: true,
                 id: 'corp_city_id'
             },
             {
@@ -116,7 +117,8 @@ Ext.define('app.view.workmgr.maintaininfo.MaintaininfoAddView', {
                     data: [{'type': 'A'}, {'type': 'B'}]
                 }),
                 displayField: 'type',
-                valueField: 'type'
+                valueField: 'type',
+                allowBlank: false
             },
             {
                 xtype: 'datefield',
@@ -135,7 +137,8 @@ Ext.define('app.view.workmgr.maintaininfo.MaintaininfoAddView', {
             {
                 xtype: 'textareafield',
                 name: 'mi_remark',
-                fieldLabel: '维护结果'
+                fieldLabel: '维护结果',
+                allowBlank: false
             }
         ],
         buttonAlign: "center",

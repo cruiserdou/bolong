@@ -1093,6 +1093,9 @@ function obt_corp_retrain_add(corp_id) {
     Ext.Ajax.request({
         method: "POST",
         params: {
+
+
+
             retra_corp_id: corp_id,
             retra_mode: Ext.get('retra_mode').getValue(),
             retra_content: Ext.get('retra_content').getValue(),
@@ -1109,3 +1112,228 @@ function obt_corp_retrain_add(corp_id) {
         }
     });
 };
+
+function keyPress() {
+    var keyCode = event.keyCode;
+    if ((keyCode >= 48 && keyCode <= 57))
+    {
+        event.returnValue = true;
+    } else {
+        event.returnValue = false;
+    }
+}
+
+
+function emailcheck(emailvalue) {
+    var emailReg = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
+    return emailReg.exec(emailvalue) != null;
+};
+
+function email_check_apply() {
+    if (!emailcheck(document.getElementById("gov_email").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>邮箱格式不对！请重新输入！</span>")
+        document.getElementById("gov_email").value = "";
+        return;
+    }
+}
+function cont_eemail_check_apply() {
+    if (!emailcheck(document.getElementById("cont_eemail").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>邮箱格式不对！请重新输入！</span>")
+        document.getElementById("cont_eemail").value = "";
+        return;
+    }
+}
+
+function mai_email_check_apply() {
+    if (!emailcheck(document.getElementById("mai_email").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>邮箱格式不对！请重新输入！</span>")
+        document.getElementById("mai_email").value = "";
+        return;
+    }
+}
+
+function inv_email_check_apply() {
+    if (!emailcheck(document.getElementById("inv_email").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>邮箱格式不对！请重新输入！</span>")
+        document.getElementById("inv_email").value = "";
+        return;
+    }
+}
+
+function qqcheck(qqvalue) {
+    var qqReg =/^\d{5,10}$/;
+    return qqReg.exec(qqvalue) != null;
+};
+
+function cont_eqq_check_apply() {
+    if (!qqcheck(document.getElementById("cont_eqq").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>QQ格式不对！请重新输入！</span>")
+        document.getElementById("cont_eqq").value = "";
+        return;
+    }
+}
+
+function mai_qq_check_apply() {
+    if (!qqcheck(document.getElementById("mai_qq").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>QQ格式不对！请重新输入！</span>")
+        document.getElementById("mai_qq").value = "";
+        return;
+    }
+}
+
+function inv_qq_check_apply() {
+    if (!qqcheck(document.getElementById("inv_qq").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>QQ格式不对！请重新输入！</span>")
+        document.getElementById("inv_qq").value = "";
+        return;
+    }
+}
+
+function gov_qq_check() {
+    if (!qqcheck(document.getElementById("gov_qq").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>QQ格式不对！请重新输入！</span>")
+        document.getElementById("gov_qq").value = "";
+        return;
+    }
+}
+
+function cardcheck(cardvalue) {
+    var cardReg =/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+    return cardReg.exec(cardvalue) != null;
+};
+
+
+function phonecheck(phonevalue) {
+    var phoneReg =/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+    return phoneReg.exec(phonevalue) != null;
+};
+
+function mai_phone_check() {
+    if (!phonecheck(document.getElementById("mai_phone").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>手机号码格式不对！请重新输入！</span>")
+        document.getElementById("mai_phone").value = "";
+        return;
+    }
+}
+
+function inv_phone_check() {
+    if (!phonecheck(document.getElementById("inv_phone").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>手机号码格式不对！请重新输入！</span>")
+        document.getElementById("inv_phone").value = "";
+        return;
+    }
+}
+
+function gov_phone_check() {
+    if (!phonecheck(document.getElementById("gov_phone").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>手机号码格式不对！请重新输入！</span>")
+        document.getElementById("gov_phone").value = "";
+        return;
+    }
+}
+
+function cont_ephone_check() {
+    if (!phonecheck(document.getElementById("cont_ephone").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>手机号码格式不对！请重新输入！</span>")
+        document.getElementById("cont_ephone").value = "";
+        return;
+    }
+}
+ 
+function telcheck(telvalue) {
+    //var telReg =/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+    var telReg =/(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/;
+    return telReg.exec(telvalue) != null;
+};
+
+function mai_tel_check() {
+    if (!telcheck(document.getElementById("mai_tel").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>固定电话格式不对！请重新输入！</span>")
+        document.getElementById("mai_tel").value = "";
+        return;
+    }
+}
+
+function cont_tel_check() {
+    if (!telcheck(document.getElementById("cont_tel").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>固定电话格式不对！请重新输入！</span>")
+        document.getElementById("cont_tel").value = "";
+        return;
+    }
+}
+
+function inv_tel_check() {
+    if (!telcheck(document.getElementById("inv_tel").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>固定电话格式不对！请重新输入！</span>")
+        document.getElementById("inv_tel").value = "";
+        return;
+    }
+}
+
+function gov_tel_check() {
+    if (!telcheck(document.getElementById("gov_tel").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>固定电话格式不对！请重新输入！</span>")
+        document.getElementById("gov_tel").value = "";
+        return;
+    }
+}
+
+function cont_efax_check() {
+    if (!telcheck(document.getElementById("cont_efax").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>传真号码格式不对！请重新输入！</span>")
+        document.getElementById("cont_efax").value = "";
+        return;
+    }
+}
+
+function mai_fax_check() {
+    if (!telcheck(document.getElementById("mai_fax").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>传真号码格式不对！请重新输入！</span>")
+        document.getElementById("mai_fax").value = "";
+        return;
+    }
+}
+
+function inv_fax_check() {
+    if (!telcheck(document.getElementById("inv_fax").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>传真号码格式不对！请重新输入！</span>")
+        document.getElementById("inv_fax").value = "";
+        return;
+    }
+}
+
+function gov_fax_check() {
+    if (!telcheck(document.getElementById("gov_fax").value)) {
+        Ext.Msg.alert("提示", "<span style='color: red;'>传真号码格式不对！请重新输入！</span>")
+        document.getElementById("gov_fax").value = "";
+        return;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -94,11 +94,13 @@ Ext.define('app.view.workmgr.maintainplan.MaintainplanAddView', {
             fieldLabel: '最后一次维护时间',
             name: 'mp_last_date',
             value: new Date(),
-            format: 'Y-m-d H:i:s'
+            format: 'Y-m-d H:i:s',
+            allowBlank: false
         }, {
             xtype: 'textareafield',
             fieldLabel: '维护内容',
-            name: 'mp_content'
+            name: 'mp_content',
+            allowBlank: false
         }, {
             xtype: 'textareafield',
             hidden: true,
