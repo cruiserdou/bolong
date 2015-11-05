@@ -42,6 +42,7 @@ var win_enterapplyview = Ext.create('Ext.window.Window', {
     closeAction: 'close',
     border: false,
     maximized: true,
+    autoDestroy: true,
     layout: 'fit',
     autoDestroy: true,
     items: [
@@ -51,33 +52,35 @@ var win_enterapplyview = Ext.create('Ext.window.Window', {
 
 function save_cust_add() {
     if (document.getElementById("buslicno").value == "") {
-        Ext.Msg.alert("提示", "<span style='color: red;'>营业执照号码不能为空！</span>")
+        Ext.Msg.alert("提示", "<span style='color: red;'>营业执照号码不能为空！</span>");
         return;
     }
     if (document.getElementById("name").value == "") {
-        Ext.Msg.alert("提示", "<span style='color: red;'>企业名称不能为空！</span>")
+        Ext.Msg.alert("提示", "<span style='color: red;'>企业名称不能为空！</span>");
         return;
     }
     if (document.getElementById("unit").value == "") {
-        Ext.Msg.alert("提示", "<span style='color: red;'>单位类别不能为空！</span>")
+        Ext.Msg.alert("提示", "<span style='color: red;'>单位类别不能为空！</span>");
         return;
     }
     if (document.getElementById("legrep").value == "") {
-        Ext.Msg.alert("提示", "<span style='color: red;'>法定代表人不能为空！</span>")
+        Ext.Msg.alert("提示", "<span style='color: red;'>法定代表人不能为空！</span>");
         return;
     }
     if (document.getElementById("nature").value == "") {
-        Ext.Msg.alert("提示", "<span style='color: red;'>企业性质不能为空！</span>")
+        Ext.Msg.alert("提示", "<span style='color: red;'>企业性质不能为空！</span>");
         return;
     }
     if (document.getElementById("regcap").value == "") {
-        Ext.Msg.alert("提示", "<span style='color: red;'>注册资本不能为空！</span>")
+        Ext.Msg.alert("提示", "<span style='color: red;'>注册资本不能为空！</span>");
         return;
     }
     if (document.getElementById("regdt").value == "") {
-        Ext.Msg.alert("提示", "<span style='color: red;'>注册日期不能为空！</span>")
+        Ext.Msg.alert("提示", "<span style='color: red;'>注册日期不能为空！</span>");
         return;
     }
+
+    //企业ＩＤ
     var corp_id;
     if (document.getElementById('apply_form')['buslicno'].value == null && document.getElementById('apply_form')['buslicno'].value == "") {
         Ext.Msg.alert("提示", "请填写营业执照号码！");
@@ -92,6 +95,7 @@ function save_cust_add() {
                 if (obj.success) {
                     corp_id = parseInt(obj.name);
                 }
+
                 obt_corp_add(corp_id);
                 obt_corp_contact_add(corp_id);
                 obt_corp_shareholder_add(corp_id);
