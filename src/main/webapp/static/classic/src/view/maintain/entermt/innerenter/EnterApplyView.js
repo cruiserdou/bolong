@@ -8,7 +8,7 @@ Ext.define('app.view.maintain.entermt.innerenter.EnterApplyView', {
     ]
 });
 
-var enterapplyview_new = Ext.create('Ext.panel.Panel', {
+var enterapplyview_new = new Ext.form.FormPanel({
     id: 'applyf_panel_id',
     bodyPadding: 10,
     bodyStyle: 'overflow-y:scroll',
@@ -32,20 +32,20 @@ var enterapplyview_new = Ext.create('Ext.panel.Panel', {
             xtype: 'panel',
             border: false,
             id: 'corp_panel',
-            html: '<div id="apply_view_corp"></div>'
+            html: '<div id="apply_view_corp">' +
+            '</div>'
         }
     ]
 });
 
-var win_enterapplyview = Ext.create('Ext.window.Window', {
+var win_enterapplyview = new Ext.Window({
     modal: true,
     title: '新增企业',
     closeAction: 'close',
     border: false,
+    maximizable: true,
     maximized: true,
     layout: 'fit',
-    autoDestroy: true,
-    closeAction: 'destroy',
     items: [
         enterapplyview_new
     ]
@@ -151,8 +151,7 @@ function card_check_apply() {
                 document.getElementById('apply_form')['buslicno'].value = "";
             }
         },
-        failure: function (response, opts) {
-            //Ext.Msg.alert("提示", "错");
+        failure: function (response, opts) { 
         }
     });
 };
