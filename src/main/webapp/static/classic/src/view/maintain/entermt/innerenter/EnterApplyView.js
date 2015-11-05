@@ -8,7 +8,7 @@ Ext.define('app.view.maintain.entermt.innerenter.EnterApplyView', {
     ]
 });
 
-var enterapplyview_new = new Ext.form.FormPanel({
+var enterapplyview_new = Ext.create('Ext.panel.Panel', {
     id: 'applyf_panel_id',
     bodyPadding: 10,
     bodyStyle: 'overflow-y:scroll',
@@ -32,19 +32,20 @@ var enterapplyview_new = new Ext.form.FormPanel({
             xtype: 'panel',
             border: false,
             id: 'corp_panel',
-            html: '<div id="apply_view_corp">' +
-            '</div>'
+            html: '<div id="apply_view_corp"></div>'
         }
     ]
 });
 
-var win_enterapplyview = new Ext.Window({
+var win_enterapplyview = Ext.create('Ext.window.Window', {
     modal: true,
     title: '新增企业',
     closeAction: 'close',
     border: false,
     maximized: true,
     layout: 'fit',
+    autoDestroy: true,
+    closeAction: 'destroy',
     items: [
         enterapplyview_new
     ]
