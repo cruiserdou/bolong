@@ -267,16 +267,14 @@ function obt_corp_contact_update(cont_id) {
 };
 
 //股东信息更新
-function obt_corp_shareholder_update(gd_id) {
-
-
+function obt_corp_shareholder_update(corp_id) {
     var tab = document.getElementById("table_corp_sh");
     var rows = tab.rows;
     for (var i = 2; i < rows.length; i++) {
         Ext.Ajax.request({
             method: "POST",
             params: {
-                gd_id: gd_id,
+                gd_corp_id: corp_id,
                 gd_shtype: rows[i].cells[0].innerHTML,
                 gd_shname: rows[i].cells[1].innerHTML,
                 gd_shdoctype: rows[i].cells[2].innerHTML,
@@ -295,7 +293,7 @@ function obt_corp_shareholder_update(gd_id) {
                 gd_doctype: "",
                 gd_docnum: ""
             },
-            url: '/bolong/update_corp_shareholder_info',
+            url: '/bolong/add_corp_shareholder_info',
             success: function () {
                 Ext.Msg.alert("提示", "保存成功！");
             },
@@ -773,8 +771,8 @@ function obt_corp_shareholder_add(corp_id) {
             }
         });
     }
-
 };
+
 function obt_corp_finance_add(corp_id) {
     Ext.Ajax.request({
         method: "POST",
@@ -1091,7 +1089,6 @@ function obt_corp_retrain_add(corp_id) {
         params: {
 
 
-
             retra_corp_id: corp_id,
             retra_mode: Ext.get('retra_mode').getValue(),
             retra_content: Ext.get('retra_content').getValue(),
@@ -1111,8 +1108,7 @@ function obt_corp_retrain_add(corp_id) {
 
 function keyPress() {
     var keyCode = event.keyCode;
-    if ((keyCode >= 48 && keyCode <= 57))
-    {
+    if ((keyCode >= 48 && keyCode <= 57)) {
         event.returnValue = true;
     } else {
         event.returnValue = false;
@@ -1157,7 +1153,7 @@ function inv_email_check_apply() {
 }
 
 function qqcheck(qqvalue) {
-    var qqReg =/^\d{5,10}$/;
+    var qqReg = /^\d{5,10}$/;
     return qqReg.exec(qqvalue) != null;
 };
 
@@ -1194,13 +1190,13 @@ function gov_qq_check() {
 }
 
 function cardcheck(cardvalue) {
-    var cardReg =/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+    var cardReg = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
     return cardReg.exec(cardvalue) != null;
 };
 
 
 function phonecheck(phonevalue) {
-    var phoneReg =/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+    var phoneReg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
     return phoneReg.exec(phonevalue) != null;
 };
 
@@ -1235,10 +1231,10 @@ function cont_ephone_check() {
         return;
     }
 }
- 
+
 function telcheck(telvalue) {
     //var telReg =/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
-    var telReg =/(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/;
+    var telReg = /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/;
     return telReg.exec(telvalue) != null;
 };
 

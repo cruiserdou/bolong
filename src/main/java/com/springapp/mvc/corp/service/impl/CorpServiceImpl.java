@@ -2,6 +2,7 @@ package com.springapp.mvc.corp.service.impl;
 
 import com.springapp.mvc.corp.dao.CorpDao;
 import com.springapp.mvc.corp.pojo.Corp;
+import com.springapp.mvc.corp.pojo.CorpShareHolder;
 import com.springapp.mvc.corp.service.CorpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,13 @@ public class CorpServiceImpl implements CorpService {
     }
 
     public List<Corp> listServer(String name, String nos, String buslicno, String listcode){ return corpDao.listServer(name, nos, buslicno, listcode);
+    }
+
+    public void delShareHolder(int corp_id){
+        corpDao.delShareHolder(corp_id);
+    }
+    public List<CorpShareHolder> getShareHolderByCorpID(int corp_id){
+        return corpDao.getShareHoderByCorpID(corp_id);
     }
 
     public void delete(Integer id){

@@ -548,6 +548,7 @@ $include-app-model-changelist-corpretrchangemodel: dynamic(false);;
 $include-app-model-changelist-corpservicechangemodel: dynamic(false);;
 $include-app-model-corpall-basedata: dynamic(false);;
 $include-app-model-corpall-corpall: dynamic(true);;
+$include-app-model-corpall-shareholder: dynamic(false);;
 $include-app-model-stat-corpstatmodel: dynamic(false);;
 $include-app-model-system-actmodel: dynamic(false);;
 $include-app-model-system-loginlog: dynamic(false);;

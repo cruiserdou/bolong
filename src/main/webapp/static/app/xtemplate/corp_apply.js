@@ -1,4 +1,10 @@
 Ext.define('app.xtemplate.corp_apply', {});
+function delShearholder(e) {
+    var tr = e.target.parentNode.parentNode;
+    var tbody = tr.parentNode;
+    tbody.removeChild(tr);
+}
+
 function addRow_edit() {
     var oTable = document.getElementById("table_corp_sh");
     var tBodies = oTable.tBodies;
@@ -35,7 +41,7 @@ function addRow_edit() {
     var td_15 = tr.insertCell(14);
     td_15.innerHTML = "";
     var td_16 = tr.insertCell(15);
-    td_16.innerHTML = "<input type='button' onClick='' style='font-size:16px;' value='-'/>";
+    td_16.innerHTML = "<input type='button' onClick='delShearholder(event);' style='font-size:16px;' value='-'/>";
 }
 var corp_apply_con_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',

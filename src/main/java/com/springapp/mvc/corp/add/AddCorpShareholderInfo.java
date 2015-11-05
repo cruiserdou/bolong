@@ -4,8 +4,10 @@ package com.springapp.mvc.corp.add;
  * Created by xwq on 14-4-15.
  */
 
+import com.springapp.mvc.corp.service.CorpService;
 import common.util.DBInfo;
 import common.util.DataShop;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +22,8 @@ import java.sql.SQLException;
 @Controller
 @RequestMapping("/add_corp_shareholder_info")
 public class AddCorpShareholderInfo {
+    @Autowired
+    private CorpService corpService;
 
     @RequestMapping( method = RequestMethod.POST)
     public
@@ -65,6 +69,8 @@ public class AddCorpShareholderInfo {
 
         try {
             conn = DriverManager.getConnection(url, user, password);
+
+            corpService.delShareHolder(gd_corp_id);
 
             String sql = "INSERT INTO work.tb_corp_shareholder(\n" +
                     "           gd_corp_id, gd_shtype, gd_shname, gd_shdoctype, gd_shdocnum, \n" +

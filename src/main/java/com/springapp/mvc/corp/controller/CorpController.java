@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by dou on 15-9-3.
@@ -35,6 +37,17 @@ public class CorpController {
         dataShop.setSuccess(true);
         dataShop.setList(list);
         dataShop.setTotal(count);
+        return dataShop;
+    }
+
+    @RequestMapping(value = "/shareholder_list")
+    public DataShop getShareHolderByCorpID(
+            @RequestParam(value = "corp_id", required = true)int corp_id
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        dataShop.setList(corpService.getShareHolderByCorpID(corp_id));
+        dataShop.setSuccess(true);
+
         return dataShop;
     }
 

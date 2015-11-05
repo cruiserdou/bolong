@@ -6,7 +6,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
 
     alias: 'controller.innerentercontroller',
     requires: [
-        'app.xtemplate.corp_edit'
+        'app.xtemplate.corp_edit',
+        'app.model.corpall.ShareHolder'
     ],
     itemdblclick: function (view, record) {
         var mypanel = Ext.create('Ext.panel.Panel', {
@@ -19,7 +20,43 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             listeners: {
                 afterrender: function () {
                     corp_edit_con_tpl.append('corp_edit', record.data);
-                    corp_shareholder_edit_tpl.append('shareholder_edit', [{"a": 1}, {"a": 2}]);
+
+                    //查询股东信息
+                    var sh_store = Ext.create('Ext.data.Store', {
+                        extend: 'Ext.data.Store',
+                        model: 'app.model.corpall.ShareHolder',
+                        alias: 'store.shareholder',
+                        proxy: {
+                            type: 'ajax',
+                            actionMethods: {
+                                read: 'POST'
+                            },
+                            api: {
+                                read: '/bolong/shareholder_list'
+                            },
+                            reader: {
+                                type: 'json',
+                                rootProperty: 'list'
+                            }
+                        }
+                    });
+
+                    sh_store.load({
+                        params: {
+                            corp_id: record.data.id
+                        },
+                        callback: function (records, operation, success) {
+                            var data = [];
+
+                            sh_store.each(function (record) {
+                                data.push(record.getData());
+                            });
+
+                            //渲染股东信息
+                            corp_shareholder_edit_tpl.append('shareholder_edit', data);
+                        }
+                    });
+
                     corp_edit_other_tpl.append('corp_edit_other', record.data);
                 }
             },
@@ -38,7 +75,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                 xtype: 'panel',
                 id: 'shareholder_panel_id',
                 border: false,
-                height: 300,
+                height: 360,
                 html: '<div id="shareholder_edit"></div>'
             }, {
                 xtype: 'panel',
@@ -83,7 +120,6 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             items: [mypanel]
         }).show();
     },
-
 
     btnClick: function () {
         Ext.getCmp('innerentergridview_id').getStore().load({
@@ -203,7 +239,7 @@ function save_corp_edit(id) {
 
     obt_corp_update(Ext.get('apply_corp_form_edit').getAttribute('data-corp-id'));
     obt_corp_contact_update(Ext.get('table_corp_link').getAttribute('data-cont-id'));
-    //obt_corp_shareholder_update(gd_id);
+    obt_corp_shareholder_update(Ext.get('apply_corp_form_edit').getAttribute('data-corp-id'));
     obt_corp_finance_update(Ext.get('table_corp_assets_finance').getAttribute('data-fin-id'));
     obt_corp_maintain_update(Ext.get('table_corp_ocompay').getAttribute('data-mai-id'));
     obt_corp_government_update(Ext.get('type_govermt').getAttribute('data-gov-id'));

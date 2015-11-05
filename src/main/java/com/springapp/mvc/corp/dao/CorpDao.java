@@ -1,8 +1,10 @@
 package com.springapp.mvc.corp.dao;
 
 import com.springapp.mvc.corp.pojo.Corp;
+import com.springapp.mvc.corp.pojo.CorpShareHolder;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.stereotype.Repository;
 
@@ -84,6 +86,22 @@ public interface CorpDao {
         }
     }
 
+
+    @Delete("DELETE FROM work.tb_corp_shareholder " +
+            " WHERE gd_corp_id=#{corp_id};")
+    void delShareHolder(@Param(value = "corp_id")int corp_id);
+
+    //通过公司ID获取公司股东信息
+    @Select("  SELECT gd_id, gd_corp_id, gd_shtype, gd_shname, gd_shdoctype, gd_shdocnum, " +
+            "       gd_shareholdnum, gd_currencynum, gd_freezenum, gd_psotion, gd_doctype, " +
+            "       gd_docnum, gd_phone, gd_fax, gd_email, gd_qq, gd_webchat, gd_tel, " +
+            "       gd_remark " +
+            "  FROM work.tb_corp_shareholder " +
+            "  WHERE gd_corp_id = #{corp_id};")
+    List<CorpShareHolder> getShareHoderByCorpID(
+            @Param(value = "corp_id")int corp_id
+    );
+
     @SelectProvider(type = CorpGovDaoEmberSql.class, method = "listGovCorp")
     List<Corp> listGov(
             @Param(value = "name") String name,
@@ -114,7 +132,6 @@ public interface CorpDao {
                     "     inner join work.tb_corp_contact corp_contact on corp.id=corp_contact.cont_corp_id " +
                     "     inner join work.tb_corp_finance corp_finance on corp.id=corp_finance.fin_corp_id " +
                     "     left outer join work.tb_corp_maintain corp_maintain on corp.id=corp_maintain.mai_corp_id " +
-//                    "      left outer join work.tb_corp_shareholder corp_shareholder on corp.id=corp_shareholder.gd_corp_id " +
                     "     left join work.tb_corp_government corp_government on corp.id=corp_government.gov_corp_id " +
                     "     left join work.tb_corp_service corp_service on corp.id=corp_service.srv_corp_id " +
                     "     left join work.tb_corp_investors corp_investors on corp.id=corp_investors.inv_corp_id " +
