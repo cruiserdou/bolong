@@ -26,7 +26,6 @@ var enterapplyview_new = Ext.create('Ext.panel.Panel', {
         pack: 'start'
     },
 
-
     items: [
         {
             xtype: 'panel',
@@ -45,7 +44,6 @@ var win_enterapplyview = Ext.create('Ext.window.Window', {
     maximized: true,
     layout: 'fit',
     autoDestroy: true,
-    closeAction: 'destroy',
     items: [
         enterapplyview_new
     ]
