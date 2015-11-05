@@ -151,7 +151,7 @@ function card_check_apply() {
                 document.getElementById('apply_form')['buslicno'].value = "";
             }
         },
-        failure: function (response, opts) { 
+        failure: function (response, opts) {
         }
     });
 };
