@@ -97,7 +97,7 @@ var corp_tpl = new Ext.XTemplate(
      '</tr>',
      '<tr>',
      '<th>企业图文信息</th>',
-    '<td colspan="3"><a href="img_view?corp_id={id}" target="_blank">详细</a></td>',
+    '<td colspan="3"><a href="/bolong/img_view?corp_id={id}" target="_blank">详细</a></td>',
      '</tr>',
      '</table>',
     '</div>'
