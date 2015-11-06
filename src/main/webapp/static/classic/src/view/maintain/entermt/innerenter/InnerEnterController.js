@@ -7,7 +7,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
     alias: 'controller.innerentercontroller',
     requires: [
         'app.xtemplate.corp_edit',
-        'app.model.corpall.ShareHolder'
+        'app.model.corpall.ShareHolder',
+        'app.view.maintain.entermt.innerenter.InnerEnterImgGridView'
     ],
     itemdblclick: function (view, record) {
         var mypanel = Ext.create('Ext.panel.Panel', {
@@ -296,3 +297,141 @@ function buslicno_check_edit(id) {
         }
     });
 }
+function corp_imgs_upload(id) {
+    Ext.create('widget.window', {
+        title: '企业图片',
+        id: 'corp_imgs_window',
+        width: 800,
+        height: 600,
+        modal: true,
+        frame: true,
+        border: false,
+        layout: 'border',
+        listeners: {
+            afterrender: function () {
+                Ext.getCmp('innerenterimggridview_id').getStore().load(
+                    {
+                        params: {
+                            corp_id: id
+                        }
+                    }
+                );
+            }
+        },
+        dockedItems: [
+            {
+                xtype: 'toolbar',
+                dock: 'top',
+                border: true,
+                items: [
+                    {
+                        text: '上传',
+                        id: 'corp_img_update_id',
+                        listeners: {
+                            click: function () {
+                                Ext.create('widget.window', {
+                                    title: '资料上传',
+                                    width: 300,
+                                    height: 370,
+                                    modal: true,
+                                    border: false,
+                                    layout: 'fit',
+                                    items: [
+                                        {
+                                            xtype: 'form',
+                                            frame: true,
+                                            bodyPadding: 16,
+                                            defaults: {
+                                                labelWidth: 50
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'filefield',
+                                                    allowBlank: false,
+                                                    fieldLabel: '文件',
+                                                    name: 'file',
+                                                    id: 'file',
+                                                    anchor: '100%',
+                                                    buttonText: '浏览...',
+                                                    buttonConfig: {
+                                                        iconCls: 'upload'
+                                                    },
+                                                    listeners: {
+                                                        change: function (btn, value) {
+                                                            //是否是规定的图片类型
+                                                            var img_reg = /\.([jJ][pP][gG])$|\.([jJ][pP][eE][gG])$|\.([gG][iI][fF])小贝$|\.([pP][nN][gG])$|\.([bB][mM][pP])$/;
+                                                            if (img_reg.test(value)) {
+                                                                var img = Ext.getCmp('staffavatar');
+                                                                var file = btn.fileInputEl.dom.files[0];
+                                                                var url = URL.createObjectURL(file);
+                                                                img.setSrc(url);
+                                                            } else {
+                                                                Ext.Msg.alert('提示', '请选择图片类型的文件！');
+                                                                Ext.getCmp('file').reset();
+                                                                return;
+                                                            }
+                                                        }
+                                                    }
+                                                } ,{
+                                                    xtype: 'fieldset',
+                                                    //border: false,
+                                                    title: '图片预览',
+                                                    defaults: {margin:'0 0 0 10', width: 150,height:150},
+                                                    items: [
+                                                        {
+                                                            xtype: 'image',
+                                                            id: 'staffavatar',
+                                                            border:1,
+                                                            src: '/bolong/static/upload/annex/per.png',
+                                                            style: {
+                                                                borderColor: 'blue',
+                                                                borderStyle: 'solid'
+                                                            }}
+                                                    ]
+                                                }
+                                            ],
+                                            buttonAlign: "center",
+                                            buttons: [
+                                                {
+                                                    text: '保存',
+                                                    iconCls: 'icon_save',
+                                                    handler: function () {
+                                                        var form = this.up('form').getForm();
+                                                        if (form.isValid()) {
+                                                            form.submit({
+                                                                url: '/bolong/upload_corp_img',
+                                                                params: {
+                                                                    corp_id: id
+                                                                },
+                                                                waitMsg: '正在保存数据...',
+                                                                success: function (response, action) {
+                                                                    Ext.Msg.alert("成功", "文件上传成功!");
+                                                                    Ext.getCmp('innerenterimggridview_id').getStore().reload();
+                                                                },
+                                                                failure: function (form, action) {
+                                                                    Ext.Msg.alert("提示", "文件格式不正确，只能上传jpg,png格式的文件！");
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }).show(Ext.get(corp_img_update_id));
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
+        items: [
+            {
+                xtype: 'innerenterimggridview',
+                id: 'innerenterimggridview_id',
+                region: 'center'
+            }
+        ]
+    }).show(Ext.get('corp_imgs_window'));
+}
+

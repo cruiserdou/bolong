@@ -1,4 +1,3 @@
-
 Ext.define('app.store.corpall.CorpImg', {
     extend: 'Ext.data.Store',
     model: 'app.model.corpall.CorpImg',

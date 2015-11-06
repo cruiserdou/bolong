@@ -15,8 +15,8 @@ import java.util.List;
 public class CorpImgServiceImpl implements CorpImgService {
     @Autowired private CorpImgDao corpImgDao;
     @Override
-    public List<CorpImg> list(){
-        return corpImgDao.list();
+    public List<CorpImg> list(Integer corp_id){
+        return corpImgDao.list(corp_id);
     }
 
 }
