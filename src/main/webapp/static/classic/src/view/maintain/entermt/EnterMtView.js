@@ -10,7 +10,6 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
         'app.view.maintain.entermt.innerenter.InnerEnterView',
         'app.view.maintain.entermt.innerenter.EnterApplyView'
     ],
-
     viewModel: 'main',
     layout: 'fit',
     bodyPadding: 160,
