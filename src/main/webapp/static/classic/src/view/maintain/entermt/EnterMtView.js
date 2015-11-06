@@ -6,7 +6,6 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
     xtype: 'entermtview',
     id: 'entermtview_id',
     closable: true,
-
     requires: [
         'app.view.maintain.entermt.innerenter.InnerEnterView',
         'app.view.maintain.entermt.innerenter.EnterApplyView'
