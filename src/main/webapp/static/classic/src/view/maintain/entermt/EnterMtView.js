@@ -36,6 +36,8 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                     height: 700,
                     width: 960,
                     modal: true,
+                    closeAction: 'destroy',
+                    autoDestroy: true,
                     maximizable: true,
                     layout: 'fit',
                     items: {  // Let's put an empty grid in just to illustrate fit layout
