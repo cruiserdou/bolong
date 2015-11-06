@@ -7,5 +7,5 @@ import com.springapp.mvc.stat.pojo.StatInfo;
 import java.util.List;
 
 public interface CorpImgService {
-    List<CorpImg> list();
+    List<CorpImg> list(Integer corp_id);
 }
