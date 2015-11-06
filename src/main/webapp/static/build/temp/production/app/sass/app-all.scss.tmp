@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'app' );
-$image-search-path: '/Users/xwq/IdeaProjects/bolong/src/main/webapp/static/build/production/app/modern/resources';
+$image-search-path: '/home/dou/IdeaProjects/bolong/src/main/webapp/static/build/production/app/modern/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-app-model-change: dynamic(false);;
 $include-ext-abstractcomponent: dynamic(false);;

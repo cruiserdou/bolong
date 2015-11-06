@@ -3,6 +3,7 @@
     <words>
       <w>bolong</w>
       <w>compnent</w>
+      <w>displayfield</w>
       <w>inputnum</w>
       <w>listenter</w>
       <w>listgov</w>
@@ -10,6 +11,7 @@
       <w>listservice</w>
       <w>loginform</w>
       <w>mainlist</w>
+      <w>vtype</w>
     </words>
   </dictionary>
 </component>
