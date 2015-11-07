@@ -493,8 +493,7 @@ public interface CorpDao {
             "   VALUES (#{corpServicePojo.ssrv_corp_id}, #{corpServicePojo.srv_name}, #{corpServicePojo.srv_type}, #{corpServicePojo.srv_content},  " +
             "           #{corpServicePojo.srv_levels}, #{corpServicePojo.srv_domain}, #{corpServicePojo.srv_penalty},  #{corpServicePojo.srv_examiner},   " +
             "           #{corpServicePojo.srv_post}, #{corpServicePojo.srv_descs}, #{corpServicePojo.srv_remark});" +
-
-
+ 
             "end;")
     void insertCorp(
             @Param(value = "corpBase") CorpBase corpBase,
