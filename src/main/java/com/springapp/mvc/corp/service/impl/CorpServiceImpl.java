@@ -2,6 +2,7 @@ package com.springapp.mvc.corp.service.impl;
 
 import com.springapp.mvc.corp.dao.CorpDao;
 import com.springapp.mvc.corp.pojo.Corp;
+import com.springapp.mvc.corp.pojo.CorpBase;
 import com.springapp.mvc.corp.pojo.CorpShareHolder;
 import com.springapp.mvc.corp.service.CorpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,9 @@ public class CorpServiceImpl implements CorpService {
 
     public void delete(Integer id){
         corpDao.delete(id);
+    }
+
+    public void insertCorp(CorpBase corpBase){
+        corpDao.insertCorp(corpBase);
     }
 }

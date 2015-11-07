@@ -1,6 +1,5 @@
 package com.springapp.mvc.corp.pojo;
 
-import java.sql.Date;
 
 /**
  * Created by xwq on 15/11/6.
@@ -11,7 +10,7 @@ public class CorpReTrain {
     private String  retra_mode; //培训方式
     private String  retra_content;  //培训内容
     private Double retra_acc_cost;  //可接受成本
-    private Date retra_dt;    //有效时间
+    private String retra_dt;    //有效时间
     private String  retra_requests; //详细要求
 
     public int getRetra_id() {
@@ -54,11 +53,11 @@ public class CorpReTrain {
         this.retra_acc_cost = retra_acc_cost;
     }
 
-    public Date getRetra_dt() {
+    public String getRetra_dt() {
         return retra_dt;
     }
 
-    public void setRetra_dt(Date retra_dt) {
+    public void setRetra_dt(String retra_dt) {
         this.retra_dt = retra_dt;
     }
 

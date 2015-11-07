@@ -1,11 +1,9 @@
 package com.springapp.mvc.corp.dao;
 
 import com.springapp.mvc.corp.pojo.Corp;
+import com.springapp.mvc.corp.pojo.CorpBase;
 import com.springapp.mvc.corp.pojo.CorpShareHolder;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -365,4 +363,21 @@ public interface CorpDao {
 
             " COMMIT;")
     void delete(@Param(value = "id") Integer id);
+
+    @Insert("begin;" +
+            "INSERT INTO work.tb_corp( " +
+            "            buslicno, name, unit, legrep, province, city, county, nos, " +
+            "            postal, nature, regcap, bustermfdt, bustremtdt, regdt, list_area, " +
+            "            listcode, listprice, listdt, channels, webchat, staffnum, regist_organ, " +
+            "            regaddr, offaddr, scope, mbus, eprofile, phoinf, remark, indclass1, " +
+            "            indclass2, indclass3, indclass4, csrc_type1, csrc_type2 " +
+            "            )" +
+            "    VALUES (#{corpBase.buslicno}, #{corpBase.name}, #{corpBase.unit}, #{corpBase.legrep}, #{corpBase.province}, #{corpBase.city}, #{corpBase.county}, #{corpBase.nos}, " +
+            "            #{corpBase.postal}, #{corpBase.nature}, #{corpBase.regcap}, #{corpBase.bustermfdt}, #{corpBase.bustremtdt},#{corpBase.regdt}, #{corpBase.list_area}, " +
+            "            #{corpBase.listcode}, #{corpBase.listprice}, #{corpBase.listdt}, #{corpBase.channels}, #{corpBase.webchat}, #{corpBase.staffnum}, #{corpBase.regist_organ}, " +
+            "            #{corpBase.regaddr}, #{corpBase.offaddr}, #{corpBase.scope}, #{corpBase.mbus}, #{corpBase.eprofile}, #{corpBase.phoinf}, #{corpBase.remark}, #{corpBase.indclass1}, " +
+            "            #{corpBase.indclass2}, #{corpBase.indclass3}, #{corpBase.indclass4}, #{corpBase.csrc_type1}, #{corpBase.csrc_type2} " +
+            "            );" +
+            "end;")
+    void insertCorp(@Param(value = "corpBase")CorpBase corpBase);
 }

@@ -18,13 +18,13 @@ public class CorpBase {
     private String postal;  //邮政编码
     private String nature;  //企业性质
     private String regcap;  //注册资本
-    private Date bustermfdt;    //营业期限自
-    private Date bustremtdt;    //营业期限至
-    private Date regdt;     //注册日期
+    private String bustermfdt;    //营业期限自
+    private String bustremtdt;    //营业期限至
+    private String regdt;     //注册日期
     private String list_area;   //挂牌区域
     private String listcode;    //挂牌代码
     private String listprice;   //挂牌出资
-    private Date listdt;    //挂牌日期
+    private String listdt;    //挂牌日期
     private String channels;    //推荐单位
     private String webchat;     //微信号
     private String staffnum;    //员工人数
@@ -51,7 +51,7 @@ public class CorpBase {
     private boolean demand_rz;  //融资需求
     private boolean demand_px;  //培训需求
     private boolean demand_rl;  //人力需求
-    private Date inputdt;   //录入时间
+    private String inputdt;   //录入时间
     private int inputid;    //录入人
 
     public int getId() {
@@ -151,26 +151,35 @@ public class CorpBase {
     }
 
     public Date getBustermfdt() {
-        return bustermfdt;
+        Date d_bustermfdt = null;
+        if (this.bustermfdt != null && this.bustermfdt.length() > 2)
+            d_bustermfdt = Date.valueOf(this.bustermfdt);
+        return d_bustermfdt;
     }
 
-    public void setBustermfdt(Date bustermfdt) {
+    public void setBustermfdt(String bustermfdt) {
         this.bustermfdt = bustermfdt;
     }
 
     public Date getBustremtdt() {
-        return bustremtdt;
+        Date d_bustermfdt = null;
+        if (this.bustremtdt != null && this.bustremtdt.length() > 2)
+            d_bustermfdt = Date.valueOf(this.bustremtdt);
+        return d_bustermfdt;
     }
 
-    public void setBustremtdt(Date bustremtdt) {
+    public void setBustremtdt(String bustremtdt) {
         this.bustremtdt = bustremtdt;
     }
 
     public Date getRegdt() {
-        return regdt;
+        Date d_bustermfdt = null;
+        if (this.regdt != null && this.regdt.length() > 2)
+            d_bustermfdt = Date.valueOf(this.regdt);
+        return d_bustermfdt;
     }
 
-    public void setRegdt(Date regdt) {
+    public void setRegdt(String regdt) {
         this.regdt = regdt;
     }
 
@@ -199,10 +208,14 @@ public class CorpBase {
     }
 
     public Date getListdt() {
-        return listdt;
+        Date d_bustermfdt = null;
+        if (this.listdt != null && this.listdt.length() > 2)
+            d_bustermfdt = Date.valueOf(this.listdt);
+        return d_bustermfdt;
     }
 
-    public void setListdt(Date listdt) {
+    public void setListdt(String listdt) {
+
         this.listdt = listdt;
     }
 
@@ -414,11 +427,11 @@ public class CorpBase {
         this.demand_rl = demand_rl;
     }
 
-    public Date getInputdt() {
+    public String getInputdt() {
         return inputdt;
     }
 
-    public void setInputdt(Date inputdt) {
+    public void setInputdt(String inputdt) {
         this.inputdt = inputdt;
     }
 

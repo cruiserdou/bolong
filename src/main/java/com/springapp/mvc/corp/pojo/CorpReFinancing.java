@@ -1,6 +1,5 @@
 package com.springapp.mvc.corp.pojo;
 
-import java.sql.Date;
 
 /**
  * Created by xwq on 15/11/6.
@@ -13,7 +12,7 @@ public class CorpReFinancing {
     private String  refi_financ;    //股份融资/债券融资
     private String  refi_security;  //偿付保障
     private String  refi_acc_cost;  //可接受成本
-    private Date refi_deadline;    //融资期限
+    private String refi_deadline;    //融资期限
     private String  refi_desc;  //融资用途详细说明
 
     public int getRefi_id() {
@@ -72,11 +71,11 @@ public class CorpReFinancing {
         this.refi_acc_cost = refi_acc_cost;
     }
 
-    public Date getRefi_deadline() {
+    public String getRefi_deadline() {
         return refi_deadline;
     }
 
-    public void setRefi_deadline(Date refi_deadline) {
+    public void setRefi_deadline(String refi_deadline) {
         this.refi_deadline = refi_deadline;
     }
 

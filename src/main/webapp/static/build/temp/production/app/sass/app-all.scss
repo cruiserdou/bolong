@@ -2,6 +2,7 @@ $app-name:  dynamic( 'app' );
 $image-search-path: '/home/dou/IdeaProjects/bolong/src/main/webapp/static/build/production/app/modern/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-app-model-change: dynamic(false);;
+$include-app-model-corp_img: dynamic(false);;
 $include-ext-abstractcomponent: dynamic(false);;
 $include-ext-abstractmanager: dynamic(false);;
 $include-ext-abstractplugin: dynamic(false);;

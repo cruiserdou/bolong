@@ -3,7 +3,7 @@ package com.springapp.mvc.corp.pojo;
 /**
  * Created by xwq on 15/11/6.
  */
-public class CorpService {
+public class CorpServicePojo {
     private  int   srv_id;  //服务机构编号
     private  int   srv_corp_id; //企业编号
     private String    srv_name; //服务机构名称

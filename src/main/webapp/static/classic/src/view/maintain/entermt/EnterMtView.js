@@ -47,67 +47,56 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 0, true)
                             });
-
                             //法定代表人
                             var e = Ext.get('add_corp_contact_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 818 - 30, true)
                             });
-
                             //行业分类
                             var e = Ext.get('add_corp_ind_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 1200 - 30, true)
                             });
-
                             //证监会行业分类
                             var e = Ext.get('add_corp_csrc_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 1350 - 30, true)
                             });
-
                             //企业维护信息
                             var e = Ext.get('add_corp_mai_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 1460 - 30, true)
                             });
-
                             //企业维护信息
                             var e = Ext.get('add_corp_fin_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 2000 - 30, true)
                             });
-
                             //服务机构信息
                             var e = Ext.get('add_corp_service_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 3980 - 30, true)
                             });
-
                             //投资人信息
                             var e = Ext.get('add_corp_investor_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 4300 - 30, true)
                             });
-
                             //政府部门信息
                             var e = Ext.get('add_corp_gov_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 4850 - 30, true)
                             });
-
                             //融资需求
                             var e = Ext.get('add_corp_refi_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, 5330, true)
                             });
-
                             //培训需求
                             var e = Ext.get('add_corp_retra_id');
                             e.on("click", function () {
                                 Ext.getCmp('corp_add_form_id').scrollTo(0, -1, true)
                             });
-
                             //人力资源需求
                             var e = Ext.get('add_corp_rehr_id');
                             e.on("click", function () {
@@ -115,7 +104,6 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                             });
                         }
                     },
-
                     items: [{
                         xtype: 'fieldset',
                         id: 'fieldset_base_id',
@@ -166,14 +154,17 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }, {
                             name: 'regdt',
                             xtype: 'datefield',
+                            format: 'Y-m-d',
                             fieldLabel: '注册日期'
                         }, {
                             name: 'bustermfdt',
                             xtype: 'datefield',
+                            format: 'Y-m-d',
                             fieldLabel: '营业期限自'
                         }, {
                             name: 'bustremtdt',
                             xtype: 'datefield',
+                            format: 'Y-m-d',
                             fieldLabel: '营业期限至'
                         }, {
                             name: 'list_area',
@@ -181,6 +172,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }, {
                             name: 'listdt',
                             xtype: 'datefield',
+                            format: 'Y-m-d',
                             fieldLabel: '挂牌日期'
                         }, {
                             name: 'listcode',
@@ -363,6 +355,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         items: [{
                             name: 'mai_changer_dt',
                             xtype: 'datefield',
+                            format: 'Y-m-d',
                             fieldLabel: '更新日期'
                         }, {
                             name: 'mai_changer_id',
@@ -373,6 +366,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }, {
                             name: 'mai_recomdt',
                             xtype: 'datefield',
+                            format: 'Y-m-d',
                             fieldLabel: '推荐日期'
                         }, {
                             name: 'mai_trusteeship',
@@ -443,11 +437,13 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         items: [{
                             name: 'start_time',
                             xtype: 'datefield',
+                            format: 'Y-m-d',
                             fieldLabel: '时间始',
                             colspan: 3
                         }, {
                             name: 'end_time',
                             xtype: 'datefield',
+                            format: 'Y-m-d',
                             fieldLabel: '时间至',
                             colspan: 3
                         }, {
@@ -1451,7 +1447,29 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         flex: 1
                     }],
                     buttonAlign: 'center',
-                    buttons: [{text: '保存'}, {text: '重置'}]
+                    buttons: [{
+                        text: '保存',
+                        handler: function(){
+                            var form = Ext.getCmp('corp_add_form_id').getForm();
+                            if (form.isValid()){
+                                form.submit({
+                                    url: '/bolong/add_corp_form',
+                                    waitMsg: '正在保存数据...',
+                                    success: function(form, action){
+                                        Ext.Msg.alert("成功", "数据保存成功!");
+                                    },
+                                    failure: function(form, action){
+                                        Ext.Msg.alert("失败", "数据保存失败!");
+                                    }
+                                });
+                            }
+                        }
+                    }, {
+                        text: '重置',
+                        handler: function(){
+                            Ext.getCmp('corp_add_form_id').getForm().reset();
+                        }
+                    }]
                 }).show(Ext.get('add_enter_btn_id'));
             }
         }, {

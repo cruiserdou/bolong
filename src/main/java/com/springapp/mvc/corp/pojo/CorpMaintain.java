@@ -1,7 +1,5 @@
 package com.springapp.mvc.corp.pojo;
 
-import java.sql.Date;
-
 /**
  * Created by xwq on 15/11/6.
  */
@@ -9,7 +7,7 @@ public class CorpMaintain {
     private int mai_id;
     private int   mai_changer_id;
     private String   mai_changer_dept;
-    private Date mai_recomdt;
+    private String mai_recomdt;
     private String   mai_trusteeship;
     private String   mai_listst;
     private String   mai_eclass;
@@ -50,11 +48,11 @@ public class CorpMaintain {
         this.mai_changer_dept = mai_changer_dept;
     }
 
-    public Date getMai_recomdt() {
+    public String getMai_recomdt() {
         return mai_recomdt;
     }
 
-    public void setMai_recomdt(Date mai_recomdt) {
+    public void setMai_recomdt(String mai_recomdt) {
         this.mai_recomdt = mai_recomdt;
     }
 
