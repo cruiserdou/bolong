@@ -1323,7 +1323,9 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                             fieldLabel: '可接受成本(%/年)'
                         }, {
                             name: 'refi_deadline',
-                            fieldLabel: '融资期限'
+                            fieldLabel: '融资期限',
+                            xtype: 'datefield',
+                            format: 'Y-m-d'
                         }, {
                             name: 'refi_desc',
                             fieldLabel: '融资用途详细说明',
@@ -1356,10 +1358,13 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }, {
 
                             name: 'retra_dt',
-                            fieldLabel: '有效时间'
+                            fieldLabel: '有效时间',
+                            xtype: 'datefield',
+                            format: 'Y-m-d'
                         }, {
                             name: 'retra_acc_cost',
-                            fieldLabel: '可接受成本'
+                            fieldLabel: '可接受成本',
+                            xtype: 'numberfield'
                         }, {
                             name: 'retra_content',
                             xtype: 'textarea',
@@ -1398,7 +1403,8 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                             fieldLabel: '职位人数'
                         }, {
                             name: 'rehr_salary',
-                            fieldLabel: '职位薪金'
+                            fieldLabel: '职位薪金',
+                            xtype: 'numberfield'
                         }, {
                             name: 'rehr_sex_req',
                             fieldLabel: '性别要求'

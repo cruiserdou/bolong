@@ -1,6 +1,8 @@
 package com.springapp.mvc.corp.pojo;
 
 
+import java.sql.Date;
+
 /**
  * Created by xwq on 15/11/6.
  */
@@ -71,8 +73,11 @@ public class CorpReFinancing {
         this.refi_acc_cost = refi_acc_cost;
     }
 
-    public String getRefi_deadline() {
-        return refi_deadline;
+    public Date getRefi_deadline() {
+        Date d_refi_deadline = null;
+        if (this.refi_deadline != null && this.refi_deadline.length() > 2)
+            d_refi_deadline = Date.valueOf(this.refi_deadline);
+        return d_refi_deadline;
     }
 
     public void setRefi_deadline(String refi_deadline) {

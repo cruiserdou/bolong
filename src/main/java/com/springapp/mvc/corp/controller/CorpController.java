@@ -76,13 +76,19 @@ public class CorpController {
             @ModelAttribute() CorpReFinancing corpReFinancing,
             @ModelAttribute() CorpReHr corpReHr,
             @ModelAttribute() CorpReTrain corpReTrain,
-            @ModelAttribute() CorpServicePojo corpServicePojo
+            @ModelAttribute() CorpServicePojo corpServicePojo,
+            HttpSession session
     ) throws Exception {
         DataShop dataShop = new DataShop();
+
+        Integer inputid=Integer.parseInt(session.getAttribute("id").toString());
         Integer corp_id=0;
         corp_id=corpService.getMaxCorpId();
-        corpService.insertCorp(corp_id,corpBase, corpContact, corpFinance, corpGov,
+        System.out.println(corp_id);
+        corpService.insertCorp(inputid,corp_id,corpBase, corpContact, corpFinance, corpGov,
                 corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
+//        corpService.insertCorp(corp_id,corpBase, corpContact, corpFinance, corpGov,
+//                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
         dataShop.setSuccess(true);
         return dataShop;
     }

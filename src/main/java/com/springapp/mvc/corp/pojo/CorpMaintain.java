@@ -1,5 +1,7 @@
 package com.springapp.mvc.corp.pojo;
 
+import java.sql.Date;
+
 /**
  * Created by xwq on 15/11/6.
  */
@@ -48,8 +50,11 @@ public class CorpMaintain {
         this.mai_changer_dept = mai_changer_dept;
     }
 
-    public String getMai_recomdt() {
-        return mai_recomdt;
+    public Date getMai_recomdt() {
+        Date d_mai_recomdt = null;
+        if (this.mai_recomdt != null && this.mai_recomdt.length() > 2)
+            d_mai_recomdt = Date.valueOf(this.mai_recomdt);
+        return d_mai_recomdt;
     }
 
     public void setMai_recomdt(String mai_recomdt) {

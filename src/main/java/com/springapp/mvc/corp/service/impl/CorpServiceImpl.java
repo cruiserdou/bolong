@@ -60,12 +60,19 @@ public class CorpServiceImpl implements CorpService {
         corpDao.delete(id);
     }
 
-    public void insertCorp(Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance, CorpGov corpGov,
-                           CorpInvestor corpInvestor, CorpReFinancing corpReFinancing,CorpReHr corpReHr,
-                           CorpReTrain corpReTrain, CorpServicePojo corpServicePojo){
-        corpDao.insertCorp(corpId,corpBase, corpContact, corpFinance, corpGov,
-                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
+    public void insertCorp(Integer inputid,Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
+                           CorpGov corpGov ,CorpInvestor corpInvestor, CorpReFinancing corpReFinancing
+                          ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo){
+        corpDao.insertCorp(inputid,corpId,corpBase,corpContact,corpFinance,corpGov ,corpInvestor,corpReFinancing
+                ,corpReHr, corpReTrain,corpServicePojo);
     }
+
+//    public void insertCorp(Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance, CorpGov corpGov,
+//                           CorpInvestor corpInvestor, CorpReFinancing corpReFinancing,CorpReHr corpReHr,
+//                           CorpReTrain corpReTrain, CorpServicePojo corpServicePojo){
+//        corpDao.insertCorp(corpId,corpBase, corpContact, corpFinance, corpGov,
+//                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
+//    }
 
     public Integer getMaxCorpId(){
         return  corpDao.getMaxCorpId();

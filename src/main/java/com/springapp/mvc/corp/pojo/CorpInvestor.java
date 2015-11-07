@@ -13,8 +13,6 @@ public class CorpInvestor {
     private String   inv_csrc_type4;
     private String   inv_indclass1;
     private String   inv_indclass2;
-    private String   inv_indclass3;
-    private String   inv_indclass4;
     private String   inv_contact;
     private String   inv_psotion;
     private String   inv_doctype;
@@ -99,21 +97,6 @@ public class CorpInvestor {
         this.inv_indclass2 = inv_indclass2;
     }
 
-    public String getInv_indclass3() {
-        return inv_indclass3;
-    }
-
-    public void setInv_indclass3(String inv_indclass3) {
-        this.inv_indclass3 = inv_indclass3;
-    }
-
-    public String getInv_indclass4() {
-        return inv_indclass4;
-    }
-
-    public void setInv_indclass4(String inv_indclass4) {
-        this.inv_indclass4 = inv_indclass4;
-    }
 
     public String getInv_contact() {
         return inv_contact;

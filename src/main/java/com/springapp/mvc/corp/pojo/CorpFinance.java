@@ -1,11 +1,15 @@
 package com.springapp.mvc.corp.pojo;
 
+import java.sql.Date;
+
 /**
  * Created by xwq on 15/11/6.
  */
 public class CorpFinance {
     private int    finid;
     private int    fin_corp_id;
+    private String start_time;
+    private String end_time;
     private Double  st_money_fund;
     private Double  end_money_fund;
     private Double  st_jyxjr_assets;
@@ -147,6 +151,30 @@ public class CorpFinance {
 
     public void setFin_corp_id(int fin_corp_id) {
         this.fin_corp_id = fin_corp_id;
+    }
+
+
+    public Date getEnd_time() {
+        Date d_end_time = null;
+        if (this.end_time != null && this.end_time.length() > 2)
+            d_end_time = Date.valueOf(this.end_time);
+        return d_end_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
+    }
+
+    public Date getStart_time() {
+        Date d_start_time = null;
+        if (this.start_time != null && this.start_time.length() > 2)
+            d_start_time = Date.valueOf(this.start_time);
+        return d_start_time;
+    }
+
+
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
     }
 
     public Double getSt_money_fund() {

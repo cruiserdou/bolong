@@ -1,6 +1,8 @@
 package com.springapp.mvc.corp.pojo;
 
 
+import java.sql.Date;
+
 /**
  * Created by xwq on 15/11/6.
  */
@@ -53,8 +55,12 @@ public class CorpReTrain {
         this.retra_acc_cost = retra_acc_cost;
     }
 
-    public String getRetra_dt() {
-        return retra_dt;
+
+    public Date getRetra_dt() {
+        Date d_retra_dt = null;
+        if (this.retra_dt != null && this.retra_dt.length() > 2)
+            d_retra_dt = Date.valueOf(this.retra_dt);
+        return d_retra_dt;
     }
 
     public void setRetra_dt(String retra_dt) {
