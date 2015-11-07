@@ -1,8 +1,6 @@
 package com.springapp.mvc.corp.service;
 
-import com.springapp.mvc.corp.pojo.Corp;
-import com.springapp.mvc.corp.pojo.CorpBase;
-import com.springapp.mvc.corp.pojo.CorpShareHolder;
+import com.springapp.mvc.corp.pojo.*;
 
 import java.util.List;
 
@@ -24,7 +22,9 @@ public interface CorpService {
 
     List<CorpShareHolder> getShareHolderByCorpID(int corp_id);
 
-    void insertCorp(CorpBase corpBase);
+    void insertCorp(CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance, CorpGov corpGov,
+                    CorpInvestor corpInvestor, CorpReFinancing corpReFinancing,CorpReHr corpReHr,
+                    CorpReTrain corpReTrain, CorpServicePojo corpServicePojo);
 
     public void delete(Integer id);
 }

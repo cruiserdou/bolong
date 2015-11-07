@@ -80,7 +80,8 @@ public class CorpController {
     ) throws Exception {
         DataShop dataShop = new DataShop();
 
-        corpService.insertCorp(corpBase);
+        corpService.insertCorp(corpBase, corpContact, corpFinance, corpGov,
+                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
         dataShop.setSuccess(true);
         return dataShop;
     }

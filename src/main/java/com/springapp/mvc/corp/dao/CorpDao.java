@@ -1,8 +1,6 @@
 package com.springapp.mvc.corp.dao;
 
-import com.springapp.mvc.corp.pojo.Corp;
-import com.springapp.mvc.corp.pojo.CorpBase;
-import com.springapp.mvc.corp.pojo.CorpShareHolder;
+import com.springapp.mvc.corp.pojo.*;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -87,7 +85,7 @@ public interface CorpDao {
 
     @Delete("DELETE FROM work.tb_corp_shareholder " +
             " WHERE gd_corp_id=#{corp_id};")
-    void delShareHolder(@Param(value = "corp_id")int corp_id);
+    void delShareHolder(@Param(value = "corp_id") int corp_id);
 
     //通过公司ID获取公司股东信息
     @Select("  SELECT gd_id, gd_corp_id, gd_shtype, gd_shname, gd_shdoctype, gd_shdocnum, " +
@@ -97,7 +95,7 @@ public interface CorpDao {
             "  FROM work.tb_corp_shareholder " +
             "  WHERE gd_corp_id = #{corp_id};")
     List<CorpShareHolder> getShareHoderByCorpID(
-            @Param(value = "corp_id")int corp_id
+            @Param(value = "corp_id") int corp_id
     );
 
     @SelectProvider(type = CorpGovDaoEmberSql.class, method = "listGovCorp")
@@ -379,5 +377,15 @@ public interface CorpDao {
             "            #{corpBase.indclass2}, #{corpBase.indclass3}, #{corpBase.indclass4}, #{corpBase.csrc_type1}, #{corpBase.csrc_type2} " +
             "            );" +
             "end;")
-    void insertCorp(@Param(value = "corpBase")CorpBase corpBase);
+    void insertCorp(
+            @Param(value = "corpBase") CorpBase corpBase,
+            @Param(value = "corpContact") CorpContact corpContact,
+            @Param(value = "corpFinance") CorpFinance corpFinance,
+            @Param(value = "corpGov") CorpGov corpGov,
+            @Param(value = "corpInvestor") CorpInvestor corpInvestor,
+            @Param(value = "corpReFinancing") CorpReFinancing corpReFinancing,
+            @Param(value = "corpReHr") CorpReHr corpReHr,
+            @Param(value = "corpReTrain") CorpReTrain corpReTrain,
+            @Param(value = "corpServicePojo") CorpServicePojo corpServicePojo
+    );
 }

@@ -1,9 +1,7 @@
 package com.springapp.mvc.corp.service.impl;
 
 import com.springapp.mvc.corp.dao.CorpDao;
-import com.springapp.mvc.corp.pojo.Corp;
-import com.springapp.mvc.corp.pojo.CorpBase;
-import com.springapp.mvc.corp.pojo.CorpShareHolder;
+import com.springapp.mvc.corp.pojo.*;
 import com.springapp.mvc.corp.service.CorpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,7 +60,10 @@ public class CorpServiceImpl implements CorpService {
         corpDao.delete(id);
     }
 
-    public void insertCorp(CorpBase corpBase){
-        corpDao.insertCorp(corpBase);
+    public void insertCorp(CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance, CorpGov corpGov,
+                           CorpInvestor corpInvestor, CorpReFinancing corpReFinancing,CorpReHr corpReHr,
+                           CorpReTrain corpReTrain, CorpServicePojo corpServicePojo){
+        corpDao.insertCorp(corpBase, corpContact, corpFinance, corpGov,
+                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
     }
 }
