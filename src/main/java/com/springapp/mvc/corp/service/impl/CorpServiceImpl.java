@@ -6,6 +6,7 @@ import com.springapp.mvc.corp.service.CorpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -60,22 +61,18 @@ public class CorpServiceImpl implements CorpService {
         corpDao.delete(id);
     }
 
-    public void insertCorp(Integer inputid,Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
+    public void insertCorp(Integer inputid,Timestamp currentTime,Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
                            CorpGov corpGov ,CorpInvestor corpInvestor, CorpReFinancing corpReFinancing
                           ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo){
-        corpDao.insertCorp(inputid,corpId,corpBase,corpContact,corpFinance,corpGov ,corpInvestor,corpReFinancing
+        corpDao.insertCorp(inputid,currentTime,corpId,corpBase,corpContact,corpFinance,corpGov ,corpInvestor,corpReFinancing
                 ,corpReHr, corpReTrain,corpServicePojo);
     }
 
-//    public void insertCorp(Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance, CorpGov corpGov,
-//                           CorpInvestor corpInvestor, CorpReFinancing corpReFinancing,CorpReHr corpReHr,
-//                           CorpReTrain corpReTrain, CorpServicePojo corpServicePojo){
-//        corpDao.insertCorp(corpId,corpBase, corpContact, corpFinance, corpGov,
-//                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
-//    }
 
     public Integer getMaxCorpId(){
         return  corpDao.getMaxCorpId();
     }
+
+    public Timestamp getCurrentTime(){return corpDao.getCurrentTime();}
 }
 

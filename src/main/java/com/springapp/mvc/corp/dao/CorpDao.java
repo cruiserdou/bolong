@@ -4,6 +4,7 @@ import com.springapp.mvc.corp.pojo.*;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -368,13 +369,13 @@ public interface CorpDao {
             "            postal, nature, regcap, bustermfdt, bustremtdt, regdt, list_area, " +
             "            listcode, listprice, listdt, channels, webchat, staffnum, regist_organ, " +
             "            regaddr, offaddr, scope, mbus, eprofile, phoinf, remark, indclass1, " +
-            "            indclass2, indclass3, indclass4, csrc_type1, csrc_type2,inputid " +
+            "            indclass2, indclass3, indclass4, csrc_type1, csrc_type2,inputid ,inputdt " +
             "            )" +
             "    VALUES (#{corpId}, #{corpBase.buslicno}, #{corpBase.name}, #{corpBase.unit}, #{corpBase.legrep}, #{corpBase.province}, #{corpBase.city}, #{corpBase.county}, #{corpBase.nos}, " +
             "            #{corpBase.postal}, #{corpBase.nature}, #{corpBase.regcap}, #{corpBase.bustermfdt}, #{corpBase.bustremtdt},#{corpBase.regdt}, #{corpBase.list_area}, " +
             "            #{corpBase.listcode}, #{corpBase.listprice}, #{corpBase.listdt}, #{corpBase.channels}, #{corpBase.webchat}, #{corpBase.staffnum}, #{corpBase.regist_organ}, " +
             "            #{corpBase.regaddr}, #{corpBase.offaddr}, #{corpBase.scope}, #{corpBase.mbus}, #{corpBase.eprofile}, #{corpBase.phoinf}, #{corpBase.remark}, #{corpBase.indclass1}, " +
-            "            #{corpBase.indclass2}, #{corpBase.indclass3}, #{corpBase.indclass4}, #{corpBase.csrc_type1}, #{corpBase.csrc_type2},#{inputid} " +
+            "            #{corpBase.indclass2}, #{corpBase.indclass3}, #{corpBase.indclass4}, #{corpBase.csrc_type1}, #{corpBase.csrc_type2},#{inputid},#{currentTime}   " +
             "            );" +
 
             " INSERT INTO work.tb_corp_finance( " +
@@ -498,7 +499,8 @@ public interface CorpDao {
 
             "end;")
     void insertCorp(
-            @Param(value = "inputid") Integer inputid,
+            @Param(value = "inputid") Integer  inputid,
+            @Param(value = "currentTime") Timestamp currentTime,
             @Param(value = "corpId") Integer corpId,
             @Param(value = "corpBase") CorpBase corpBase,
             @Param(value = "corpContact") CorpContact corpContact,
@@ -513,4 +515,7 @@ public interface CorpDao {
 
     @Select(" select nextval('work.corp_id_seq'::regclass) as corp_id;")
     Integer getMaxCorpId();
+
+    @Select(" SELECT CURRENT_TIMESTAMP(0) :: TIMESTAMP WITHOUT TIME ZONE  ;")
+    Timestamp getCurrentTime();
 }
