@@ -34,13 +34,91 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                     width: 960,
                     id: 'corp_add_form_id',
                     scrollable: true,
-                    bodyPadding: 10,
+                    bodyPadding: 20,
                     defaults: {
                         anchor: '100%',
                         labelWidth: 100
                     },
+
+                    listeners: {
+                        afterrender: function () {
+                            //基本信息
+                            var e = Ext.get('add_corp_base_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 0, true)
+                            });
+
+                            //法定代表人
+                            var e = Ext.get('add_corp_contact_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 818 - 30, true)
+                            });
+
+                            //行业分类
+                            var e = Ext.get('add_corp_ind_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 1200 - 30, true)
+                            });
+
+                            //证监会行业分类
+                            var e = Ext.get('add_corp_csrc_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 1350 - 30, true)
+                            });
+
+                            //企业维护信息
+                            var e = Ext.get('add_corp_mai_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 1460 - 30, true)
+                            });
+
+                            //企业维护信息
+                            var e = Ext.get('add_corp_fin_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 2000 - 30, true)
+                            });
+
+                            //服务机构信息
+                            var e = Ext.get('add_corp_service_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 3980 - 30, true)
+                            });
+
+                            //投资人信息
+                            var e = Ext.get('add_corp_investor_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 4300 - 30, true)
+                            });
+
+                            //政府部门信息
+                            var e = Ext.get('add_corp_gov_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 4850 - 30, true)
+                            });
+
+                            //融资需求
+                            var e = Ext.get('add_corp_refi_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, 5330, true)
+                            });
+
+                            //培训需求
+                            var e = Ext.get('add_corp_retra_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, -1, true)
+                            });
+
+                            //人力资源需求
+                            var e = Ext.get('add_corp_rehr_id');
+                            e.on("click", function () {
+                                Ext.getCmp('corp_add_form_id').scrollTo(0, -1, true)
+                            });
+                        }
+                    },
+
                     items: [{
                         xtype: 'fieldset',
+                        id: 'fieldset_base_id',
                         title: '基本信息',
                         collapsible: true,
                         defaults: {
@@ -149,6 +227,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_contact_id',
                         title: '法定代表人',
                         collapsible: true,
                         defaults: {
@@ -203,6 +282,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_ind_id',
                         title: '国民经济行业分类信息',
                         collapsible: true,
                         defaults: {
@@ -235,6 +315,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_csrc_id',
                         title: '证监会行业分类信息',
                         collapsible: true,
                         defaults: {
@@ -261,6 +342,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_mai_id',
                         title: '企业最近一次被关注信息',
                         collapsible: true,
                         defaults: {
@@ -341,6 +423,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_fin_id',
                         title: '企业财务信息',
                         collapsible: true,
                         defaults: {
@@ -560,9 +643,9 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                             xtype: 'displayfield',
                             value: '一年内非到期流动资产'
                         }, {
-                            xtype: 'numberfield',
+                            xtype: 'numberfield'
                         }, {
-                            xtype: 'numberfield',
+                            xtype: 'numberfield'
                         }, {
                             xtype: 'displayfield',
                             value: '一年内到期非流动负债'
@@ -1006,7 +1089,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
-                        id:'fieldset_service_id',
+                        id: 'fieldset_service_id',
                         title: '服务机构信息',
                         collapsible: true,
                         defaults: {
@@ -1059,6 +1142,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_investor_id',
                         title: '投资人信息',
                         collapsible: true,
                         defaults: {
@@ -1142,6 +1226,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_gov_id',
                         title: '政府部门信息',
                         collapsible: true,
                         defaults: {
@@ -1207,6 +1292,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_refi_id',
                         title: '融资需求',
                         collapsible: true,
                         defaults: {
@@ -1249,6 +1335,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                         }]
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_retra_id',
                         title: '培训需求',
                         collapsible: true,
                         defaults: {
@@ -1289,6 +1376,7 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
 
                     }, {
                         xtype: 'fieldset',
+                        id: 'fieldset_rehr_id',
                         title: '人力需求',
                         collapsible: true,
                         defaults: {
@@ -1326,33 +1414,45 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
                             fieldLabel: '经验要求'
                         }]
                     }]
-                    //,
-                    //
-                    //buttons: [{
-                    //    text: '保存',
-                    //    handler: 'onSaveClick'
-                    //}, {
-                    //    text: '重置',
-                    //    handler: 'onResetClick'
-                    //}]
                 });
+
+                function menu_list_click(h_id) {
+                    alert(h_id);
+                };
 
                 Ext.create('Ext.window.Window', {
                     title: '添加企业信息',
                     height: 700,
-                    width: 960,
+                    width: 1200,
                     modal: true,
                     closeAction: 'destroy',
                     autoDestroy: true,
-                    maximizable: true,
-                    maximized: true,
                     layout: {
                         type: 'hbox',
                         pack: 'start',
                         align: 'stretch'
                     },
-                    items: [{flex: 1}, corp_add_form, {flex: 1}]
-                }).show();
+                    items: [corp_add_form, {
+                        html: '<ul class="menu_list">' +
+                        '<li><a href="#" id="add_corp_base_id">基本信息</a></li>' +
+                            //'<li><a href="#" id="add_corp_contact_id">股东名册</a></li>' +
+                        '<li><a href="#" id="add_corp_contact_id">法定代表人</a></li>' +
+                        '<li><a href="#" id="add_corp_ind_id">国民经济行业分类</a></li>' +
+                        '<li><a href="#" id="add_corp_csrc_id">证监会行业分类</a></li>' +
+                        '<li><a href="#" id="add_corp_mai_id">企业维护信息</a></li>' +
+                        '<li><a href="#" id="add_corp_fin_id">企业财务信息</a></li>' +
+                        '<li><a href="#" id="add_corp_service_id">服务机构信息</a></li>' +
+                        '<li><a href="#" id="add_corp_investor_id">投资人信息</a></li>' +
+                        '<li><a href="#" id="add_corp_gov_id">政府部门信息</a></li>' +
+                        '<li><a href="#" id="add_corp_refi_id">融资需求</a></li>' +
+                        '<li><a href="#" id="add_corp_retra_id">培训需求</a></li>' +
+                        '<li><a href="#" id="add_corp_rehr_id">人力资源需求</a></li>' +
+                        '</ul>',
+                        flex: 1
+                    }],
+                    buttonAlign: 'center',
+                    buttons: [{text: '保存'}, {text: '重置'}]
+                }).show(Ext.get('add_enter_btn_id'));
             }
         }, {
             xtype: 'button',

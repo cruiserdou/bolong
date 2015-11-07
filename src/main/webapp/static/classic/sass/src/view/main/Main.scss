@@ -132,6 +132,7 @@
 #enter_menu_list a {
   display: block;
   background-color: #3291D5;
+  font-size: 18px;
   padding: 0.5em;
   text-decoration: none;
   color: white;
@@ -139,6 +140,31 @@
 }
 
 #enter_menu_list ul a:hover {
+  background-color: #006699;
+}
+
+.menu_list{
+  display: block;
+  padding: 0 2em;
+  margin-top: 40px;
+}
+
+.menu_list li {
+  list-style: none;
+  border: 1px solid white;
+}
+
+.menu_list a {
+  display: block;
+  background-color: #3291D5;
+  font-size: 18px;
+  padding: 0.5em;
+  text-decoration: none;
+  color: white;
+  transition: all 300ms;
+}
+
+.menu_list a:hover {
   background-color: #006699;
 }
 
