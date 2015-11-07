@@ -370,7 +370,7 @@ public interface CorpDao {
             "            regaddr, offaddr, scope, mbus, eprofile, phoinf, remark, indclass1, " +
             "            indclass2, indclass3, indclass4, csrc_type1, csrc_type2 " +
             "            )" +
-            "    VALUES (#{corpBase.buslicno}, #{corpBase.name}, #{corpBase.unit}, #{corpBase.legrep}, #{corpBase.province}, #{corpBase.city}, #{corpBase.county}, #{corpBase.nos}, " +
+            "    VALUES (#{corpId},#{corpBase.buslicno}, #{corpBase.name}, #{corpBase.unit}, #{corpBase.legrep}, #{corpBase.province}, #{corpBase.city}, #{corpBase.county}, #{corpBase.nos}, " +
             "            #{corpBase.postal}, #{corpBase.nature}, #{corpBase.regcap}, #{corpBase.bustermfdt}, #{corpBase.bustremtdt},#{corpBase.regdt}, #{corpBase.list_area}, " +
             "            #{corpBase.listcode}, #{corpBase.listprice}, #{corpBase.listdt}, #{corpBase.channels}, #{corpBase.webchat}, #{corpBase.staffnum}, #{corpBase.regist_organ}, " +
             "            #{corpBase.regaddr}, #{corpBase.offaddr}, #{corpBase.scope}, #{corpBase.mbus}, #{corpBase.eprofile}, #{corpBase.phoinf}, #{corpBase.remark}, #{corpBase.indclass1}, " +
@@ -408,7 +408,7 @@ public interface CorpDao {
             "            end_kc_stock, st_zx_reserve, end_zx_reserve, st_yy_reserve, end_yy_reserve,  " +
             "            st_wfp_profit, end_wfp_profit, st_hj_owner_right, end_hj_owner_right,  " +
             "            st_hj_fz_owner_right, end_hj_fz_owner_right) " +
-            "    VALUES (  #{corpFinance.fin_corp_id}, #{corpFinance.start_time}, #{corpFinance.end_time}, #{corpFinance.st_money_fund}, #{corpFinance.end_money_fund}, #{corpFinance. " +
+            "    VALUES ( #{corpId}, #{corpFinance.fin_corp_id}, #{corpFinance.start_time}, #{corpFinance.end_time}, #{corpFinance.st_money_fund}, #{corpFinance.end_money_fund}, #{corpFinance. " +
             "            st_jyxjr_assets}, #{corpFinance.end_jyxjr_assets}, #{corpFinance.st_ys_bill}, #{corpFinance.end_ys_bill}, #{corpFinance.st_ys_account}, #{corpFinance. " +
             "            end_ys_account}, #{corpFinance.st_yf_money}, #{corpFinance.end_yf_money}, #{corpFinance.st_ys_interest}, #{corpFinance.end_ys_interest}, #{corpFinance. " +
             "            st_ys_dividends}, #{corpFinance.end_ys_dividends}, #{corpFinance.st_other_ys_money}, #{corpFinance.end_other_ys_money}, #{corpFinance. " +
@@ -443,7 +443,7 @@ public interface CorpDao {
             "            cont_corp_id, cont_name, cont_psotion, cont_edoctype,  " +
             "            cont_edocnum, cont_ephone, cont_efax, cont_eemail, cont_eqq,  " +
             "            cont_webchat, cont_tel, cont_bz) " +
-            "   VALUES (#{corpContact.cont_corp_id}, #{corpContact.cont_name}, #{corpContact.cont_psotion}, #{corpContact.cont_edoctype}," +
+            "   VALUES (#{corpId},#{corpContact.cont_corp_id}, #{corpContact.cont_name}, #{corpContact.cont_psotion}, #{corpContact.cont_edoctype}," +
             "           #{corpContact.cont_edocnum}, #{corpContact.cont_ephone}, #{corpContact.cont_efax},  #{corpContact.cont_eemail}, " +
             "           #{corpContact.cont_eqq}, #{corpContact.cont_webchat}, #{corpContact.cont_tel},  #{corpContact.cont_bz} );" +
 
@@ -451,7 +451,7 @@ public interface CorpDao {
             "            gov_corp_id, gov_domain, gov_office, gov_desc, gov_contact,  " +
             "            gov_psotion, gov_doctype, gov_docnum, gov_phone, gov_fax, gov_email,  " +
             "            gov_qq, gov_webchat, gov_tel, gov_remark) " +
-            "   VALUES (#{corpGov.gov_corp_id}, #{corpGov.gov_domain}, #{corpGov.gov_office}, #{corpGov.gov_desc},  " +
+            "   VALUES (#{corpId},#{corpGov.gov_corp_id}, #{corpGov.gov_domain}, #{corpGov.gov_office}, #{corpGov.gov_desc},  " +
             "           #{corpGov.gov_contact}, #{corpGov.gov_psotion}, #{corpGov.gov_doctype}, #{corpGov.gov_docnum}, " +
             "           #{corpGov.gov_phone}, #{corpGov.gov_fax}, #{corpGov.gov_email}, #{corpGov.gov_qq},  " +
             "           #{corpGov.gov_webchat}, #{corpGov.gov_tel}, #{corpGov.gov_remark} ); "+
@@ -462,7 +462,7 @@ public interface CorpDao {
             "            inv_contact, inv_psotion, inv_doctype,  inv_docnum,  " +
             "            inv_phone, inv_fax, inv_email, inv_qq, inv_webchat,  " +
             "            inv_tel, inv_remark) " +
-            "   VALUES (#{corpInvestor.inv_corp_id}, #{corpInvestor.inv_domain}, #{corpInvestor.inv_csrc_type1}, #{corpInvestor.inv_csrc_type2},  " +
+            "   VALUES (#{corpId},#{corpInvestor.inv_corp_id}, #{corpInvestor.inv_domain}, #{corpInvestor.inv_csrc_type1}, #{corpInvestor.inv_csrc_type2},  " +
             "           #{corpInvestor.inv_csrc_type3}, #{corpInvestor.inv_csrc_type4}, #{corpInvestor.inv_indclass1}, #{corpInvestor.inv_indclass2}, " +
             "           #{corpInvestor.inv_contact}, #{corpInvestor.inv_psotion}, #{corpInvestor.inv_doctype}, #{corpInvestor.inv_docnum}, " +
             "           #{corpInvestor.inv_phone}, #{corpInvestor.inv_fax}, #{corpInvestor.inv_email}, #{corpInvestor.inv_qq}, " +
@@ -471,31 +471,33 @@ public interface CorpDao {
             " INSERT INTO work.tb_corp_refinancing( " +
             "            refi_corp_id, refi_amounts, refi_use, refi_financ, refi_security,  " +
             "            refi_acc_cost, refi_deadline, refi_desc) " +
-            "    VALUES (#{corpReFinancing.refi_corp_id}, #{corpReFinancing.refi_amounts}, #{corpReFinancing.refi_use}, #{corpReFinancing.refi_financ},  " +
+            "    VALUES (#{corpId},#{corpReFinancing.refi_corp_id}, #{corpReFinancing.refi_amounts}, #{corpReFinancing.refi_use}, #{corpReFinancing.refi_financ},  " +
             "             #{corpReFinancing.refi_security}, #{corpReFinancing.refi_acc_cost}, #{corpReFinancing.refi_deadline}, #{corpReFinancing.refi_desc}); "+
 
             " INSERT INTO work.tb_corp_rehr( " +
             "            rehr_corp_id, rehr_post, rehr_num, rehr_salary, rehr_sex_req,  " +
             "            rehr_age_req, rehr_requests) " +
-            "   VALUES (#{corpReHr.rehr_corp_id}, #{corpReHr.rehr_post}, #{corpReHr.rehr_num}, #{corpReHr.rehr_salary},  " +
+            "   VALUES (#{corpId},#{corpReHr.rehr_corp_id}, #{corpReHr.rehr_post}, #{corpReHr.rehr_num}, #{corpReHr.rehr_salary},  " +
             "           #{corpReHr.rehr_sex_req}, #{corpReHr.rehr_age_req}, #{corpReHr.rehr_requests}); "+
 
             " INSERT INTO work.tb_corp_retrain( " +
             "            retra_corp_id, retra_mode, retra_content, retra_acc_cost, " +
             "            retra_dt, retra_requests) " +
-            "   VALUES (#{corpReTrain.retra_corp_id}, #{corpReTrain.retra_mode}, #{corpReTrain.retra_content}, #{corpReTrain.retra_acc_cost},  " +
+            "   VALUES (#{corpId},#{corpReTrain.retra_corp_id}, #{corpReTrain.retra_mode}, #{corpReTrain.retra_content}, #{corpReTrain.retra_acc_cost},  " +
             "           #{corpReTrain.retra_dt}, #{corpReTrain.retra_requests}); "+
 
 
             " INSERT INTO work.tb_corp_service( " +
             "            ssrv_corp_id, srv_name, srv_type, srv_content, srv_levels, srv_domain, " +
             "             srv_penalty, srv_examiner, srv_post, srv_descs, srv_remark) " +
-            "   VALUES (#{corpServicePojo.ssrv_corp_id}, #{corpServicePojo.srv_name}, #{corpServicePojo.srv_type}, #{corpServicePojo.srv_content},  " +
+            "   VALUES (#{corpId},#{corpServicePojo.ssrv_corp_id}, #{corpServicePojo.srv_name}, #{corpServicePojo.srv_type}, #{corpServicePojo.srv_content},  " +
             "           #{corpServicePojo.srv_levels}, #{corpServicePojo.srv_domain}, #{corpServicePojo.srv_penalty},  #{corpServicePojo.srv_examiner},   " +
             "           #{corpServicePojo.srv_post}, #{corpServicePojo.srv_descs}, #{corpServicePojo.srv_remark});" +
- 
+
+
             "end;")
     void insertCorp(
+            @Param(value = "corpId") Integer corpId,
             @Param(value = "corpBase") CorpBase corpBase,
             @Param(value = "corpContact") CorpContact corpContact,
             @Param(value = "corpFinance") CorpFinance corpFinance,
@@ -506,4 +508,7 @@ public interface CorpDao {
             @Param(value = "corpReTrain") CorpReTrain corpReTrain,
             @Param(value = "corpServicePojo") CorpServicePojo corpServicePojo
     );
+
+    @Select(" select nextval('work.corp_id_seq'::regclass) as corp_id;")
+    Integer getMaxCorpId();
 }

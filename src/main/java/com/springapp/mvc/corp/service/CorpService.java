@@ -22,9 +22,11 @@ public interface CorpService {
 
     List<CorpShareHolder> getShareHolderByCorpID(int corp_id);
 
-    void insertCorp(CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance, CorpGov corpGov,
+    void insertCorp(Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance, CorpGov corpGov,
                     CorpInvestor corpInvestor, CorpReFinancing corpReFinancing,CorpReHr corpReHr,
                     CorpReTrain corpReTrain, CorpServicePojo corpServicePojo);
 
     public void delete(Integer id);
+
+    public Integer getMaxCorpId();
 }

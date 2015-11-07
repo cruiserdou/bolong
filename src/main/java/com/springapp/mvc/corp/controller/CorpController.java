@@ -79,8 +79,9 @@ public class CorpController {
             @ModelAttribute() CorpServicePojo corpServicePojo
     ) throws Exception {
         DataShop dataShop = new DataShop();
-
-        corpService.insertCorp(corpBase, corpContact, corpFinance, corpGov,
+        Integer corp_id=0;
+        corp_id=corpService.getMaxCorpId();
+        corpService.insertCorp(corp_id,corpBase, corpContact, corpFinance, corpGov,
                 corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
         dataShop.setSuccess(true);
         return dataShop;
