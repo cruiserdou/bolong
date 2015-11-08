@@ -9211,3 +9211,8 @@ div.x-border-layout-ct {
     font-weight: 800;
     font-size: 3em;
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:301 */
+#center-panel-id-body {
+    background-color: #ccc;
+    background-image: url(images/square.gif);
+}

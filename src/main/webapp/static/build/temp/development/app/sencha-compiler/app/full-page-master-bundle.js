@@ -1,2 +1,2 @@
 // @tag full-page
-// @require /home/dou/IdeaProjects/bolong/src/main/webapp/static/app.js
+// @require /Users/xwq/IdeaProjects/bolong/src/main/webapp/static/app.js

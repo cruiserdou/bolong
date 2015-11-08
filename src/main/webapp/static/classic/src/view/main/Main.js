@@ -90,12 +90,13 @@ Ext.define('app.view.main.Main', {
 
     items: [{
         region: 'center',
-        bodyStyle: 'background-color: #CCC;background-image: url(/bolong/static/resources/panel_back.png)',
-        bodyPadding: 8,
+        id:'center-panel-id',
+        bodyPadding: 12,
         layout: 'fit',
         items: [{
             xtype: 'tabpanel',
             id: 'mTabpanel',
+            hidden: true,
             items: [{
                 xtype: 'enterinfoview',
                 listeners: {

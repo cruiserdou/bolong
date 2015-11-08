@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'app' );
-$image-search-path: '/home/dou/IdeaProjects/bolong/src/main/webapp/static/build/development/app/classic/resources';
+$image-search-path: '/Users/xwq/IdeaProjects/bolong/src/main/webapp/static/build/development/app/classic/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-app-model-change: dynamic(true);;
 $include-app-model-corp_img: dynamic(true);;
@@ -960,6 +960,8 @@ $include-app-view-main-maincontroller: dynamic(true);;
 $include-app-view-main-mainmodel: dynamic(true);;
 $include-app-view-main-treelistcontroller: dynamic(true);;
 $include-app-view-main-treelistmodel: dynamic(true);;
+$include-app-view-maintain-entermt-entermtaddcorp: dynamic(true);;
+$include-app-view-maintain-entermt-entermtcontroller: dynamic(true);;
 $include-app-view-maintain-entermt-entermtview: dynamic(true);;
 $include-app-view-maintain-entermt-innerenter-enterapplyview: dynamic(true);;
 $include-app-view-maintain-entermt-innerenter-innerentercontroller: dynamic(true);;

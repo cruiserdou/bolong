@@ -159,6 +159,7 @@ Ext.define('app.view.main.TreeListController', {
 
                                 Ext.getCmp('enter_grid_id').getStore().load();
                                 loginWindow.close();
+                                Ext.getCmp('mTabpanel').show();
                             },
                             failure: function (response, opts) {
                                 console.log('Valid failure');
