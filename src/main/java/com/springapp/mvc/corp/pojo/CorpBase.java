@@ -427,9 +427,9 @@ public class CorpBase {
         this.demand_rl = demand_rl;
     }
 
-    public String getInputdt() {
-        return inputdt;
-    }
+//    public String getInputdt() {
+//        return inputdt;
+//    }
 
     public void setInputdt(String inputdt) {
         this.inputdt = inputdt;
@@ -437,6 +437,13 @@ public class CorpBase {
 
     public int getInputid() {
         return inputid;
+    }
+
+    public Date getInputdt() {
+        Date d_inputdt = null;
+        if (this.inputdt != null && this.inputdt.length() > 2)
+            d_inputdt = Date.valueOf(this.inputdt);
+        return d_inputdt;
     }
 
     public void setInputid(int inputid) {

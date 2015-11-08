@@ -2,7 +2,9 @@ package com.springapp.mvc.corp.service;
 
 import com.springapp.mvc.corp.pojo.*;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Created by zhm_zheng on 15/9/20.
@@ -22,15 +24,13 @@ public interface CorpService {
 
     List<CorpShareHolder> getShareHolderByCorpID(int corp_id);
 
-    void insertCorp(Integer inputid,Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
+    void insertCorp(Integer inputid,Timestamp currentTime,Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
                     CorpGov corpGov , CorpInvestor corpInvestor,CorpReFinancing corpReFinancing
                   ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo);
-
-//    void insertCorp(Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance, CorpGov corpGov,
-//                    CorpInvestor corpInvestor, CorpReFinancing corpReFinancing,CorpReHr corpReHr,
-//                    CorpReTrain corpReTrain, CorpServicePojo corpServicePojo);
 
     public void delete(Integer id);
 
     public Integer getMaxCorpId();
+
+    public Timestamp getCurrentTime();
 }

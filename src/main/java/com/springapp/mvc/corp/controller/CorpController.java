@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -83,12 +84,10 @@ public class CorpController {
 
         Integer inputid=Integer.parseInt(session.getAttribute("id").toString());
         Integer corp_id=0;
-        corp_id=corpService.getMaxCorpId();
-        System.out.println(corp_id);
-        corpService.insertCorp(inputid,corp_id,corpBase, corpContact, corpFinance, corpGov,
+        Timestamp currentTime=corpService.getCurrentTime();
+        corp_id=corpService.getMaxCorpId(); 
+        corpService.insertCorp(inputid, currentTime,corp_id,corpBase, corpContact, corpFinance, corpGov,
                 corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
-//        corpService.insertCorp(corp_id,corpBase, corpContact, corpFinance, corpGov,
-//                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
         dataShop.setSuccess(true);
         return dataShop;
     }
