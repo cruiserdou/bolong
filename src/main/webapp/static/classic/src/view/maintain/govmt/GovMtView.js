@@ -17,16 +17,13 @@ Ext.define('app.view.maintain.govmt.GovMtView', {
             xtype: 'toolbar',
             dock: 'top',
             border: false,
-            items: [
-                {
+            items: [{
                     text: '删除',
                     handler: 'delete'
-                },
-                {
+                }, {
                     text: '刷新',
                     handler: 'refresh'
-                },
-                {
+                }, {
                     text: '查询',
                     handler: 'btnSearch'
                 }

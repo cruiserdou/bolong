@@ -32,11 +32,6 @@ Ext.define('app.view.maintain.entermt.EnterMtView', {
             handler: function () {
                 //win_enterapplyview.show();
 
-
-                function menu_list_click(h_id) {
-                    alert(h_id);
-                };
-
                 Ext.create('Ext.window.Window', {
                     title: '添加企业信息',
                     height: 700,

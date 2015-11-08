@@ -4,8 +4,8 @@
 Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
     extend: 'Ext.form.Panel',
     xtype: 'entermtaddcorp',
-    closable: true,
     requires: [
+        'app.store.dict.ProvinceStore'
     ],
     width: 960,
     id: 'corp_add_form_id',
@@ -113,8 +113,21 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'legrep',
             fieldLabel: '法定代表人'
         }, {
+            xtype: 'combo',
             name: 'province',
-            fieldLabel: '地域'
+            fieldLabel: '省',
+            store: {
+                type: 'provincestore'
+            },
+            displayField: 'name'
+        }, {
+            xtype: 'combo',
+            name: 'city',
+            fieldLabel: '市'
+        }, {
+            xtype:'combo',
+            name: 'county',
+            fieldLabel: '县'
         }, {
             name: 'nos',
             fieldLabel: '公司简介'
