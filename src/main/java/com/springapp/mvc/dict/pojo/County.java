@@ -3,7 +3,7 @@ package com.springapp.mvc.dict.pojo;
 /**
  * Created by xwq on 15/11/8.
  */
-public class district {
+public class County {
     private int id;
     private int cityid;
     private String name;
