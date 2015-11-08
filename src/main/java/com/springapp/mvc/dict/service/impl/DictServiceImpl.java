@@ -2,7 +2,7 @@ package com.springapp.mvc.dict.service.impl;
 
 import com.springapp.mvc.dict.dao.DictDao;
 import com.springapp.mvc.dict.pojo.City;
-import com.springapp.mvc.dict.pojo.District;
+import com.springapp.mvc.dict.pojo.County;
 import com.springapp.mvc.dict.pojo.Province;
 import com.springapp.mvc.dict.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class DictServiceImpl implements DictService{
     }
 
     @Override
-    public List<District> listDistrict(int cityid){
+    public List<County> listDistrict(int cityid){
         return dictDao.listDistrict(cityid);
     }
 }

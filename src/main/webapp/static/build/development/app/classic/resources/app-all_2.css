@@ -9216,3 +9216,34 @@ div.x-border-layout-ct {
     background-color: #ccc;
     background-image: url(images/square.gif);
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:306 */
+#enter_mgr {
+    display: table;
+    width: 80%;
+    margin: 0 auto;
+    padding: 3em 4em;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:313 */
+#enter_mgr div {
+    display: table-cell;
+    text-align: center;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:318 */
+#enter_mgr div a {
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #157fcc;
+    box-shadow: 1px 1px 2px #ccc;
+    border-radius: 6px;
+    padding: 2em 3em;
+    background-image: linear-gradient(#157fcc, #add2ed);
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 6em auto;
+    transition: all 0.3s;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:333 */
+#enter_mgr div a:hover {
+    background-image: linear-gradient(#246fac, #8dddfd);
+}
