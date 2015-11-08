@@ -1,6 +1,8 @@
 package com.springapp.mvc.dict.service.impl;
 
 import com.springapp.mvc.dict.dao.DictDao;
+import com.springapp.mvc.dict.pojo.City;
+import com.springapp.mvc.dict.pojo.District;
 import com.springapp.mvc.dict.pojo.Province;
 import com.springapp.mvc.dict.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +21,15 @@ public class DictServiceImpl implements DictService{
     @Override
     public List<Province> listProvince(){
         return dictDao.listProvince();
+    }
+
+    @Override
+    public List<City> listCity(int provinceid){
+        return dictDao.listCity(provinceid);
+    }
+
+    @Override
+    public List<District> listDistrict(int cityid){
+        return dictDao.listDistrict(cityid);
     }
 }

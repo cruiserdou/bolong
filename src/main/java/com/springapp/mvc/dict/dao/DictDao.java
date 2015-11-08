@@ -1,5 +1,7 @@
 package com.springapp.mvc.dict.dao;
 
+import com.springapp.mvc.dict.pojo.City;
+import com.springapp.mvc.dict.pojo.District;
 import com.springapp.mvc.dict.pojo.Province;
 import com.springapp.mvc.system.pojo.Dicts;
 import org.apache.ibatis.annotations.Delete;
@@ -19,6 +21,12 @@ public interface DictDao {
 
     @Select("SELECT id, name, orderid FROM dict.tb_province;")
     List<Province> listProvince();
+
+    @Select("SELECT id, provinceid, name, areacode FROM dict.tb_city WHERE provinceid=#{provinceid};")
+    List<City> listCity(@Param(value = "provinceid")int provinceid);
+
+    @Select("SELECT id, cityid, name, postcode FROM dict.tb_district WHERE cityid=#{cityid};")
+    List<District> listDistrict(@Param(value = "cityid")int cityid);
 
     @SelectProvider(type = DictsDaoEmberSql.class, method = "listDictsInfo")
     List<Dicts> list(

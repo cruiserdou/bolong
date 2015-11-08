@@ -5,7 +5,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
     extend: 'Ext.form.Panel',
     xtype: 'entermtaddcorp',
     requires: [
-        'app.store.dict.ProvinceStore'
+        'app.store.dict.ProvinceStore',
+        'app.store.dict.CityStore',
+        'app.store.dict.DistrictStore'
     ],
     width: 960,
     id: 'corp_add_form_id',
@@ -123,11 +125,19 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         }, {
             xtype: 'combo',
             name: 'city',
-            fieldLabel: '市'
+            fieldLabel: '市',
+            store: {
+                type: 'citystore'
+            },
+            displayField: 'name'
         }, {
             xtype:'combo',
             name: 'county',
-            fieldLabel: '县'
+            fieldLabel: '县',
+            store: {
+                type: 'districtstore'
+            },
+            displayField: 'name'
         }, {
             name: 'nos',
             fieldLabel: '公司简介'

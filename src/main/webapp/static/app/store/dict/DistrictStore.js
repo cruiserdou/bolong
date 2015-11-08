@@ -1,17 +1,17 @@
 /**
  * Created by xwq on 15-9-2.
  */
-Ext.define('app.store.dict.ProvinceStore', {
+Ext.define('app.store.dict.DistrictStore', {
     extend: 'Ext.data.Store',
-    model: 'app.model.dict.Province',
-    alias: 'store.provincestore',
+    model: 'app.model.dict.District',
+    alias: 'store.districtstore',
     proxy: {
         type: 'ajax',
         actionMethods: {
             read: 'POST'
         },
         api: {
-            read: '/bolong/dict/province'
+            read: '/bolong/dict/district'
         },
         reader: {
             type: 'json',

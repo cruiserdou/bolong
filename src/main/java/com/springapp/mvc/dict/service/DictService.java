@@ -1,6 +1,8 @@
 package com.springapp.mvc.dict.service;
 
+import com.springapp.mvc.dict.pojo.City;
 import com.springapp.mvc.dict.pojo.Province;
+import com.springapp.mvc.dict.pojo.District;
 
 import java.util.List;
 
@@ -9,4 +11,6 @@ import java.util.List;
  */
 public interface DictService {
     List<Province> listProvince();
+    List<City> listCity(int provinceid);
+    List<District> listDistrict(int cityid);
 }
