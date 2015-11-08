@@ -27,4 +27,55 @@ public class DictController {
         dataShop.setSuccess(true);
         return dataShop;
     }
+
+    @RequestMapping(value = "/city",method = RequestMethod.GET)
+    public
+    @ResponseBody
+    DataShop listCity(
+            @RequestParam(value = "provinceid", required = false, defaultValue = "") Integer provinceid
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        List list = dictService.listCity(provinceid);
+        dataShop.setList(list);
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
+
+    @RequestMapping(value = "/county",method = RequestMethod.GET)
+    public
+    @ResponseBody
+    DataShop listCounty(
+            @RequestParam(value = "cityid", required = false, defaultValue = "") Integer cityid
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        List list = dictService.listCounty(cityid);
+        dataShop.setList(list);
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
+
+    @RequestMapping(value = "/industry1",method = RequestMethod.GET)
+    public
+    @ResponseBody
+    DataShop listIndustry1(
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        List list = dictService.listIndustry1();
+        dataShop.setList(list);
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
+
+    @RequestMapping(value = "/industry2",method = RequestMethod.GET)
+    public
+    @ResponseBody
+    DataShop listIndustry2(
+            @RequestParam(value = "parentid", required = false, defaultValue = "") Integer parentid
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        List list = dictService.listIndustry2(parentid);
+        dataShop.setList(list);
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
 }
