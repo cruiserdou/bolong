@@ -496,6 +496,16 @@ public interface CorpDao {
             "           #{corpServicePojo.srv_levels}, #{corpServicePojo.srv_domain}, #{corpServicePojo.srv_penalty},  #{corpServicePojo.srv_examiner},   " +
             "           #{corpServicePojo.srv_post}, #{corpServicePojo.srv_descs}, #{corpServicePojo.srv_remark});" +
 
+            " INSERT INTO work.tb_corp_maintain( " +
+            "             mai_corp_id,   mai_changer_dt,   " +
+            "            mai_recomdt, mai_trusteeship, mai_listst, mai_eclass, mai_maintain,  " +
+            "            mai_reserve, mai_emaint, mai_dept, mai_post, mai_tel, mai_phone,  " +
+            "            mai_fax, mai_email, mai_qq, mai_webchat, mai_bz) " +
+            "    VALUES (#{corpId}, #{currentTime} ,   " +
+            "            #{corpMaintain.mai_recomdt},  #{corpMaintain.mai_trusteeship},  #{corpMaintain.mai_listst},  #{corpMaintain.mai_eclass},   " +
+            "            #{corpMaintain.mai_maintain},  #{corpMaintain.mai_reserve},  #{corpMaintain.mai_emaint},  #{corpMaintain.mai_dept},   " +
+            "            #{corpMaintain.mai_post},  #{corpMaintain.mai_tel},  #{corpMaintain.mai_phone},  #{corpMaintain.mai_fax},   " +
+            "            #{corpMaintain.mai_email},  #{corpMaintain.mai_qq},  #{corpMaintain.mai_webchat},  #{corpMaintain.mai_bz});" +
 
             "end;")
     void insertCorp(
@@ -510,7 +520,9 @@ public interface CorpDao {
             @Param(value = "corpReFinancing") CorpReFinancing corpReFinancing,
             @Param(value = "corpReHr") CorpReHr corpReHr,
             @Param(value = "corpReTrain") CorpReTrain corpReTrain,
-            @Param(value = "corpServicePojo") CorpServicePojo corpServicePojo
+            @Param(value = "corpServicePojo") CorpServicePojo corpServicePojo,
+            @Param(value = "corpMaintain") CorpMaintain corpMaintain
+
     );
 
     @Select(" select nextval('work.corp_id_seq'::regclass) as corp_id;")

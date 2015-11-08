@@ -26,7 +26,7 @@ public interface CorpService {
 
     void insertCorp(Integer inputid,Timestamp currentTime,Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
                     CorpGov corpGov , CorpInvestor corpInvestor,CorpReFinancing corpReFinancing
-                  ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo);
+                  ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo,CorpMaintain corpMaintain );
 
     public void delete(Integer id);
 

@@ -63,9 +63,9 @@ public class CorpServiceImpl implements CorpService {
 
     public void insertCorp(Integer inputid,Timestamp currentTime,Integer corpId,CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
                            CorpGov corpGov ,CorpInvestor corpInvestor, CorpReFinancing corpReFinancing
-                          ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo){
+                          ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo,CorpMaintain corpMaintain ){
         corpDao.insertCorp(inputid,currentTime,corpId,corpBase,corpContact,corpFinance,corpGov ,corpInvestor,corpReFinancing
-                ,corpReHr, corpReTrain,corpServicePojo);
+                ,corpReHr, corpReTrain,corpServicePojo,corpMaintain );
     }
 
 

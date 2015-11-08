@@ -85,9 +85,9 @@ public class CorpController {
         Integer inputid=Integer.parseInt(session.getAttribute("id").toString());
         Integer corp_id=0;
         Timestamp currentTime=corpService.getCurrentTime();
-        corp_id=corpService.getMaxCorpId(); 
+        corp_id=corpService.getMaxCorpId();
         corpService.insertCorp(inputid, currentTime,corp_id,corpBase, corpContact, corpFinance, corpGov,
-                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo);
+                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo,corpMaintain);
         dataShop.setSuccess(true);
         return dataShop;
     }
