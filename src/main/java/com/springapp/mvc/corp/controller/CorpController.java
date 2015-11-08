@@ -73,7 +73,7 @@ public class CorpController {
             @ModelAttribute() CorpFinance corpFinance,
             @ModelAttribute() CorpGov corpGov,
             @ModelAttribute() CorpInvestor corpInvestor,
-//            @ModelAttribute() CorpMaintain corpMaintain,
+            @ModelAttribute() CorpMaintain corpMaintain,
             @ModelAttribute() CorpReFinancing corpReFinancing,
             @ModelAttribute() CorpReHr corpReHr,
             @ModelAttribute() CorpReTrain corpReTrain,

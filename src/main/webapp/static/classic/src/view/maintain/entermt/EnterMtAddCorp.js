@@ -28,42 +28,42 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             //法定代表人
             var e = Ext.get('add_corp_contact_id');
             e.on("click", function () {
-                Ext.getCmp('corp_add_form_id').scrollTo(0, 818 - 30, true)
+                Ext.getCmp('corp_add_form_id').scrollTo(0, 818 + 30, true)
             });
             //行业分类
             var e = Ext.get('add_corp_ind_id');
             e.on("click", function () {
-                Ext.getCmp('corp_add_form_id').scrollTo(0, 1200 - 30, true)
+                Ext.getCmp('corp_add_form_id').scrollTo(0, 1200 + 20, true)
             });
             //证监会行业分类
             var e = Ext.get('add_corp_csrc_id');
             e.on("click", function () {
-                Ext.getCmp('corp_add_form_id').scrollTo(0, 1350 - 30, true)
+                Ext.getCmp('corp_add_form_id').scrollTo(0, 1350 + 20, true)
             });
             //企业维护信息
             var e = Ext.get('add_corp_mai_id');
             e.on("click", function () {
-                Ext.getCmp('corp_add_form_id').scrollTo(0, 1460 - 30, true)
+                Ext.getCmp('corp_add_form_id').scrollTo(0, 1460 + 20, true)
             });
             //企业维护信息
             var e = Ext.get('add_corp_fin_id');
             e.on("click", function () {
-                Ext.getCmp('corp_add_form_id').scrollTo(0, 2000 - 30, true)
+                Ext.getCmp('corp_add_form_id').scrollTo(0, 2000 + 30, true)
             });
             //服务机构信息
             var e = Ext.get('add_corp_service_id');
             e.on("click", function () {
-                Ext.getCmp('corp_add_form_id').scrollTo(0, 3980 - 30, true)
+                Ext.getCmp('corp_add_form_id').scrollTo(0, 3980 + 30, true)
             });
             //投资人信息
             var e = Ext.get('add_corp_investor_id');
             e.on("click", function () {
-                Ext.getCmp('corp_add_form_id').scrollTo(0, 4300 - 30, true)
+                Ext.getCmp('corp_add_form_id').scrollTo(0, 4300 + 30, true)
             });
             //政府部门信息
             var e = Ext.get('add_corp_gov_id');
             e.on("click", function () {
-                Ext.getCmp('corp_add_form_id').scrollTo(0, 4850 - 30, true)
+                Ext.getCmp('corp_add_form_id').scrollTo(0, 4850 + 30, true)
             });
             //融资需求
             var e = Ext.get('add_corp_refi_id');
@@ -356,12 +356,6 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             xtype: 'datefield',
             format: 'Y-m-d',
             fieldLabel: '更新日期'
-        }, {
-            name: 'mai_changer_id',
-            fieldLabel: '更新人'
-        }, {
-            name: 'mai_changer_dept',
-            fieldLabel: '更新单位'
         }, {
             name: 'mai_recomdt',
             xtype: 'datefield',

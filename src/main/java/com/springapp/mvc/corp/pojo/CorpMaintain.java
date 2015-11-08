@@ -7,9 +7,9 @@ import java.sql.Date;
  */
 public class CorpMaintain {
     private int mai_id;
-    private int   mai_changer_id;
+    private String   mai_changer_id;
     private String   mai_changer_dept;
-    private String mai_recomdt;
+    private String   mai_recomdt;
     private String   mai_trusteeship;
     private String   mai_listst;
     private String   mai_eclass;
@@ -34,11 +34,11 @@ public class CorpMaintain {
         this.mai_id = mai_id;
     }
 
-    public int getMai_changer_id() {
+    public String getMai_changer_id() {
         return mai_changer_id;
     }
 
-    public void setMai_changer_id(int mai_changer_id) {
+    public void setMai_changer_id(String mai_changer_id) {
         this.mai_changer_id = mai_changer_id;
     }
 
