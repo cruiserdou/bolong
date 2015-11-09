@@ -11,7 +11,7 @@ Ext.define('app.store.dict.CountyStore', {
             read: 'GET'
         },
         api: {
-            read: '/bolong/dict/county'
+            read: '/bolong/county'
         },
         reader: {
             type: 'json',

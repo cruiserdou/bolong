@@ -1,8 +1,6 @@
 package com.springapp.mvc.dict.dao;
 
-import com.springapp.mvc.dict.pojo.City;
-import com.springapp.mvc.dict.pojo.County;
-import com.springapp.mvc.dict.pojo.Province;
+import com.springapp.mvc.dict.pojo.*;
 import com.springapp.mvc.system.pojo.Dicts;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
@@ -51,5 +49,9 @@ public interface DictDao {
     @Delete(" Delete FROM work.dicts  where id = #{id}")
     void delete(@Param(value = "id") Integer id);
 
+    @Select("SELECT * FROM  work.tb_industry1;")
+    List<Industry1> listIndustry1();
 
+    @Select("SELECT * FROM work.tb_industry2 WHERE parentid=#{parentid};")
+    List<Industry2> listIndustry2(@Param(value = "parentid")int parentid);
 }

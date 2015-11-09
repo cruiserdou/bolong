@@ -11,7 +11,7 @@ Ext.define('app.store.dict.Industry2Store', {
             read: 'GET'
         },
         api: {
-            read: '/bolong/dict/industry2'
+            read: '/bolong/industry2'
         },
         reader: {
             type: 'json',

@@ -11,7 +11,7 @@ Ext.define('app.store.dict.DistrictStore', {
             read: 'POST'
         },
         api: {
-            read: '/bolong/dict/district'
+            read: '/bolong/district'
         },
         reader: {
             type: 'json',

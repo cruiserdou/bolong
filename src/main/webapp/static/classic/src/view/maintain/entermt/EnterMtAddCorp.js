@@ -7,7 +7,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
     requires: [
         'app.store.dict.ProvinceStore',
         'app.store.dict.CityStore',
-        'app.store.dict.DistrictStore'
+        'app.store.dict.DistrictStore',
+        'app.store.dict.Industry1Store',
+        'app.store.dict.Industry2Store'
     ],
     width: 960,
     id: 'corp_add_form_id',
@@ -103,41 +105,74 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             }
         },
         items: [{
+            allowBlank: false,
             name: 'buslicno',
-            fieldLabel: '营业执照编号'
+            fieldLabel: '营业执照编号',
+            regex: /\d{15}/,
+            regexText: '请输入15位营业执照编号'
         }, {
+            allowBlank: false,
             name: 'name',
             fieldLabel: '企业名称'
         }, {
+            allowBlank: false,
             name: 'unit',
             fieldLabel: '单位类别'
         }, {
+            allowBlank: false,
             name: 'legrep',
             fieldLabel: '法定代表人'
         }, {
-            xtype: 'combo',
             name: 'province',
             fieldLabel: '省',
+            xtype: 'combobox',
+            allowBlank: false,
             store: {
                 type: 'provincestore'
             },
-            displayField: 'name'
+            autoRender: true,
+            autoShow: true,
+            displayField: 'name',
+            valueField: 'name',
+            listConfig: {
+                getInnerTpl: function () {
+                    return '<div><span style="color: green;">' + '({name})</span></div>'
+                }
+            }
         }, {
-            xtype: 'combo',
             name: 'city',
             fieldLabel: '市',
+            xtype: 'combobox',
+            allowBlank: false,
             store: {
                 type: 'citystore'
             },
-            displayField: 'name'
+            autoRender: true,
+            autoShow: true,
+            displayField: 'name',
+            valueField: 'name',
+            listConfig: {
+                getInnerTpl: function () {
+                    return '<div><span style="color: green;">' + '({name})</span></div>'
+                }
+            }
         }, {
-            xtype:'combo',
             name: 'county',
             fieldLabel: '县',
+            xtype: 'combobox',
+            allowBlank: false,
             store: {
                 type: 'districtstore'
             },
-            displayField: 'name'
+            autoRender: true,
+            autoShow: true,
+            displayField: 'name',
+            valueField: 'name',
+            listConfig: {
+                getInnerTpl: function () {
+                    return '<div><span style="color: green;">' + '({name})</span></div>'
+                }
+            }
         }, {
             name: 'nos',
             fieldLabel: '公司简介'
@@ -145,27 +180,33 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'postal',
             fieldLabel: '邮政编码'
         }, {
+            allowBlank: false,
             name: 'nature',
             fieldLabel: '企业性质'
         }, {
+            allowBlank: false,
             name: 'regcap',
             fieldLabel: '注册资本(万元)'
         }, {
+            allowBlank: false,
             name: 'regdt',
             xtype: 'datefield',
             format: 'Y-m-d',
             fieldLabel: '注册日期'
         }, {
+            allowBlank: false,
             name: 'bustermfdt',
             xtype: 'datefield',
             format: 'Y-m-d',
             fieldLabel: '营业期限自'
         }, {
+            allowBlank: false,
             name: 'bustremtdt',
             xtype: 'datefield',
             format: 'Y-m-d',
             fieldLabel: '营业期限至'
         }, {
+            allowBlank: false,
             name: 'list_area',
             fieldLabel: '挂牌区域'
         }, {
@@ -174,6 +215,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             format: 'Y-m-d',
             fieldLabel: '挂牌日期'
         }, {
+            allowBlank: false,
             name: 'listcode',
             fieldLabel: '挂牌代码'
         }, {
@@ -250,22 +292,32 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             fieldLabel: '证件号码'
         }, {
             name: 'cont_ephone',
-            fieldLabel: '手机'
+            fieldLabel: '手机',
+            regex: /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/,
+            regexText: '请输入正确的手机号'
         }, {
             name: 'cont_efax',
-            fieldLabel: '传真'
+            fieldLabel: '传真',
+            regex: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+            regexText: '请输入正确的传真'
         }, {
             name: 'cont_eemail',
-            fieldLabel: 'E-mail'
+            fieldLabel: 'E-mail',
+            regex: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+            regexText: '请输入正确的E-mail'
         }, {
             name: 'cont_eqq',
-            fieldLabel: 'QQ'
+            fieldLabel: 'QQ',
+            regex: /^\d{5,10}$/,
+            regexText: '请输入正确的QQ'
         }, {
             name: 'cont_webchat',
             fieldLabel: '微信号'
         }, {
             name: 'cont_tel',
-            fieldLabel: '固话'
+            fieldLabel: '固话',
+            regex: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+            regexText: '请输入正确的固话'
         }, {
             name: 'cont_bz',
             xtype: 'textarea',
@@ -291,19 +343,136 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 }
             }
         },
-        items: [{
-            name: 'indclass1',
-            fieldLabel: '行业一级分类'
-        }, {
-            name: 'indclass2',
-            fieldLabel: '行业二级分类'
-        }, {
-            name: 'indclass3',
-            fieldLabel: '行业三级分类'
-        }, {
-            name: 'indclass4',
-            fieldLabel: '行业四级分类'
-        }]
+        items: [
+            {
+                id: 'indclass1_id',
+                xtype: 'combobox',
+                name: 'indclass1',
+                fieldLabel: '行业一级分类',
+                allowBlank: false,
+                store: {
+                    type: 'industry1store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                },
+                listeners: {
+                    select: function (combo, record, index) {
+                        try {
+                            var indclass2 = Ext.getCmp('indclass2_id');
+                            indclass2.clearValue();
+                            indclass2.store.load(
+                                {
+                                    params: {
+                                        parentid: 1
+                                    }
+                                }
+                            );
+                        } catch (ex) {
+                            alert("数据加载失败！");
+                        }
+                    }
+                }
+
+            },
+            {
+                id: 'indclass2_id',
+                name: 'indclass2',
+                fieldLabel: '行业二级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry2store',
+                    params: {
+                        parentid: 1
+                    }
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                },
+                listeners: {
+                    select: function (combo, record, index) {
+                        try {
+                            var indclass3 = Ext.getCmp('indclass3_id');
+                            indclass3.clearValue();
+                            indclass3.store.load(
+                                {
+                                    params: {
+                                        parentid: 1
+                                    }
+                                }
+                            );
+                        } catch (ex) {
+                            alert("数据加载失败！");
+                        }
+                    }
+                }
+            }, {
+                id: 'indclass3_id',
+                name: 'indclass3',
+                fieldLabel: '行业三级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry2store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                },
+                listeners: {
+                    select: function (combo, record, index) {
+                        try {
+                            var indclass4 = Ext.getCmp('indclass4_id');
+                            indclass4.clearValue();
+                            indclass4.store.load(
+                                {
+                                    params: {
+                                        parentid: 1
+                                    }
+                                }
+                            );
+                        } catch (ex) {
+                            alert("数据加载失败！");
+                        }
+                    }
+                }
+            }, {
+                id: 'indclass4_id',
+                name: 'indclass4',
+                fieldLabel: '行业四级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry2store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                }
+            }]
     }, {
         xtype: 'fieldset',
         id: 'fieldset_csrc_id',
@@ -325,12 +494,62 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             }
         },
         items: [{
+            id: 'csrc_type1_id',
             name: 'csrc_type1',
-            fieldLabel: '证监会行业一级分类'
-        }, {
-            name: 'csrc_type2',
-            fieldLabel: '证监会行业二级分类'
-        }]
+            fieldLabel: '证监会行业一级分类',
+            xtype: 'combobox',
+            allowBlank: false,
+            store: {
+                type: 'industry1store'
+            },
+            autoRender: true,
+            autoShow: true,
+            displayField: 'name',
+            valueField: 'name',
+            listConfig: {
+                getInnerTpl: function () {
+                    return '<div><span style="color: green;">' + '({name})</span></div>'
+                }
+            },
+            listeners: {
+                select: function (combo, record, index) {
+                    try {
+                        var csrc_type2 = Ext.getCmp('csrc_type2_id');
+                        csrc_type2.clearValue();
+                        csrc_type2.store.load(
+                            {
+                                params: {
+                                    parentid: 1
+                                }
+                            }
+                        );
+                    } catch (ex) {
+                        alert("数据加载失败！");
+                    }
+                }
+            }
+        },
+            {
+                id: 'csrc_type2_id',
+                name: 'csrc_type2',
+                fieldLabel: '证监会行业二级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry2store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                }
+            }
+
+        ]
     }, {
         xtype: 'fieldset',
         id: 'fieldset_mai_id',
@@ -387,19 +606,29 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             fieldLabel: '职务'
         }, {
             name: 'mai_tel',
-            fieldLabel: '固定电话'
+            fieldLabel: '固定电话',
+            regex: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+            regexText: '请输入正确的固话'
         }, {
             name: 'mai_phone',
-            fieldLabel: '手机号码'
+            fieldLabel: '手机号码',
+            regex: /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/,
+            regexText: '请输入正确的手机号'
         }, {
             name: 'mai_fax',
-            fieldLabel: '传真'
+            fieldLabel: '传真',
+            regex: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+            regexText: '请输入正确的传真'
         }, {
             name: 'mai_email',
-            fieldLabel: 'E-mail'
+            fieldLabel: 'E-mail',
+            regex: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+            regexText: '请输入正确的E-mail'
         }, {
             name: 'mai_qq',
-            fieldLabel: 'QQ'
+            fieldLabel: 'QQ',
+            regex: /^\d{5,10}$/,
+            regexText: '请输入正确的QQ'
         }, {
             name: 'mai_webchat',
             fieldLabel: '微信号'
@@ -427,655 +656,656 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 }
             }
         },
-        items: [{
-            name: 'start_time',
-            xtype: 'datefield',
-            format: 'Y-m-d',
-            fieldLabel: '时间始',
-            colspan: 3
-        }, {
-            name: 'end_time',
-            xtype: 'datefield',
-            format: 'Y-m-d',
-            fieldLabel: '时间至',
-            colspan: 3
-        }, {
-            xtype: 'displayfield',
-            value: '资产'
-        }, {
-            xtype: 'displayfield',
-            value: '年初余额（元）'
-        }, {
-            xtype: 'displayfield',
-            value: '期末余额'
-        }, {
-            xtype: 'displayfield',
-            value: '负债和所有者权益'
-        }, {
-            xtype: 'displayfield',
-            value: '年初余额（元）'
-        }, {
-            xtype: 'displayfield',
-            value: '期末余额（元）'
-        }, {
-            xtype: 'displayfield',
-            value: '流动资产：',
-            colspan: 3
-        }, {
-            xtype: 'displayfield',
-            value: '流动负债：',
-            colspan: 3
-        }, {
-            xtype: 'displayfield',
-            value: '货币资金'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_money_fund'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_money_fund'
-        }, {
-            xtype: 'displayfield',
-            value: '短期借款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_short_borrow'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_short_borrow'
-        }, {
-            xtype: 'displayfield',
-            value: '交易性金融资产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_jyxjr_assets'
+        items: [
+            {
+                name: 'start_time',
+                xtype: 'datefield',
+                format: 'Y-m-d',
+                fieldLabel: '时间始',
+                colspan: 3
+            }, {
+                name: 'end_time',
+                xtype: 'datefield',
+                format: 'Y-m-d',
+                fieldLabel: '时间至',
+                colspan: 3
+            }, {
+                xtype: 'displayfield',
+                value: '资产'
+            }, {
+                xtype: 'displayfield',
+                value: '年初余额（元）'
+            }, {
+                xtype: 'displayfield',
+                value: '期末余额'
+            }, {
+                xtype: 'displayfield',
+                value: '负债和所有者权益'
+            }, {
+                xtype: 'displayfield',
+                value: '年初余额（元）'
+            }, {
+                xtype: 'displayfield',
+                value: '期末余额（元）'
+            }, {
+                xtype: 'displayfield',
+                value: '流动资产：',
+                colspan: 3
+            }, {
+                xtype: 'displayfield',
+                value: '流动负债：',
+                colspan: 3
+            }, {
+                xtype: 'displayfield',
+                value: '货币资金'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_money_fund'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_money_fund'
+            }, {
+                xtype: 'displayfield',
+                value: '短期借款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_short_borrow'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_short_borrow'
+            }, {
+                xtype: 'displayfield',
+                value: '交易性金融资产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_jyxjr_assets'
 
-        }, {
-            xtype: 'numberfield',
-            name: 'end_jyxjr_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '交易性金融负债'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_jyx_finance_fz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_jyx_finance_fz'
-        }, {
-            xtype: 'displayfield',
-            value: '应收票据'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_ys_bill'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_ys_bill'
-        }, {
-            xtype: 'displayfield',
-            value: '应付票据'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yf_bill'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yf_bill'
-        }, {
-            xtype: 'displayfield',
-            value: '应收账款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_ys_account'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_ys_account'
-        }, {
-            xtype: 'displayfield',
-            value: '应付账款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yf_account'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yf_account'
-        }, {
-            xtype: 'displayfield',
-            value: '预付款项'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yf_money'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yf_money'
-        }, {
-            xtype: 'displayfield',
-            value: '预收款项'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_ys_money'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_ys_money'
-        }, {
-            xtype: 'displayfield',
-            value: '应收利息'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_ys_interest'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_ys_interest'
-        }, {
-            xtype: 'displayfield',
-            value: '应付职工薪酬'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yf_staff_pay'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yf_staff_pay'
-        }, {
-            xtype: 'displayfield',
-            value: '应收股利'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_ys_dividends'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_ys_dividends'
-        }, {
-            xtype: 'displayfield',
-            value: '应缴税费'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yj_tax'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yj_tax'
-        }, {
-            xtype: 'displayfield',
-            value: '其他应收款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_other_ys_money'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_other_ys_money'
-        }, {
-            xtype: 'displayfield',
-            value: '应付利息'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yf_interest'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yf_interest'
-        }, {
-            xtype: 'displayfield',
-            value: '存货'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_inventory'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_inventory'
-        }, {
-            xtype: 'displayfield',
-            value: '应付股利'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yf_dividends'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yf_dividends'
-        }, {
-            xtype: 'displayfield',
-            value: '一年内非到期流动资产'
-        }, {
-            xtype: 'numberfield'
-        }, {
-            xtype: 'numberfield'
-        }, {
-            xtype: 'displayfield',
-            value: '一年内到期非流动负债'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_ynndq_no_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_ynndq_no_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '其他流动资产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_other_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_other_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '其他应付款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_other_yf_money'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_other_yf_money'
-        }, {
-            xtype: 'displayfield',
-            value: ''
-        }, {
-            xtype: 'displayfield',
-            value: ''
-        }, {
-            xtype: 'displayfield',
-            value: ''
-        }, {
-            xtype: 'displayfield',
-            value: '其他流动负债'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_other_fz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_other_fz'
-        }, {
-            xtype: 'displayfield',
-            value: '流动资产合计'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_hj_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_hj_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '流动负债合计'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_hj_fz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_hj_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_jyxjr_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '交易性金融负债'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_jyx_finance_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_jyx_finance_fz'
+            }, {
+                xtype: 'displayfield',
+                value: '应收票据'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_ys_bill'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_ys_bill'
+            }, {
+                xtype: 'displayfield',
+                value: '应付票据'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yf_bill'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yf_bill'
+            }, {
+                xtype: 'displayfield',
+                value: '应收账款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_ys_account'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_ys_account'
+            }, {
+                xtype: 'displayfield',
+                value: '应付账款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yf_account'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yf_account'
+            }, {
+                xtype: 'displayfield',
+                value: '预付款项'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yf_money'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yf_money'
+            }, {
+                xtype: 'displayfield',
+                value: '预收款项'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_ys_money'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_ys_money'
+            }, {
+                xtype: 'displayfield',
+                value: '应收利息'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_ys_interest'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_ys_interest'
+            }, {
+                xtype: 'displayfield',
+                value: '应付职工薪酬'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yf_staff_pay'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yf_staff_pay'
+            }, {
+                xtype: 'displayfield',
+                value: '应收股利'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_ys_dividends'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_ys_dividends'
+            }, {
+                xtype: 'displayfield',
+                value: '应缴税费'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yj_tax'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yj_tax'
+            }, {
+                xtype: 'displayfield',
+                value: '其他应收款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_other_ys_money'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_other_ys_money'
+            }, {
+                xtype: 'displayfield',
+                value: '应付利息'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yf_interest'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yf_interest'
+            }, {
+                xtype: 'displayfield',
+                value: '存货'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_inventory'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_inventory'
+            }, {
+                xtype: 'displayfield',
+                value: '应付股利'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yf_dividends'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yf_dividends'
+            }, {
+                xtype: 'displayfield',
+                value: '一年内非到期流动资产'
+            }, {
+                xtype: 'numberfield'
+            }, {
+                xtype: 'numberfield'
+            }, {
+                xtype: 'displayfield',
+                value: '一年内到期非流动负债'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_ynndq_no_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_ynndq_no_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '其他流动资产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_other_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_other_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '其他应付款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_other_yf_money'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_other_yf_money'
+            }, {
+                xtype: 'displayfield',
+                value: ''
+            }, {
+                xtype: 'displayfield',
+                value: ''
+            }, {
+                xtype: 'displayfield',
+                value: ''
+            }, {
+                xtype: 'displayfield',
+                value: '其他流动负债'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_other_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_other_fz'
+            }, {
+                xtype: 'displayfield',
+                value: '流动资产合计'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_hj_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_hj_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '流动负债合计'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_hj_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_hj_fz'
 
-        }, {
-            xtype: 'displayfield',
-            value: '非流动资产：',
-            colspan: 3
-        }, {
-            xtype: 'displayfield',
-            value: '非流动负债：',
-            colspan: 3
-        }, {
-            xtype: 'displayfield',
-            value: '可供出售金融资产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_kgcs_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_kgcs_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '长期借款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_long_borrow'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_long_borrow'
-        }, {
-            xtype: 'displayfield',
-            value: '持有至到期投资'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_cyzdq_investment'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_cyzdq_investment'
-        }, {
-            xtype: 'displayfield',
-            value: '应付债券'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yf_bond'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yf_bond'
-        }, {
-            xtype: 'displayfield',
-            value: '长期应收款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_long_ys_money'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_long_ys_money'
-        }, {
-            xtype: 'displayfield',
-            value: '长期应付款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_long_yf_money'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_long_yf_money'
-        }, {
-            xtype: 'displayfield',
-            value: '长期股权投资'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_long_gq_investment'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_long_gq_investment'
-        }, {
-            xtype: 'displayfield',
-            value: '专项应付款'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_zx_yf_money'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_zx_yf_money'
-        }, {
-            xtype: 'displayfield',
-            value: '投资性房地产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_invest_house'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_invest_house'
-        }, {
-            xtype: 'displayfield',
-            value: '预计负债'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yj_fz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yj_fz'
-        }, {
-            xtype: 'displayfield',
-            value: '固定资产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_gd_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_gd_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '递延所得税负债'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_dysds_fz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_dysds_fz'
-        }, {
-            xtype: 'displayfield',
-            value: '减：累计折旧'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_accu_deprec'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_accu_deprec'
-        }, {
-            xtype: 'displayfield',
-            value: '其他非流动负债'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_other_no_fz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_other_no_fz'
-        }, {
-            xtype: 'displayfield',
-            value: '固定资产净值'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_gd_assets_jz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_gd_assets_jz'
-        }, {
-            xtype: 'displayfield',
-            value: '非流动负债合计'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_hj_no_fz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_hj_no_fz'
-        }, {
-            xtype: 'displayfield',
-            value: '减：固定资产减值准备'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_gd_assets_ready'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_gd_assets_ready'
-        }, {
-            xtype: 'displayfield',
-            value: '负债合计'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_hj_total_fz'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_hj_total_fz'
-        }, {
-            xtype: 'displayfield',
-            value: '固定资产净额'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_gd_assets_je'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_gd_assets_je'
-        }, {
-            xtype: 'displayfield',
-            value: ''
-        }, {
-            xtype: 'displayfield',
-            value: ''
-        }, {
-            xtype: 'displayfield',
-            value: ''
-        }, {
-            xtype: 'displayfield',
-            value: '在建工程'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_now_project'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_now_project'
-        }, {
-            xtype: 'displayfield',
-            value: '所有者权益(或股东权益)'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_paid_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_paid_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '工程物资'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_project_material'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_project_material'
-        }, {
-            xtype: 'displayfield',
-            value: '实收资本(或股本)'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_zb_reserve'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_zb_reserve'
-        }, {
-            xtype: 'displayfield',
-            value: '固定资产清理'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_gd_assets_ql'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_gd_assets_ql'
-        }, {
-            xtype: 'displayfield',
-            value: '资本公积'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_zb_reserve'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_zb_reserve'
-        }, {
-            xtype: 'displayfield',
-            value: '生产性生物资产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_scx_investment'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_scx_investment'
-        }, {
-            xtype: 'displayfield',
-            value: '减：库存股'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_kc_stock'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_kc_stock'
-        }, {
-            xtype: 'displayfield',
-            value: '无形资产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_wx_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_wx_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '专项储备'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_zx_reserve'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_zx_reserve'
-        }, {
-            xtype: 'displayfield',
-            value: '商誉'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_goodwill'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_goodwill'
-        }, {
-            xtype: 'displayfield',
-            value: '盈余公积'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_yy_reserve'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_yy_reserve'
-        }, {
-            xtype: 'displayfield',
-            value: '长期待摊费用'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_cqdt_cost'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_cqdt_cost'
-        }, {
-            xtype: 'displayfield',
-            value: '未分配利润'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_wfp_profit'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_wfp_profit'
-        }, {
-            xtype: 'displayfield',
-            value: '递延所得税资产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_dysds_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_dysds_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '所有者权益合计'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_hj_owner_right'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_hj_owner_right'
-        }, {
-            xtype: 'displayfield',
-            value: '其他非流动资产'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_other_no_assets'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_other_no_assets'
-        }, {
-            xtype: 'displayfield',
-            value: '',
-            colspan: 3
-        }, {
-            xtype: 'displayfield',
-            value: '非流动资产合计'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_hj_no_asset'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_hj_no_asset'
-        }, {
-            xtype: 'displayfield',
-            value: '',
-            colspan: 3
-        }, {
-            xtype: 'displayfield',
-            value: '资产总计'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_hj_total_asset'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_hj_total_asset'
-        }, {
-            xtype: 'displayfield',
-            value: '负债和所有者权益合计'
-        }, {
-            xtype: 'numberfield',
-            name: 'st_hj_fz_owner_right'
-        }, {
-            xtype: 'numberfield',
-            name: 'end_hj_fz_owner_right'
-        }]
+            }, {
+                xtype: 'displayfield',
+                value: '非流动资产：',
+                colspan: 3
+            }, {
+                xtype: 'displayfield',
+                value: '非流动负债：',
+                colspan: 3
+            }, {
+                xtype: 'displayfield',
+                value: '可供出售金融资产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_kgcs_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_kgcs_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '长期借款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_long_borrow'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_long_borrow'
+            }, {
+                xtype: 'displayfield',
+                value: '持有至到期投资'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_cyzdq_investment'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_cyzdq_investment'
+            }, {
+                xtype: 'displayfield',
+                value: '应付债券'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yf_bond'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yf_bond'
+            }, {
+                xtype: 'displayfield',
+                value: '长期应收款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_long_ys_money'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_long_ys_money'
+            }, {
+                xtype: 'displayfield',
+                value: '长期应付款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_long_yf_money'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_long_yf_money'
+            }, {
+                xtype: 'displayfield',
+                value: '长期股权投资'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_long_gq_investment'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_long_gq_investment'
+            }, {
+                xtype: 'displayfield',
+                value: '专项应付款'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_zx_yf_money'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_zx_yf_money'
+            }, {
+                xtype: 'displayfield',
+                value: '投资性房地产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_invest_house'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_invest_house'
+            }, {
+                xtype: 'displayfield',
+                value: '预计负债'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yj_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yj_fz'
+            }, {
+                xtype: 'displayfield',
+                value: '固定资产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_gd_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_gd_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '递延所得税负债'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_dysds_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_dysds_fz'
+            }, {
+                xtype: 'displayfield',
+                value: '减：累计折旧'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_accu_deprec'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_accu_deprec'
+            }, {
+                xtype: 'displayfield',
+                value: '其他非流动负债'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_other_no_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_other_no_fz'
+            }, {
+                xtype: 'displayfield',
+                value: '固定资产净值'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_gd_assets_jz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_gd_assets_jz'
+            }, {
+                xtype: 'displayfield',
+                value: '非流动负债合计'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_hj_no_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_hj_no_fz'
+            }, {
+                xtype: 'displayfield',
+                value: '减：固定资产减值准备'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_gd_assets_ready'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_gd_assets_ready'
+            }, {
+                xtype: 'displayfield',
+                value: '负债合计'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_hj_total_fz'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_hj_total_fz'
+            }, {
+                xtype: 'displayfield',
+                value: '固定资产净额'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_gd_assets_je'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_gd_assets_je'
+            }, {
+                xtype: 'displayfield',
+                value: ''
+            }, {
+                xtype: 'displayfield',
+                value: ''
+            }, {
+                xtype: 'displayfield',
+                value: ''
+            }, {
+                xtype: 'displayfield',
+                value: '在建工程'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_now_project'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_now_project'
+            }, {
+                xtype: 'displayfield',
+                value: '所有者权益(或股东权益)'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_paid_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_paid_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '工程物资'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_project_material'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_project_material'
+            }, {
+                xtype: 'displayfield',
+                value: '实收资本(或股本)'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_zb_reserve'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_zb_reserve'
+            }, {
+                xtype: 'displayfield',
+                value: '固定资产清理'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_gd_assets_ql'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_gd_assets_ql'
+            }, {
+                xtype: 'displayfield',
+                value: '资本公积'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_zb_reserve'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_zb_reserve'
+            }, {
+                xtype: 'displayfield',
+                value: '生产性生物资产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_scx_investment'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_scx_investment'
+            }, {
+                xtype: 'displayfield',
+                value: '减：库存股'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_kc_stock'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_kc_stock'
+            }, {
+                xtype: 'displayfield',
+                value: '无形资产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_wx_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_wx_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '专项储备'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_zx_reserve'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_zx_reserve'
+            }, {
+                xtype: 'displayfield',
+                value: '商誉'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_goodwill'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_goodwill'
+            }, {
+                xtype: 'displayfield',
+                value: '盈余公积'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_yy_reserve'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_yy_reserve'
+            }, {
+                xtype: 'displayfield',
+                value: '长期待摊费用'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_cqdt_cost'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_cqdt_cost'
+            }, {
+                xtype: 'displayfield',
+                value: '未分配利润'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_wfp_profit'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_wfp_profit'
+            }, {
+                xtype: 'displayfield',
+                value: '递延所得税资产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_dysds_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_dysds_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '所有者权益合计'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_hj_owner_right'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_hj_owner_right'
+            }, {
+                xtype: 'displayfield',
+                value: '其他非流动资产'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_other_no_assets'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_other_no_assets'
+            }, {
+                xtype: 'displayfield',
+                value: '',
+                colspan: 3
+            }, {
+                xtype: 'displayfield',
+                value: '非流动资产合计'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_hj_no_asset'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_hj_no_asset'
+            }, {
+                xtype: 'displayfield',
+                value: '',
+                colspan: 3
+            }, {
+                xtype: 'displayfield',
+                value: '资产总计'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_hj_total_asset'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_hj_total_asset'
+            }, {
+                xtype: 'displayfield',
+                value: '负债和所有者权益合计'
+            }, {
+                xtype: 'numberfield',
+                name: 'st_hj_fz_owner_right'
+            }, {
+                xtype: 'numberfield',
+                name: 'end_hj_fz_owner_right'
+            }]
     }, {
         xtype: 'fieldset',
         id: 'fieldset_service_id',
@@ -1153,66 +1383,156 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'inv_domain',
             fieldLabel: '投资领域',
             colspan: 2
-        }, {
-            name: 'inv_csrc_type1',
-            xtype: 'combo',
-            fieldLabel: '行业一级分类'
-        }, {
-            name: 'inv_csrc_type2',
-            xtype: 'combo',
-            fieldLabel: '行业二级分类'
-        }, {
-            name: 'inv_csrc_type3',
-            xtype: 'combo',
-            fieldLabel: '行业三级分类'
-        }, {
-            name: 'inv_csrc_type4',
-            xtype: 'combo',
-            fieldLabel: '行业四级分类'
-        }, {
-            name: 'inv_indclass1',
-            xtype: 'combo',
-            fieldLabel: '证监会行业一级分类'
-        }, {
-            name: 'inv_indclass2',
-            xtype: 'combo',
-            fieldLabel: '证监会行业二类分类'
-        }, {
-            name: 'inv_contact',
-            fieldLabel: '姓名'
-        }, {
-            name: 'inv_doctype',
-            fieldLabel: '证件类型'
-        }, {
-            name: 'inv_psotion',
-            fieldLabel: '职务'
-        }, {
-            name: 'inv_docnum',
-            fieldLabel: '证件号码'
-        }, {
-            name: 'inv_phone',
-            fieldLabel: '手机'
-        }, {
-            name: 'inv_fax',
-            fieldLabel: '传真'
-        }, {
-            name: 'inv_email',
-            fieldLabel: 'E-mail'
-        }, {
-            name: 'inv_qq',
-            fieldLabel: 'QQ'
-        }, {
-            name: 'inv_webchat',
-            fieldLabel: '微信号'
-        }, {
-            name: 'inv_tel',
-            fieldLabel: '固话'
-        }, {
-            name: 'inv_remark',
-            xtype: 'textarea',
-            fieldLabel: '备注',
-            colspan: 2
-        }]
+        },
+            {
+                name: 'inv_csrc_type1',
+                fieldLabel: '行业一级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry1store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                }
+            },
+            {
+                name: 'inv_csrc_type2',
+                fieldLabel: '行业二级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry2store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                }
+            }, {
+                name: 'inv_csrc_type3',
+                fieldLabel: '行业三级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry2store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                }
+            }, {
+                name: 'inv_csrc_type4',
+                fieldLabel: '行业四级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry2store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                }
+            }, {
+                name: 'inv_indclass1',
+                fieldLabel: '证监会行业一级分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry1store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                }
+            }, {
+                name: 'inv_indclass2',
+                fieldLabel: '证监会行业二类分类',
+                xtype: 'combobox',
+                allowBlank: false,
+                store: {
+                    type: 'industry2store'
+                },
+                autoRender: true,
+                autoShow: true,
+                displayField: 'name',
+                valueField: 'name',
+                listConfig: {
+                    getInnerTpl: function () {
+                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                    }
+                }
+            }, {
+                name: 'inv_contact',
+                fieldLabel: '姓名'
+            }, {
+                name: 'inv_doctype',
+                fieldLabel: '证件类型'
+            }, {
+                name: 'inv_psotion',
+                fieldLabel: '职务'
+            }, {
+                name: 'inv_docnum',
+                fieldLabel: '证件号码'
+            }, {
+                name: 'inv_phone',
+                fieldLabel: '手机',
+                regex: /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/,
+                regexText: '请输入正确的手机号'
+            }, {
+                name: 'inv_fax',
+                fieldLabel: '传真',
+                regex: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+                regexText: '请输入正确的传真'
+            }, {
+                name: 'inv_email',
+                fieldLabel: 'E-mail',
+                regex: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+                regexText: '请输入正确的E-mail'
+            }, {
+                name: 'inv_qq',
+                fieldLabel: 'QQ',
+                regex: /^\d{5,10}$/,
+                regexText: '请输入正确的QQ'
+            }, {
+                name: 'inv_webchat',
+                fieldLabel: '微信号'
+            }, {
+                name: 'inv_tel',
+                fieldLabel: '固话',
+                regex: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+                regexText: '请输入正确的固话'
+            }, {
+                name: 'inv_remark',
+                xtype: 'textarea',
+                fieldLabel: '备注',
+                colspan: 2
+            }]
     }, {
         xtype: 'fieldset',
         id: 'fieldset_gov_id',
@@ -1258,22 +1578,32 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             fieldLabel: '证件号码'
         }, {
             name: 'gov_phone',
-            fieldLabel: '手机'
+            fieldLabel: '手机',
+            regex: /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/,
+            regexText: '请输入正确的手机号'
         }, {
             name: 'gov_fax',
-            fieldLabel: '传真'
+            fieldLabel: '传真',
+            regex: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+            regexText: '请输入正确的传真'
         }, {
             name: 'gov_email',
-            fieldLabel: 'E-mail'
+            fieldLabel: 'E-mail',
+            regex: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+            regexText: '请输入正确的E-mail'
         }, {
             name: 'gov_qq',
-            fieldLabel: 'QQ'
+            fieldLabel: 'QQ',
+            regex: /^\d{5,10}$/,
+            regexText: '请输入正确的QQ'
         }, {
             name: 'gov_webchat',
             fieldLabel: '微信号'
         }, {
             name: 'gov_tel',
-            fieldLabel: '固话'
+            fieldLabel: '固话',
+            regex: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+            regexText: '请输入正确的固话'
         }, {
             name: 'gov_remark',
             xtype: 'textarea',
@@ -1299,31 +1629,32 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 }
             }
         },
-        items: [{
-            name: 'refi_amounts',
-            fieldLabel: '融资金额'
-        }, {
-            name: 'refi_use',
-            fieldLabel: '融资用途'
-        }, {
-            name: 'refi_financ',
-            fieldLabel: '股份融资/债券融资'
-        }, {
-            name: 'refi_security',
-            fieldLabel: '偿付保障'
-        }, {
-            name: 'refi_acc_cost',
-            fieldLabel: '可接受成本(%/年)'
-        }, {
-            name: 'refi_deadline',
-            fieldLabel: '融资期限',
-            xtype: 'datefield',
-            format: 'Y-m-d'
-        }, {
-            name: 'refi_desc',
-            fieldLabel: '融资用途详细说明',
-            colspan: 2
-        }]
+        items: [
+            {
+                name: 'refi_amounts',
+                fieldLabel: '融资金额'
+            }, {
+                name: 'refi_use',
+                fieldLabel: '融资用途'
+            }, {
+                name: 'refi_financ',
+                fieldLabel: '股份融资/债券融资'
+            }, {
+                name: 'refi_security',
+                fieldLabel: '偿付保障'
+            }, {
+                name: 'refi_acc_cost',
+                fieldLabel: '可接受成本(%/年)'
+            }, {
+                name: 'refi_deadline',
+                fieldLabel: '融资期限',
+                xtype: 'datefield',
+                format: 'Y-m-d'
+            }, {
+                name: 'refi_desc',
+                fieldLabel: '融资用途详细说明',
+                colspan: 2
+            }]
     }, {
         xtype: 'fieldset',
         id: 'fieldset_retra_id',
@@ -1344,29 +1675,30 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 }
             }
         },
-        items: [{
-            fieldLabel: '培训方式',
-            name: 'retra_mode',
-            colspan: 2
-        }, {
+        items: [
+            {
+                fieldLabel: '培训方式',
+                name: 'retra_mode',
+                colspan: 2
+            }, {
 
-            name: 'retra_dt',
-            fieldLabel: '有效时间',
-            xtype: 'datefield',
-            format: 'Y-m-d'
-        }, {
-            name: 'retra_acc_cost',
-            fieldLabel: '可接受成本',
-            xtype: 'numberfield'
-        }, {
-            name: 'retra_content',
-            xtype: 'textarea',
-            fieldLabel: '培训内容'
-        }, {
-            name: 'retra_requests',
-            xtype: 'textarea',
-            fieldLabel: '详细要求'
-        }]
+                name: 'retra_dt',
+                fieldLabel: '有效时间',
+                xtype: 'datefield',
+                format: 'Y-m-d'
+            }, {
+                name: 'retra_acc_cost',
+                fieldLabel: '可接受成本',
+                xtype: 'numberfield'
+            }, {
+                name: 'retra_content',
+                xtype: 'textarea',
+                fieldLabel: '培训内容'
+            }, {
+                name: 'retra_requests',
+                xtype: 'textarea',
+                fieldLabel: '详细要求'
+            }]
 
     }, {
         xtype: 'fieldset',

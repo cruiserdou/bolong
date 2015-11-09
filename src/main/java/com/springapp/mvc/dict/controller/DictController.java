@@ -11,12 +11,12 @@ import java.util.List;
  * Created by xwq on 15/9/2.
  */
 @RestController
-@RequestMapping("/dict")
+//@RequestMapping("/dict")
 public class DictController {
     @Autowired
     private DictService dictService;
 
-    @RequestMapping(value = "/province",method = RequestMethod.POST)
+    @RequestMapping(value = "/province",method = RequestMethod.GET)
     public
     @ResponseBody
     DataShop province(
@@ -28,7 +28,8 @@ public class DictController {
         return dataShop;
     }
 
-    @RequestMapping(value = "/city",method = RequestMethod.POST)
+
+    @RequestMapping(value = "/city",method = RequestMethod.GET)
     public
     @ResponseBody
     DataShop city(
@@ -44,7 +45,7 @@ public class DictController {
         return dataShop;
     }
 
-    @RequestMapping(value = "/district",method = RequestMethod.POST)
+    @RequestMapping(value = "/district",method = RequestMethod.GET)
     public
     @ResponseBody
     DataShop district(
@@ -55,6 +56,37 @@ public class DictController {
             cityid = 0;
         }
         List list = dictService.listDistrict(cityid);
+        dataShop.setList(list);
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
+
+
+    @RequestMapping(value = "/industry1",method = RequestMethod.GET)
+    public
+    @ResponseBody
+    DataShop industry1(
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        List list = dictService.listIndustry1();
+        dataShop.setList(list);
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
+
+    @RequestMapping(value = "/industry2",method = RequestMethod.GET)
+    public
+    @ResponseBody
+    DataShop industry2(
+            @RequestParam(value = "parentid", required = true, defaultValue = "0")Integer parentid
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        System.out.println(parentid);
+        if (null == parentid){
+            parentid = 0;
+        }
+        System.out.println(parentid);
+        List list = dictService.listIndustry2(parentid);
         dataShop.setList(list);
         dataShop.setSuccess(true);
         return dataShop;
