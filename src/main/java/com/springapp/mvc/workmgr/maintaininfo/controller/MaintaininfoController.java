@@ -20,10 +20,11 @@ public class MaintaininfoController {
     public
     @ResponseBody
     DataShop listInnerInfo(
-            @RequestParam(value = "corp_name", required = false, defaultValue = "") String corp_name
+            @RequestParam(value = "mi_mp_id", required = false, defaultValue = "") Integer mi_mp_id
+//            @RequestParam(value = "corp_name", required = false, defaultValue = "") String corp_name
     ) throws Exception {
         DataShop dataShop = new DataShop();
-        List list = maintaininfoService.list(corp_name);
+        List list = maintaininfoService.list(mi_mp_id);
         dataShop.setList(list);
         dataShop.setSuccess(true);
         return dataShop;

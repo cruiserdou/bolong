@@ -10,7 +10,8 @@ Ext.define('app.view.workmgr.maintainplan.MaintainplanView', {
         'app.view.workmgr.maintainplan.MaintainplanGridView',
         'app.view.workmgr.maintainplan.MaintainplanDetailView',
         'app.view.workmgr.maintainplan.MaintainplanAddView',
-        'app.view.workmgr.maintainplan.MaintainplanQueryView'
+        'app.view.workmgr.maintainplan.MaintainplanQueryView',
+        'app.view.workmgr.maintaininfo.MaintaininfoGridView'
     ],
 
     controller: 'maintainplancontroller',
@@ -51,11 +52,13 @@ Ext.define('app.view.workmgr.maintainplan.MaintainplanView', {
                 store.load();
             }
         }
-    },{
-        xtype: 'maintainplandetailview',
-        region: 'east',
-        id: 'maintainplandetailview_id',
-        margin: '0 0 0 1',
-        width:  360
-    }]
+    },
+        {
+            xtype: 'maintaininfogridview',
+            id: 'maintaininfogridview_id',
+            region: 'east',
+            margin: '0 0 0 1',
+            width:  700
+        }
+    ]
 });

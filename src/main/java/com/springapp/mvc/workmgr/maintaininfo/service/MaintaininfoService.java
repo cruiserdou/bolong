@@ -8,7 +8,7 @@ import java.util.List;
  * Created by zhm_zheng on 15/9/20.
  */
 public interface MaintaininfoService {
-    List<Maintaininfo> list(String corp_name);
+    List<Maintaininfo> list(Integer mi_mp_id);
 
     public void delete(Integer mi_id);
 }

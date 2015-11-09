@@ -7,8 +7,8 @@ Ext.define('app.view.workmgr.maintaininfo.MaintaininfoController', {
     alias: 'controller.maintaininfocontroller',
 
     itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('maintaininfodetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+        //var vPanel = Ext.getCmp('maintaininfodetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
     },
 
     btnAdd: function(){

@@ -16,28 +16,23 @@ import java.util.Map;
 public interface MaintaininfoDao {
     @SelectProvider(type = MaintaininfoDaoEmberSql.class, method = "listMaintainInfo")
     List<Maintaininfo> list(
-            @Param(value = "corp_name") String corp_name
+            @Param(value = "mi_mp_id") Integer mi_mp_id
     );
 
     class MaintaininfoDaoEmberSql {
         public String listMaintainInfo(Map<String, Object> para) {
 
             String where = "";
-            if (null != para.get("corp_name").toString() && 0 != para.get("corp_name").toString().length())
-                where += " and corp.name like '%" + para.get("corp_name").toString() + "%' ";
-
+            if (null != para.get("mi_mp_id").toString() && 0 != para.get("mi_mp_id").toString().length())
+                where += " and mi_mp_id= " + Integer.parseInt(para.get("mi_mp_id").toString());
 
             where += " ;";
 
-            return "SELECT corp.name corp_name,mi_id, mi_corp_id, mi_listcode, mi_province, mi_city, mi_county, " +
+            return "SELECT   mi_id,mi_mp_id, mi_corp_id, mi_listcode, mi_province, mi_city, mi_county, " +
                     "     mi_mt_date, mi_cust_type, mi_next_date, mi_next_plan, mi_remark  " +
-                    "      FROM  work.tb_maintain_info maintain_info ,work.tb_corp  corp   " +
-                    "      where   corp.id  = maintain_info.mi_corp_id    and  " +
-                    "             mi_id  in (select max(mi_id)  from work.tb_maintain_info   group by mi_corp_id)  "  + where;
+                    "      FROM  work.tb_maintain_info maintain_info    where  1=1    "  + where;
         }
     }
-
-
 
     @Delete(" Delete FROM work.tb_maintain_info  where mi_id = #{mi_id}")
     void delete(@Param(value = "mi_id") Integer mi_id);

@@ -6,9 +6,14 @@ Ext.define('app.view.workmgr.maintainplan.MaintainplanController', {
 
     alias: 'controller.maintainplancontroller',
 
-    itemclick: function (this_, record_) {
-        var vPanel = Ext.getCmp('maintainplandetailview_id');
-        vPanel.tpl.overwrite(vPanel.body, record_.data);
+    itemclick: function (this_, record) {
+        //var vPanel = Ext.getCmp('maintainplandetailview_id');
+        //vPanel.tpl.overwrite(vPanel.body, record_.data);
+        Ext.getCmp('maintaininfogridview_id').getStore().load({
+            params: {
+                mi_mp_id: record.get('mp_id')
+            }
+        });
     },
 
     btnAdd: function(){

@@ -8,6 +8,7 @@ import java.sql.Timestamp;
  */
 public class Maintaininfo {
     private int mi_id;
+    private int mi_mp_id;
     private int mi_corp_id;
     private String mi_listcode;
     private String mi_province;
@@ -20,15 +21,7 @@ public class Maintaininfo {
     private String mi_remark;
     private Timestamp inputdt;
     private int inputid;
-    private String  corp_name;
 
-    public String getCorp_name() {
-        return corp_name;
-    }
-
-    public void setCorp_name(String corp_name) {
-        this.corp_name = corp_name;
-    }
 
     public int getMi_id() {
         return mi_id;
@@ -36,6 +29,16 @@ public class Maintaininfo {
 
     public void setMi_id(int mi_id) {
         this.mi_id = mi_id;
+    }
+
+
+
+    public int getMi_mp_id() {
+        return mi_mp_id;
+    }
+
+    public void setMi_mp_id(int mi_mp_id) {
+        this.mi_mp_id = mi_mp_id;
     }
 
     public int getMi_corp_id() {

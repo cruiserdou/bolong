@@ -15,8 +15,8 @@ import java.util.List;
 public class MaintaininfoServiceImpl implements MaintaininfoService {
     @Autowired private MaintaininfoDao maintaininfoDao;
     @Override
-    public List<Maintaininfo> list(String corp_name){
-        return maintaininfoDao.list(corp_name);
+    public List<Maintaininfo> list(Integer mi_mp_id){
+        return maintaininfoDao.list(mi_mp_id);
     }
 
     @Override

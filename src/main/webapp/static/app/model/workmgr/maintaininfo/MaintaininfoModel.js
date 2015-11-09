@@ -4,7 +4,6 @@
 Ext.define('app.model.workmgr.maintaininfo.MaintaininfoModel', {
     extend: 'Ext.data.Model',
     fields: [
-        {name: 'corp_name'},
         {name: 'mi_id'},
         {name: 'mi_corp_id'},
         {name: 'mi_listcode'},
@@ -15,7 +14,9 @@ Ext.define('app.model.workmgr.maintaininfo.MaintaininfoModel', {
         {name: 'mi_cust_type'},
         {name: 'mi_next_date'},
         {name: 'mi_next_plan'},
-        {name: 'mi_remark'}
+        {name: 'mi_remark'},
+        {name: 'mi_mp_id'}
+
     ]
 });
 

@@ -24,12 +24,12 @@ public class AddMaintainInfo {
     @ResponseBody
     DataShop getShopInJSON(
             HttpSession session,
-//            @RequestParam("mi_id") String mi_id,
-            @RequestParam("mi_corp_id") Integer mi_corp_id,
-            @RequestParam("mi_listcode") String mi_listcode,
-            @RequestParam("mi_province") String mi_province,
-            @RequestParam("mi_city") String mi_city,
-            @RequestParam("mi_county") String mi_county,
+            @RequestParam("mi_mp_id") Integer mi_mp_id,
+//            @RequestParam("mi_corp_id") Integer mi_corp_id,
+//            @RequestParam("mi_listcode") String mi_listcode,
+//            @RequestParam("mi_province") String mi_province,
+//            @RequestParam("mi_city") String mi_city,
+//            @RequestParam("mi_county") String mi_county,
             @RequestParam("mi_mt_date") String mi_mt_date,
             @RequestParam("mi_cust_type") String mi_cust_type,
             @RequestParam("mi_next_date") String mi_next_date,
@@ -57,15 +57,15 @@ public class AddMaintainInfo {
 
             String sql = "INSERT INTO work.tb_maintain_info(\n" +
                     "             mi_corp_id, mi_listcode, mi_province, mi_city, mi_county, \n" +
-                    "            mi_mt_date, mi_cust_type, mi_next_date, mi_next_plan, mi_remark, inputdt,inputid)\n" +
+                    "            mi_mt_date, mi_cust_type, mi_next_date, mi_next_plan, mi_remark, inputdt,inputid,mi_mp_id)\n" +
                     "    VALUES (?, ?, ?, ?, ?, \n" +
-                    "            ?, ?, ?, ?, ?, ?, ?)";
+                    "            ?, ?, ?, ?, ?, ?, ?,?)";
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, mi_corp_id);
-            pst.setString(2, mi_listcode);
-            pst.setString(3, mi_province);
-            pst.setString(4, mi_city);
-            pst.setString(5, mi_county);
+            pst.setInt(1, 0);
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setString(4, "");
+            pst.setString(5, "");
             Date d_mi_mt_date = null;
             if (mi_mt_date != null && mi_mt_date.length() > 2)
                 d_mi_mt_date = Date.valueOf(mi_mt_date);
@@ -79,6 +79,7 @@ public class AddMaintainInfo {
             pst.setString(10, mi_remark);
             pst.setTimestamp(11, timestamp);
             pst.setInt(12, Integer.parseInt(session.getAttribute("id").toString()));
+            pst.setInt(13, mi_mp_id);
             pst.executeUpdate();
 
 

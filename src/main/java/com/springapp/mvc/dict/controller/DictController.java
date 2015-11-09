@@ -80,7 +80,7 @@ public class DictController {
     DataShop industry2(
             @RequestParam(value = "parentid", required = true, defaultValue = "0")Integer parentid
     ) throws Exception{
-        DataShop dataShop = new DataShop(); 
+        DataShop dataShop = new DataShop();
         if (null == parentid){
             parentid = 0;
         }
