@@ -356,7 +356,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
@@ -370,7 +370,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                             indclass2.store.load(
                                 {
                                     params: {
-                                        parentid: 1
+                                        parentid: Ext.getCmp('indclass1_id').getValue("id")
                                     }
                                 }
                             );
@@ -379,7 +379,6 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                         }
                     }
                 }
-
             },
             {
                 id: 'indclass2_id',
@@ -388,15 +387,12 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 xtype: 'combobox',
                 allowBlank: false,
                 store: {
-                    type: 'industry2store',
-                    params: {
-                        parentid: 1
-                    }
+                    type: 'industry2store'
                 },
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
@@ -405,12 +401,12 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 listeners: {
                     select: function (combo, record, index) {
                         try {
-                            var indclass3 = Ext.getCmp('indclass3_id');
-                            indclass3.clearValue();
-                            indclass3.store.load(
+                            var indclass2 = Ext.getCmp('indclass3_id');
+                            indclass2.clearValue();
+                            indclass2.store.load(
                                 {
                                     params: {
-                                        parentid: 1
+                                        parentid: Ext.getCmp('indclass2_id').getValue("id")
                                     }
                                 }
                             );
@@ -431,7 +427,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
@@ -440,12 +436,12 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 listeners: {
                     select: function (combo, record, index) {
                         try {
-                            var indclass4 = Ext.getCmp('indclass4_id');
-                            indclass4.clearValue();
-                            indclass4.store.load(
+                            var indclass2 = Ext.getCmp('indclass4_id');
+                            indclass2.clearValue();
+                            indclass2.store.load(
                                 {
                                     params: {
-                                        parentid: 1
+                                        parentid: Ext.getCmp('indclass3_id').getValue("id")
                                     }
                                 }
                             );
@@ -466,7 +462,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
@@ -505,7 +501,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             autoRender: true,
             autoShow: true,
             displayField: 'name',
-            valueField: 'name',
+            valueField: 'id',
             listConfig: {
                 getInnerTpl: function () {
                     return '<div><span style="color: green;">' + '({name})</span></div>'
@@ -514,12 +510,12 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             listeners: {
                 select: function (combo, record, index) {
                     try {
-                        var csrc_type2 = Ext.getCmp('csrc_type2_id');
-                        csrc_type2.clearValue();
-                        csrc_type2.store.load(
+                        var indclass2 = Ext.getCmp('csrc_type2_id');
+                        indclass2.clearValue();
+                        indclass2.store.load(
                             {
                                 params: {
-                                    parentid: 1
+                                    parentid: Ext.getCmp('csrc_type1_id').getValue("id")
                                 }
                             }
                         );
@@ -541,7 +537,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
@@ -1385,6 +1381,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             colspan: 2
         },
             {
+                id: 'inv_csrc_type1_id',
                 name: 'inv_csrc_type1',
                 fieldLabel: '行业一级分类',
                 xtype: 'combobox',
@@ -1395,14 +1392,32 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
                     }
+                },
+                listeners: {
+                select: function (combo, record, index) {
+                    try {
+                        var indclass2 = Ext.getCmp('inv_csrc_type2_id');
+                        indclass2.clearValue();
+                        indclass2.store.load(
+                            {
+                                params: {
+                                    parentid: Ext.getCmp('inv_csrc_type1_id').getValue("id")
+                                }
+                            }
+                        );
+                    } catch (ex) {
+                        alert("数据加载失败！");
+                    }
                 }
+            }
             },
             {
+                id: 'inv_csrc_type2_id',
                 name: 'inv_csrc_type2',
                 fieldLabel: '行业二级分类',
                 xtype: 'combobox',
@@ -1418,8 +1433,26 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
                     }
+                },
+                listeners: {
+                    select: function (combo, record, index) {
+                        try {
+                            var indclass2 = Ext.getCmp('inv_csrc_type3_id');
+                            indclass2.clearValue();
+                            indclass2.store.load(
+                                {
+                                    params: {
+                                        parentid: Ext.getCmp('inv_csrc_type2_id').getValue("id")
+                                    }
+                                }
+                            );
+                        } catch (ex) {
+                            alert("数据加载失败！");
+                        }
+                    }
                 }
             }, {
+                id: 'inv_csrc_type3_id',
                 name: 'inv_csrc_type3',
                 fieldLabel: '行业三级分类',
                 xtype: 'combobox',
@@ -1430,13 +1463,31 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
                     }
+                },
+                listeners: {
+                    select: function (combo, record, index) {
+                        try {
+                            var indclass2 = Ext.getCmp('inv_csrc_type4_id');
+                            indclass2.clearValue();
+                            indclass2.store.load(
+                                {
+                                    params: {
+                                        parentid: Ext.getCmp('inv_csrc_type3_id').getValue("id")
+                                    }
+                                }
+                            );
+                        } catch (ex) {
+                            alert("数据加载失败！");
+                        }
+                    }
                 }
             }, {
+                id: 'inv_csrc_type4_id',
                 name: 'inv_csrc_type4',
                 fieldLabel: '行业四级分类',
                 xtype: 'combobox',
@@ -1447,13 +1498,14 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
                     }
                 }
             }, {
+                id: 'inv_indclass1_id',
                 name: 'inv_indclass1',
                 fieldLabel: '证监会行业一级分类',
                 xtype: 'combobox',
@@ -1464,13 +1516,31 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
                     }
+                },
+                listeners: {
+                    select: function (combo, record, index) {
+                        try {
+                            var indclass2 = Ext.getCmp('inv_indclass2_id');
+                            indclass2.clearValue();
+                            indclass2.store.load(
+                                {
+                                    params: {
+                                        parentid: Ext.getCmp('inv_indclass1_id').getValue("id")
+                                    }
+                                }
+                            );
+                        } catch (ex) {
+                            alert("数据加载失败！");
+                        }
+                    }
                 }
             }, {
+                id: 'inv_indclass2_id',
                 name: 'inv_indclass2',
                 fieldLabel: '证监会行业二类分类',
                 xtype: 'combobox',
@@ -1481,7 +1551,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listConfig: {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
