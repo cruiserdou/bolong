@@ -401,9 +401,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 listeners: {
                     select: function (combo, record, index) {
                         try {
-                            var indclass2 = Ext.getCmp('indclass3_id');
-                            indclass2.clearValue();
-                            indclass2.store.load(
+                            var indclass3 = Ext.getCmp('indclass3_id');
+                            indclass3.clearValue();
+                            indclass3.store.load(
                                 {
                                     params: {
                                         parentid: Ext.getCmp('indclass2_id').getValue("id")
@@ -436,9 +436,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 listeners: {
                     select: function (combo, record, index) {
                         try {
-                            var indclass2 = Ext.getCmp('indclass4_id');
-                            indclass2.clearValue();
-                            indclass2.store.load(
+                            var indclass4 = Ext.getCmp('indclass4_id');
+                            indclass4.clearValue();
+                            indclass4.store.load(
                                 {
                                     params: {
                                         parentid: Ext.getCmp('indclass3_id').getValue("id")
@@ -510,9 +510,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             listeners: {
                 select: function (combo, record, index) {
                     try {
-                        var indclass2 = Ext.getCmp('csrc_type2_id');
-                        indclass2.clearValue();
-                        indclass2.store.load(
+                        var csrc_type2 = Ext.getCmp('csrc_type2_id');
+                        csrc_type2.clearValue();
+                        csrc_type2.store.load(
                             {
                                 params: {
                                     parentid: Ext.getCmp('csrc_type1_id').getValue("id")
@@ -1401,9 +1401,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 listeners: {
                 select: function (combo, record, index) {
                     try {
-                        var indclass2 = Ext.getCmp('inv_csrc_type2_id');
-                        indclass2.clearValue();
-                        indclass2.store.load(
+                        var inv_csrc_type2 = Ext.getCmp('inv_csrc_type2_id');
+                        inv_csrc_type2.clearValue();
+                        inv_csrc_type2.store.load(
                             {
                                 params: {
                                     parentid: Ext.getCmp('inv_csrc_type1_id').getValue("id")
@@ -1437,9 +1437,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 listeners: {
                     select: function (combo, record, index) {
                         try {
-                            var indclass2 = Ext.getCmp('inv_csrc_type3_id');
-                            indclass2.clearValue();
-                            indclass2.store.load(
+                            var inv_csrc_type3 = Ext.getCmp('inv_csrc_type3_id');
+                            inv_csrc_type3.clearValue();
+                            inv_csrc_type3.store.load(
                                 {
                                     params: {
                                         parentid: Ext.getCmp('inv_csrc_type2_id').getValue("id")
@@ -1472,9 +1472,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 listeners: {
                     select: function (combo, record, index) {
                         try {
-                            var indclass2 = Ext.getCmp('inv_csrc_type4_id');
-                            indclass2.clearValue();
-                            indclass2.store.load(
+                            var inv_csrc_type4 = Ext.getCmp('inv_csrc_type4_id');
+                            inv_csrc_type4.clearValue();
+                            inv_csrc_type4.store.load(
                                 {
                                     params: {
                                         parentid: Ext.getCmp('inv_csrc_type3_id').getValue("id")
@@ -1525,9 +1525,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 listeners: {
                     select: function (combo, record, index) {
                         try {
-                            var indclass2 = Ext.getCmp('inv_indclass2_id');
-                            indclass2.clearValue();
-                            indclass2.store.load(
+                            var inv_indclass2 = Ext.getCmp('inv_indclass2_id');
+                            inv_indclass2.clearValue();
+                            inv_indclass2.store.load(
                                 {
                                     params: {
                                         parentid: Ext.getCmp('inv_indclass1_id').getValue("id")
