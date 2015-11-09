@@ -8,118 +8,180 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
     requires: [
         'app.xtemplate.corp_edit',
         'app.model.corpall.ShareHolder',
-        'app.view.maintain.entermt.innerenter.InnerEnterImgGridView'
+        'app.view.maintain.entermt.innerenter.InnerEnterImgGridView',
+        'app.view.maintain.entermt.innerenter.InnerEnterAddCorp'
     ],
     itemdblclick: function (view, record) {
-        var mypanel = Ext.create('Ext.panel.Panel', {
-            id: "mypanel",
-            width: 820,
-            frame: false,
-            height: 600,
-            border: false,
-            bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
-            listeners: {
-                afterrender: function () {
-                    corp_edit_con_tpl.append('corp_edit', record.data);
+        //var mypanel = Ext.create('Ext.panel.Panel', {
+        //    id: "mypanel",
+        //    width: 820,
+        //    frame: false,
+        //    height: 600,
+        //    border: false,
+        //    bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
+        //    listeners: {
+        //        afterrender: function () {
+        //            corp_edit_con_tpl.append('corp_edit', record.data);
+        //
+        //            //查询股东信息
+        //            var sh_store = Ext.create('Ext.data.Store', {
+        //                extend: 'Ext.data.Store',
+        //                model: 'app.model.corpall.ShareHolder',
+        //                alias: 'store.shareholder',
+        //                proxy: {
+        //                    type: 'ajax',
+        //                    actionMethods: {
+        //                        read: 'POST'
+        //                    },
+        //                    api: {
+        //                        read: '/bolong/shareholder_list'
+        //                    },
+        //                    reader: {
+        //                        type: 'json',
+        //                        rootProperty: 'list'
+        //                    }
+        //                }
+        //            });
+        //
+        //            sh_store.load({
+        //                params: {
+        //                    corp_id: record.data.id
+        //                },
+        //                callback: function (records, operation, success) {
+        //                    var data = [];
+        //
+        //                    sh_store.each(function (record) {
+        //                        data.push(record.getData());
+        //                    });
+        //
+        //                    //渲染股东信息
+        //                    corp_shareholder_edit_tpl.append('shareholder_edit', data);
+        //                }
+        //            });
+        //
+        //            corp_edit_other_tpl.append('corp_edit_other', record.data);
+        //        }
+        //    },
+        //    autoScroll: true,
+        //    layout: {
+        //        type: 'vbox',
+        //        align: 'stretch',
+        //        pack: 'start'
+        //    },
+        //    items: [{
+        //        xtype: 'panel',
+        //        border: false,
+        //        id: 'corp_edit_panel',
+        //        html: '<div id="corp_edit"></div>'
+        //    }, {
+        //        xtype: 'panel',
+        //        id: 'shareholder_panel_id',
+        //        border: false,
+        //        height: 360,
+        //        html: '<div id="shareholder_edit"></div>'
+        //    }, {
+        //        xtype: 'panel',
+        //        border: false,
+        //        html: '<div id="corp_edit_other"></div>'
+        //    }, {
+        //        xtype: 'panel',
+        //        border: false,
+        //        id: 'corp_edit_corp_panel',
+        //        html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
+        //        '<ul>' +
+        //        '<li><a href="#table_corp_base" style="font-size:18px;">基本信息</a></li>' +
+        //        '<li><a href="#table_corp_sh"  style="font-size:18px;">股东名册</a></li>' +
+        //        '<li><a href="#table_corp_link"  style="font-size:18px;">法定代表人</a></li>' +
+        //        '<li><a href="#table_corp_acount"  style="font-size:18px;">行业分类</a></li>' +
+        //        '<li><a href="#table_corp_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
+        //        '<li><a href="#table_corp_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
+        //        '<li><a href="#table_corp_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
+        //        '<li><a href="#table_corp_service"  style="font-size:18px;">服务机构</a></li>' +
+        //        '<li><a href="#table_corp_investors"  style="font-size:18px;">投资人</a></li>' +
+        //        '<li><a href="#table_corp_govermt"  style="font-size:18px;">政府部门</a></li>' +
+        //        '<li><a href="#table_corp_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
+        //        '<li><a href="#table_corp_demand_px"  style="font-size:18px;">培训需求</a></li>' +
+        //        '<li><a href="#table_corp_demand_rl"  style="font-size:18px;">人力资源需求</a></li>' +
+        //        '<li><a href="#" class="win_save_btn" onclick="save_corp_edit({id})">保存</a></li>' +
+        //        '<li><a href="#" class="win_save_btn" onclick="win_close_edit()">关闭</a></li>' +
+        //        '</ul>' +
+        //        '</div>'
+        //    }]
+        //});
+        //
+        //Ext.create('Ext.window.Window', {
+        //    layout: 'fit',
+        //    id: 'enterprise_edit_id',
+        //    width: 830,
+        //    height: 650,
+        //    modal: true,
+        //    title: '企业信息',
+        //    maximized: true,
+        //    autoDestroy: true,
+        //    closeAction: 'destroy',
+        //    items: [mypanel]
+        //}).show();
 
-                    //查询股东信息
-                    var sh_store = Ext.create('Ext.data.Store', {
-                        extend: 'Ext.data.Store',
-                        model: 'app.model.corpall.ShareHolder',
-                        alias: 'store.shareholder',
-                        proxy: {
-                            type: 'ajax',
-                            actionMethods: {
-                                read: 'POST'
-                            },
-                            api: {
-                                read: '/bolong/shareholder_list'
-                            },
-                            reader: {
-                                type: 'json',
-                                rootProperty: 'list'
-                            }
-                        }
-                    });
-
-                    sh_store.load({
-                        params: {
-                            corp_id: record.data.id
-                        },
-                        callback: function (records, operation, success) {
-                            var data = [];
-
-                            sh_store.each(function (record) {
-                                data.push(record.getData());
-                            });
-
-                            //渲染股东信息
-                            corp_shareholder_edit_tpl.append('shareholder_edit', data);
-                        }
-                    });
-
-                    corp_edit_other_tpl.append('corp_edit_other', record.data);
-                }
-            },
-            autoScroll: true,
-            layout: {
-                type: 'vbox',
-                align: 'stretch',
-                pack: 'start'
-            },
-            items: [{
-                xtype: 'panel',
-                border: false,
-                id: 'corp_edit_panel',
-                html: '<div id="corp_edit"></div>'
-            }, {
-                xtype: 'panel',
-                id: 'shareholder_panel_id',
-                border: false,
-                height: 360,
-                html: '<div id="shareholder_edit"></div>'
-            }, {
-                xtype: 'panel',
-                border: false,
-                html: '<div id="corp_edit_other"></div>'
-            }, {
-                xtype: 'panel',
-                border: false,
-                id: 'corp_edit_corp_panel',
-                html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
-                '<ul>' +
-                '<li><a href="#table_corp_base" style="font-size:18px;">基本信息</a></li>' +
-                '<li><a href="#table_corp_sh"  style="font-size:18px;">股东名册</a></li>' +
-                '<li><a href="#table_corp_link"  style="font-size:18px;">法定代表人</a></li>' +
-                '<li><a href="#table_corp_acount"  style="font-size:18px;">行业分类</a></li>' +
-                '<li><a href="#table_corp_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
-                '<li><a href="#table_corp_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
-                '<li><a href="#table_corp_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
-                '<li><a href="#table_corp_service"  style="font-size:18px;">服务机构</a></li>' +
-                '<li><a href="#table_corp_investors"  style="font-size:18px;">投资人</a></li>' +
-                '<li><a href="#table_corp_govermt"  style="font-size:18px;">政府部门</a></li>' +
-                '<li><a href="#table_corp_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
-                '<li><a href="#table_corp_demand_px"  style="font-size:18px;">培训需求</a></li>' +
-                '<li><a href="#table_corp_demand_rl"  style="font-size:18px;">人力资源需求</a></li>' +
-                '<li><a href="#" class="win_save_btn" onclick="save_corp_edit({id})">保存</a></li>' +
-                '<li><a href="#" class="win_save_btn" onclick="win_close_edit()">关闭</a></li>' +
-                '</ul>' +
-                '</div>'
-            }]
-        });
 
         Ext.create('Ext.window.Window', {
-            layout: 'fit',
-            id: 'enterprise_edit_id',
-            width: 830,
-            height: 650,
+            title: '修改企业信息',
+            height: 700,
+            width: 1200,
             modal: true,
-            title: '企业信息',
-            maximized: true,
-            autoDestroy: true,
             closeAction: 'destroy',
-            items: [mypanel]
-        }).show();
+            autoDestroy: true,
+            layout: {
+                type: 'hbox',
+                pack: 'start',
+                align: 'stretch'
+            },
+            items: [{
+                xtype: 'innerenteraddcorp',
+                id: 'innerenteraddcorp_id'
+            }, {
+                html: '<ul class="menu_list">' +
+                '<li><a href="#" id="add_corp_base_id">基本信息</a></li>' +
+                '<li><a href="#" id="add_corp_contact_id">法定代表人</a></li>' +
+                '<li><a href="#" id="add_corp_ind_id">国民经济行业分类</a></li>' +
+                '<li><a href="#" id="add_corp_csrc_id">证监会行业分类</a></li>' +
+                '<li><a href="#" id="add_corp_mai_id">企业维护信息</a></li>' +
+                '<li><a href="#" id="add_corp_fin_id">企业财务信息</a></li>' +
+                '<li><a href="#" id="add_corp_service_id">服务机构信息</a></li>' +
+                '<li><a href="#" id="add_corp_investor_id">投资人信息</a></li>' +
+                '<li><a href="#" id="add_corp_gov_id">政府部门信息</a></li>' +
+                '<li><a href="#" id="add_corp_refi_id">融资需求</a></li>' +
+                '<li><a href="#" id="add_corp_retra_id">培训需求</a></li>' +
+                '<li><a href="#" id="add_corp_rehr_id">人力资源需求</a></li>' +
+                '</ul>',
+                flex: 1
+            }],
+            buttonAlign: 'center',
+            buttons: [{
+                text: '保存',
+                handler: function(){
+                    var form = Ext.getCmp('corp_add_form_id').getForm();
+                    if (form.isValid()){
+                        form.submit({
+                            url: '/bolong/add_corp_form',
+                            waitMsg: '正在保存数据...',
+                            success: function(form, action){
+                                Ext.Msg.alert("成功", "数据保存成功!");
+                            },
+                            failure: function(form, action){
+                                Ext.Msg.alert("失败", "数据保存失败!");
+                            }
+                        });
+                    }
+                }
+            }, {
+                text: '重置',
+                handler: function(){
+                    Ext.getCmp('corp_add_form_id').getForm().reset();
+                }
+            }]
+        }).show(Ext.get('a_add_href'));
+
+        Ext.getCmp('innerenteraddcorp_id').getForm().loadRecord(record);
     },
 
     btnClick: function () {
