@@ -112,7 +112,7 @@ public class CorpController {
         Integer inputid=Integer.parseInt(session.getAttribute("id").toString());
         Timestamp currentTime=corpService.getCurrentTime();
         corpService.updateCorp(inputid, currentTime, corpBase, corpContact, corpFinance, corpGov,
-                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo,corpMaintain); 
+                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo,corpMaintain);
         dataShop.setSuccess(true);
         return dataShop;
     }

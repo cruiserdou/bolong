@@ -339,7 +339,7 @@ Ext.define('app.view.query.enter.EnterInfoGridView', {
             extend: 'Ext.data.Store',
             model: 'app.model.corpall.CorpAll',
             alias: 'store.corpallstore',
-            pageSize: 50,
+            pageSize: 30,
             proxy: {
                 type: 'ajax',
                 actionMethods: {

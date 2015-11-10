@@ -52,7 +52,7 @@ Ext.define('app.view.system.log.LoginLog', {
             extend: 'Ext.data.Store',
             model: 'app.model.corpall.CorpAll',
             alias: 'store.corpallstore',
-            pageSize: 50,
+            pageSize: 30,
             proxy: {
                 type: 'ajax',
                 actionMethods: {
