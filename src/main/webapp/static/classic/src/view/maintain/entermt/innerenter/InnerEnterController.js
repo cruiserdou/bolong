@@ -9,6 +9,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
         'app.xtemplate.corp_edit',
         'app.model.corpall.ShareHolder',
         'app.view.maintain.entermt.innerenter.InnerEnterImgGridView',
+        'app.view.maintain.entermt.innerenter.InnerEnterGdGridView',
         'app.view.maintain.entermt.innerenter.InnerEnterAddCorp'
     ],
     itemdblclick: function (view, record) {
@@ -136,7 +137,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                 align: 'stretch'
             },
             items: [{
-                xtype: 'innerenteraddcorp',
+                xtype: 'innerenteraddcorp'
                 //id: 'innerenteraddcorp_id'
             }, {
                 html: '<ul class="menu_list">' +
@@ -359,7 +360,8 @@ function buslicno_check_edit(id) {
         }
     });
 }
-function corp_imgs_upload(id) {
+function corp_imgs_upload() {
+
     Ext.create('widget.window', {
         title: '企业图片',
         id: 'corp_imgs_window',
@@ -374,7 +376,7 @@ function corp_imgs_upload(id) {
                 Ext.getCmp('innerenterimggridview_id').getStore().load(
                     {
                         params: {
-                            corp_id: id
+                            corp_id: Ext.getCmp('corp_id').getValue()
                         }
                     }
                 );
@@ -463,7 +465,7 @@ function corp_imgs_upload(id) {
                                                             form.submit({
                                                                 url: '/bolong/upload_corp_img',
                                                                 params: {
-                                                                    corp_id: id
+                                                                    corp_id: Ext.getCmp('corp_id').getValue()
                                                                 },
                                                                 waitMsg: '正在保存数据...',
                                                                 success: function (response, action) {
@@ -495,5 +497,160 @@ function corp_imgs_upload(id) {
             }
         ]
     }).show(Ext.get('corp_imgs_window'));
+}
+
+function corp_gd_add( ) {
+
+    Ext.create('widget.window', {
+        title: '企业股东',
+        id: 'corp_gd_window',
+        width: 800,
+        height: 600,
+        modal: true,
+        frame: true,
+        border: false,
+        layout: 'border',
+        listeners: {
+            afterrender: function () {
+                Ext.getCmp('innerentergdgridview_id').getStore().load(
+                    {
+                        params: {
+                            corp_id: Ext.getCmp('corp_id').getValue()
+                        }
+                    }
+                );
+            }
+        },
+        dockedItems: [
+            {
+                xtype: 'toolbar',
+                dock: 'top',
+                border: true,
+                items: [
+                    {
+                        text: '股东管理',
+                        id: 'corp_gd_add_id',
+                        listeners: {
+                            click: function () {
+                                Ext.create('widget.window', {
+                                    title: '股东管理',
+                                    width: 650,
+                                    height: 450,
+                                    modal: true,
+                                    border: false,
+                                    layout: 'fit',
+                                    items: [
+                                        {
+                                            xtype: 'form',
+                                            frame: true,
+                                            bodyPadding: 16,
+                                            defaults: {
+                                                labelWidth: 90,
+                                                xtype: 'textfield',
+                                                width: 300,
+                                                anchor: '100%'
+                                            },
+                                            layout: {
+                                                type: 'table',
+                                                columns: 2,
+                                                tableAttrs: {
+                                                    style: {
+                                                        width: '100%'
+                                                    }
+                                                }
+                                            },
+                                            items: [
+                                                {
+                                                    name: 'gd_shtype',
+                                                    fieldLabel: '股东类型'
+                                                }, {
+                                                    name: 'gd_shname',
+                                                    fieldLabel: '股东'
+                                                }, {
+                                                    name: 'gd_shdoctype',
+                                                    fieldLabel: '证照/证件类型'
+                                                }, {
+                                                    name: 'gd_shdocnum',
+                                                    fieldLabel: '证照/证件号码'
+                                                }, {
+                                                    name: 'gd_shareholdnum',
+                                                    fieldLabel: '持股数量'
+                                                },
+                                                {
+                                                    name: 'gd_currencynum',
+                                                    fieldLabel: '流通数量'
+                                                }, {
+                                                    name: 'gd_freezenum',
+                                                    fieldLabel: '冻结数量'
+                                                }, {
+                                                    name: 'gd_psotion',
+                                                    fieldLabel: '职务'
+                                                },
+                                                {
+                                                    name: 'gd_phone',
+                                                    fieldLabel: '手机号码'
+                                                }, {
+                                                    name: 'gd_fax',
+                                                    fieldLabel: '传真'
+                                                }, {
+                                                    name: 'gd_email',
+                                                    fieldLabel: 'E-mail'
+                                                }, {
+                                                    name: 'gd_qq',
+                                                    fieldLabel: 'QQ'
+                                                }, {
+                                                    name: 'gd_webchat',
+                                                    fieldLabel: '个人微信号'
+                                                }, {
+                                                    name: 'gd_tel',
+                                                    fieldLabel: '固定电话'
+                                                }, {
+                                                    name: 'gd_remark',
+                                                    fieldLabel: '备注'
+                                                }
+                                            ],
+                                            buttonAlign: "center",
+                                            buttons: [
+                                                {
+                                                    text: '保存',
+                                                    iconCls: 'icon_save',
+                                                    handler: function () {
+                                                        var form = this.up('form').getForm();
+                                                        if (form.isValid()) {
+                                                            form.submit({
+                                                                url: '/bolong/add_corp_shareholder_info',
+                                                                params: {
+                                                                    gd_corp_id: Ext.getCmp('corp_id').getValue()
+                                                                },
+                                                                waitMsg: '正在保存数据...',
+                                                                success: function (response, action) {
+                                                                    Ext.Msg.alert("成功", "文件上传成功!");
+                                                                    Ext.getCmp('innerentergdgridview_id').getStore().reload();
+                                                                },
+                                                                failure: function (form, action) {
+                                                                    Ext.Msg.alert("提示", " ！");
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }).show(Ext.get(corp_gd_add_id));
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
+        items: [
+            {
+                xtype: 'innerentergdgridview',
+                id: 'innerentergdgridview_id',
+                region: 'center'
+            }
+        ]
+    }).show(Ext.get('corp_gd_window'));
 }
 

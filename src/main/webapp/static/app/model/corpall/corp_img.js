@@ -1,7 +1,7 @@
 /**
  * Created by jj on 14-6-19.
  */
-Ext.define('App.model.corp_img', {
+Ext.define('App.model.corpall.corp_img', {
     extend: 'Ext.data.Model',
     fields: [
         { name : 'id'},

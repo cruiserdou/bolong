@@ -84,7 +84,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             });
         }
     },
-    items: [{
+    items: [
+        {
         xtype: 'fieldset',
         id: 'fieldset_inner_inner_base_id',
         title: '基本信息',
@@ -108,6 +109,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             {
                 hidden: true,
                 name: 'id',
+                id:"corp_id",
                 fieldLabel: 'ID'
             },{
             allowBlank: false,
@@ -263,7 +265,41 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             xtype: 'textarea',
             fieldLabel: '备注'
         }]
-    }, {
+    },
+        {
+            xtype: 'fieldset',
+            id: 'fieldset_inner_gd_id',
+            title: '企业股东信息',
+            collapsible: true,
+            defaults: {
+                labelWidth: 90,
+                width: 50
+                //anchor: '100%'
+            },
+            layout: {
+                type: 'table',
+                columns: 2,
+                tableAttrs: {
+                    style: {
+                        width: '100%'
+                    }
+                }
+            },
+            items: [
+                {
+                    xtype: 'panel',
+                    border: false,
+                    html: '<button type="button" onclick="corp_imgs_upload()">图片管理</button>'
+                },
+                {
+                    xtype: 'panel',
+                    border: false,
+                    html: '<button type="button" onclick="corp_gd_add()">股东管理</button>'
+                }
+
+            ]
+        },
+        {
         xtype: 'fieldset',
         id: 'fieldset_inner_contact_id',
         title: '法定代表人',
@@ -333,7 +369,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             xtype: 'textarea',
             fieldLabel: '备注'
         }]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_inner_ind_id',
         title: '国民经济行业分类信息',
@@ -479,7 +516,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     }
                 }
             }]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_inner_csrc_id',
         title: '证监会行业分类信息',
@@ -556,7 +594,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }
 
         ]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_inner_mai_id',
         title: '企业最近一次被关注信息',
@@ -647,7 +686,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             xtype: 'textarea',
             fieldLabel: '备注'
         }]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_inner_fin_id',
         title: '企业财务信息',

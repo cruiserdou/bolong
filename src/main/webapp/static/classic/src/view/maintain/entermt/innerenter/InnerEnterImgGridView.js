@@ -26,7 +26,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterImgGridView', {
         {text: "文件名", flex: 1, dataIndex: 'id', hidden: true},
         {text: "类别", flex: 1, dataIndex: 'img_type', hidden: true},
         {
-            text: '删除', width: 100, dataIndex: 'id',
+            text: '操作', width: 100, dataIndex: 'id',
             renderer: function (val) {
                 //return "<span style='color: #FF4444;' onclick='delete_corp_img(" + val + ")' >删除</span>";
                 var return_del = "<INPUT type='button' value='删除'  onclick='delete_corp_img(" + val + ")'>";
