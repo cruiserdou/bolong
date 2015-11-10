@@ -530,4 +530,135 @@ public interface CorpDao {
 
     @Select(" SELECT CURRENT_TIMESTAMP(0) :: TIMESTAMP WITHOUT TIME ZONE  ;")
     Timestamp getCurrentTime();
+
+    @Update("begin;" +
+
+            " UPDATE work.tb_corp " +
+            "   SET buslicno=#{corpBase.buslicno},name=#{corpBase.name},unit=#{corpBase.unit},legrep=#{corpBase.legrep},province=#{corpBase.province}, " +
+            "       city=#{corpBase.city},county=#{corpBase.county},nos=#{corpBase.nos},postal=#{corpBase.postal},nature=#{corpBase.nature}, " +
+            "       regcap=#{corpBase.regcap},bustermfdt=#{corpBase.bustermfdt},bustremtdt=#{corpBase.bustremtdt},regdt=#{corpBase.regdt},list_area=#{corpBase.list_area}, " +
+            "       listcode=#{corpBase.listcode},listprice=#{corpBase.listprice},listdt=#{corpBase.listdt},channels=#{corpBase.channels},webchat=#{corpBase.webchat}, " +
+            "       staffnum=#{corpBase.staffnum},regist_organ=#{corpBase.regist_organ},regaddr=#{corpBase.regaddr},offaddr=#{corpBase.offaddr},scope=#{corpBase.scope}," +
+            "       mbus=#{corpBase.mbus},eprofile=#{corpBase.eprofile},phoinf=#{corpBase.phoinf},remark=#{corpBase.remark},indclass1=#{corpBase.indclass1}, " +
+            "       indclass2=#{corpBase.indclass2},indclass3=#{corpBase.indclass3},indclass4=#{corpBase.indclass4},csrc_type1=#{corpBase.csrc_type1},csrc_type2=#{corpBase.csrc_type2}" +
+            " WHERE id=#{corpBase.id};"+
+
+
+
+            " UPDATE work.tb_corp_finance " +
+            "   SET start_time=#{corpFinance.start_time},end_time=#{corpFinance.end_time},st_money_fund=#{corpFinance.st_money_fund},end_money_fund=#{corpFinance.end_money_fund}," +
+            "       st_jyxjr_assets=#{corpFinance.st_jyxjr_assets},end_jyxjr_assets=#{corpFinance.end_jyxjr_assets},st_ys_bill=#{corpFinance.st_ys_bill}," +
+            "       end_ys_bill=#{corpFinance.end_ys_bill},st_ys_account=#{corpFinance.st_ys_account},end_ys_account=#{corpFinance.end_ys_account}," +
+            "       st_yf_money=#{corpFinance.st_yf_money},end_yf_money=#{corpFinance.end_yf_money},st_ys_interest=#{corpFinance.st_ys_interest}," +
+            "       end_ys_interest=#{corpFinance.end_ys_interest},st_ys_dividends=#{corpFinance.st_ys_dividends},end_ys_dividends=#{corpFinance.end_ys_dividends}," +
+            "       st_other_ys_money=#{corpFinance.st_other_ys_money},end_other_ys_money=#{corpFinance.end_other_ys_money},st_inventory=#{corpFinance.st_inventory}," +
+            "       end_inventory=#{corpFinance.end_inventory},st_ynndq_no_assets=#{corpFinance.st_ynndq_no_assets},end_ynndq_no_assets=#{corpFinance.end_ynndq_no_assets}," +
+            "       st_other_assets=#{corpFinance.st_other_assets},end_other_assets=#{corpFinance.end_other_assets},st_hj_assets=#{corpFinance.st_hj_assets}," +
+            "       end_hj_assets=#{corpFinance.end_hj_assets},st_kgcs_assets=#{corpFinance.st_kgcs_assets},end_kgcs_assets=#{corpFinance.end_kgcs_assets}," +
+            "       st_cyzdq_investment=#{corpFinance.st_cyzdq_investment},end_cyzdq_investment=#{corpFinance.end_cyzdq_investment},st_long_ys_money=#{corpFinance.st_long_ys_money}," +
+            "       end_long_ys_money=#{corpFinance.end_long_ys_money},st_long_gq_investment=#{corpFinance.st_long_gq_investment}," +
+            "       end_long_gq_investment=#{corpFinance.end_long_gq_investment},st_invest_house=#{corpFinance.st_invest_house},end_invest_house=#{corpFinance.end_invest_house}," +
+            "       st_gd_assets=#{corpFinance.st_gd_assets},end_gd_assets=#{corpFinance.end_gd_assets},st_accu_deprec=#{corpFinance.st_accu_deprec},end_accu_deprec=#{corpFinance.end_accu_deprec}," +
+            "       st_gd_assets_jz=#{corpFinance.st_gd_assets_jz},end_gd_assets_jz=#{corpFinance.end_gd_assets_jz},st_gd_assets_ready=#{corpFinance.st_gd_assets_ready}," +
+            "       end_gd_assets_ready=#{corpFinance.end_gd_assets_ready},st_gd_assets_je=#{corpFinance.st_gd_assets_je},end_gd_assets_je=#{corpFinance.end_gd_assets_je}," +
+            "       st_now_project=#{corpFinance.st_now_project},end_now_project=#{corpFinance.end_now_project},st_project_material=#{corpFinance.st_project_material}," +
+            "       end_project_material=#{corpFinance.end_project_material}, st_gd_assets_ql=#{corpFinance.st_gd_assets_ql},end_gd_assets_ql=#{corpFinance.end_gd_assets_ql}," +
+            "       st_scx_investment=#{corpFinance.st_scx_investment},end_scx_investment=#{corpFinance.end_scx_investment},st_wx_assets=#{corpFinance.st_wx_assets}," +
+            "       end_wx_assets=#{corpFinance.end_wx_assets},st_goodwill=#{corpFinance.st_goodwill},end_goodwill=#{corpFinance.end_goodwill},st_cqdt_cost=#{corpFinance.st_cqdt_cost}," +
+            "       end_cqdt_cost=#{corpFinance.end_cqdt_cost},st_dysds_assets=#{corpFinance.st_dysds_assets},end_dysds_assets=#{corpFinance.end_dysds_assets}," +
+            "       st_other_no_assets=#{corpFinance.st_other_no_assets},end_other_no_assets=#{corpFinance.end_other_no_assets},st_hj_no_asset=#{corpFinance.st_hj_no_asset}," +
+            "       end_hj_no_asset=#{corpFinance.end_hj_no_asset},st_hj_total_asset=#{corpFinance.st_hj_total_asset},end_hj_total_asset=#{corpFinance.end_hj_total_asset}," +
+            "       st_short_borrow=#{corpFinance.st_short_borrow},end_short_borrow=#{corpFinance.end_short_borrow},st_jyx_finance_fz=#{corpFinance.st_jyx_finance_fz}," +
+            "       end_jyx_finance_fz=#{corpFinance.end_jyx_finance_fz},st_yf_bill=#{corpFinance.st_yf_bill},end_yf_bill=#{corpFinance.end_yf_bill}," +
+            "       st_yf_account=#{corpFinance.st_yf_account},end_yf_account=#{corpFinance.end_yf_account},st_ys_money=#{corpFinance.st_ys_money}," +
+            "       end_ys_money=#{corpFinance.end_ys_money},st_yf_staff_pay=#{corpFinance.st_yf_staff_pay},end_yf_staff_pay=#{corpFinance.end_yf_staff_pay}," +
+            "       st_yj_tax=#{corpFinance.st_yj_tax},end_yj_tax=#{corpFinance.end_yj_tax},st_yf_interest=#{corpFinance.st_yf_interest}," +
+            "       end_yf_interest=#{corpFinance.end_yf_interest},st_yf_dividends=#{corpFinance.st_yf_dividends},end_yf_dividends=#{corpFinance.end_yf_dividends}," +
+            "       st_other_yf_money=#{corpFinance.st_other_yf_money},end_other_yf_money=#{corpFinance.end_other_yf_money},st_ynndq_no_fz=#{corpFinance.st_ynndq_no_fz}," +
+            "       end_ynndq_no_fz=#{corpFinance.end_ynndq_no_fz},st_other_fz=#{corpFinance.st_other_fz},end_other_fz=#{corpFinance.end_other_fz}," +
+            "       st_hj_fz=#{corpFinance.st_hj_fz},end_hj_fz=#{corpFinance.end_hj_fz},st_long_borrow=#{corpFinance.st_long_borrow},end_long_borrow=#{corpFinance.end_long_borrow}," +
+            "       st_yf_bond=#{corpFinance.st_yf_bond},end_yf_bond=#{corpFinance.end_yf_bond},st_long_yf_money=#{corpFinance.st_long_yf_money}," +
+            "       end_long_yf_money=#{corpFinance.end_long_yf_money},st_zx_yf_money=#{corpFinance.st_zx_yf_money},end_zx_yf_money=#{corpFinance.end_zx_yf_money}," +
+            "       st_yj_fz=#{corpFinance.st_yj_fz},end_yj_fz=#{corpFinance.end_yj_fz},st_dysds_fz=#{corpFinance.st_dysds_fz},end_dysds_fz=#{corpFinance.end_dysds_fz}," +
+            "       st_other_no_fz=#{corpFinance.st_other_no_fz},end_other_no_fz=#{corpFinance.end_other_no_fz},st_hj_no_fz=#{corpFinance.st_hj_no_fz}," +
+            "       end_hj_no_fz=#{corpFinance.end_hj_no_fz},st_hj_total_fz=#{corpFinance.st_hj_total_fz},end_hj_total_fz=#{corpFinance.end_hj_total_fz}," +
+            "       st_paid_assets=#{corpFinance.st_paid_assets},end_paid_assets=#{corpFinance.end_paid_assets},st_zb_reserve=#{corpFinance.st_zb_reserve}," +
+            "       end_zb_reserve=#{corpFinance.end_zb_reserve},st_kc_stock=#{corpFinance.st_kc_stock},end_kc_stock=#{corpFinance.end_kc_stock}," +
+            "       st_zx_reserve=#{corpFinance.st_zx_reserve},end_zx_reserve=#{corpFinance.end_zx_reserve},st_yy_reserve=#{corpFinance.st_yy_reserve}," +
+            "       end_yy_reserve=#{corpFinance.end_yy_reserve},st_wfp_profit=#{corpFinance.st_wfp_profit},end_wfp_profit=#{corpFinance.end_wfp_profit}," +
+            "       st_hj_owner_right=#{corpFinance.st_hj_owner_right},end_hj_owner_right=#{corpFinance.end_hj_owner_right}," +
+            "       st_hj_fz_owner_right=#{corpFinance.st_hj_fz_owner_right},end_hj_fz_owner_right=#{corpFinance.end_hj_fz_owner_right}" +
+            " WHERE finid=#{corpFinance.finid};"+
+
+            " UPDATE work.tb_corp_contact " +
+            "   SET cont_name= #{corpContact.cont_name},    cont_psotion=#{corpContact.cont_psotion}, cont_edoctype=#{corpContact.cont_edoctype}," +
+            "       cont_edocnum=#{corpContact.cont_edocnum},cont_ephone=#{corpContact.cont_ephone}, cont_efax=#{corpContact.cont_efax},   cont_eemail=#{corpContact.cont_eemail}," +
+            "       cont_eqq=#{corpContact.cont_eqq},  cont_webchat=#{corpContact.cont_webchat},cont_tel=#{corpContact.cont_tel},    cont_bz=#{corpContact.cont_bz}" +
+            " WHERE cont_id=#{corpContact.cont_id};"+
+
+            " UPDATE work.tb_corp_government " +
+            "   SET gov_domain=#{corpGov.gov_domain}, gov_office=#{corpGov.gov_office}, gov_desc=#{corpGov.gov_desc},   " +
+            "       gov_contact=#{corpGov.gov_contact},gov_psotion=#{corpGov.gov_psotion},gov_doctype=#{corpGov.gov_doctype}, " +
+            "       gov_docnum=#{corpGov.gov_docnum}, gov_phone=#{corpGov.gov_phone},  gov_fax=#{corpGov.gov_fax},    " +
+            "       gov_email=#{corpGov.gov_email},  gov_qq=#{corpGov.gov_qq},     gov_webchat=#{corpGov.gov_webchat}, " +
+            "       gov_tel=#{corpGov.gov_tel},    gov_remark=#{corpGov.gov_remark}  " +
+            " WHERE gov_id=#{corpGov.gov_id};"+
+
+            " UPDATE work.tb_corp_investors " +
+            "   SET inv_domain=#{corpInvestor.inv_domain},inv_csrc_type1=#{corpInvestor.inv_csrc_type1},inv_csrc_type2=#{corpInvestor.inv_csrc_type2}, " +
+            "       inv_csrc_type3=#{corpInvestor.inv_csrc_type3},inv_csrc_type4=#{corpInvestor.inv_csrc_type4},inv_indclass1=#{corpInvestor.inv_indclass1}, " +
+            "       inv_indclass2=#{corpInvestor.inv_indclass2},inv_contact=#{corpInvestor.inv_contact},inv_psotion=#{corpInvestor.inv_psotion}, " +
+            "       inv_doctype=#{corpInvestor.inv_doctype},inv_docnum=#{corpInvestor.inv_docnum},inv_phone=#{corpInvestor.inv_phone}, " +
+            "       inv_fax=#{corpInvestor.inv_fax},inv_email=#{corpInvestor.inv_email},inv_qq=#{corpInvestor.inv_qq}, " +
+            "       inv_webchat=#{corpInvestor.inv_webchat},inv_tel=#{corpInvestor.inv_tel},inv_remark=#{corpInvestor.inv_remark}" +
+            " WHERE inv_id=#{corpInvestor.inv_id};"+
+
+            " UPDATE work.tb_corp_refinancing " +
+            "   SET  refi_amounts=#{corpReFinancing.refi_amounts},refi_use=#{corpReFinancing.refi_use},refi_financ=#{corpReFinancing.refi_financ}," +
+            "        refi_security=#{corpReFinancing.refi_security}, refi_acc_cost=#{corpReFinancing.refi_acc_cost},refi_deadline=#{corpReFinancing.refi_deadline}," +
+            "        refi_desc=#{corpReFinancing.refi_desc}" +
+            " WHERE refi_id=#{corpReFinancing.refi_id};"+
+
+            " UPDATE work.tb_corp_rehr " +
+            "   SET rehr_post=#{corpReHr.rehr_post},rehr_num=#{corpReHr.rehr_num},rehr_salary=#{corpReHr.rehr_salary}," +
+            "       rehr_sex_req=#{corpReHr.rehr_sex_req},rehr_age_req=#{corpReHr.rehr_age_req},rehr_requests=#{corpReHr.rehr_requests}" +
+            " WHERE rehr_id=#{corpReHr.rehr_id};"+
+
+            " UPDATE work.tb_corp_retrain " +
+            "   SET  retra_mode=#{corpReTrain.retra_mode},retra_content=#{corpReTrain.retra_content},retra_acc_cost=#{corpReTrain.retra_acc_cost}," +
+            "       retra_dt=#{corpReTrain.retra_dt},retra_requests=#{corpReTrain.retra_requests} " +
+            " WHERE  retra_id=#{corpReTrain.retra_id};"+
+
+            " UPDATE work.tb_corp_service " +
+            "   SET  srv_name=#{corpServicePojo.srv_name}, srv_type=#{corpServicePojo.srv_type}, srv_content=#{corpServicePojo.srv_content},  " +
+            "        srv_levels=#{corpServicePojo.srv_levels}, srv_domain=#{corpServicePojo.srv_domain}, srv_penalty=#{corpServicePojo.srv_penalty}," +
+            "        srv_examiner=#{corpServicePojo.srv_examiner}, srv_post= #{corpServicePojo.srv_post},  " +
+            "        srv_descs=#{corpServicePojo.srv_descs}, srv_remark= #{corpServicePojo.srv_remark} " +
+            " WHERE srv_id=#{corpServicePojo.srv_id};"+
+
+            " UPDATE work.tb_corp_maintain " +
+            "   SET  mai_changer_id=#{inputid},mai_changer_dt=#{currentTime}, " +
+            "        mai_recomdt=#{corpMaintain.mai_recomdt},mai_trusteeship=#{corpMaintain.mai_trusteeship},mai_listst=#{corpMaintain.mai_listst}, " +
+            "        mai_eclass=#{corpMaintain.mai_eclass},mai_maintain=#{corpMaintain.mai_maintain},mai_reserve=#{corpMaintain.mai_reserve}, " +
+            "        mai_emaint=#{corpMaintain.mai_emaint},mai_dept=#{corpMaintain.mai_dept},  mai_post=#{corpMaintain.mai_post},  " +
+            "        mai_tel=#{corpMaintain.mai_tel},mai_phone=#{corpMaintain.mai_phone}, mai_fax=#{corpMaintain.mai_fax}, " +
+            "        mai_email=#{corpMaintain.mai_email},mai_qq=#{corpMaintain.mai_qq},mai_webchat=#{corpMaintain.mai_webchat},mai_bz=#{corpMaintain.mai_bz} " +
+            " WHERE mai_id=#{corpMaintain.mai_id};"+
+
+            "end;")
+    void updateCorp(
+            @Param(value = "inputid") Integer  inputid,
+            @Param(value = "currentTime") Timestamp currentTime,
+            @Param(value = "corpBase") CorpBase corpBase,
+            @Param(value = "corpContact") CorpContact corpContact,
+            @Param(value = "corpFinance") CorpFinance corpFinance,
+            @Param(value = "corpGov") CorpGov corpGov,
+            @Param(value = "corpInvestor") CorpInvestor corpInvestor,
+            @Param(value = "corpReFinancing") CorpReFinancing corpReFinancing,
+            @Param(value = "corpReHr") CorpReHr corpReHr,
+            @Param(value = "corpReTrain") CorpReTrain corpReTrain,
+            @Param(value = "corpServicePojo") CorpServicePojo corpServicePojo,
+            @Param(value = "corpMaintain") CorpMaintain corpMaintain
+
+    );
 }

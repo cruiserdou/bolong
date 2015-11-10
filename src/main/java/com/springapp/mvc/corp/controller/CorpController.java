@@ -91,4 +91,29 @@ public class CorpController {
         dataShop.setSuccess(true);
         return dataShop;
     }
+
+    @RequestMapping(value = "/update_corp_form", method = RequestMethod.POST)
+    @ResponseBody
+    public DataShop edit_corp_form(
+            @ModelAttribute() CorpBase corpBase,
+            @ModelAttribute() CorpContact corpContact,
+            @ModelAttribute() CorpFinance corpFinance,
+            @ModelAttribute() CorpGov corpGov,
+            @ModelAttribute() CorpInvestor corpInvestor,
+            @ModelAttribute() CorpMaintain corpMaintain,
+            @ModelAttribute() CorpReFinancing corpReFinancing,
+            @ModelAttribute() CorpReHr corpReHr,
+            @ModelAttribute() CorpReTrain corpReTrain,
+            @ModelAttribute() CorpServicePojo corpServicePojo,
+            HttpSession session
+    ) throws Exception {
+        DataShop dataShop = new DataShop();
+
+        Integer inputid=Integer.parseInt(session.getAttribute("id").toString());
+        Timestamp currentTime=corpService.getCurrentTime();
+        corpService.updateCorp(inputid, currentTime, corpBase, corpContact, corpFinance, corpGov,
+                corpInvestor, corpReFinancing, corpReHr, corpReTrain, corpServicePojo,corpMaintain); 
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
 }

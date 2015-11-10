@@ -74,5 +74,12 @@ public class CorpServiceImpl implements CorpService {
     }
 
     public Timestamp getCurrentTime(){return corpDao.getCurrentTime();}
+
+    public void updateCorp(Integer inputid,Timestamp currentTime, CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
+                           CorpGov corpGov ,CorpInvestor corpInvestor, CorpReFinancing corpReFinancing
+            ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo,CorpMaintain corpMaintain ){
+        corpDao.updateCorp(inputid, currentTime, corpBase, corpContact, corpFinance, corpGov, corpInvestor, corpReFinancing
+                , corpReHr, corpReTrain, corpServicePojo, corpMaintain);
+    }
 }
 

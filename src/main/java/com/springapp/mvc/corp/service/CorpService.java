@@ -33,4 +33,8 @@ public interface CorpService {
     public Integer getMaxCorpId();
 
     public Timestamp getCurrentTime();
+
+    void updateCorp(Integer inputid,Timestamp currentTime, CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
+                    CorpGov corpGov , CorpInvestor corpInvestor,CorpReFinancing corpReFinancing
+            ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo,CorpMaintain corpMaintain );
 }

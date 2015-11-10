@@ -12,7 +12,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
         'app.store.dict.Industry2Store'
     ],
     width: 960,
-    id: 'inner_corp_add_form_id',
+    id: 'inner_corp_edit_form_id',
     scrollable: true,
     bodyPadding: 20,
     defaults: {
@@ -23,64 +23,64 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
     listeners: {
         afterrender: function () {
             //基本信息
-            var e = Ext.get('add_corp_base_id');
+            var e = Ext.get('edit_corp_base_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 0, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 0, true)
             });
             //法定代表人
-            var e = Ext.get('add_corp_contact_id');
+            var e = Ext.get('edit_corp_contact_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 818 + 30, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 818 + 30, true)
             });
             //行业分类
-            var e = Ext.get('add_corp_ind_id');
+            var e = Ext.get('edit_corp_ind_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 1200 + 20, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 1200 + 20, true)
             });
             //证监会行业分类
-            var e = Ext.get('add_corp_csrc_id');
+            var e = Ext.get('edit_corp_csrc_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 1350 + 20, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 1350 + 20, true)
             });
             //企业维护信息
-            var e = Ext.get('add_corp_mai_id');
+            var e = Ext.get('edit_corp_mai_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 1460 + 20, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 1460 + 20, true)
             });
             //企业维护信息
-            var e = Ext.get('add_corp_fin_id');
+            var e = Ext.get('edit_corp_fin_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 2000 + 30, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 2000 + 30, true)
             });
             //服务机构信息
-            var e = Ext.get('add_corp_service_id');
+            var e = Ext.get('edit_corp_service_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 3980 + 30, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 3980 + 30, true)
             });
             //投资人信息
-            var e = Ext.get('add_corp_investor_id');
+            var e = Ext.get('edit_corp_investor_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 4300 + 30, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 4300 + 30, true)
             });
             //政府部门信息
-            var e = Ext.get('add_corp_gov_id');
+            var e = Ext.get('edit_corp_gov_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 4850 + 30, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 4850 + 30, true)
             });
             //融资需求
-            var e = Ext.get('add_corp_refi_id');
+            var e = Ext.get('edit_corp_refi_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, 5330, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, 5330, true)
             });
             //培训需求
-            var e = Ext.get('add_corp_retra_id');
+            var e = Ext.get('edit_corp_retra_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, -1, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, -1, true)
             });
             //人力资源需求
-            var e = Ext.get('add_corp_rehr_id');
+            var e = Ext.get('edit_corp_rehr_id');
             e.on("click", function () {
-                Ext.getCmp('inner_corp_add_form_id').scrollTo(0, -1, true)
+                Ext.getCmp('inner_corp_edit_form_id').scrollTo(0, -1, true)
             });
         }
     },
@@ -104,7 +104,12 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             }
         },
-        items: [{
+        items: [
+            {
+                hidden: true,
+                name: 'id',
+                fieldLabel: 'ID'
+            },{
             allowBlank: false,
             name: 'buslicno',
             fieldLabel: '营业执照编号',
@@ -278,7 +283,12 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             }
         },
-        items: [{
+        items: [
+            {
+                hidden: true,
+                name: 'cont_id',
+                fieldLabel: 'cont_id'
+            }, {
             name: 'cont_name',
             fieldLabel: '姓名'
         }, {
@@ -567,6 +577,10 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }
         },
         items: [{
+            hidden: true,
+            name: 'mai_id',
+            fieldLabel: 'mai_id'
+        },{
             name: 'mai_changer_dt',
             xtype: 'datefield',
             format: 'Y-m-d',
@@ -652,7 +666,11 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             }
         },
-        items: [
+        items: [{
+            hidden: true,
+            name: 'finid',
+            fieldLabel: 'finid'
+        },
             {
                 name: 'start_time',
                 xtype: 'datefield',
@@ -1323,6 +1341,10 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }
         },
         items: [{
+            hidden: true,
+            name: 'srv_id',
+            fieldLabel: 'srv_id'
+        },{
             name: 'srv_name',
             fieldLabel: '服务机构名称'
         }, {
@@ -1376,6 +1398,10 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }
         },
         items: [{
+            hidden: true,
+            name: 'inv_id',
+            fieldLabel: 'inv_id'
+        },{
             name: 'inv_domain',
             fieldLabel: '投资领域',
             colspan: 2
@@ -1624,6 +1650,10 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }
         },
         items: [{
+            hidden: true,
+            name: 'gov_id',
+            fieldLabel: 'gov_id'
+        },{
             name: 'gov_domain',
             fieldLabel: '单位名称'
         }, {
@@ -1701,6 +1731,11 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
         },
         items: [
             {
+                hidden: true,
+                name: 'refi_id',
+                fieldLabel: 'refi_id'
+            },
+            {
                 name: 'refi_amounts',
                 fieldLabel: '融资金额'
             }, {
@@ -1747,6 +1782,11 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
         },
         items: [
             {
+                hidden: true,
+                name: 'retra_id',
+                fieldLabel: 'retra_id'
+            },
+            {
                 fieldLabel: '培训方式',
                 name: 'retra_mode',
                 colspan: 2
@@ -1790,7 +1830,13 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             }
         },
-        items: [{
+        items: [
+            {
+                hidden: true,
+                name: 'rehr_id',
+                fieldLabel: 'rehr_id'
+            },
+            {
             name: 'rehr_post',
             fieldLabel: '需求职位'
         }, {
