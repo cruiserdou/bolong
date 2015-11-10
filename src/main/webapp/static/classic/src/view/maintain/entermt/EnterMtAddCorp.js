@@ -123,6 +123,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'legrep',
             fieldLabel: '法定代表人'
         }, {
+            id: 'province_id',
             name: 'province',
             fieldLabel: '省',
             xtype: 'combobox',
@@ -133,13 +134,32 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             autoRender: true,
             autoShow: true,
             displayField: 'name',
-            valueField: 'name',
+            valueField: 'id',
             listConfig: {
                 getInnerTpl: function () {
                     return '<div><span style="color: green;">' + '({name})</span></div>'
                 }
+            },
+            listeners: {
+                select: function (combo, record, index) {
+                    try {
+                        var city = Ext.getCmp('city_id');
+                        city.clearValue();
+                        city.store.load(
+                            {
+                                params: {
+                                    provinceid: Ext.getCmp('province_id').getValue("id")
+                                }
+                            }
+                        );
+                    } catch (ex) {
+                        alert("数据加载失败！");
+                    }
+                }
             }
+
         }, {
+            id: 'city_id',
             name: 'city',
             fieldLabel: '市',
             xtype: 'combobox',
@@ -150,13 +170,31 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             autoRender: true,
             autoShow: true,
             displayField: 'name',
-            valueField: 'name',
+            valueField: 'id',
             listConfig: {
                 getInnerTpl: function () {
                     return '<div><span style="color: green;">' + '({name})</span></div>'
                 }
+            },
+            listeners: {
+                select: function (combo, record, index) {
+                    try {
+                        var county = Ext.getCmp('county_id');
+                        county.clearValue();
+                        county.store.load(
+                            {
+                                params: {
+                                    cityid: Ext.getCmp('city_id').getValue("id")
+                                }
+                            }
+                        );
+                    } catch (ex) {
+                        alert("数据加载失败！");
+                    }
+                }
             }
         }, {
+            id: 'county_id',
             name: 'county',
             fieldLabel: '县',
             xtype: 'combobox',

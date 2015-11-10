@@ -17,13 +17,13 @@ import java.util.Map;
 @Repository
 public interface DictDao {
 
-    @Select("SELECT id, name, orderid FROM dict.tb_province;")
+    @Select("SELECT * FROM dict.tb_province;")
     List<Province> listProvince();
 
-    @Select("SELECT id, provinceid, name, areacode FROM dict.tb_city WHERE provinceid=#{provinceid};")
+    @Select("SELECT * FROM dict.tb_city WHERE provinceid=#{provinceid};")
     List<City> listCity(@Param(value = "provinceid")int provinceid);
 
-    @Select("SELECT id, cityid, name, postcode FROM dict.tb_district WHERE cityid=#{cityid};")
+    @Select("SELECT * FROM dict.tb_district WHERE cityid=#{cityid};")
     List<County> listDistrict(@Param(value = "cityid")int cityid);
 
     @SelectProvider(type = DictsDaoEmberSql.class, method = "listDictsInfo")
