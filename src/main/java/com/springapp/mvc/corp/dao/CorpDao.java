@@ -62,7 +62,7 @@ public interface CorpDao {
                     "     left join work.tb_corp_retrain corp_retrain on corp.id=corp_retrain.retra_corp_id" +
                     " WHERE 1 = 1  " +
                     where +
-                    " limit " + para.get("limit").toString() + " offset " + para.get("start").toString();
+                    "ORDER BY corp.inputdt  DESC  limit " + para.get("limit").toString() + " offset " + para.get("start").toString();
         }
 
         public String countCorp(Map<String, Object> para) {
@@ -122,7 +122,7 @@ public interface CorpDao {
             if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
-            where += " ;";
+            where += " ORDER BY corp.inputdt  DESC;";
             return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
@@ -162,7 +162,7 @@ public interface CorpDao {
             if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
-            where += " ;";
+            where += "  ORDER BY corp.inputdt  DESC;";
             return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
@@ -200,7 +200,7 @@ public interface CorpDao {
             if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
-            where += " ;";
+            where += " ORDER BY corp.inputdt  DESC;";
             return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
@@ -239,7 +239,7 @@ public interface CorpDao {
             if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
-            where += " ;";
+            where += " ORDER BY corp.inputdt  DESC;";
 
 
             return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
@@ -280,7 +280,7 @@ public interface CorpDao {
             if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
-            where += " ;";
+            where += "  ORDER BY inputdt  DESC;";
             return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
@@ -318,7 +318,7 @@ public interface CorpDao {
             if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
 
-            where += " ;";
+            where += " ORDER BY inputdt  DESC;";
             return "select corp.*,corp_contact.*,corp_finance.*,corp_maintain.*," +
                     "     corp_government.*,corp_service.*,corp_investors.*," +
                     "     corp_refinancing.*,corp_rehr.*,corp_retrain.*  from work.tb_corp corp " +
