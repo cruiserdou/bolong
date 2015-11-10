@@ -16,7 +16,7 @@ public class DictController {
     @Autowired
     private DictService dictService;
 
-    @RequestMapping(value = "/province",method = RequestMethod.GET)
+    @RequestMapping(value = "/province",method = RequestMethod.POST)
     public
     @ResponseBody
     DataShop province(
@@ -29,7 +29,7 @@ public class DictController {
     }
 
 
-    @RequestMapping(value = "/city",method = RequestMethod.GET)
+    @RequestMapping(value = "/city",method = RequestMethod.POST)
     public
     @ResponseBody
     DataShop city(
@@ -45,7 +45,7 @@ public class DictController {
         return dataShop;
     }
 
-    @RequestMapping(value = "/district",method = RequestMethod.GET)
+    @RequestMapping(value = "/district",method = RequestMethod.POST)
     public
     @ResponseBody
     DataShop district(

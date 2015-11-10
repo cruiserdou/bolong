@@ -27,7 +27,7 @@ Ext.define('app.view.main.TreeListController', {
             title: '登录窗口',
             constrain: true,
             closable: false,
-            modal: true,
+            //modal: true,
             layout: 'fit',
             items: {  // Let's put an empty grid in just to illustrate fit layout
                 xtype: 'form',

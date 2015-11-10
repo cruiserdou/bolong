@@ -60,7 +60,7 @@ Ext.define('app.view.main.Main', {
         'app.view.system.sec.SecView'
     ],
 
-    title: '甘肃中小企业信息管理系统',
+    //title: '甘肃中小企业信息管理系统',
     controller: 'tree-list',
     viewModel: {
         type: 'tree-list'
@@ -68,25 +68,25 @@ Ext.define('app.view.main.Main', {
     ui: 'navigation',
 
     layout: 'border',
-    header: {
-        items: [{
-            xtype: 'button',
-            text: '设置',
-            menu: [{
-                text: 'Single Expand',
-                checked: true,
-                handler: 'onToggleConfig',
-                config: 'singleExpand'
-            }]
-        }, {
-
-            xtype: 'button',
-            iconCls: 'x-fa fa-power-off',
-            text: '注销',
-            enableToggle: true,
-            toggleHandler: 'onLogout'
-        }]
-    },
+    //header: {
+    //    items: [{
+    //        xtype: 'button',
+    //        text: '设置',
+    //        menu: [{
+    //            text: 'Single Expand',
+    //            checked: true,
+    //            handler: 'onToggleConfig',
+    //            config: 'singleExpand'
+    //        }]
+    //    }, {
+    //
+    //        xtype: 'button',
+    //        iconCls: 'x-fa fa-power-off',
+    //        text: '注销',
+    //        enableToggle: true,
+    //        toggleHandler: 'onLogout'
+    //    }]
+    //},
 
     items: [{
         region: 'center',

@@ -131,33 +131,15 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             store: {
                 type: 'provincestore'
             },
-            autoRender: true,
-            autoShow: true,
             displayField: 'name',
             valueField: 'id',
-            listConfig: {
-                getInnerTpl: function () {
-                    return '<div><span style="color: green;">' + '({name})</span></div>'
-                }
-            },
+            editable : false,
             listeners: {
-                select: function (combo, record, index) {
-                    try {
-                        var city = Ext.getCmp('city_id');
-                        city.clearValue();
-                        city.store.load(
-                            {
-                                params: {
-                                    provinceid: Ext.getCmp('province_id').getValue("id")
-                                }
-                            }
-                        );
-                    } catch (ex) {
-                        alert("数据加载失败！");
-                    }
+                change: function(){
+                    Ext.getCmp('city_id').clearValue();
+                    Ext.getCmp('county_id').clearValue();
                 }
             }
-
         }, {
             id: 'city_id',
             name: 'city',
@@ -167,30 +149,19 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             store: {
                 type: 'citystore'
             },
-            autoRender: true,
-            autoShow: true,
             displayField: 'name',
             valueField: 'id',
-            listConfig: {
-                getInnerTpl: function () {
-                    return '<div><span style="color: green;">' + '({name})</span></div>'
-                }
-            },
+            editable : false,
             listeners: {
-                select: function (combo, record, index) {
-                    try {
-                        var county = Ext.getCmp('county_id');
-                        county.clearValue();
-                        county.store.load(
-                            {
-                                params: {
-                                    cityid: Ext.getCmp('city_id').getValue("id")
-                                }
-                            }
-                        );
-                    } catch (ex) {
-                        alert("数据加载失败！");
-                    }
+                expand: function (_this) {
+                    _this.getStore().load({
+                        params: {
+                            provinceid: Ext.getCmp('province_id').getValue()
+                        }
+                    });
+                },
+                change: function(){
+                    Ext.getCmp('county_id').clearValue();
                 }
             }
         }, {
@@ -202,13 +173,16 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             store: {
                 type: 'districtstore'
             },
-            autoRender: true,
-            autoShow: true,
             displayField: 'name',
             valueField: 'name',
-            listConfig: {
-                getInnerTpl: function () {
-                    return '<div><span style="color: green;">' + '({name})</span></div>'
+            editable : false,
+            listeners: {
+                expand: function (_this) {
+                    _this.getStore().load({
+                        params: {
+                            cityid: Ext.getCmp('city_id').getValue()
+                        }
+                    });
                 }
             }
         }, {
@@ -1437,22 +1411,22 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                     }
                 },
                 listeners: {
-                select: function (combo, record, index) {
-                    try {
-                        var inv_csrc_type2 = Ext.getCmp('inv_csrc_type2_id');
-                        inv_csrc_type2.clearValue();
-                        inv_csrc_type2.store.load(
-                            {
-                                params: {
-                                    parentid: Ext.getCmp('inv_csrc_type1_id').getValue("id")
+                    select: function (combo, record, index) {
+                        try {
+                            var inv_csrc_type2 = Ext.getCmp('inv_csrc_type2_id');
+                            inv_csrc_type2.clearValue();
+                            inv_csrc_type2.store.load(
+                                {
+                                    params: {
+                                        parentid: Ext.getCmp('inv_csrc_type1_id').getValue("id")
+                                    }
                                 }
-                            }
-                        );
-                    } catch (ex) {
-                        alert("数据加载失败！");
+                            );
+                        } catch (ex) {
+                            alert("数据加载失败！");
+                        }
                     }
                 }
-            }
             },
             {
                 id: 'inv_csrc_type2_id',
