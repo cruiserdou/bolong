@@ -27,7 +27,6 @@ Ext.define('app.view.main.TreeListController', {
             title: '登录窗口',
             constrain: true,
             closable: false,
-            //modal: true,
             layout: 'fit',
             items: {  // Let's put an empty grid in just to illustrate fit layout
                 xtype: 'form',
@@ -145,20 +144,10 @@ Ext.define('app.view.main.TreeListController', {
                                         }]
                                 });
 
-                                //var treelist = Ext.getCmp('main_window').lookupReference('treelist'),
-                                //    ct = Ext.getCmp('main_window').lookupReference('treelistContainer');
-                                //
-                                //treelist.setExpanderFirst(!true);
-                                //treelist.setUi(true ? 'nav' : null);
-                                //treelist.setHighlightPath(true);
-                                //ct[true ? 'addCls' : 'removeCls']('treelist-with-nav');
-                                //
-                                //if (Ext.isIE8) {
-                                //    this.repaintList(treelist);
-                                //}
-
                                 Ext.getCmp('enter_grid_id').getStore().load();
                                 loginWindow.close();
+                                Ext.getCmp('main_header').show();
+                                Ext.getCmp('main_window').setTitle("甘肃中小企业信息管理系统")
                                 Ext.getCmp('mTabpanel').show();
                             },
                             failure: function (response, opts) {
@@ -170,7 +159,6 @@ Ext.define('app.view.main.TreeListController', {
             }
         }).show();
     },
-
 
     onLogout: function () {
         Ext.fly("h3_text").setStyle({display: "none"});

@@ -159,16 +159,16 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
             buttonAlign: 'center',
             buttons: [{
                 text: '保存',
-                handler: function(){
+                handler: function () {
                     var form = Ext.getCmp('inner_corp_edit_form_id').getForm();
-                    if (form.isValid()){
+                    if (form.isValid()) {
                         form.submit({
                             url: '/bolong/update_corp_form',
                             waitMsg: '正在保存数据...',
-                            success: function(form, action){
+                            success: function (form, action) {
                                 Ext.Msg.alert("成功", "数据保存成功!");
                             },
-                            failure: function(form, action){
+                            failure: function (form, action) {
                                 Ext.Msg.alert("失败", "数据保存失败!");
                             }
                         });
@@ -176,7 +176,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                 }
             }, {
                 text: '重置',
-                handler: function(){
+                handler: function () {
                     Ext.getCmp('inner_corp_edit_form_id').getForm().reset();
                 }
             }]
@@ -361,7 +361,6 @@ function buslicno_check_edit(id) {
     });
 }
 function corp_imgs_upload() {
-
     Ext.create('widget.window', {
         title: '企业图片',
         id: 'corp_imgs_window',
@@ -387,106 +386,105 @@ function corp_imgs_upload() {
                 xtype: 'toolbar',
                 dock: 'top',
                 border: true,
-                items: [
-                    {
-                        text: '上传',
-                        id: 'corp_img_update_id',
-                        listeners: {
-                            click: function () {
-                                Ext.create('widget.window', {
-                                    title: '资料上传',
-                                    width: 300,
-                                    height: 370,
-                                    modal: true,
-                                    border: false,
-                                    layout: 'fit',
-                                    items: [
-                                        {
-                                            xtype: 'form',
-                                            frame: true,
-                                            bodyPadding: 16,
-                                            defaults: {
-                                                labelWidth: 50
-                                            },
-                                            items: [
-                                                {
-                                                    xtype: 'filefield',
-                                                    allowBlank: false,
-                                                    fieldLabel: '文件',
-                                                    name: 'file',
-                                                    id: 'file',
-                                                    anchor: '100%',
-                                                    buttonText: '浏览...',
-                                                    buttonConfig: {
-                                                        iconCls: 'upload'
-                                                    },
-                                                    listeners: {
-                                                        change: function (btn, value) {
-                                                            //是否是规定的图片类型
-                                                            var img_reg = /\.([jJ][pP][gG])$|\.([jJ][pP][eE][gG])$|\.([gG][iI][fF])小贝$|\.([pP][nN][gG])$|\.([bB][mM][pP])$/;
-                                                            if (img_reg.test(value)) {
-                                                                var img = Ext.getCmp('staffavatar');
-                                                                var file = btn.fileInputEl.dom.files[0];
-                                                                var url = URL.createObjectURL(file);
-                                                                img.setSrc(url);
-                                                            } else {
-                                                                Ext.Msg.alert('提示', '请选择图片类型的文件！');
-                                                                Ext.getCmp('file').reset();
-                                                                return;
+                items: [{
+                    text: '上传',
+                    id: 'corp_img_update_id',
+                    listeners: {
+                        click: function () {
+                            Ext.create('widget.window', {
+                                title: '资料上传',
+                                width: 300,
+                                height: 370,
+                                modal: true,
+                                border: false,
+                                layout: 'fit',
+                                items: [
+                                    {
+                                        xtype: 'form',
+                                        frame: true,
+                                        bodyPadding: 16,
+                                        defaults: {
+                                            labelWidth: 50
+                                        },
+                                        items: [
+                                            {
+                                                xtype: 'filefield',
+                                                allowBlank: false,
+                                                fieldLabel: '文件',
+                                                name: 'file',
+                                                id: 'file',
+                                                anchor: '100%',
+                                                buttonText: '浏览...',
+                                                buttonConfig: {
+                                                    iconCls: 'upload'
+                                                },
+                                                listeners: {
+                                                    change: function (btn, value) {
+                                                        //是否是规定的图片类型
+                                                        var img_reg = /\.([jJ][pP][gG])$|\.([jJ][pP][eE][gG])$|\.([gG][iI][fF])小贝$|\.([pP][nN][gG])$|\.([bB][mM][pP])$/;
+                                                        if (img_reg.test(value)) {
+                                                            var img = Ext.getCmp('staffavatar');
+                                                            var file = btn.fileInputEl.dom.files[0];
+                                                            var url = URL.createObjectURL(file);
+                                                            img.setSrc(url);
+                                                        } else {
+                                                            Ext.Msg.alert('提示', '请选择图片类型的文件！');
+                                                            Ext.getCmp('file').reset();
+                                                            return;
+                                                        }
+                                                    }
+                                                }
+                                            }, {
+                                                xtype: 'fieldset',
+                                                //border: false,
+                                                title: '图片预览',
+                                                defaults: {margin: '0 0 0 10', width: 150, height: 150},
+                                                items: [
+                                                    {
+                                                        xtype: 'image',
+                                                        id: 'staffavatar',
+                                                        border: 1,
+                                                        src: '/bolong/static/upload/annex/per.png',
+                                                        style: {
+                                                            borderColor: 'blue',
+                                                            borderStyle: 'solid'
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        buttonAlign: "center",
+                                        buttons: [
+                                            {
+                                                text: '保存',
+                                                iconCls: 'icon_save',
+                                                handler: function () {
+                                                    var form = this.up('form').getForm();
+                                                    if (form.isValid()) {
+                                                        form.submit({
+                                                            url: '/bolong/upload_corp_img',
+                                                            params: {
+                                                                corp_id: Ext.getCmp('corp_id').getValue()
+                                                            },
+                                                            waitMsg: '正在保存数据...',
+                                                            success: function (response, action) {
+                                                                Ext.Msg.alert("成功", "文件上传成功!");
+                                                                Ext.getCmp('innerenterimggridview_id').getStore().reload();
+                                                            },
+                                                            failure: function (form, action) {
+                                                                Ext.Msg.alert("提示", "文件格式不正确，只能上传jpg,png格式的文件！");
                                                             }
-                                                        }
-                                                    }
-                                                } ,{
-                                                    xtype: 'fieldset',
-                                                    //border: false,
-                                                    title: '图片预览',
-                                                    defaults: {margin:'0 0 0 10', width: 150,height:150},
-                                                    items: [
-                                                        {
-                                                            xtype: 'image',
-                                                            id: 'staffavatar',
-                                                            border:1,
-                                                            src: '/bolong/static/upload/annex/per.png',
-                                                            style: {
-                                                                borderColor: 'blue',
-                                                                borderStyle: 'solid'
-                                                            }}
-                                                    ]
-                                                }
-                                            ],
-                                            buttonAlign: "center",
-                                            buttons: [
-                                                {
-                                                    text: '保存',
-                                                    iconCls: 'icon_save',
-                                                    handler: function () {
-                                                        var form = this.up('form').getForm();
-                                                        if (form.isValid()) {
-                                                            form.submit({
-                                                                url: '/bolong/upload_corp_img',
-                                                                params: {
-                                                                    corp_id: Ext.getCmp('corp_id').getValue()
-                                                                },
-                                                                waitMsg: '正在保存数据...',
-                                                                success: function (response, action) {
-                                                                    Ext.Msg.alert("成功", "文件上传成功!");
-                                                                    Ext.getCmp('innerenterimggridview_id').getStore().reload();
-                                                                },
-                                                                failure: function (form, action) {
-                                                                    Ext.Msg.alert("提示", "文件格式不正确，只能上传jpg,png格式的文件！");
-                                                                }
-                                                            });
-                                                        }
+                                                        });
                                                     }
                                                 }
-                                            ]
-                                        }
-                                    ]
-                                }).show(Ext.get(corp_img_update_id));
-                            }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }).show(Ext.get('corp_img_update_id'));
                         }
                     }
-                ]
+                }]
             }
         ],
         items: [
@@ -499,7 +497,7 @@ function corp_imgs_upload() {
     }).show(Ext.get('corp_imgs_window'));
 }
 
-function corp_gd_add( ) {
+function corp_gd_add() {
 
     Ext.create('widget.window', {
         title: '企业股东',
@@ -526,122 +524,120 @@ function corp_gd_add( ) {
                 xtype: 'toolbar',
                 dock: 'top',
                 border: true,
-                items: [
-                    {
-                        text: '股东管理',
-                        id: 'corp_gd_add_id',
-                        listeners: {
-                            click: function () {
-                                Ext.create('widget.window', {
-                                    title: '股东管理',
-                                    width: 650,
-                                    height: 450,
-                                    modal: true,
-                                    border: false,
-                                    layout: 'fit',
-                                    items: [
-                                        {
-                                            xtype: 'form',
-                                            frame: true,
-                                            bodyPadding: 16,
-                                            defaults: {
-                                                labelWidth: 90,
-                                                xtype: 'textfield',
-                                                width: 300,
-                                                anchor: '100%'
+                items: [{
+                    text: '股东管理',
+                    id: 'corp_gd_add_id',
+                    listeners: {
+                        click: function () {
+                            Ext.create('widget.window', {
+                                title: '股东管理',
+                                width: 650,
+                                height: 450,
+                                modal: true,
+                                border: false,
+                                layout: 'fit',
+                                items: [
+                                    {
+                                        xtype: 'form',
+                                        frame: true,
+                                        bodyPadding: 16,
+                                        defaults: {
+                                            labelWidth: 90,
+                                            xtype: 'textfield',
+                                            width: 300,
+                                            anchor: '100%'
+                                        },
+                                        layout: {
+                                            type: 'table',
+                                            columns: 2,
+                                            tableAttrs: {
+                                                style: {
+                                                    width: '100%'
+                                                }
+                                            }
+                                        },
+                                        items: [
+                                            {
+                                                name: 'gd_shtype',
+                                                fieldLabel: '股东类型'
+                                            }, {
+                                                name: 'gd_shname',
+                                                fieldLabel: '股东'
+                                            }, {
+                                                name: 'gd_shdoctype',
+                                                fieldLabel: '证照/证件类型'
+                                            }, {
+                                                name: 'gd_shdocnum',
+                                                fieldLabel: '证照/证件号码'
+                                            }, {
+                                                name: 'gd_shareholdnum',
+                                                fieldLabel: '持股数量'
                                             },
-                                            layout: {
-                                                type: 'table',
-                                                columns: 2,
-                                                tableAttrs: {
-                                                    style: {
-                                                        width: '100%'
+                                            {
+                                                name: 'gd_currencynum',
+                                                fieldLabel: '流通数量'
+                                            }, {
+                                                name: 'gd_freezenum',
+                                                fieldLabel: '冻结数量'
+                                            }, {
+                                                name: 'gd_psotion',
+                                                fieldLabel: '职务'
+                                            },
+                                            {
+                                                name: 'gd_phone',
+                                                fieldLabel: '手机号码'
+                                            }, {
+                                                name: 'gd_fax',
+                                                fieldLabel: '传真'
+                                            }, {
+                                                name: 'gd_email',
+                                                fieldLabel: 'E-mail'
+                                            }, {
+                                                name: 'gd_qq',
+                                                fieldLabel: 'QQ'
+                                            }, {
+                                                name: 'gd_webchat',
+                                                fieldLabel: '个人微信号'
+                                            }, {
+                                                name: 'gd_tel',
+                                                fieldLabel: '固定电话'
+                                            }, {
+                                                name: 'gd_remark',
+                                                fieldLabel: '备注'
+                                            }
+                                        ],
+                                        buttonAlign: "center",
+                                        buttons: [
+                                            {
+                                                text: '保存',
+                                                iconCls: 'icon_save',
+                                                handler: function () {
+                                                    var form = this.up('form').getForm();
+                                                    if (form.isValid()) {
+                                                        form.submit({
+                                                            url: '/bolong/add_corp_shareholder_info',
+                                                            params: {
+                                                                gd_corp_id: Ext.getCmp('corp_id').getValue()
+                                                            },
+                                                            waitMsg: '正在保存数据...',
+                                                            success: function (response, action) {
+                                                                Ext.Msg.alert("成功", "文件上传成功!");
+                                                                Ext.getCmp('innerentergdgridview_id').getStore().reload();
+                                                            },
+                                                            failure: function (form, action) {
+                                                                Ext.Msg.alert("提示", " ！");
+                                                            }
+                                                        });
                                                     }
                                                 }
-                                            },
-                                            items: [
-                                                {
-                                                    name: 'gd_shtype',
-                                                    fieldLabel: '股东类型'
-                                                }, {
-                                                    name: 'gd_shname',
-                                                    fieldLabel: '股东'
-                                                }, {
-                                                    name: 'gd_shdoctype',
-                                                    fieldLabel: '证照/证件类型'
-                                                }, {
-                                                    name: 'gd_shdocnum',
-                                                    fieldLabel: '证照/证件号码'
-                                                }, {
-                                                    name: 'gd_shareholdnum',
-                                                    fieldLabel: '持股数量'
-                                                },
-                                                {
-                                                    name: 'gd_currencynum',
-                                                    fieldLabel: '流通数量'
-                                                }, {
-                                                    name: 'gd_freezenum',
-                                                    fieldLabel: '冻结数量'
-                                                }, {
-                                                    name: 'gd_psotion',
-                                                    fieldLabel: '职务'
-                                                },
-                                                {
-                                                    name: 'gd_phone',
-                                                    fieldLabel: '手机号码'
-                                                }, {
-                                                    name: 'gd_fax',
-                                                    fieldLabel: '传真'
-                                                }, {
-                                                    name: 'gd_email',
-                                                    fieldLabel: 'E-mail'
-                                                }, {
-                                                    name: 'gd_qq',
-                                                    fieldLabel: 'QQ'
-                                                }, {
-                                                    name: 'gd_webchat',
-                                                    fieldLabel: '个人微信号'
-                                                }, {
-                                                    name: 'gd_tel',
-                                                    fieldLabel: '固定电话'
-                                                }, {
-                                                    name: 'gd_remark',
-                                                    fieldLabel: '备注'
-                                                }
-                                            ],
-                                            buttonAlign: "center",
-                                            buttons: [
-                                                {
-                                                    text: '保存',
-                                                    iconCls: 'icon_save',
-                                                    handler: function () {
-                                                        var form = this.up('form').getForm();
-                                                        if (form.isValid()) {
-                                                            form.submit({
-                                                                url: '/bolong/add_corp_shareholder_info',
-                                                                params: {
-                                                                    gd_corp_id: Ext.getCmp('corp_id').getValue()
-                                                                },
-                                                                waitMsg: '正在保存数据...',
-                                                                success: function (response, action) {
-                                                                    Ext.Msg.alert("成功", "文件上传成功!");
-                                                                    Ext.getCmp('innerentergdgridview_id').getStore().reload();
-                                                                },
-                                                                failure: function (form, action) {
-                                                                    Ext.Msg.alert("提示", " ！");
-                                                                }
-                                                            });
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }).show(Ext.get(corp_gd_add_id));
-                            }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }).show(Ext.get('corp_gd_add_id'));
                         }
                     }
-                ]
+                }]
             }
         ],
         items: [

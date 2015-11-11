@@ -68,25 +68,26 @@ Ext.define('app.view.main.Main', {
     ui: 'navigation',
 
     layout: 'border',
-    //header: {
-    //    items: [{
-    //        xtype: 'button',
-    //        text: '设置',
-    //        menu: [{
-    //            text: 'Single Expand',
-    //            checked: true,
-    //            handler: 'onToggleConfig',
-    //            config: 'singleExpand'
-    //        }]
-    //    }, {
-    //
-    //        xtype: 'button',
-    //        iconCls: 'x-fa fa-power-off',
-    //        text: '注销',
-    //        enableToggle: true,
-    //        toggleHandler: 'onLogout'
-    //    }]
-    //},
+    header: {
+        id:'main_header',
+        hidden: true,
+        items: [{
+            xtype: 'button',
+            text: '站内信息',
+            menu: [{
+                text: 'Single Expand',
+                checked: true,
+                handler: 'onToggleConfig',
+                config: 'singleExpand'
+            }]
+        }, {
+            xtype: 'button',
+            iconCls: 'x-fa fa-power-off',
+            text: '注销',
+            enableToggle: true,
+            toggleHandler: 'onLogout'
+        }]
+    },
 
     items: [{
         region: 'center',
