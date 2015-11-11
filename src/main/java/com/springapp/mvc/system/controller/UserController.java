@@ -30,10 +30,11 @@ public class UserController {
     public
     @ResponseBody
     DataShop listUsers(HttpServletRequest request,
+                       @RequestParam(value = "id", required = true) int id,
                                 @RequestParam(value = "name", required = false, defaultValue = "") String name
     ) throws Exception{
         DataShop dataShop = new DataShop();
-        List list = userService.list(name);
+        List list = userService.list(id,name);
         dataShop.setList(list);
         dataShop.setSuccess(true);
         return dataShop;

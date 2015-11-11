@@ -1381,7 +1381,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     xtype: 'numberfield',
                     name: 'end_hj_fz_owner_right'
                 }]
-        }, {
+        },
+        {
             xtype: 'fieldset',
             id: 'fieldset_inner_service_id',
             title: '服务机构信息',
@@ -1448,7 +1449,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 xtype: 'textarea',
                 fieldLabel: '备注'
             }]
-        }, {
+        },
+        {
             xtype: 'fieldset',
             id: 'fieldset_inner_investor_id',
             title: '投资人信息',
@@ -1704,7 +1706,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     fieldLabel: '备注',
                     colspan: 2
                 }]
-        }, {
+        },
+        {
             xtype: 'fieldset',
             id: 'fieldset_inner_gov_id',
             title: '政府部门信息',
@@ -1793,7 +1796,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 xtype: 'textarea',
                 fieldLabel: '备注'
             }]
-        }, {
+        },
+        {
             xtype: 'fieldset',
             id: 'fieldset_inner_refi_id',
             title: '融资需求',

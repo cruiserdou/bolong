@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface UserService {
-    List<User> list(String name);
+    List<User> list(Integer id,String name);
 
     boolean validUser(String account, String password);
 

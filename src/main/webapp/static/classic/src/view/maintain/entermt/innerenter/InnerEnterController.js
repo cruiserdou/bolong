@@ -653,7 +653,6 @@ function corp_gd_add() {
 
 function corp_maintain_info() {
 
-
     var store = Ext.create('Ext.data.Store', {
         extend: 'Ext.data.Store',
         model: 'app.model.system.UserMt',
@@ -662,9 +661,6 @@ function corp_maintain_info() {
             type: 'ajax',
             actionMethods: {
                 read: 'GET'
-            },
-            extraParams: {
-                id: Ext.getCmp('mai_changer_id').getValue()
             },
             api: {
                 read: '/bolong/userslist'
@@ -675,12 +671,7 @@ function corp_maintain_info() {
             }
         }
     });
-    //store.each(function (record) {
-    //    alert(record.get('name'));
-    //});
 
-    //var record= store.getById(Ext.getCmp('mai_changer_id').getValue());
-    //alert(record.data['id']);
     var editForm = new Ext.form.FormPanel({
         xtype: 'form',
         frame: true,
@@ -688,52 +679,35 @@ function corp_maintain_info() {
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
+            readOnly: true,
             width: 300,
             anchor: '100%'
         },
         items: [
             {
-                xtype: 'textfield',
                 readOnly: true,
                 name: 'account',
-                fieldLabel: '帐号',
-                allowBlank: false
+                fieldLabel: '帐号'
             }, {
-                xtype: 'textfield',
                 name: 'name',
-                fieldLabel: '姓名',
-                allowBlank: false
+                fieldLabel: '姓名'
             }, {
-                xtype: 'container',
-                layout: 'column',
-                items: [{
-                    layout: "column",
-                    fieldLabel: '性别',
-                    labelAlign: 'right',
-                    xtype: 'radiogroup', columns: 50, items: [
-                        {boxLabel: "男", name: 'sex', inputValue: '男', checked: true},
-                        {boxLabel: "女", name: 'sex', inputValue: '女'}
-                    ]
-                }]
+                name: 'sex',
+                fieldLabel: '性别'
             }, {
-                xtype: 'textfield',
                 name: 'phone',
                 fieldLabel: '手机号'
             },
             {
-                xtype: 'textfield',
                 name: 'address',
-                fieldLabel: '联系地址',
-                allowBlank: false
+                fieldLabel: '联系地址'
             },
             {
-                xtype: 'textfield',
                 name: 'remark',
                 fieldLabel: '备注'
             },
             {
                 xtype: 'fieldset',
-                //border: false,
                 title: '图片预览',
                 defaults: {margin: '0 0 0 80', width: 100, height: 100},
                 items: [
@@ -741,7 +715,7 @@ function corp_maintain_info() {
                         xtype: 'image',
                         id: 'staffavatar',
                         border: 1,
-                        //src: 'static/upload/annex/'+record.data['photo'],
+                        //src: 'static/upload/annex/'+store.getAt(0).data['photo'],
                         src: '/bolong/static/resources/per.png',
                         style: {
                             borderColor: 'blue',
@@ -760,16 +734,34 @@ function corp_maintain_info() {
         ]
     });
 
+    store.load({
+        params: {
+            id: Ext.getCmp('mai_changer_id').getValue()
+        },
+        callback: function (records, operation, success) {
+            if (success) {
+                var myarray = new Array();
+                for (var i = 0; i < store.getCount(); i++) {
+                    //myarray[i] = store.getAt(i).getData();
+                }
+                editForm.getForm().loadRecord(store.getAt(0));
+            }
+
+        }
+    });
+
+
+
     var editWindow = new Ext.Window({
         title: '维护人信息',
         id: 'corp_maintain_window',
-        width: 400,
-        height: 400,
+        width: 350,
+        height: 500,
         modal: true,
         frame: true,
         border: false,
         items: [editForm]
     });
     editWindow.show(Ext.get('corp_maintain_window'));
-    editForm.getForm().loadRecord(record);
+
 }

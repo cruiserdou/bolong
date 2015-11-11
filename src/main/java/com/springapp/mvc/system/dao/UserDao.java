@@ -15,6 +15,7 @@ public interface UserDao {
 
     @SelectProvider(type = UsersDaoEmberSql.class, method = "listUsersInfo")
     List<User> list(
+            @Param(value = "id") Integer id,
             @Param(value = "name") String name
     );
 
@@ -24,7 +25,8 @@ public interface UserDao {
             String where = "";
             if (null != para.get("name").toString() && 0 != para.get("name").toString().length())
                 where += " and name like '%" + para.get("name").toString() + "%' ";
-
+            if (0 != Integer.parseInt(para.get("id").toString()) && null != para.get("id").toString())
+                where += " and id ="+ Integer.parseInt(para.get("id").toString());
 
             where += " ;";
 

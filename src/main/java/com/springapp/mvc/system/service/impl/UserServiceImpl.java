@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> list(String name) {
-        return userDao.list(name);
+    public List<User> list(Integer id,String name) {
+        return userDao.list(id,name);
     }
 
     @Override

@@ -427,6 +427,9 @@ public class CorpBase {
         this.demand_rl = demand_rl;
     }
 
+//    public String getInputdt() {
+//        return inputdt;
+//    }
 
     public void setInputdt(String inputdt) {
         this.inputdt = inputdt;
