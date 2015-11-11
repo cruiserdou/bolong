@@ -82,6 +82,11 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             e.on("click", function () {
                 Ext.getCmp('corp_add_form_id').scrollTo(0, -1, true)
             });
+
+            Ext.getCmp('corp_add_form_id').scrollTo(0, 0, true);
+        },
+        show: function(){
+            Ext.getCmp('corp_add_form_id').scrollTo(0, 0, true);
         }
     },
     items: [{
@@ -268,7 +273,15 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         }, {
             name: 'eprofile',
             xtype: 'htmleditor',
-            fieldLabel: '企业简介'
+            fieldLabel: '企业简介',
+            listeners: {
+                afterrender: function(){
+                    Ext.getCmp('corp_add_form_id').scrollTo(0, 0, true);
+                },
+                show: function(){
+                    Ext.getCmp('corp_add_form_id').scrollTo(0, 0, true);
+                }
+            }
         }, {
             name: 'remark',
             xtype: 'textarea',
@@ -279,6 +292,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_contact_id',
         title: '法定代表人',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
@@ -344,6 +358,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_ind_id',
         title: '国民经济行业分类信息',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'combo',
@@ -490,6 +505,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_csrc_id',
         title: '证监会行业分类信息',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'combo',
@@ -567,6 +583,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_mai_id',
         title: '企业最近一次被关注信息',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
@@ -656,6 +673,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_fin_id',
         title: '企业财务信息',
         collapsible: true,
+        collapsed: true,
         defaults: {
             xtype: 'textfield',
             labelWidth: 90,
@@ -1327,6 +1345,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_service_id',
         title: '服务机构信息',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
@@ -1380,6 +1399,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_investor_id',
         title: '投资人信息',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
@@ -1628,6 +1648,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_gov_id',
         title: '政府部门信息',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
@@ -1704,6 +1725,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_refi_id',
         title: '融资需求',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
@@ -1751,6 +1773,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_retra_id',
         title: '培训需求',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
@@ -1797,6 +1820,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         id: 'fieldset_rehr_id',
         title: '人力需求',
         collapsible: true,
+        collapsed: true,
         defaults: {
             labelWidth: 90,
             xtype: 'textfield',
