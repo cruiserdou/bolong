@@ -45,7 +45,6 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_query', {
             text: '查找',
             listeners: {
                 click: function () {
-                    //var store = Ext.getCmp('corp_basic_grid_id').getStore();
                     Ext.getCmp('corp_basic_grid_id').getStore().load({
                         params: {
                             name: Ext.getCmp('query_basic_name_id').getValue(),

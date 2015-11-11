@@ -1401,7 +1401,17 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     }
                 }
             },
-            items: [{
+            items: [
+                {  xtype: 'checkbox',
+                    name:'type_server',
+                    fieldLabel:'服务机构'
+                },
+                {
+                    xtype: 'panel',
+                    height: 0,
+                    border: false
+                },
+                {
                 hidden: true,
                 name: 'srv_id',
                 fieldLabel: 'srv_id'
@@ -1458,7 +1468,17 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     }
                 }
             },
-            items: [{
+            items: [
+                {  xtype: 'checkbox',
+                    name:'type_investors',
+                    fieldLabel:'投资人'
+                },
+                {
+                    xtype: 'panel',
+                    height: 0,
+                    border: false
+                },
+                {
                 hidden: true,
                 name: 'inv_id',
                 fieldLabel: 'inv_id'
@@ -1704,7 +1724,16 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     }
                 }
             },
-            items: [{
+            items: [
+                {  xtype: 'checkbox',
+                    name:'type_govermt',
+                    fieldLabel:'政府部门'
+                },
+                {
+                    xtype: 'panel',
+                    height: 0,
+                    border: false
+                },{
                 hidden: true,
                 name: 'gov_id',
                 fieldLabel: 'gov_id'
@@ -1785,6 +1814,15 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             },
             items: [
+                {  xtype: 'checkbox',
+                    name:'demand_rz',
+                    fieldLabel:'融资需求'
+                },
+                {
+                    xtype: 'panel',
+                    height: 0,
+                    border: false
+                },
                 {
                     hidden: true,
                     name: 'refi_id',
@@ -1836,6 +1874,15 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             },
             items: [
+                {  xtype: 'checkbox',
+                    name:'demand_px',
+                    fieldLabel:'培训需求'
+                },
+                {
+                    xtype: 'panel',
+                    height: 0,
+                    border: false
+                },
                 {
                     hidden: true,
                     name: 'retra_id',
@@ -1886,6 +1933,15 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             },
             items: [
+                {  xtype: 'checkbox',
+                    name:'demand_rl',
+                    fieldLabel:'人力需求'
+                },
+                {
+                    xtype: 'panel',
+                    height: 0,
+                    border: false
+                },
                 {
                     hidden: true,
                     name: 'rehr_id',

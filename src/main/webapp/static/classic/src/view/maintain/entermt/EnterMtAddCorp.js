@@ -89,7 +89,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             Ext.getCmp('corp_add_form_id').scrollTo(0, 0, true);
         }
     },
-    items: [{
+    items: [
+        {
         xtype: 'fieldset',
         id: 'fieldset_base_id',
         title: '基本信息',
@@ -287,7 +288,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             xtype: 'textarea',
             fieldLabel: '备注'
         }]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_contact_id',
         title: '法定代表人',
@@ -353,7 +355,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             xtype: 'textarea',
             fieldLabel: '备注'
         }]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_ind_id',
         title: '国民经济行业分类信息',
@@ -380,7 +383,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 xtype: 'combobox',
                 name: 'indclass1',
                 fieldLabel: '行业一级分类',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry1store'
                 },
@@ -416,7 +419,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'indclass2',
                 fieldLabel: '行业二级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry2store'
                 },
@@ -451,7 +454,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'indclass3',
                 fieldLabel: '行业三级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry2store'
                 },
@@ -486,7 +489,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'indclass4',
                 fieldLabel: '行业四级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry2store'
                 },
@@ -500,7 +503,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                     }
                 }
             }]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_csrc_id',
         title: '证监会行业分类信息',
@@ -526,7 +530,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'csrc_type1',
             fieldLabel: '证监会行业一级分类',
             xtype: 'combobox',
-            allowBlank: false,
+            //allowBlank: false,
             store: {
                 type: 'industry1store'
             },
@@ -562,7 +566,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'csrc_type2',
                 fieldLabel: '证监会行业二级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry2store'
                 },
@@ -578,7 +582,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             }
 
         ]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_mai_id',
         title: '企业最近一次被关注信息',
@@ -668,7 +673,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             xtype: 'textarea',
             fieldLabel: '备注'
         }]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_fin_id',
         title: '企业财务信息',
@@ -1340,7 +1346,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 xtype: 'numberfield',
                 name: 'end_hj_fz_owner_right'
             }]
-    }, {
+    },
+        {
         xtype: 'fieldset',
         id: 'fieldset_service_id',
         title: '服务机构信息',
@@ -1361,7 +1368,17 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 }
             }
         },
-        items: [{
+        items: [
+            {  xtype: 'checkbox',
+                name:'type_server',
+                fieldLabel:'服务机构'
+            },
+            {
+                xtype: 'panel',
+                height: 0,
+                border: false
+            },
+            {
             name: 'srv_name',
             fieldLabel: '服务机构名称'
         }, {
@@ -1415,7 +1432,17 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 }
             }
         },
-        items: [{
+        items: [
+            {  xtype: 'checkbox',
+                name:'type_investors',
+                fieldLabel:'投资人'
+            },
+            {
+                xtype: 'panel',
+                height: 0,
+                border: false
+            },
+            {
             name: 'inv_domain',
             fieldLabel: '投资领域',
             colspan: 2
@@ -1425,7 +1452,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'inv_csrc_type1',
                 fieldLabel: '行业一级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry1store'
                 },
@@ -1461,7 +1488,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'inv_csrc_type2',
                 fieldLabel: '行业二级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry2store'
                 },
@@ -1496,7 +1523,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'inv_csrc_type3',
                 fieldLabel: '行业三级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry2store'
                 },
@@ -1531,7 +1558,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'inv_csrc_type4',
                 fieldLabel: '行业四级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry2store'
                 },
@@ -1549,7 +1576,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'inv_indclass1',
                 fieldLabel: '证监会行业一级分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry1store'
                 },
@@ -1584,7 +1611,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'inv_indclass2',
                 fieldLabel: '证监会行业二类分类',
                 xtype: 'combobox',
-                allowBlank: false,
+                //allowBlank: false,
                 store: {
                     type: 'industry2store'
                 },
@@ -1664,7 +1691,17 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 }
             }
         },
-        items: [{
+        items: [
+            {  xtype: 'checkbox',
+                name:'type_govermt',
+                fieldLabel:'政府部门'
+            },
+            {
+                xtype: 'panel',
+                height: 0,
+                border: false
+            },
+            {
             name: 'gov_domain',
             fieldLabel: '单位名称'
         }, {
@@ -1742,6 +1779,15 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             }
         },
         items: [
+            {  xtype: 'checkbox',
+                name:'demand_rz',
+                fieldLabel:'融资需求'
+            },
+            {
+                xtype: 'panel',
+                height: 0,
+                border: false
+            },
             {
                 name: 'refi_amounts',
                 fieldLabel: '融资金额'
@@ -1790,6 +1836,15 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             }
         },
         items: [
+            {  xtype: 'checkbox',
+                name:'demand_px',
+                fieldLabel:'培训需求'
+            },
+            {
+                xtype: 'panel',
+                height: 0,
+                border: false
+            },
             {
                 fieldLabel: '培训方式',
                 name: 'retra_mode',
@@ -1836,7 +1891,16 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 }
             }
         },
-        items: [{
+        items: [
+            {  xtype: 'checkbox',
+                name:'demand_rl',
+                fieldLabel:'人力需求'
+            },
+            {
+                xtype: 'panel',
+                height: 0,
+                border: false
+            },{
             name: 'rehr_post',
             fieldLabel: '需求职位'
         }, {

@@ -369,13 +369,15 @@ public interface CorpDao {
             "            postal, nature, regcap, bustermfdt, bustremtdt, regdt, list_area, " +
             "            listcode, listprice, listdt, channels, webchat, staffnum, regist_organ, " +
             "            regaddr, offaddr, scope, mbus, eprofile, phoinf, remark, indclass1, " +
-            "            indclass2, indclass3, indclass4, csrc_type1, csrc_type2,inputid ,inputdt " +
+            "            indclass2, indclass3, indclass4, csrc_type1, csrc_type2,inputid ,inputdt," +
+            "            type_server, type_investors, type_govermt,demand_rz, demand_px, demand_rl " +
             "            )" +
             "    VALUES (#{corpId}, #{corpBase.buslicno}, #{corpBase.name}, #{corpBase.unit}, #{corpBase.legrep}, #{corpBase.province}, #{corpBase.city}, #{corpBase.county}, #{corpBase.nos}, " +
             "            #{corpBase.postal}, #{corpBase.nature}, #{corpBase.regcap}, #{corpBase.bustermfdt}, #{corpBase.bustremtdt},#{corpBase.regdt}, #{corpBase.list_area}, " +
             "            #{corpBase.listcode}, #{corpBase.listprice}, #{corpBase.listdt}, #{corpBase.channels}, #{corpBase.webchat}, #{corpBase.staffnum}, #{corpBase.regist_organ}, " +
             "            #{corpBase.regaddr}, #{corpBase.offaddr}, #{corpBase.scope}, #{corpBase.mbus}, #{corpBase.eprofile}, #{corpBase.phoinf}, #{corpBase.remark}, #{corpBase.indclass1}, " +
-            "            #{corpBase.indclass2}, #{corpBase.indclass3}, #{corpBase.indclass4}, #{corpBase.csrc_type1}, #{corpBase.csrc_type2},#{inputid},#{currentTime}   " +
+            "            #{corpBase.indclass2}, #{corpBase.indclass3}, #{corpBase.indclass4}, #{corpBase.csrc_type1}, #{corpBase.csrc_type2},#{inputid},#{currentTime}," +
+            "            #{corpBase.type_server}, #{corpBase.type_investors}, #{corpBase.type_govermt}, #{corpBase.demand_rz}, #{corpBase.demand_px}, #{corpBase.demand_rl}     " +
             "            );" +
 
             " INSERT INTO work.tb_corp_finance( " +
@@ -497,12 +499,12 @@ public interface CorpDao {
             "           #{corpServicePojo.srv_post}, #{corpServicePojo.srv_descs}, #{corpServicePojo.srv_remark});" +
 
             " INSERT INTO work.tb_corp_maintain( " +
-            "             mai_corp_id,   mai_changer_dt,   " +
+            "             mai_corp_id,  mai_changer_id,  mai_changer_dt,   " +
             "            mai_recomdt, mai_trusteeship, mai_listst, mai_eclass, mai_maintain,  " +
             "            mai_reserve, mai_emaint, mai_dept, mai_post, mai_tel, mai_phone,  " +
             "            mai_fax, mai_email, mai_qq, mai_webchat, mai_bz) " +
-            "    VALUES (#{corpId},  mai_changer_id,  #{currentTime} ,   " +
-            "            #{corpMaintain.mai_recomdt},#{inputid},  #{corpMaintain.mai_trusteeship},  #{corpMaintain.mai_listst},  #{corpMaintain.mai_eclass},   " +
+            "    VALUES (#{corpId},  #{inputid}, #{currentTime} ,   " +
+            "            #{corpMaintain.mai_recomdt},  #{corpMaintain.mai_trusteeship},  #{corpMaintain.mai_listst},  #{corpMaintain.mai_eclass},   " +
             "            #{corpMaintain.mai_maintain},  #{corpMaintain.mai_reserve},  #{corpMaintain.mai_emaint},  #{corpMaintain.mai_dept},   " +
             "            #{corpMaintain.mai_post},  #{corpMaintain.mai_tel},  #{corpMaintain.mai_phone},  #{corpMaintain.mai_fax},   " +
             "            #{corpMaintain.mai_email},  #{corpMaintain.mai_qq},  #{corpMaintain.mai_webchat},  #{corpMaintain.mai_bz});" +
@@ -540,7 +542,9 @@ public interface CorpDao {
             "       listcode=#{corpBase.listcode},listprice=#{corpBase.listprice},listdt=#{corpBase.listdt},channels=#{corpBase.channels},webchat=#{corpBase.webchat}, " +
             "       staffnum=#{corpBase.staffnum},regist_organ=#{corpBase.regist_organ},regaddr=#{corpBase.regaddr},offaddr=#{corpBase.offaddr},scope=#{corpBase.scope}," +
             "       mbus=#{corpBase.mbus},eprofile=#{corpBase.eprofile},phoinf=#{corpBase.phoinf},remark=#{corpBase.remark},indclass1=#{corpBase.indclass1}, " +
-            "       indclass2=#{corpBase.indclass2},indclass3=#{corpBase.indclass3},indclass4=#{corpBase.indclass4},csrc_type1=#{corpBase.csrc_type1},csrc_type2=#{corpBase.csrc_type2}" +
+            "       indclass2=#{corpBase.indclass2},indclass3=#{corpBase.indclass3},indclass4=#{corpBase.indclass4},csrc_type1=#{corpBase.csrc_type1},csrc_type2=#{corpBase.csrc_type2}," +
+            "       type_server=#{corpBase.type_server}, type_investors=#{corpBase.type_investors}, type_govermt=#{corpBase.type_govermt}, demand_rz=#{corpBase.demand_rz}," +
+            "       demand_px=#{corpBase.demand_px}, demand_rl=#{corpBase.demand_rl} " +
             " WHERE id=#{corpBase.id};"+
 
 
@@ -661,4 +665,37 @@ public interface CorpDao {
             @Param(value = "corpMaintain") CorpMaintain corpMaintain
 
     );
+
+    @SelectProvider(type = CorpBaseDaoEmberSql.class, method = "listCorpBase")
+    List<CorpBase> listCorpBase(
+            @Param(value = "name") String name,
+            @Param(value = "nos") String nos,
+            @Param(value = "buslicno") String buslicno,
+            @Param(value = "listcode") String listcode,
+            @Param(value = "start") String start,
+            @Param(value = "limit") String limit,
+            @Param(value = "search_val") String search_val
+    );
+
+
+    class CorpBaseDaoEmberSql {
+        public String listCorpBase(Map<String, Object> para) {
+            String where = "";
+            if (!para.get("search_val").equals("no"))
+                where += " and name like '%" + para.get("search_val").toString() + "%' ";
+            if (null != para.get("name").toString() && 0 != para.get("name").toString().length())
+                where += " and name like '%" + para.get("name").toString() + "%' ";
+            if (null != para.get("nos").toString() && 0 != para.get("nos").toString().length())
+                where += " and nos like '%" + para.get("nos").toString() + "%' ";
+            if (null != para.get("buslicno").toString() && 0 != para.get("buslicno").toString().length())
+                where += " and buslicno like '%" + para.get("buslicno").toString() + "%' ";
+            if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
+                where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
+
+            return "select *  from work.tb_corp corp   WHERE 1 = 1  " +
+                    where +
+                    "ORDER BY corp.inputdt  DESC  limit " + para.get("limit").toString() + " offset " + para.get("start").toString();
+        }
+
+    }
 }

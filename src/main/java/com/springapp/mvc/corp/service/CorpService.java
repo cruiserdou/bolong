@@ -37,4 +37,6 @@ public interface CorpService {
     void updateCorp(Integer inputid,Timestamp currentTime, CorpBase corpBase, CorpContact corpContact, CorpFinance corpFinance,
                     CorpGov corpGov , CorpInvestor corpInvestor,CorpReFinancing corpReFinancing
             ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo,CorpMaintain corpMaintain );
+
+    List<CorpBase> listCorpBase(String name, String nos, String buslicno, String listcode, String start, String limit, String search_val);
 }
