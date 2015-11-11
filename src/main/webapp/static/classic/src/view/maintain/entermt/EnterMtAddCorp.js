@@ -204,17 +204,20 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'regdt',
             xtype: 'datefield',
             format: 'Y-m-d',
+            editable: false,
             fieldLabel: '注册日期'
         }, {
             allowBlank: false,
             name: 'bustermfdt',
             xtype: 'datefield',
+            editable: false,
             format: 'Y-m-d',
             fieldLabel: '营业期限自'
         }, {
             allowBlank: false,
             name: 'bustremtdt',
             xtype: 'datefield',
+            editable: false,
             format: 'Y-m-d',
             fieldLabel: '营业期限至'
         }, {
@@ -224,6 +227,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         }, {
             name: 'listdt',
             xtype: 'datefield',
+            editable: false,
             format: 'Y-m-d',
             fieldLabel: '挂牌日期'
         }, {
@@ -263,7 +267,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             fieldLabel: '主营业务'
         }, {
             name: 'eprofile',
-            xtype: 'textarea',
+            xtype: 'htmleditor',
             fieldLabel: '企业简介'
         }, {
             name: 'remark',
@@ -581,11 +585,13 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         items: [{
             name: 'mai_changer_dt',
             xtype: 'datefield',
+            editable: false,
             format: 'Y-m-d',
             fieldLabel: '更新日期'
         }, {
             name: 'mai_recomdt',
             xtype: 'datefield',
+            editable: false,
             format: 'Y-m-d',
             fieldLabel: '推荐日期'
         }, {
@@ -668,12 +674,14 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             {
                 name: 'start_time',
                 xtype: 'datefield',
+                editable: false,
                 format: 'Y-m-d',
                 fieldLabel: '时间始',
                 colspan: 3
             }, {
                 name: 'end_time',
                 xtype: 'datefield',
+                editable: false,
                 format: 'Y-m-d',
                 fieldLabel: '时间至',
                 colspan: 3
@@ -1731,6 +1739,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'refi_deadline',
                 fieldLabel: '融资期限',
                 xtype: 'datefield',
+                editable: false,
                 format: 'Y-m-d'
             }, {
                 name: 'refi_desc',
@@ -1767,6 +1776,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'retra_dt',
                 fieldLabel: '有效时间',
                 xtype: 'datefield',
+                editable: false,
                 format: 'Y-m-d'
             }, {
                 name: 'retra_acc_cost',

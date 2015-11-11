@@ -215,7 +215,12 @@
                 // Remove this entry to individually load sources from the framework.
                 "path": "${framework.dir}/build/ext-all-rtl-debug.js"
             }
-        ]
+        ],
+        //以下是新增的添加本地化包的代码
+        "requires" : [
+            "locale"
+        ],
+        "locale": "zh_CN"
     },
 
     /**
@@ -305,6 +310,9 @@
         "cache": {
             "enable": true
         }
+//        "compressor": {
+//            "type": "yui"
+//        }
     },
     
     /**
