@@ -628,7 +628,19 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 hidden: true,
                 name: 'mai_id',
                 fieldLabel: 'mai_id'
-            }, {
+            },
+                {
+                    hidden: true,
+                    id:"mai_changer_id",
+                    name: 'mai_changer_id',
+                    fieldLabel: 'mai_changer_id'
+                },
+                {
+                    xtype: 'panel',
+                    border: false,
+                    html: '<button type="button" onclick="corp_maintain_info()">维护人</button>'
+                },
+                {
                 name: 'mai_changer_dt',
                 xtype: 'datefield',
                 format: 'Y-m-d',

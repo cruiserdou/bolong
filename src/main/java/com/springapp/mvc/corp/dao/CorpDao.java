@@ -501,8 +501,8 @@ public interface CorpDao {
             "            mai_recomdt, mai_trusteeship, mai_listst, mai_eclass, mai_maintain,  " +
             "            mai_reserve, mai_emaint, mai_dept, mai_post, mai_tel, mai_phone,  " +
             "            mai_fax, mai_email, mai_qq, mai_webchat, mai_bz) " +
-            "    VALUES (#{corpId}, #{currentTime} ,   " +
-            "            #{corpMaintain.mai_recomdt},  #{corpMaintain.mai_trusteeship},  #{corpMaintain.mai_listst},  #{corpMaintain.mai_eclass},   " +
+            "    VALUES (#{corpId},  mai_changer_id,  #{currentTime} ,   " +
+            "            #{corpMaintain.mai_recomdt},#{inputid},  #{corpMaintain.mai_trusteeship},  #{corpMaintain.mai_listst},  #{corpMaintain.mai_eclass},   " +
             "            #{corpMaintain.mai_maintain},  #{corpMaintain.mai_reserve},  #{corpMaintain.mai_emaint},  #{corpMaintain.mai_dept},   " +
             "            #{corpMaintain.mai_post},  #{corpMaintain.mai_tel},  #{corpMaintain.mai_phone},  #{corpMaintain.mai_fax},   " +
             "            #{corpMaintain.mai_email},  #{corpMaintain.mai_qq},  #{corpMaintain.mai_webchat},  #{corpMaintain.mai_bz});" +

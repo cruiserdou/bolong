@@ -650,3 +650,126 @@ function corp_gd_add() {
     }).show(Ext.get('corp_gd_window'));
 }
 
+function corp_maintain_info( ) {
+
+
+    var store = Ext.create('Ext.data.Store', {
+        extend: 'Ext.data.Store',
+        model: 'app.model.system.UserMt',
+        alias: 'store.userstore',
+        proxy: {
+            type: 'ajax',
+            actionMethods: {
+                read: 'GET'
+            },
+            extraParams: {
+                id:Ext.getCmp('mai_changer_id').getValue()
+            },
+            api: {
+                read: '/bolong/userslist'
+            },
+            reader: {
+                type: 'json',
+                rootProperty: 'list'
+            }
+        }
+    });
+    //store.each(function (record) {
+    //    alert(record.get('name'));
+    //});
+
+    //var record= store.getById(Ext.getCmp('mai_changer_id').getValue());
+    //alert(record.data['id']);
+    var  editForm = new Ext.form.FormPanel({
+        xtype: 'form',
+        frame: true,
+        bodyPadding: 16,
+        defaults: {
+            labelWidth: 90,
+            xtype: 'textfield',
+            width: 300,
+            anchor: '100%'
+        },
+        items: [
+            {
+                xtype: 'textfield',
+                readOnly: true,
+                name: 'account',
+                fieldLabel: '帐号',
+                allowBlank: false
+            },  {
+                xtype: 'textfield',
+                name: 'name',
+                fieldLabel: '姓名',
+                allowBlank: false
+            }, {
+                xtype: 'container',
+                layout: 'column',
+                items: [{
+                    layout: "column",
+                    fieldLabel: '性别',
+                    labelAlign: 'right',
+                    xtype: 'radiogroup', columns: 50, items: [
+                        {boxLabel: "男", name: 'sex', inputValue: '男', checked: true},
+                        {boxLabel: "女", name: 'sex', inputValue: '女'}
+                    ]
+                }]
+            }, {
+                xtype: 'textfield',
+                name: 'phone',
+                fieldLabel: '手机号' },
+            {
+                xtype: 'textfield',
+                name: 'address',
+                fieldLabel: '联系地址',
+                allowBlank: false
+            },
+            {
+                xtype: 'textfield',
+                name: 'remark',
+                fieldLabel: '备注'
+            },
+            {
+                xtype: 'fieldset',
+                //border: false,
+                title: '图片预览',
+                defaults: {margin:'0 0 0 80', width: 100,height:100},
+                items: [
+                    {
+                        xtype: 'image',
+                        id: 'staffavatar',
+                        border:1,
+                        //src: 'static/upload/annex/'+record.data['photo'],
+                        src: '/bolong/static/resources/per.png',
+                        style: {
+                            borderColor: 'blue',
+                            borderStyle: 'solid'
+                        }}
+                ]
+            }
+        ],
+        buttonAlign: "center",
+        buttons: [
+            {
+                text: '关闭',
+                iconCls: 'icon_save'
+            }
+        ]
+    });
+
+    editWindow = new Ext.Window({
+        title: '维护人信息',
+        id: 'corp_maintain_window',
+        width: 400,
+        height: 400,
+        modal: true,
+        frame: true,
+        border: false,
+        items: [editForm]
+    });
+    editWindow.show(Ext.get('corp_maintain_window'));
+    editForm.getForm().loadRecord(record);
+
+}
+
+
