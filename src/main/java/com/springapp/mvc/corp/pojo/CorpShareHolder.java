@@ -13,7 +13,7 @@ public class CorpShareHolder {
     private String gd_shareholdnum;//持股数量
     private String gd_currencynum;//流通数量
     private String gd_freezenum;    //冻结数量
-    private String gd_position; //职务
+    private String gd_psotion; //职务
     private String gd_doctype;  //证件类型
     private String gd_docnum;   //证件号码
     private String gd_phone;    //手机号码
@@ -97,11 +97,11 @@ public class CorpShareHolder {
     }
 
     public String getGd_position() {
-        return gd_position;
+        return gd_psotion;
     }
 
     public void setGd_position(String gd_position) {
-        this.gd_position = gd_position;
+        this.gd_psotion = gd_position;
     }
 
     public String getGd_doctype() {

@@ -11,7 +11,9 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
         'app.view.maintain.entermt.innerenter.InnerEnterImgGridView',
         'app.view.maintain.entermt.innerenter.InnerEnterGdGridView',
         'app.view.maintain.entermt.innerenter.InnerEnterAddCorp'
+
     ],
+
     itemdblclick: function (view, record) {
         //var mypanel = Ext.create('Ext.panel.Panel', {
         //    id: "mypanel",
@@ -136,7 +138,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                 pack: 'start',
                 align: 'stretch'
             },
-            items: [{
+            items: [
+                {
                 xtype: 'innerenteraddcorp'
                 //id: 'innerenteraddcorp_id'
             }, {
@@ -266,7 +269,6 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
 function win_close_edit() {
     Ext.getCmp('enterprise_edit_id').close();
 }
-
 function save_corp_edit(id) {
 
     var form_obt_edit = document.getElementById("apply_corp_form_edit");
@@ -315,13 +317,10 @@ function save_corp_edit(id) {
 
     Ext.getCmp('innerentergridview_id').getStore().reload();
 }
-
-
 function buslicnoCheck(num) {
     var no_regexp = /\d{15}/;
     return no_regexp.exec(num) != null;
 }
-
 function buslicno_check_edit(id) {
     var form_obt_edit = document.getElementById("apply_corp_form_edit");
     if (form_obt_edit['buslicno'].value == "") {
@@ -497,7 +496,6 @@ function corp_imgs_upload() {
         ]
     }).show(Ext.get('corp_imgs_window'));
 }
-
 function corp_gd_add() {
     Ext.create('widget.window', {
         title: '企业股东',
@@ -742,15 +740,11 @@ function corp_maintain_info() {
             if (success) {
                 var myarray = new Array();
                 for (var i = 0; i < store.getCount(); i++) {
-                    //myarray[i] = store.getAt(i).getData();
                 }
                 editForm.getForm().loadRecord(store.getAt(0));
             }
-
         }
     });
-
-
 
     var editWindow = new Ext.Window({
         title: '维护人信息',
@@ -763,5 +757,6 @@ function corp_maintain_info() {
         items: [editForm]
     });
     editWindow.show(Ext.get('corp_maintain_window'));
-
 }
+
+

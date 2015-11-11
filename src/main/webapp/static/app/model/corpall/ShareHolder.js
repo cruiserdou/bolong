@@ -10,7 +10,7 @@ Ext.define('app.model.corpall.ShareHolder', {
         { name : 'gd_shareholdnum'},
         { name : 'gd_currencynum'},
         { name : 'gd_freezenum'},
-        { name : 'gd_position'},
+        { name : 'gd_psotion'},
         { name : 'gd_doctype'},
         { name : 'gd_docnum'},
         { name : 'gd_phone'},
