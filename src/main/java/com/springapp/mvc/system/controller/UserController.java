@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
@@ -34,6 +35,18 @@ public class UserController {
         DataShop dataShop = new DataShop();
         List list = userService.list(name);
         dataShop.setList(list);
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
+
+    @RequestMapping(value = "/getuser",method = RequestMethod.POST)
+    public
+    @ResponseBody
+    DataShop getUser(
+            HttpSession session
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        dataShop.setName(session.getAttribute("name").toString());
         dataShop.setSuccess(true);
         return dataShop;
     }

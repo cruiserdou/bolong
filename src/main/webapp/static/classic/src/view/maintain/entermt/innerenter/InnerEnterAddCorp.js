@@ -196,7 +196,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             }, {
                 name: 'nos',
-                fieldLabel: '公司简介'
+                fieldLabel: '公司简称'
             }, {
                 name: 'postal',
                 fieldLabel: '邮政编码'

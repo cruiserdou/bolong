@@ -491,6 +491,7 @@ function corp_imgs_upload() {
             {
                 xtype: 'innerenterimggridview',
                 id: 'innerenterimggridview_id',
+                margin: '1 0 0 0',
                 region: 'center'
             }
         ]
@@ -498,7 +499,6 @@ function corp_imgs_upload() {
 }
 
 function corp_gd_add() {
-
     Ext.create('widget.window', {
         title: '企业股东',
         id: 'corp_gd_window',
@@ -644,13 +644,14 @@ function corp_gd_add() {
             {
                 xtype: 'innerentergdgridview',
                 id: 'innerentergdgridview_id',
+                margin: '1 0 0 0',
                 region: 'center'
             }
         ]
     }).show(Ext.get('corp_gd_window'));
 }
 
-function corp_maintain_info( ) {
+function corp_maintain_info() {
 
 
     var store = Ext.create('Ext.data.Store', {
@@ -663,7 +664,7 @@ function corp_maintain_info( ) {
                 read: 'GET'
             },
             extraParams: {
-                id:Ext.getCmp('mai_changer_id').getValue()
+                id: Ext.getCmp('mai_changer_id').getValue()
             },
             api: {
                 read: '/bolong/userslist'
@@ -680,7 +681,7 @@ function corp_maintain_info( ) {
 
     //var record= store.getById(Ext.getCmp('mai_changer_id').getValue());
     //alert(record.data['id']);
-    var  editForm = new Ext.form.FormPanel({
+    var editForm = new Ext.form.FormPanel({
         xtype: 'form',
         frame: true,
         bodyPadding: 16,
@@ -697,7 +698,7 @@ function corp_maintain_info( ) {
                 name: 'account',
                 fieldLabel: '帐号',
                 allowBlank: false
-            },  {
+            }, {
                 xtype: 'textfield',
                 name: 'name',
                 fieldLabel: '姓名',
@@ -717,7 +718,8 @@ function corp_maintain_info( ) {
             }, {
                 xtype: 'textfield',
                 name: 'phone',
-                fieldLabel: '手机号' },
+                fieldLabel: '手机号'
+            },
             {
                 xtype: 'textfield',
                 name: 'address',
@@ -733,18 +735,19 @@ function corp_maintain_info( ) {
                 xtype: 'fieldset',
                 //border: false,
                 title: '图片预览',
-                defaults: {margin:'0 0 0 80', width: 100,height:100},
+                defaults: {margin: '0 0 0 80', width: 100, height: 100},
                 items: [
                     {
                         xtype: 'image',
                         id: 'staffavatar',
-                        border:1,
+                        border: 1,
                         //src: 'static/upload/annex/'+record.data['photo'],
                         src: '/bolong/static/resources/per.png',
                         style: {
                             borderColor: 'blue',
                             borderStyle: 'solid'
-                        }}
+                        }
+                    }
                 ]
             }
         ],
@@ -757,7 +760,7 @@ function corp_maintain_info( ) {
         ]
     });
 
-    editWindow = new Ext.Window({
+    var editWindow = new Ext.Window({
         title: '维护人信息',
         id: 'corp_maintain_window',
         width: 400,
@@ -769,7 +772,4 @@ function corp_maintain_info( ) {
     });
     editWindow.show(Ext.get('corp_maintain_window'));
     editForm.getForm().loadRecord(record);
-
 }
-
-

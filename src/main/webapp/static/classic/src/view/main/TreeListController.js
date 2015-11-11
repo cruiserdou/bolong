@@ -91,20 +91,6 @@ Ext.define('app.view.main.TreeListController', {
                                     border: false,
                                     scrollable: 'y',
                                     items: [{
-                                        //    xtype: 'panel',
-                                        //    region: 'south',
-                                        //    layout: 'center',
-                                        //    items: [{
-                                        //        xtype: 'image',
-                                        //        src: '/bolong/static/resources/wechat.png',
-                                        //        width: 226,
-                                        //        height: 226
-                                        //    }],
-                                        //    listeners: {
-                                        //        beforerender: function () {
-                                        //        }
-                                        //    }
-                                        //}, {
                                             xtype: 'panel',
                                             region: 'center',
                                             layout: 'fit',
@@ -148,6 +134,15 @@ Ext.define('app.view.main.TreeListController', {
                                 loginWindow.close();
                                 Ext.getCmp('main_header').show();
                                 Ext.getCmp('main_window').setTitle("甘肃中小企业信息管理系统")
+
+                                Ext.Ajax.request({
+                                    url: '/bolong/getuser',
+                                    method: 'POST',
+                                    success: function (response, opts) {
+                                        var obj = Ext.decode(response.responseText);
+                                        Ext.getCmp('login_user_btn').setText("登陆人：" + obj.name)
+                                    }
+                                });
                                 Ext.getCmp('mTabpanel').show();
                             },
                             failure: function (response, opts) {
