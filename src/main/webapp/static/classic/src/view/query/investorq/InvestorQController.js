@@ -66,7 +66,7 @@ Ext.define('app.view.query.investorq.InvestorQController', {
             }, {
                 xtype: 'panel',
                 border: false,
-                html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
+                html: '<div id="enter_menu_list">' +
                 '<ul>' +
                 '<li><a href="#table_base">基本信息</a></li>' +
                 '<li><a href="#table_sh" >股东名册</a></li>' +
@@ -82,8 +82,7 @@ Ext.define('app.view.query.investorq.InvestorQController', {
             }]
         });
 
-
-        var editWindow = Ext.create('Ext.window.Window', {
+        Ext.create('Ext.window.Window', {
             layout: 'fit',
             id: 'investors_query_id',
             modal: true,
@@ -92,8 +91,7 @@ Ext.define('app.view.query.investorq.InvestorQController', {
             closeAction: 'destroy',
             autoDestroy: true,
             items: [mypanel]
-        });
-        editWindow.show(Ext.get('body'));
+        }).show();
     },
 
     refresh: function () {
@@ -148,38 +146,6 @@ Ext.define('app.view.query.investorq.InvestorQController', {
         } else {
             _this.up().up().remove(Ext.getCmp('corpinveditloggridview_id'));
         }
-    },
-
-    delete: function () {
-        Ext.Msg.confirm('信息', '确定要删除所选信息吗？', function (btn) {
-            if (btn == 'yes') {
-                var sm = Ext.getCmp('investorqgridview_id').getSelectionModel();
-                var rows = sm.getSelection();
-
-                if (rows.length > 0) {
-                    for (var i = 0; i < rows.length; i++) {
-                        var row = rows[i];
-                        var id = row.get('id');
-                        Ext.Ajax.request({
-                            url: '/cloudl/dpos/delete',
-                            params: {
-                                "id": id
-                            },
-                            waitMsg: '正在删除数据...',
-                            success: function () {
-                                Ext.getCmp('investorqgridview_id').getStore().load();
-                                Ext.Msg.alert("成功", "数据删除成功!");
-                            },
-                            failure: function () {
-                                Ext.Msg.alert("失败", "数据删除失败!");
-                            }
-                        });
-                    }
-                } else {
-                    Ext.Msg.alert('提示', '请选择要删除的记录');
-                }
-            }
-        });
     }
 });
 

@@ -90,7 +90,7 @@ var corp_tpl = new Ext.XTemplate(
     '</tr>' +
     '<tr>',
     '<th>备注</th>',
-    '<td colspan="3">{remark}></td>',
+    '<td colspan="3">{remark}</td>',
     '</tr>',
     '<tr>',
     '<th>企业图文信息</th>',

@@ -10,8 +10,6 @@ Ext.define('app.view.query.enter.EnterInfoController', {
         'app.xtemplate.corp_edit'
     ],
     itemclick: function (this_, record_) {
-        //var vPanel = Ext.getCmp('investorqdetailview_id');
-        //vPanel.tpl.overwrite(vPanel.body, record_.data);
         if (Ext.getCmp('entereditloggridview_id')) {
             Ext.getCmp('entereditloggridview_id').getStore().load({
                 params: {
@@ -93,7 +91,7 @@ Ext.define('app.view.query.enter.EnterInfoController', {
             }, {
                 xtype: 'panel',
                 border: false,
-                html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
+                html: '<div id="enter_menu_list">' +
                 '<ul>' +
                 '<li><a href="#table_base">基本信息</a></li>' +
                 '<li><a href="#table_sh">股东名册</a></li>' +
@@ -125,7 +123,6 @@ Ext.define('app.view.query.enter.EnterInfoController', {
             items: [mypanel]
         }).show();
     },
-
 
     btnClick: function () {
         Ext.getCmp('enter_grid_id').getStore().load();
@@ -179,12 +176,6 @@ Ext.define('app.view.query.enter.EnterInfoController', {
     btnReset: function (_this) {
         _this.up('form').getForm().reset();
         Ext.getCmp('enter_grid_id').getStore().load();
-    },
-
-    onToggleConfig: function (menuitem) {
-        var treelist = this.lookupReference('treelist');
-
-        treelist.setConfig(menuitem.config, menuitem.checked);
     }
 });
 
