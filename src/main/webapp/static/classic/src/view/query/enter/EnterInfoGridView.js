@@ -35,6 +35,7 @@ Ext.define('app.view.query.enter.EnterInfoGridView', {
         {
             text: '企业名称',
             width: 230,
+            locked: true,
             sortable: true,
             dataIndex: 'name',
             groupable: false

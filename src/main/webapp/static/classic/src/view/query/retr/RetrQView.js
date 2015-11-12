@@ -38,6 +38,7 @@ Ext.define('app.view.query.retr.RetrQView', {
     layout: 'border',
     items: [{
         xtype: 'retrqgridview',
+        margin: '1 0 0 0',
         region: 'center',
         id: 'retrqgridview_id',
         listeners: {

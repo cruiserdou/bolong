@@ -53,7 +53,7 @@ var corp_tpl = new Ext.XTemplate(
     '<tr>',
     '<th>挂牌代码</th>' +
     '<td>{listcode}</td>' +
-    '<th>挂牌价格<br>元/元出资(股)</th>' +
+    '<th>挂牌价格 元/元出资(股)</th>' +
     '<td>{listprice}</td>' +
     '</tr>' +
     '<tr>' +
