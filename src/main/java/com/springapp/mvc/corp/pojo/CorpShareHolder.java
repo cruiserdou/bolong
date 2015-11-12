@@ -96,13 +96,16 @@ public class CorpShareHolder {
         this.gd_freezenum = gd_freezenum;
     }
 
-    public String getGd_position() {
+
+
+    public String getGd_psotion() {
         return gd_psotion;
     }
 
-    public void setGd_position(String gd_position) {
-        this.gd_psotion = gd_position;
+    public void setGd_psotion(String gd_psotion) {
+        this.gd_psotion = gd_psotion;
     }
+
 
     public String getGd_doctype() {
         return gd_doctype;
