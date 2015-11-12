@@ -120,7 +120,8 @@ public class CorpController {
     @RequestMapping(value = "/corpbaselist", method = RequestMethod.POST)
     public
     @ResponseBody
-    DataShop listCorpBase(
+    DataShop listCorpBases(
+            @RequestParam(value = "type", required = false, defaultValue = "") String type,
             @RequestParam(value = "name", required = false, defaultValue = "") String name,
             @RequestParam(value = "nos", required = false, defaultValue = "") String nos,
             @RequestParam(value = "buslicno", required = false, defaultValue = "") String buslicno,
@@ -131,8 +132,9 @@ public class CorpController {
             HttpSession session
     ) throws Exception {
         DataShop dataShop = new DataShop();
-        List list = corpService.listCorpBase(name, nos, buslicno, listcode, start, limit, search_val);
-        int count = corpService.getCorpCount(name, nos, buslicno, listcode, start, limit);
+        type="refi";
+        List list = corpService.listCorpBase(type,name, nos, buslicno, listcode, start, limit, search_val);
+        int count = corpService.getCorpBaseCount(type, name, nos, buslicno, listcode, start, limit);
         dataShop.setSuccess(true);
         dataShop.setList(list);
         dataShop.setTotal(count);

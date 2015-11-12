@@ -50,7 +50,8 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_query', {
                             name: Ext.getCmp('query_basic_name_id').getValue(),
                             nos: Ext.getCmp('query_basic_nos_id').getValue(),
                             buslicno: Ext.getCmp('query_basic_buslicno_id').getValue(),
-                            listcode: Ext.getCmp('query_basic_listcode_id').getValue()
+                            listcode: Ext.getCmp('query_basic_listcode_id').getValue(),
+                            type:'refi'
                         }
                     });
                 } 

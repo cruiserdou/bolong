@@ -1,7 +1,7 @@
 /**
  * Created by jj on 14-6-19.
  */
-Ext.define('app.model.corpall.Corp', {
+Ext.define('app.model.corpall.CorpBase', {
     extend: 'Ext.data.Model',
     fields: [
         'id',

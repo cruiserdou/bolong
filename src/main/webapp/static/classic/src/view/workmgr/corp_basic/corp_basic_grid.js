@@ -8,8 +8,9 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_grid', {
     bodyStyle: 'margin: 0 2px',
     columnLines: true,
     requires: [
-        'app.store.corpall.CorpAllStore',
+        'app.store.corpall.CorpBase',
         'Ext.grid.filters.Filters',
+        'app.model.corpall.CorpBase',
 
         'Ext.data.*',
         'Ext.grid.*',
@@ -108,7 +109,7 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_grid', {
     initComponent: function () {
         var store = Ext.create('Ext.data.Store', {
             extend: 'Ext.data.Store',
-            model: 'App.model.corpall.CorpAll',
+            model:  'app.model.corpall.CorpBase',
             alias: 'store.corpbasestore',
             pageSize: 50,
             proxy: {
@@ -117,7 +118,7 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_grid', {
                     read: 'POST'
                 },
                 api: {
-                    read: '/bolong/corplist'
+                    read: '/bolong/corpbaselist'
                 },
                 reader: {
                     type: 'json',

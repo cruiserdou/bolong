@@ -82,8 +82,11 @@ public class CorpServiceImpl implements CorpService {
                 , corpReHr, corpReTrain, corpServicePojo, corpMaintain);
     }
 
-    public List<CorpBase> listCorpBase(String name, String nos, String buslicno, String listcode, String start, String limit, String search_val){
-        return corpDao.listCorpBase(name, nos, buslicno, listcode, start, limit, search_val);
+    public List<CorpBase> listCorpBase(String type,String name, String nos, String buslicno, String listcode, String start, String limit, String search_val){
+        return corpDao.listCorpBase(type,name, nos, buslicno, listcode, start, limit, search_val);
+    }
+    public int getCorpBaseCount(String type,String name, String nos, String buslicno, String listcode, String start, String limit){
+        return corpDao.getCorpBaseCount(type,name, nos, buslicno, listcode, start, limit);
     }
 }
 

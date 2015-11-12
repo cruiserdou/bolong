@@ -38,5 +38,7 @@ public interface CorpService {
                     CorpGov corpGov , CorpInvestor corpInvestor,CorpReFinancing corpReFinancing
             ,CorpReHr corpReHr, CorpReTrain corpReTrain, CorpServicePojo corpServicePojo,CorpMaintain corpMaintain );
 
-    List<CorpBase> listCorpBase(String name, String nos, String buslicno, String listcode, String start, String limit, String search_val);
+    List<CorpBase> listCorpBase(String type,String name, String nos, String buslicno, String listcode, String start, String limit, String search_val);
+    int getCorpBaseCount(String type,String name, String nos, String buslicno, String listcode, String start, String limit);
+
 }

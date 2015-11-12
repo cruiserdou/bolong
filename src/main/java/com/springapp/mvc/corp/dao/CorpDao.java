@@ -666,8 +666,14 @@ public interface CorpDao {
 
     );
 
+
+
+
+
+
     @SelectProvider(type = CorpBaseDaoEmberSql.class, method = "listCorpBase")
     List<CorpBase> listCorpBase(
+            @Param(value = "type") String type,
             @Param(value = "name") String name,
             @Param(value = "nos") String nos,
             @Param(value = "buslicno") String buslicno,
@@ -677,10 +683,21 @@ public interface CorpDao {
             @Param(value = "search_val") String search_val
     );
 
+    @SelectProvider(type = CorpBaseDaoEmberSql.class, method = "countCorpBase")
+    int getCorpBaseCount(
+            @Param(value = "type") String type,
+            @Param(value = "name") String name,
+            @Param(value = "nos") String nos,
+            @Param(value = "buslicno") String buslicno,
+            @Param(value = "listcode") String listcode,
+            @Param(value = "start") String start,
+            @Param(value = "limit") String limit
+    );
 
     class CorpBaseDaoEmberSql {
         public String listCorpBase(Map<String, Object> para) {
             String where = "";
+
             if (!para.get("search_val").equals("no"))
                 where += " and name like '%" + para.get("search_val").toString() + "%' ";
             if (null != para.get("name").toString() && 0 != para.get("name").toString().length())
@@ -691,11 +708,35 @@ public interface CorpDao {
                 where += " and buslicno like '%" + para.get("buslicno").toString() + "%' ";
             if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
-
-            return "select *  from work.tb_corp corp   WHERE 1 = 1  " +
+            if (para.get("type").equals("refi"))
+                where += " and id   not in (select mos_corp_id  from work.tb_refi_mos)";
+            return "select id, buslicno, name, unit, legrep, province, city, county, nos,  " +
+                    "       postal, nature, regcap, bustermfdt, bustremtdt, regdt, list_area,  " +
+                    "       listcode, listprice, listdt, channels, webchat, staffnum, regist_organ, " +
+                    "       regaddr, offaddr, scope, mbus, eprofile, phoinf, remark, indclass1,  " +
+                    "       indclass2, indclass3, indclass4, csrc_type1, csrc_type2, csrc_type3,  " +
+                    "       csrc_type4, type_enterp, type_server, type_investors, type_govermt,  " +
+                    "       demand_rz, demand_px, demand_rl  from work.tb_corp    WHERE 1 = 1  " +
                     where +
-                    "ORDER BY corp.inputdt  DESC  limit " + para.get("limit").toString() + " offset " + para.get("start").toString();
+                    "ORDER BY  inputdt  DESC  limit " + para.get("limit").toString() + " offset " + para.get("start").toString();
         }
-
+        public String countCorpBase(Map<String, Object> para) {
+            String where = "";
+            if (null != para.get("name").toString() && 0 != para.get("name").toString().length())
+                where += " and name like '%" + para.get("name").toString() + "%' ";
+            if (null != para.get("nos").toString() && 0 != para.get("nos").toString().length())
+                where += " and nos like '%" + para.get("nos").toString() + "%' ";
+            if (null != para.get("buslicno").toString() && 0 != para.get("buslicno").toString().length())
+                where += " and buslicno like '%" + para.get("buslicno").toString() + "%' ";
+            if (null != para.get("listcode").toString() && 0 != para.get("listcode").toString().length())
+                where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
+            if (para.get("type").equals("refi"))
+                where += " and id   not in (select mos_corp_id  from work.tb_refi_mos)";
+            return " SELECT count(id) " +
+                    " FROM work.tb_corp " +
+                    " WHERE 1 = 1  " +
+                    where;
+        }
     }
+
 }
