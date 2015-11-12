@@ -24,7 +24,15 @@ Ext.define('app.view.workmgr.refimosf.RefimosfAddView', {
             name: 'mos_corp_id',
             id: 'corp_id',
             hidden: true
-        }, {
+        },
+            {
+                xtype: 'textfield',
+                name: 'type',
+                id: 'refi_type',
+                value:"refi",
+                hidden: true
+            },
+            {
             xtype: "fieldcontainer", layout: "hbox",
             items: [
                 {
@@ -36,6 +44,7 @@ Ext.define('app.view.workmgr.refimosf.RefimosfAddView', {
                     labelAlign: 'right',
                     id: 'corp_name_id'
                 },
+
                 {
                     xtype: "button", text: "...",
                     handler: function () {

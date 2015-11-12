@@ -24,7 +24,13 @@ Ext.define('app.view.workmgr.maintainplan.MaintainplanAddView', {
             name: 'mp_corp_id',
             id: 'corp_id',
             hidden: true
-        }, {
+        },  {
+            xtype: 'textfield',
+            name: 'type',
+            id: 'mp_type',
+            value:"mp",
+            hidden: true
+        },{
             xtype: "fieldcontainer",
             layout: "hbox",
             items: [

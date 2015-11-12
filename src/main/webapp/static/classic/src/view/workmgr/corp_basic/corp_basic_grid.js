@@ -34,7 +34,6 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_grid', {
 
     selModel: {
         type: 'spreadsheet',
-        // Disables sorting by header click, though it will be still available via menu
         columnSelect: true,
         checkboxSelect: true,
         pruneRemoved: false,
@@ -98,7 +97,6 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_grid', {
         {text: '培训需求', width: 120, dataIndex: 'demand_px', hidden: true},
         {text: '人力需求', width: 120, dataIndex: 'demand_rl', hidden: true},
         {text: '录入时间', width: 120, dataIndex: 'inputdt', hidden: true}
-
     ],
 
     viewConfig: {

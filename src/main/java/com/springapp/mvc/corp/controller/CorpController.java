@@ -132,7 +132,6 @@ public class CorpController {
             HttpSession session
     ) throws Exception {
         DataShop dataShop = new DataShop();
-        type="refi";
         List list = corpService.listCorpBase(type,name, nos, buslicno, listcode, start, limit, search_val);
         int count = corpService.getCorpBaseCount(type, name, nos, buslicno, listcode, start, limit);
         dataShop.setSuccess(true);

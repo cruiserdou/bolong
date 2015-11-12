@@ -710,6 +710,8 @@ public interface CorpDao {
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
             if (para.get("type").equals("refi"))
                 where += " and id   not in (select mos_corp_id  from work.tb_refi_mos)";
+            if (para.get("type").equals("mp"))
+                where += " and id   not in (select mp_corp_id  from work.tb_maintain_plan)";
             return "select id, buslicno, name, unit, legrep, province, city, county, nos,  " +
                     "       postal, nature, regcap, bustermfdt, bustremtdt, regdt, list_area,  " +
                     "       listcode, listprice, listdt, channels, webchat, staffnum, regist_organ, " +
@@ -732,6 +734,8 @@ public interface CorpDao {
                 where += " and listcode like '%" + para.get("listcode").toString() + "%' ";
             if (para.get("type").equals("refi"))
                 where += " and id   not in (select mos_corp_id  from work.tb_refi_mos)";
+            if (para.get("type").equals("mp"))
+                where += " and id   not in (select mp_corp_id  from work.tb_maintain_plan)";
             return " SELECT count(id) " +
                     " FROM work.tb_corp " +
                     " WHERE 1 = 1  " +

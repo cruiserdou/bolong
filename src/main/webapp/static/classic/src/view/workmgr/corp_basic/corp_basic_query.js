@@ -45,13 +45,21 @@ Ext.define('app.view.workmgr.corp_basic.corp_basic_query', {
             text: '查找',
             listeners: {
                 click: function () {
+                    var type="";
+                    if (Ext.getCmp('mp_type')){
+                        type=Ext.getCmp('mp_type').getValue()
+                    }
+                    if (Ext.getCmp('refi_type')){
+                        type=Ext.getCmp('refi_type').getValue()
+                    }
+
                     Ext.getCmp('corp_basic_grid_id').getStore().load({
                         params: {
                             name: Ext.getCmp('query_basic_name_id').getValue(),
                             nos: Ext.getCmp('query_basic_nos_id').getValue(),
                             buslicno: Ext.getCmp('query_basic_buslicno_id').getValue(),
                             listcode: Ext.getCmp('query_basic_listcode_id').getValue(),
-                            type:'refi'
+                            type:type
                         }
                     });
                 } 
