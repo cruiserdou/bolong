@@ -76,13 +76,13 @@ Ext.define('app.view.main.Main', {
             id: 'web_in_info',
             listeners: {
                 afterrender: function(){
-                    Ext.fly('web_in_info').setStyle("background-color", "red");
+                    Ext.fly('web_in_info').setStyle("background-color", "#E54757");
                 }
             },
             badgeText: '2',
             menu: [{
                 text: '已阅',
-                handler: 'onToggleConfig',
+                handler: 'onToggleConfig'
             }, {
                 text: '未阅'
             }]

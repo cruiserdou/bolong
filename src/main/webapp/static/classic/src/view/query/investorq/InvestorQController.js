@@ -9,8 +9,6 @@ Ext.define('app.view.query.investorq.InvestorQController', {
         'app.xtemplate.corp_view'
     ],
     itemclick: function (this_, record_) {
-        //var vPanel = Ext.getCmp('investorqdetailview_id');
-        //vPanel.tpl.overwrite(vPanel.body, record_.data);
         if (Ext.getCmp('corpinveditloggridview_id')) {
             Ext.getCmp('corpinveditloggridview_id').getStore().load({
                 params: {
@@ -21,11 +19,8 @@ Ext.define('app.view.query.investorq.InvestorQController', {
     },
 
     itemdblclick: function (view, record, item, index, e) {
-        var mypanel = new Ext.form.FormPanel({
-            id: "mypanel",
-            width: 820,
+        var mypanel = Ext.create('Ext.panel.Panel', {
             frame: false,
-            height: 600,
             border: false,
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
@@ -47,63 +42,55 @@ Ext.define('app.view.query.investorq.InvestorQController', {
             items: [{
                 xtype: 'panel',
                 border: false,
-                html: '<div id="investors_query_corp">' +
-                '</div>'
+                html: '<div id="investors_query_corp"></div>'
             }, {
                 xtype: 'panel',
                 border: false,
-                html: '<div id="investors_query_corp_contact">' +
-                '</div>'
+                html: '<div id="investors_query_corp_contact"></div>'
             }, {
                 xtype: 'panel',
                 border: false,
-                html: '<div id="investors_query_corp_acount">' +
-                '</div>'
+                html: '<div id="investors_query_corp_acount"></div>'
             }, {
                 xtype: 'panel',
                 border: false,
-                html: '<div id="investors_query_corp_maintain">' +
-                '</div>'
+                html: '<div id="investors_query_corp_maintain"></div>'
             }, {
                 xtype: 'panel',
                 border: false,
-                html: '<div id="investors_query_corp_finance">' +
-                '</div>'
+                html: '<div id="investors_query_corp_finance"></div>'
             }, {
                 xtype: 'panel',
                 border: false,
-                html: '<div id="investors_query_corp_investors">' +
-                '</div>'
+                html: '<div id="investors_query_corp_investors"></div>'
             }, {
                 xtype: 'panel',
                 border: false,
                 html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
-
                 '<ul>' +
-                '<li><a href="#table_base" style="font-size:18px;">基本信息</a></li>' +
-                '<li><a href="#table_sh"  style="font-size:18px;">股东名册</a></li>' +
-                '<li><a href="#table_link"  style="font-size:18px;">法定代表人</a></li>' +
-                '<li><a href="#table_acount"  style="font-size:18px;">行业分类</a></li>' +
-                '<li><a href="#table_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
-                '<li><a href="#table_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
-                '<li><a href="#table_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
-                '<li><a href="#table_investors"  style="font-size:18px;">投资人</a></li>' +
-                '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="investors_query_close()">关闭</a></li>' +
+                '<li><a href="#table_base">基本信息</a></li>' +
+                '<li><a href="#table_sh" >股东名册</a></li>' +
+                '<li><a href="#table_link" >法定代表人</a></li>' +
+                '<li><a href="#table_acount" >行业分类</a></li>' +
+                '<li><a href="#table_csrc_type" >证监会行业分类</a></li>' +
+                '<li><a href="#table_ocompay" >企业维护信息</a></li>' +
+                '<li><a href="#table_assets_finance" >企业财务信息</a></li>' +
+                '<li><a href="#table_investors" >投资人</a></li>' +
+                '<li><a href="#" style="background-color: #e14100;" onclick="investors_query_close()">关闭</a></li>' +
                 '</ul>' +
                 '</div>'
             }]
         });
 
 
-        var editWindow = new Ext.Window({
+        var editWindow = Ext.create('Ext.window.Window', {
             layout: 'fit',
             id: 'investors_query_id',
-            width: 830,
-            height: 650,
             modal: true,
             title: '企业信息',
             maximized: true,
-            maximizable: true,
+            closeAction: 'destroy',
+            autoDestroy: true,
             items: [mypanel]
         });
         editWindow.show(Ext.get('body'));

@@ -23105,14 +23105,23 @@ div.x-border-layout-ct {
     margin-top: 16px;
     width: 100%;
     font-size: 14px;
-    border: 1px solid #fff;
     border-radius: 3px;
     padding: 0.6em;
     cursor: hand;
     color: #fff;
     box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;
-    background-image: linear-gradient(#f27809, #e14100);
+    background-color: #e14100;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:191 */
+#web_in_info-btnInnerEl {
+    font-weight: bold;
+    color: #fffcfc;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:196 */
+#login_user_btn-btnInnerEl {
+    font-weight: bold;
+    color: #fffcfc;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-tab-navigation-top {
@@ -25088,40 +25097,40 @@ div.x-border-layout-ct {
     border-color: #5fa2dd !important;
     border-width: 1px !important;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:247 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:260 */
 .x-title-icon-navigation {
     font-family: FontAwesome;
     color: #fff;
     font-size: 24px;
     line-height: 24px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:254 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:267 */
 .x-tab-icon-el-navigation {
     font-family: FontAwesome;
     color: #acacac;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:258 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:271 */
 .x-tab-over .x-tab-icon-el-navigation {
     color: #c4c4c4;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:262 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:275 */
 .x-tab-active .x-tab-icon-el-navigation {
     color: #fff;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:267 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:280 */
 .x-panel-header-title-navigation > .x-title-text-navigation:after {
     top: 30px;
     right: -24px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:272 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:285 */
 #menutree_id .x-tree-icon-leaf {
     display: none;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:276 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:289 */
 #menutree_id .x-tree-icon {
     display: none;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:280 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:293 */
 .statis_div {
     width: 28em;
     height: 28em;
@@ -25131,35 +25140,35 @@ div.x-border-layout-ct {
     background-color: #e7e952;
     margin: 6em auto;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:290 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:303 */
 .statis_div h1 {
     font-family: '微软雅黑', 'Microsoft YaHei', 'Source Han Sans CN ExtraLight', 'Noto Sans S Chinese Light';
     font-weight: 100;
     color: #666;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:296 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:309 */
 .statis_div h1:last-child {
     font-weight: 800;
     font-size: 3em;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:301 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:314 */
 #center-panel-id-body {
     background-color: #ccc;
     background-image: url(images/square.gif);
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:306 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:319 */
 #enter_mgr {
     display: table;
     width: 80%;
     margin: 0 auto;
     padding: 3em 4em;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:313 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:326 */
 #enter_mgr div {
     display: table-cell;
     text-align: center;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:318 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:331 */
 #enter_mgr div a {
     text-decoration: none;
     display: inline-block;
@@ -25174,7 +25183,25 @@ div.x-border-layout-ct {
     margin: 6em auto;
     transition: all 0.3s;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:333 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:346 */
 #enter_mgr div a:hover {
     background-image: linear-gradient(#246fac, #8dddfd);
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:350 */
+.close_btn_xwq {
+    font-size: 18px;
+    display: block;
+    margin-top: 16px;
+    width: 100%;
+    font-size: 14px;
+    padding: 0.6em;
+    cursor: hand;
+    color: #fff;
+    background-color: #e14100;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    transition: all 0.3s;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:364 */
+.close_btn_xwq:hover {
+    background-color: #f27809;
 }

@@ -22,10 +22,7 @@ Ext.define('app.view.query.enter.EnterInfoController', {
     },
     itemdblclick: function (view, record) {
         var mypanel = Ext.create('Ext.panel.Panel', {
-            id: "mypanel",
-            width: 820,
             frame: false,
-            height: 600,
             border: false,
             bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
             listeners: {
@@ -98,20 +95,20 @@ Ext.define('app.view.query.enter.EnterInfoController', {
                 border: false,
                 html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
                 '<ul>' +
-                '<li><a href="#table_base" style="font-size:18px;">基本信息</a></li>' +
-                '<li><a href="#table_sh"  style="font-size:18px;">股东名册</a></li>' +
-                '<li><a href="#table_link"  style="font-size:18px;">法定代表人</a></li>' +
-                '<li><a href="#table_acount"  style="font-size:18px;">行业分类</a></li>' +
-                '<li><a href="#table_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
-                '<li><a href="#table_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
-                '<li><a href="#table_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
-                '<li><a href="#table_service"  style="font-size:18px;">服务机构</a></li>' +
-                '<li><a href="#table_investors"  style="font-size:18px;">投资人</a></li>' +
-                '<li><a href="#table_govermt"  style="font-size:18px;">政府部门</a></li>' +
-                '<li><a href="#table_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
-                '<li><a href="#table_demand_px"  style="font-size:18px;">培训需求</a></li>' +
-                '<li><a href="#table_demand_rl"  style="font-size:18px;">人力资源需求</a></li>' +
-                '<li><a href="#" style=" text-align: center; font-size:18px;display: block;  margin-top: 16px;  width: 100%;  font-size: 14px;  border: 1px solid #ffffff;  border-radius: 3px;  padding: 0.6em;  cursor: hand;  color: #fff;  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;  background-image: linear-gradient(#f27809, #e14100);  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);" onclick="win_close_ch()">关闭</a></li>' +
+                '<li><a href="#table_base">基本信息</a></li>' +
+                '<li><a href="#table_sh">股东名册</a></li>' +
+                '<li><a href="#table_link">法定代表人</a></li>' +
+                '<li><a href="#table_acount">行业分类</a></li>' +
+                '<li><a href="#table_csrc_type">证监会行业分类</a></li>' +
+                '<li><a href="#table_ocompay">企业维护信息</a></li>' +
+                '<li><a href="#table_assets_finance" >企业财务信息</a></li>' +
+                '<li><a href="#table_service">服务机构</a></li>' +
+                '<li><a href="#table_investors">投资人</a></li>' +
+                '<li><a href="#table_govermt">政府部门</a></li>' +
+                '<li><a href="#table_demand_rz">融资需求</a></li>' +
+                '<li><a href="#table_demand_px">培训需求</a></li>' +
+                '<li><a href="#table_demand_rl">人力资源需求</a></li>' +
+                '<li><a href="#" class="close_btn_xwq" style="background-color: #e14100;" onclick="win_close_ch()">关闭</a></li>' +
                 '</ul>' +
                 '</div>'
             }]
@@ -120,12 +117,9 @@ Ext.define('app.view.query.enter.EnterInfoController', {
         Ext.create('Ext.window.Window',{
             layout: 'fit',
             id: 'enterprise_ch_id',
-            width: 830,
-            height: 650,
             modal: true,
             title: '企业信息查看',
             maximized: true,
-            maximizable: true,
             autoDestroy: true,
             closeAction: 'destroy',
             items: [mypanel]

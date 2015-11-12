@@ -36,7 +36,7 @@
 
 .wrap_center {
   width: 80%;
-  margin: 2px auto;
+  margin: 0 auto;
 }
 
 .enter_table {
@@ -123,6 +123,140 @@
 .enter_table_sh .table_header {
   background-color: #9ABCE6;
 }
+//
+//.enter_table_dis {
+//  //border-collapse: collapse;
+//  //width: 80%;
+//  //font-size: 12px;
+//  //text-align: left;
+//  //margin-bottom: 2em;
+//  //background-color: #ecf2fb;
+//}
+//
+//.enter_table_dis tr {
+//  border-top: 1px solid #ddd;
+//  border-bottom: 1px solid #ddd;
+//}
+//
+//.enter_table_dis th {
+//  background-color: #00B8CE;
+//}
+
+//.enter_table_dis {
+//  margin: 1em 0;
+//  min-width: 300px; // adjust to your needs
+//
+//  .enter_table_dis tr {
+//    border-top: 1px solid #ddd;
+//    border-bottom: 1px solid #ddd;
+//  }
+//
+//  .enter_table_dis th {
+//    display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!
+//  }
+//
+//  .enter_table_dis td {
+//    display: block;
+//
+//    &:first-child {
+//      padding-top: .5em;
+//    }
+//    &:last-child {
+//      padding-bottom: .5em;
+//    }
+//
+//    &:before {
+//      content: attr(data-th) ": "; // who knew you could do this? The internet, that's who.
+//      font-weight: bold;
+//
+//      // optional stuff to make it look nicer
+//      width: 6.5em; // magic number :( adjust according to your own content
+//      display: inline-block;
+//      // end options
+//
+//      @media (min-width: $breakpoint-alpha) {
+//        display: none;
+//      }
+//    }
+//  }
+//
+//  th, td {
+//    text-align: left;
+//
+//    @media (min-width: $breakpoint-alpha) {
+//      display: table-cell;
+//      padding: .25em .5em;
+//
+//      &:first-child {
+//        padding-left: 0;
+//      }
+//
+//      &:last-child {
+//        padding-right: 0;
+//      }
+//    }
+//
+//  }
+//}
+
+//.enter_table_dis {
+//  background: #34495E;
+//  color: #fff;
+//  border-radius: .4em;
+//  overflow: hidden;
+//}
+//
+//.enter_table_dis tr {
+//  border-color: lighten(#34495E, 10%);
+//}
+//
+//.enter_table_dis th, .enter_table_dis td {
+//  margin: .5em 1em;
+//}
+//
+//.enter_table_dis th, .enter_table_dis td:before {
+//  color: #dd5;
+//}
+
+//.enter_table_dis td input {
+//  border: none;
+//  width: 100%;
+//  height: 100%;
+//  background-color: white;
+//}
+//
+//.enter_table_dis td textarea {
+//  border: none;
+//  width: 100%;
+//  height: 100%;
+//  background-color: white;
+//}
+//
+//.enter_table_dis input, .enter_table_dis td, .enter_table_dis textarea {
+//  background-color: white;
+//}
+//
+//.enter_table_dis textarea {
+//  background-color: #ecf2fb;
+//}
+//
+//.enter_table_dis td, .enter_table_dis th {
+//  border: 1px solid #9ABCE6;
+//  border-collapse: collapse;
+//  padding: 9px 8px 8px 8px;
+//}
+//
+//.enter_table_dis th {
+//  width: 10em;
+//}
+//
+//.enter_table_dis td {
+//  width: 20em;
+//}
+//
+//.enter_table_dis .table_header {
+//  background-color: #9ABCE6;
+//}
 
 #enter_menu_list ul li {
   list-style: none;
@@ -143,7 +277,7 @@
   background-color: #006699;
 }
 
-.menu_list{
+.menu_list {
   display: block;
   padding: 0 2em;
   margin-top: 40px;
@@ -175,14 +309,25 @@
   margin-top: 16px;
   width: 100%;
   font-size: 14px;
-  border: 1px solid #ffffff;
+  //border: 1px solid #ffffff;
   border-radius: 3px;
   padding: 0.6em;
   cursor: hand;
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px;
-  background-image: linear-gradient(#f27809, #e14100);
+  //background-image: linear-gradient(#f27809, #e14100);
+  background-color: #e14100;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+#web_in_info-btnInnerEl {
+  font-weight: bold;
+  color: #FFFCFC;
+}
+
+#login_user_btn-btnInnerEl {
+  font-weight: bold;
+  color: #FFFCFC;
 }
 
 /**
@@ -298,24 +443,24 @@
   font-size: 3em;
 }
 
-#center-panel-id-body{
+#center-panel-id-body {
   background-color: #CCC;
   background-image: url(images/square.gif);
 }
 
-#enter_mgr{
+#enter_mgr {
   display: table;
   width: 80%;
   margin: 0 auto;
   padding: 3em 4em;
 }
 
-#enter_mgr div{
+#enter_mgr div {
   display: table-cell;
   text-align: center;
 }
 
-#enter_mgr div a{
+#enter_mgr div a {
   text-decoration: none;
   display: inline-block;
   border: 1px solid #157fcc;
@@ -330,6 +475,24 @@
   transition: all 0.3s;
 }
 
-#enter_mgr div a:hover{
+#enter_mgr div a:hover {
   background-image: linear-gradient(#246fac, #8dddfd);
+}
+
+.close_btn_xwq {
+  font-size: 18px;
+  display: block;
+  margin-top: 16px;
+  width: 100%;
+  font-size: 14px;
+  padding: 0.6em;
+  cursor: hand;
+  color: #fff;
+  background-color: #e14100;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.3s;
+}
+
+.close_btn_xwq:hover {
+  background-color: #f27809;
 }

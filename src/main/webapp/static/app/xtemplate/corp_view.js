@@ -4,107 +4,100 @@
 Ext.define('app.xtemplate.corp_view', {});
 var corp_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
-     //'<h2>信息查看</h2>',
-     '<table class="enter_table" id="table_base" style="margin-top: 2em">',
-     '<tr>',
-     '<th class="table_header" colspan="4">基本信息</th>',
-     '</tr>',
-     '<tr>',
-     '<th>营业执照号码<span style="color: red">*</span></th>',
-     '<td>{buslicno}</td>',
-     '<th>企业名称</th>',
-     '<td>{name}</td>',
-     '</tr>',
-     '<tr>',
-     '<th>单位类别</th>',
-     '<td>{unit}</td>',
-     '<th>法定代表人</th>',
-     '<td>{legrep}</td>',
-     '</tr>',
-     '<tr>',
-     '<th>地域</th>',
-     '<td>{province}{city}{county}</td>',
-     '<th>公司简称</th>',
-     '<td>{nos}</td>',
-     '</tr>',
-     '<tr>',
-     '<th>邮政编码</th>',
-     '<td>{postal}</td>',
-     '<th>企业性质</th>',
-     '<td>{nature}</td>',
-     '</tr>',
-     '<tr>',
-     '<th>注册资本（万元）</th>',
-     '<td>{regcap}</td>',
-     '<th>注册日期</th>',
-     '<td>{regdt}</td>',
-     '</tr>',
-     '<tr>',
-     '<th>营业期限自</th>',
-     '<td>{bustermfdt}</td>',
-     '<th>营业期限至</th>',
-     '<td>{bustremtdt}</td>',
-     '</tr>',
-     '<tr>'+
-     '<th>挂牌区域</th>'+
-     '<td>{list_area}</td>'+
-     '<th>挂牌日期</th>'+
-     '<td>{listdt}</td>'+
-     '</tr>'+
-     '<tr>',
-     '<th>挂牌代码</th>'+
-     '<td>{listcode}</td>'+
-     '<th>挂牌价格<br>元/元出资(股)</th>'+
-     '<td>{listprice}</td>'+
-     '</tr>'+
-
-     '<tr>'+
-     '<th>企业微信号</th>',
-     '<td>{webchat}</td>'+
-     '<th>推荐单位</th>'+
-     '<td>{channels}</td>'+
-     '</tr>'+
-     '<tr>'+
-     '<th>登记机关</th>'+
-     '<td>{regist_organ}</td>'+
-
-     '<th>员工人数</th>'+
-     '<td>{staffnum}</td>'+
-     '</tr>'+
-     '<tr>'+
-     '<th>注册地址</th>'+
-     '<td colspan="3">{regaddr}</td>'+
-     '</tr>'+
-     '<tr>'+
-     '<th>办公地址</th>'+
-     '<td colspan="3">{offaddr}</td>'+
-     '</tr>'+
-     '<tr>',
-     '<th>经营范围</th>'+
-     '<td colspan="3"><textarea disabled id="scope" name="scope"  type="text" value="{scope}">{scope}</textarea></td>'+
-     '</tr>'+
-     '<tr>'+
-     '<th>主营业务</th>'+
-     '<td colspan="3"><textarea disabled id="mbus" name="mbus"  type="text" value="{mbus}">{mbus}</textarea></td>'+
-     '</tr>'+
-     '<tr>'+
-     '<th>企业简介</th>'+
-     '<td colspan="3"><textarea disabled id="eprofile" name="eprofile"  type="text" value="{eprofile}">{eprofile}</textarea></td>'+
-     '</tr>'+
-     '<tr>',
-     '<th>备注</th>',
-     '<td colspan="3"><textarea disabled id="remark" name="remark"  type="text" value="{remark}">{remark}</textarea></td>',
-     '</tr>',
-     '<tr>',
-     '<th>企业图文信息</th>',
+    '<table class="enter_table" id="table_base" style="margin-top: 2em">',
+    '<tr>',
+    '<th class="table_header" colspan="4">基本信息</th>',
+    '</tr>',
+    '<tr>',
+    '<th>营业执照号码<span style="color: red">*</span></th>',
+    '<td>{buslicno}</td>',
+    '<th>企业名称</th>',
+    '<td>{name}</td>',
+    '</tr>',
+    '<tr>',
+    '<th>单位类别</th>',
+    '<td>{unit}</td>',
+    '<th>法定代表人</th>',
+    '<td>{legrep}</td>',
+    '</tr>',
+    '<tr>',
+    '<th>地域</th>',
+    '<td>{province}{city}{county}</td>',
+    '<th>公司简称</th>',
+    '<td>{nos}</td>',
+    '</tr>',
+    '<tr>',
+    '<th>邮政编码</th>',
+    '<td>{postal}</td>',
+    '<th>企业性质</th>',
+    '<td>{nature}</td>',
+    '</tr>',
+    '<tr>',
+    '<th>注册资本（万元）</th>',
+    '<td>{regcap}</td>',
+    '<th>注册日期</th>',
+    '<td>{regdt}</td>',
+    '</tr>',
+    '<tr>',
+    '<th>营业期限自</th>',
+    '<td>{bustermfdt}</td>',
+    '<th>营业期限至</th>',
+    '<td>{bustremtdt}</td>',
+    '</tr>',
+    '<tr>' +
+    '<th>挂牌区域</th>' +
+    '<td>{list_area}</td>' +
+    '<th>挂牌日期</th>' +
+    '<td>{listdt}</td>' +
+    '</tr>' +
+    '<tr>',
+    '<th>挂牌代码</th>' +
+    '<td>{listcode}</td>' +
+    '<th>挂牌价格<br>元/元出资(股)</th>' +
+    '<td>{listprice}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>企业微信号</th>',
+    '<td>{webchat}</td>' +
+    '<th>推荐单位</th>' +
+    '<td>{channels}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>登记机关</th>' +
+    '<td>{regist_organ}</td>' +
+    '<th>员工人数</th>' +
+    '<td>{staffnum}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>注册地址</th>' +
+    '<td colspan="3">{regaddr}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>办公地址</th>' +
+    '<td colspan="3">{offaddr}</td>' +
+    '</tr>' +
+    '<tr>',
+    '<th>经营范围</th>' +
+    '<td colspan="3">{scope}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>主营业务</th>' +
+    '<td colspan="3">{mbus}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>企业简介</th>' +
+    '<td colspan="3">{eprofile}</td>' +
+    '</tr>' +
+    '<tr>',
+    '<th>备注</th>',
+    '<td colspan="3">{remark}></td>',
+    '</tr>',
+    '<tr>',
+    '<th>企业图文信息</th>',
     '<td colspan="3"><a href="/bolong/img_view?corp_id={id}" target="_blank">详细</a></td>',
-     '</tr>',
-     '</table>',
+    '</tr>',
+    '</table>',
     '</div>'
-
-
-
-
 );
 
 var corp_shareholder_tpl = new Ext.XTemplate(
@@ -203,7 +196,7 @@ var corp_shareholder_list_tpl = new Ext.XTemplate(
 );
 
 
-var corp_contact_tpl= new Ext.XTemplate(
+var corp_contact_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<table class="enter_table" id="table_link">',
     '<tr>',
@@ -233,18 +226,18 @@ var corp_contact_tpl= new Ext.XTemplate(
     '<th>QQ</th>',
     '<td>{cont_eqq}</td>',
     '</tr>',
-    '<tr>'+
-    '<th>微信号</th>'+
-    '<td>{cont_webchat}</td>'+
+    '<tr>' +
+    '<th>微信号</th>' +
+    '<td>{cont_webchat}</td>' +
     '<th>固话</th>',
-    '<td>{cont_tel}</td>'+
-    '</tr>'+
-    '<tr>'+
-    '<th>备注</th>'+
-    '<td colspan="3"><textarea disabled id="cont_bz" name="cont_bz"  type="text" value="{cont_bz}">{cont_bz}</textarea></td>'+
-    '</tr>'+
+    '<td>{cont_tel}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>备注</th>' +
+    '<td colspan="3"><textarea disabled id="cont_bz" name="cont_bz"  type="text" value="{cont_bz}">{cont_bz}</textarea></td>' +
+    '</tr>' +
     '</table>',
-     '</div>'
+    '</div>'
 );
 
 var corp_acount_tpl = new Ext.XTemplate(
@@ -344,15 +337,11 @@ var corp_maintain_tpl = new Ext.XTemplate(
     '</tr>',
     '<tr>',
     '<th>备注</th>',
-    '<td colspan="3"><textarea  disabled id="mai_bz" name="mai_bz"  type="text" value="{mai_bz}">{mai_bz}</textarea></td>'+
+    '<td colspan="3"><textarea  disabled id="mai_bz" name="mai_bz"  type="text" value="{mai_bz}">{mai_bz}</textarea></td>' +
     '</tr>',
     '</table>',
     '</div>'
 );
-
-
-
-
 
 
 var corp_finance_tpl = new Ext.XTemplate(
@@ -671,7 +660,6 @@ var corp_finance_tpl = new Ext.XTemplate(
 );
 
 
-
 var corp_service_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<table class="enter_table" id="table_service">',
@@ -704,11 +692,11 @@ var corp_service_tpl = new Ext.XTemplate(
     '</tr>',
     '<tr>',
     '<th>简介</th>',
-    '<td colspan="3"><textarea disabled id="srv_descs" name="srv_descs"  type="text" value="{srv_descs}">{srv_descs}</textarea></td>'+
+    '<td colspan="3"><textarea disabled id="srv_descs" name="srv_descs"  type="text" value="{srv_descs}">{srv_descs}</textarea></td>' +
     '</tr>',
     '<tr>',
     '<th>备注</th>',
-    '<td colspan="3"><textarea disabled id="srv_remark" name="srv_remark"  type="text" value="{srv_remark}">{srv_remark}</textarea></td>'+
+    '<td colspan="3"><textarea disabled id="srv_remark" name="srv_remark"  type="text" value="{srv_remark}">{srv_remark}</textarea></td>' +
     '</tr>',
     '</table>',
     '</div>'
@@ -768,16 +756,16 @@ var corp_investors_tpl = new Ext.XTemplate(
     '<th>QQ</th>',
     '<td>{inv_qq}</td>',
     '</tr>',
-    '<tr>'+
-    '<th>微信号</th>'+
-    '<td>{inv_webchat}</td>'+
+    '<tr>' +
+    '<th>微信号</th>' +
+    '<td>{inv_webchat}</td>' +
     '<th>固话</th>',
-    '<td>{inv_tel}</td>'+
-    '</tr>'+
-    '<tr>'+
-    '<th>备注</th>'+
-    '<td colspan="3"><textarea disabled id="inv_remark" name="inv_remark"  type="text" value="{inv_remark}">{inv_remark}</textarea></td>'+
-    '</tr>'+
+    '<td>{inv_tel}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>备注</th>' +
+    '<td colspan="3"><textarea disabled id="inv_remark" name="inv_remark"  type="text" value="{inv_remark}">{inv_remark}</textarea></td>' +
+    '</tr>' +
     '</table>',
     '</div>'
 );
@@ -823,16 +811,16 @@ var corp_government_tpl = new Ext.XTemplate(
     '<th>QQ</th>',
     '<td>{gov_qq}</td>',
     '</tr>',
-    '<tr>'+
-    '<th>微信号</th>'+
-    '<td>{gov_webchat}</td>'+
+    '<tr>' +
+    '<th>微信号</th>' +
+    '<td>{gov_webchat}</td>' +
     '<th>固话</th>',
-    '<td>{gov_tel}</td>'+
-    '</tr>'+
-    '<tr>'+
-    '<th>备注</th>'+
-    '<td colspan="3"><textarea disabled id="gov_remark" name="gov_remark"  type="text" value="{gov_remark}">{gov_remark}</textarea></td>'+
-    '</tr>'+
+    '<td>{gov_tel}</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<th>备注</th>' +
+    '<td colspan="3"><textarea disabled id="gov_remark" name="gov_remark"  type="text" value="{gov_remark}">{gov_remark}</textarea></td>' +
+    '</tr>' +
     '</table>',
     '</div>'
 );
@@ -862,10 +850,10 @@ var corp_refinancing_tpl = new Ext.XTemplate(
     '<th>融资期限</th>',
     '<td>{refi_deadline}</td>',
     '</tr>',
-    '<tr>'+
-    '<th>融资用途详细说明</th>'+
-    '<td colspan="3"><textarea disabled id="refi_desc" name="refi_desc"  type="text" value="{refi_desc}">{refi_desc}</textarea></td>'+
-    '</tr>'+
+    '<tr>' +
+    '<th>融资用途详细说明</th>' +
+    '<td colspan="3"><textarea disabled id="refi_desc" name="refi_desc"  type="text" value="{refi_desc}">{refi_desc}</textarea></td>' +
+    '</tr>' +
     '</table>',
     '</div>'
 );
@@ -889,12 +877,12 @@ var corp_retrain_tpl = new Ext.XTemplate(
     '</tr>',
     '<tr>',
     '<th>培训内容</th>',
-    '<td colspan="3"><textarea disabled id="retra_content" name="retra_content"  type="text" value="{retra_content}">{retra_content}</textarea></td>'+
+    '<td colspan="3"><textarea disabled id="retra_content" name="retra_content"  type="text" value="{retra_content}">{retra_content}</textarea></td>' +
     '</tr>',
-    '<tr>'+
-    '<th>详细要求</th>'+
-    '<td colspan="3"><textarea disabled id="retra_requests" name="retra_requests"  type="text" value="{retra_requests}">{retra_requests}</textarea></td>'+
-    '</tr>'+
+    '<tr>' +
+    '<th>详细要求</th>' +
+    '<td colspan="3"><textarea disabled id="retra_requests" name="retra_requests"  type="text" value="{retra_requests}">{retra_requests}</textarea></td>' +
+    '</tr>' +
     '</table>',
     '</div>'
 );
@@ -918,20 +906,19 @@ var corp_rehr_tpl = new Ext.XTemplate(
     '<th>性别要求</th>',
     '<td>{rehr_sex_req}</td>',
     '</tr>',
-    '<tr>'+
+    '<tr>' +
     '<th>年龄要求</th>',
     '<td>{rehr_age_req}</td>',
     '<th>经验要求</th>',
     '<td>{rehr_requests}</td>',
-    '</tr>'+
+    '</tr>' +
     '</table>',
-     '</div>'
+    '</div>'
 );
 
 
-
-    //$(document).ready(function(){
-    //    $(".btn1").click(function(){
-    //        $("table").toggle(true);
-    //    });
-    //});
+//$(document).ready(function(){
+//    $(".btn1").click(function(){
+//        $("table").toggle(true);
+//    });
+//});
