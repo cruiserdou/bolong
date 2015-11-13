@@ -23,29 +23,28 @@ public class UserController {
     private UserService userService;
 
     /**
-     *
      * @return 返回指定的页面
      */
-    @RequestMapping(value = "/userslist",method = RequestMethod.GET)
+    @RequestMapping(value = "/userslist", method = RequestMethod.GET)
     public
     @ResponseBody
     DataShop listUsers(HttpServletRequest request,
                        @RequestParam(value = "id", required = true) int id,
-                                @RequestParam(value = "name", required = false, defaultValue = "") String name
-    ) throws Exception{
+                       @RequestParam(value = "name", required = false, defaultValue = "") String name
+    ) throws Exception {
         DataShop dataShop = new DataShop();
-        List list = userService.list(id,name);
+        List list = userService.list(id, name);
         dataShop.setList(list);
         dataShop.setSuccess(true);
         return dataShop;
     }
 
-    @RequestMapping(value = "/getuser",method = RequestMethod.POST)
+    @RequestMapping(value = "/getuser", method = RequestMethod.POST)
     public
     @ResponseBody
     DataShop getUser(
             HttpSession session
-    ) throws Exception{
+    ) throws Exception {
         DataShop dataShop = new DataShop();
         dataShop.setName(session.getAttribute("name").toString());
         dataShop.setSuccess(true);
@@ -53,9 +52,9 @@ public class UserController {
     }
 
 
-
     /**
      * 解析并返回指定格式数据(如json)
+     *
      * @param user 传递的参数
      * @return 返回解析后的数据
      */
@@ -66,10 +65,9 @@ public class UserController {
 //        DataShop dataShop =  new DataShop();
 //        return userService.getById(userId);
 //    }
-
     @RequestMapping("/user")
     public Principaldou userInfo(Principal user) {
-        System.out.println("name:"+user.getName());
+        System.out.println("name:" + user.getName());
         Principaldou principaldou = new Principaldou();
         principaldou.setSuccess(false);
         if (user.getName() != null)
@@ -78,14 +76,14 @@ public class UserController {
     }
 
     @RequestMapping("/valid")
-    public String validUser(){
+    public String validUser() {
         return "{\"msg\":\"true\"}";
     }
 
     @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
     public String delete(
             @RequestParam("id") Integer id
-    )throws Exception{
+    ) throws Exception {
         userService.delete(id);
         return "success";
     }
