@@ -325,8 +325,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         }, {
             name: 'cont_ephone',
             fieldLabel: '手机',
-            regex: /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/,
-            regexText: '请输入正确的手机号'
+            regex: /\d{11}/,
+            regexText : '请输入正确的手机号码'
         }, {
             name: 'cont_efax',
             fieldLabel: '传真',
@@ -648,8 +648,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         }, {
             name: 'mai_phone',
             fieldLabel: '手机号码',
-            regex: /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/,
-            regexText: '请输入正确的手机号'
+            regex: /\d{11}/,
+            regexText : '请输入正确的手机号码'
         }, {
             name: 'mai_fax',
             fieldLabel: '传真',
@@ -1639,8 +1639,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             }, {
                 name: 'inv_phone',
                 fieldLabel: '手机',
-                regex: /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/,
-                regexText: '请输入正确的手机号'
+                regex: /\d{11}/,
+                regexText : '请输入正确的手机号码'
             }, {
                 name: 'inv_fax',
                 fieldLabel: '传真',
@@ -1727,8 +1727,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         }, {
             name: 'gov_phone',
             fieldLabel: '手机',
-            regex: /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/,
-            regexText: '请输入正确的手机号'
+                regex: /\d{11}/,
+                regexText : '请输入正确的手机号码'
         }, {
             name: 'gov_fax',
             fieldLabel: '传真',

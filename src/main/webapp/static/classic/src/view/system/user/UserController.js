@@ -90,8 +90,8 @@ Ext.define('app.view.system.user.UserController', {
                             name: 'phone',
                             fieldLabel: '手机号',
                             allowBlank: false,
-                            regex : /(^13\d{9}$)|(^14)[5,7]\d{8}$|(^15[0,1,2,3,5,6,7,8,9]\d{8}$)|(^17)[6,7,8]\d{8}$|(^18\d{9}$)/g,
-                            regexText : '请输入正确的电话号码'
+                            regex: /\d{11}/,
+                            regexText : '请输入正确的手机号码'
                         }, {
                             xtype: 'textfield',
                             name: 'address',
