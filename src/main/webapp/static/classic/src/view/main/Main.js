@@ -13,7 +13,7 @@ Ext.define('app.view.main.Main', {
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
         'app.view.main.TreeListModel',
-        'app.view.main.List',
+        //'app.view.main.List',
         'app.view.main.TreeListController',
         'app.view.main.MainController',
         'app.view.main.MainModel',

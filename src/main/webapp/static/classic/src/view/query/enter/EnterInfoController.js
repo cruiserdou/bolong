@@ -9,6 +9,11 @@ Ext.define('app.view.query.enter.EnterInfoController', {
         'app.xtemplate.corp_apply',
         'app.xtemplate.corp_edit'
     ],
+
+    afterr: function(_this){
+      _this.getStore().load();
+    },
+
     itemclick: function (this_, record_) {
         if (Ext.getCmp('entereditloggridview_id')) {
             Ext.getCmp('entereditloggridview_id').getStore().load({
