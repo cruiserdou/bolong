@@ -191,9 +191,7 @@ Ext.define('app.view.main.TreeListModel', {
                             itype: 'msgview',
                             leaf: true
                         }]
-                    }
-
-                    , {
+                    }, {
                         text: '安全管理',
                         expanded: false,
                         itype: 'nleaf',

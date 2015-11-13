@@ -222,7 +222,7 @@ var corp_maintain_tpl = new Ext.XTemplate(
     '<th>更新日期</th>',
     '<td>{mai_changer_dt}</td>',
     '<th>更新人</th>',
-    '<td><button class="btn1">Toggle</button></td>',
+    '<td><a href="#">详情</a></td>',
     '</tr>',
     '<tr>',
     '<th>更新单位</th>',

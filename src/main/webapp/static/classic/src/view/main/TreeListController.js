@@ -24,11 +24,11 @@ Ext.define('app.view.main.TreeListController', {
             height: 230,
             width: 320,
             id: 'loginwindow',
-            title: '登录窗口',
+            title: '甘肃中小企业信息系统（登录窗口）',
             constrain: true,
             closable: false,
             layout: 'fit',
-            items: {  // Let's put an empty grid in just to illustrate fit layout
+            items: {
                 xtype: 'form',
                 defaultType: 'textfield',
                 bodyPadding: 20,
@@ -85,52 +85,50 @@ Ext.define('app.view.main.TreeListController', {
 
                                 Ext.getCmp('main_window').add({
                                     region: 'west',
-                                    width: 226,
+                                    width: 240,
                                     reference: 'treelistContainer',
                                     layout: 'border',
                                     border: false,
                                     scrollable: 'y',
                                     items: [{
-                                            xtype: 'panel',
-                                            region: 'center',
-                                            layout: 'fit',
-                                            items: [{
-                                                xtype: 'treepanel',
-                                                region: 'east',
-                                                id: 'menutree_id',
-                                                lines: true,
-                                                margin : '1 1 0 0',
-                                                width: 230,
-                                                store: new Ext.data.TreeStore({
-                                                    proxy: {
-                                                        type: 'ajax',
-                                                        actionMethods: {
-                                                            read: 'POST'
-                                                        },
-                                                        url: '/bolong/ojson'
-                                                    }
-                                                }),
-                                                rootVisible: false,
-                                                listeners: {
-                                                    itemclick: function (view, rec) {
-                                                        var itemid = rec.get('itype') + '_id';
-                                                        var tabitem = Ext.getCmp(itemid);
-                                                        if (!tabitem && rec.get('itype') != "no") {
-                                                            tabitem = Ext.getCmp('mTabpanel').add({
-                                                                xtype: rec.get('itype'),
-                                                                id: itemid,
-                                                                title: rec.get('text'),
-                                                                closable: true
-                                                            });
-                                                        }
-                                                        Ext.getCmp('mTabpanel').setActiveTab(tabitem);
-                                                    }
+                                        xtype: 'panel',
+                                        region: 'center',
+                                        layout: 'fit',
+                                        items: [{
+                                            xtype: 'treepanel',
+                                            region: 'east',
+                                            id: 'menutree_id',
+                                            lines: true,
+                                            width: 240,
+                                            store: new Ext.data.TreeStore({
+                                                proxy: {
+                                                    type: 'ajax',
+                                                    actionMethods: {
+                                                        read: 'POST'
+                                                    },
+                                                    url: '/bolong/ojson'
                                                 }
-                                            }]
+                                            }),
+                                            rootVisible: false,
+                                            listeners: {
+                                                itemclick: function (view, rec) {
+                                                    var itemid = rec.get('itype') + '_id';
+                                                    var tabitem = Ext.getCmp(itemid);
+                                                    if (!tabitem && rec.get('itype') != "no") {
+                                                        tabitem = Ext.getCmp('mTabpanel').add({
+                                                            xtype: rec.get('itype'),
+                                                            id: itemid,
+                                                            title: rec.get('text'),
+                                                            closable: true
+                                                        });
+                                                    }
+                                                    Ext.getCmp('mTabpanel').setActiveTab(tabitem);
+                                                }
+                                            }
                                         }]
+                                    }]
                                 });
 
-                                Ext.getCmp('enter_grid_id').getStore().load();
                                 loginWindow.close();
                                 Ext.getCmp('main_header').show();
                                 Ext.getCmp('main_window').setTitle("甘肃中小企业信息管理系统")
@@ -166,7 +164,7 @@ Ext.define('app.view.main.TreeListController', {
             closable: false,
             modal: true,
             layout: 'fit',
-            items: {  // Let's put an empty grid in just to illustrate fit layout
+            items: {
                 xtype: 'form',
                 defaultType: 'textfield',
                 bodyPadding: 20,
@@ -225,6 +223,23 @@ Ext.define('app.view.main.TreeListController', {
                                     }
 
                                     loginWindow.close();
+
+                                    //重新加载树形菜单
+                                    Ext.getCmp('menutree_id').getStore().load();
+                                    Ext.getCmp('mTabpanel').removeAll(true);
+                                    var panelt = Ext.create('app.view.query.enter.EnterInfoView', {});
+                                    Ext.getCmp('mTabpanel').add(panelt);
+                                    Ext.getCmp('mTabpanel').setActiveTab(panelt);
+
+                                    //更新登陆人信息
+                                    Ext.Ajax.request({
+                                        url: '/bolong/getuser',
+                                        method: 'POST',
+                                        success: function (response, opts) {
+                                            var obj = Ext.decode(response.responseText);
+                                            Ext.getCmp('login_user_btn').setText("登陆人：" + obj.name)
+                                        }
+                                    });
                                 },
                                 failure: function (response, opts) {
                                     console.log('Valid failure');

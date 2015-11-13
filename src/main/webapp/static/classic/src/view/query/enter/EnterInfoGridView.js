@@ -18,12 +18,12 @@ Ext.define('app.view.query.enter.EnterInfoGridView', {
     controller: 'enterinfocontroller',
     listeners: {
         itemclick: 'itemclick',
-        itemdblclick:'itemdblclick'
+        itemdblclick:'itemdblclick',
+        afterrender: 'afterr'
     },
 
     selModel: {
         type: 'spreadsheet',
-        // Disables sorting by header click, though it will be still available via menu
         columnSelect: true,
         checkboxSelect: true,
         pruneRemoved: false,

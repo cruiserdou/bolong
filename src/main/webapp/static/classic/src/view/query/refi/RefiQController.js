@@ -9,8 +9,6 @@ Ext.define('app.view.query.refi.RefiQController', {
         'app.xtemplate.corp_view'
     ],
     itemclick: function (this_, record_) {
-        //var vPanel = Ext.getCmp('refiqdetailview_id');
-        //vPanel.tpl.overwrite(vPanel.body, record_.data);
         if (Ext.getCmp('corprefieditloggridview_id')) {
             Ext.getCmp('corprefieditloggridview_id').getStore().load({
                 params: {
@@ -28,7 +26,6 @@ Ext.define('app.view.query.refi.RefiQController', {
                 nos: Ext.getCmp('query_refi_q_nos_id').getValue(),
                 buslicno: Ext.getCmp('query_refi_q_buslicno_id').getValue(),
                 listcode: Ext.getCmp('query_refi_q_listcode_id').getValue()
-
             }
         });
     },
@@ -50,7 +47,6 @@ Ext.define('app.view.query.refi.RefiQController', {
                 afterrender: function (_this) {
                     corp_tpl.append('refinancing_query_corp', record.data);
                     corp_contact_tpl.append('refinancing_query_corp_contact', record.data);
-                    //corp_shareholder_tpl.append('refinancing_query_corp_shareholder',record.data);
                     corp_acount_tpl.append('refinancing_query_corp_acount', record.data);
                     corp_maintain_tpl.append('refinancing_query_corp_maintain', record.data);
                     corp_finance_tpl.append('refinancing_query_corp_finance', record.data);
@@ -101,86 +97,56 @@ Ext.define('app.view.query.refi.RefiQController', {
             items: [{
                 xtype: 'panel',
                 border: false,
-                //id: 'corp_panel',
                 html: '<div id="refinancing_query_corp">' +
                 '</div>'
-            },
-                //{ 
-                //    xtype: 'panel',
-                //    height: 250,
-                //    //autoScroll: true,
-                //    frame: false,
-                //    border: false,
-                //    bodyStyle: 'overflow-x:hidden; overflow-y:scroll',
-                //    listeners: {
-                //        afterrender: function (_this) {
-                //            corp_shareholder_list_store.load({
-                //                params: {
-                //                    gd_corp_id: record.get("id")
-                //                },
-                //                callback: function (records, operation, success) {
-                //                    if (success) {
-                //                        var myarray = new Array();
-                //                        for (var i = 0; i < corp_shareholder_list_store.getCount(); i++) {
-                //                            myarray[i] = corp_shareholder_list_store.getAt(i).getData();
-                //                        }
-                //
-                //
-                //                        corp_shareholder_list_tpl.overwrite(_this.body, myarray[0]);
-                //                    }
-                //                }
-                //            })
-                //        }
-                //    }
-                //},
-                {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_contact_panel',
-                    html: '<div id="refinancing_query_corp_contact"></div>'
-                }, {
-                    xtype: 'panel',
-                    border: false,
-                    height: 360,
-                    html: '<div id="shareholder_edit"></div>'
-                }, {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_acount_panel',
-                    html: '<div id="refinancing_query_corp_acount"></div>'
-                },{
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_maintain_panel',
-                    html: '<div id="refinancing_query_corp_maintain"></div>'
-                }, {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_finance_panel',
-                    html: '<div id="refinancing_query_corp_finance"></div>'
-                }, {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'corp_refinancing_panel',
-                    html: '<div id="refinancing_query_corp_refinancing"></div>'
-                }, {
-                    xtype: 'panel',
-                    border: false,
-                    id: 'refinancing_query_corp_panel',
-                    html: '<div id="enter_menu_list" style="position: fixed; top: 7em; right: 6em;">' +
-                    '<ul>' +
-                    '<li><a href="#table_base" style="font-size:18px;">基本信息</a></li>' +
-                    '<li><a href="#table_sh"  style="font-size:18px;">股东名册</a></li>' +
-                    '<li><a href="#table_link"  style="font-size:18px;">法定代表人</a></li>' +
-                    '<li><a href="#table_acount"  style="font-size:18px;">行业分类</a></li>' +
-                    '<li><a href="#table_csrc_type"  style="font-size:18px;">证监会行业分类</a></li>' +
-                    '<li><a href="#table_ocompay"  style="font-size:18px;">企业维护信息</a></li>' +
-                    '<li><a href="#table_assets_finance"  style="font-size:18px;">企业财务信息</a></li>' +
-                    '<li><a href="#table_demand_rz"  style="font-size:18px;">融资需求</a></li>' +
-                    '<li><a href="#" style="background-color: #e14100;" onclick="refinancing_query_close()">关闭</a></li>' +
-                    '</ul>' +
-                    '</div>'
-                }]
+            }, {
+                xtype: 'panel',
+                border: false,
+                id: 'corp_contact_panel',
+                html: '<div id="refinancing_query_corp_contact"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                height: 360,
+                html: '<div id="shareholder_edit"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                id: 'corp_acount_panel',
+                html: '<div id="refinancing_query_corp_acount"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                id: 'corp_maintain_panel',
+                html: '<div id="refinancing_query_corp_maintain"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                id: 'corp_finance_panel',
+                html: '<div id="refinancing_query_corp_finance"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                id: 'corp_refinancing_panel',
+                html: '<div id="refinancing_query_corp_refinancing"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                id: 'refinancing_query_corp_panel',
+                html: '<div id="enter_menu_list">' +
+                '<ul>' +
+                '<li><a href="#table_base">基本信息</a></li>' +
+                '<li><a href="#table_sh" >股东名册</a></li>' +
+                '<li><a href="#table_link" >法定代表人</a></li>' +
+                '<li><a href="#table_acount" >行业分类</a></li>' +
+                '<li><a href="#table_csrc_type" >证监会行业分类</a></li>' +
+                '<li><a href="#table_ocompay" >企业维护信息</a></li>' +
+                '<li><a href="#table_assets_finance" >企业财务信息</a></li>' +
+                '<li><a href="#table_demand_rz" >融资需求</a></li>' +
+                '<li><a href="#" style="background-color: #e14100;" onclick="refinancing_query_close()">关闭</a></li>' +
+                '</ul>' +
+                '</div>'
+            }]
         });
 
         Ext.create('Ext.window.Window', {
