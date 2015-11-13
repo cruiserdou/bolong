@@ -26,6 +26,42 @@ Ext.define('app.view.maintain.refi.RefiController', {
                     corp_maintain_tpl.append('refinancing_manage_corp_maintain', record.data);
                     corp_finance_tpl.append('refinancing_manage_corp_finance', record.data);
                     corp_refinancing_con_tpl.append('refinancing_manage_corp_refinancing', record.data);
+
+                    //查询股东信息
+                    var sh_store = Ext.create('Ext.data.Store', {
+                        extend: 'Ext.data.Store',
+                        model: 'app.model.corpall.ShareHolder',
+                        alias: 'store.shareholder',
+                        proxy: {
+                            type: 'ajax',
+                            actionMethods: {
+                                read: 'POST'
+                            },
+                            api: {
+                                read: '/bolong/shareholder_list'
+                            },
+                            reader: {
+                                type: 'json',
+                                rootProperty: 'list'
+                            }
+                        }
+                    });
+
+                    sh_store.load({
+                        params: {
+                            corp_id: record.data.id
+                        },
+                        callback: function (records, operation, success) {
+                            var data = [];
+
+                            sh_store.each(function (record) {
+                                data.push(record.getData());
+                            });
+
+                            //渲染股东信息
+                            corp_shareholder_dis_tpl.append('shareholder_edit', data);
+                        }
+                    });
                 }
             },
             autoScroll: true,
@@ -42,6 +78,11 @@ Ext.define('app.view.maintain.refi.RefiController', {
                 xtype: 'panel',
                 border: false,
                 html: '<div id="refinancing_manage_corp_contact"></div>'
+            },{
+                xtype: 'panel',
+                border: false,
+                height: 360,
+                html: '<div id="shareholder_edit"></div>'
             }, {
                 xtype: 'panel',
                 border: false,

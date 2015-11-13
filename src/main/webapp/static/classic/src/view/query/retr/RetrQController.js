@@ -31,6 +31,41 @@ Ext.define('app.view.query.retr.RetrQController', {
                     corp_maintain_tpl.append('retrain_query_corp_maintain', record.data);
                     corp_finance_tpl.append('retrain_query_corp_finance', record.data);
                     corp_retrain_tpl.append('retrain_query_corp_retrain', record.data);
+                    //查询股东信息
+                    var sh_store = Ext.create('Ext.data.Store', {
+                        extend: 'Ext.data.Store',
+                        model: 'app.model.corpall.ShareHolder',
+                        alias: 'store.shareholder',
+                        proxy: {
+                            type: 'ajax',
+                            actionMethods: {
+                                read: 'POST'
+                            },
+                            api: {
+                                read: '/bolong/shareholder_list'
+                            },
+                            reader: {
+                                type: 'json',
+                                rootProperty: 'list'
+                            }
+                        }
+                    });
+
+                    sh_store.load({
+                        params: {
+                            corp_id: record.data.id
+                        },
+                        callback: function (records, operation, success) {
+                            var data = [];
+
+                            sh_store.each(function (record) {
+                                data.push(record.getData());
+                            });
+
+                            //渲染股东信息
+                            corp_shareholder_dis_tpl.append('shareholder_edit', data);
+                        }
+                    });
                 }
             },
             autoScroll: true,
@@ -47,6 +82,11 @@ Ext.define('app.view.query.retr.RetrQController', {
                 xtype: 'panel',
                 border: false,
                 html: '<div id="retrain_query_corp_contact"></div>'
+            },{
+                xtype: 'panel',
+                border: false,
+                height: 360,
+                html: '<div id="shareholder_edit"></div>'
             }, {
                 xtype: 'panel',
                 border: false,

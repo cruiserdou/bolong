@@ -55,7 +55,41 @@ Ext.define('app.view.query.refi.RefiQController', {
                     corp_maintain_tpl.append('refinancing_query_corp_maintain', record.data);
                     corp_finance_tpl.append('refinancing_query_corp_finance', record.data);
                     corp_refinancing_tpl.append('refinancing_query_corp_refinancing', record.data);
+                    //查询股东信息
+                    var sh_store = Ext.create('Ext.data.Store', {
+                        extend: 'Ext.data.Store',
+                        model: 'app.model.corpall.ShareHolder',
+                        alias: 'store.shareholder',
+                        proxy: {
+                            type: 'ajax',
+                            actionMethods: {
+                                read: 'POST'
+                            },
+                            api: {
+                                read: '/bolong/shareholder_list'
+                            },
+                            reader: {
+                                type: 'json',
+                                rootProperty: 'list'
+                            }
+                        }
+                    });
 
+                    sh_store.load({
+                        params: {
+                            corp_id: record.data.id
+                        },
+                        callback: function (records, operation, success) {
+                            var data = [];
+
+                            sh_store.each(function (record) {
+                                data.push(record.getData());
+                            });
+
+                            //渲染股东信息
+                            corp_shareholder_dis_tpl.append('shareholder_edit', data);
+                        }
+                    });
                 }
             },
             autoScroll: true,
@@ -107,9 +141,14 @@ Ext.define('app.view.query.refi.RefiQController', {
                 }, {
                     xtype: 'panel',
                     border: false,
+                    height: 360,
+                    html: '<div id="shareholder_edit"></div>'
+                }, {
+                    xtype: 'panel',
+                    border: false,
                     id: 'corp_acount_panel',
                     html: '<div id="refinancing_query_corp_acount"></div>'
-                }, {
+                },{
                     xtype: 'panel',
                     border: false,
                     id: 'corp_maintain_panel',
