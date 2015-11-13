@@ -61,13 +61,6 @@ public class UserController {
      * @param user 传递的参数
      * @return 返回解析后的数据
      */
-//    @RequestMapping(value = "/{userId}")
-//    public
-//    @ResponseBody
-//    DataShop getUserById(@PathVariable("userId") long userId) {
-//        DataShop dataShop =  new DataShop();
-//        return userService.getById(userId);
-//    }
     @RequestMapping("/user")
     public Principaldou userInfo(Principal user) {
         Principaldou principaldou = new Principaldou();
