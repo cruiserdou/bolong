@@ -301,7 +301,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterGridView', {
         {text: '个人微信号', width: 120, dataIndex: 'inv_webchat', hidden: true},
         {text: '固定电话', width: 120, dataIndex: 'inv_tel', hidden: true},
         {text: '备注', width: 120, dataIndex: 'inv_remark', hidden: true},
-        {text: '融资需求ID', width: 120, dataIndex: 'refi_id'},
+        {text: '融资需求ID', width: 120, dataIndex: 'refi_id', hidden: true},
         {text: '企业ID', width: 120, dataIndex: 'refi_corp_id', hidden: true},
         {text: '融资金额', width: 120, dataIndex: 'refi_amounts', hidden: true},
         {text: '融资用途', width: 120, dataIndex: 'refi_use', hidden: true},

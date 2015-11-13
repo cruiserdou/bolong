@@ -84,7 +84,6 @@ public class DictController {
         if (null == parentid){
             parentid = 0;
         }
-        System.out.println(parentid);
         List list = dictService.listIndustry2(parentid);
         dataShop.setList(list);
         dataShop.setSuccess(true);

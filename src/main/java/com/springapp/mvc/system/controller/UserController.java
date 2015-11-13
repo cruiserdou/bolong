@@ -70,7 +70,6 @@ public class UserController {
 //    }
     @RequestMapping("/user")
     public Principaldou userInfo(Principal user) {
-        System.out.println("name:" + user.getName());
         Principaldou principaldou = new Principaldou();
         principaldou.setSuccess(false);
         if (user.getName() != null)

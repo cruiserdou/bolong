@@ -59,9 +59,7 @@ public class CorpController {
             @RequestParam("id") Integer id
     ) throws Exception {
 
-        System.out.println("start");
         corpService.delete(id);
-        System.out.println("end");
         return "success";
     }
 
