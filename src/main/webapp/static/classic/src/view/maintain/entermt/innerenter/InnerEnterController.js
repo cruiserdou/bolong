@@ -138,10 +138,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterController', {
                 pack: 'start',
                 align: 'stretch'
             },
-            items: [
-                {
+            items: [{
                 xtype: 'innerenteraddcorp'
-                //id: 'innerenteraddcorp_id'
             }, {
                 html: '<ul class="menu_list">' +
                 '<li><a href="#" id="edit_corp_base_id">基本信息</a></li>' +

@@ -100,31 +100,20 @@ var corp_tpl = new Ext.XTemplate(
     '</div>'
 );
 
-var corp_shareholder_tpl = new Ext.XTemplate(
+var corp_shareholder_dis_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
-    '<table class="enter_table" id="table_sh">',
+    '<div style="overflow-x: auto; overflow-y: auto;  width:80%;">',
+    '<table class="enter_table_sh" id="table_corp_sh">',
     '<tr>',
-    '<th class="table_header" colspan="15">股东名册</th>',
+    '<th class="table_header" colspan="16">股东名册  </th> ',
     '</tr>',
     '<tr>',
-    '<th><div contenteditable="false">股东类型</div></th>',
-    '<th><div contenteditable="false">股东</div></th>',
-    '<th><div contenteditable="false">证件类型</div></th>',
-    '<th><div contenteditable="false">证件号码</div></th>',
-    '<th><div contenteditable="false">持股数量</div></th>',
-    '<th><div contenteditable="false">流通数量</div></th>',
-    '<th><div contenteditable="false">冻结数量</div></th>',
-    '<th><div contenteditable="false">详情</div></th>',
-    '<th><div contenteditable="false">职务</div></th>',
-    '<th><div contenteditable="false">电话</div></th>',
-    '<th><div contenteditable="false">传真</div></th>',
-    '<th><div contenteditable="false">E-mail</div></th>',
-    '<th><div contenteditable="false">QQ</div></th>',
-    '<th><div contenteditable="false">个人微信号</div></th>',
-    '<th><div contenteditable="false">固定电话</div></th>',
+    '<th>股东类型</th><th>股东</th><th>证件类型</th><th>证件号码</th><th>持股数量</th>',
+    '<th>流通数量</th><th>冻结数量</th><th>职务</th><th>电话</th>',
+    '<th>传真</th><th>E-mail</th><th>QQ</th><th>个人微信号</th><th>固定电话</th>',
     '</tr>',
+    '<tpl for=".">',
     '<tr>',
-    '<tpl for="list">',
     '<td>{gd_shtype}</td>',
     '<td>{gd_shname}</td>',
     '<td>{gd_shdoctype}</td>',
@@ -132,7 +121,6 @@ var corp_shareholder_tpl = new Ext.XTemplate(
     '<td>{gd_shareholdnum}</td>',
     '<td>{gd_currencynum}</td>',
     '<td>{gd_freezenum}</td>',
-    '<td>{gd_remark}</td>',
     '<td>{gd_psotion}</td>',
     '<td>{gd_phone}</td>',
     '<td>{gd_fax}</td>',
@@ -142,59 +130,10 @@ var corp_shareholder_tpl = new Ext.XTemplate(
     '<td>{gd_tel}</td>',
     '</tr>',
     '</tpl>',
-    '</table>'
-);
-
-
-var corp_shareholder_list_tpl = new Ext.XTemplate(
-    '<div style="overflow-x: auto; overflow-y: auto;">',
-    '<div class="wrap_center">',
-    '<table class="enter_table" id="table_sh_list">',
-    '<tr>',
-    '<th class="table_header" colspan="5">股东名册</th>',
-    '</tr>',
-    '<tr>',
-    '<th><div contenteditable="false">股东类型</div></th>',
-    '<th><div contenteditable="false">股东</div></th>',
-    '<th><div contenteditable="false">证件类型</div></th>',
-    '<th><div contenteditable="false">证件号码</div></th>',
-    //'<th><div contenteditable="false">持股数量</div></th>',
-    //'<th><div contenteditable="false">流通数量</div></th>',
-    //'<th><div contenteditable="false">冻结数量</div></th>',
-    '<th><div contenteditable="false">详情</div></th>',
-    //'<th><div contenteditable="false">职务</div></th>',
-    //'<th><div contenteditable="false">电话</div></th>',
-    //'<th><div contenteditable="false">传真</div></th>',
-    //'<th><div contenteditable="false">E-mail</div></th>',
-    //'<th><div contenteditable="false">QQ</div></th>',
-    //'<th><div contenteditable="false">个人微信号</div></th>',
-    //'<th><div contenteditable="false">固定电话</div></th>',
-    '</tr>',
-    '<tr>',
-    '<tpl for="list">',
-    '<td>{gd_shtype}</td>',
-    '<td>{gd_shname}</td>',
-    '<td>{gd_shdoctype}</td>',
-    '<td>{gd_shdocnum}</td>',
-    //'<td>{gd_shareholdnum}</td>',
-    //'<td>{gd_currencynum}</td>',
-    //'<td>{gd_freezenum}</td>',
-    '<td><a href="shareholder_view?gd_id={gd_id}" target="_blank">详细</a></td>',
-    //'<td>{gd_remark}</td>',
-    //'<td>{gd_psotion}</td>',
-    //'<td>{gd_phone}</td>',
-    //'<td>{gd_fax}</td>',
-    //'<td>{gd_email}</td>',
-    //'<td>{gd_qq}</td>',
-    //'<td>{gd_webchat}</td>',
-    //'<td>{gd_tel}</td>',
-    '</tr>',
-    '</tpl>',
     '</table>',
     '</div>',
     '</div>'
 );
-
 
 var corp_contact_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
@@ -659,7 +598,6 @@ var corp_finance_tpl = new Ext.XTemplate(
     '</div>'
 );
 
-
 var corp_service_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<table class="enter_table" id="table_service">',
@@ -702,7 +640,6 @@ var corp_service_tpl = new Ext.XTemplate(
     '</div>'
 );
 
-
 var corp_investors_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<table class="enter_table" id="table_investors">',
@@ -731,7 +668,6 @@ var corp_investors_tpl = new Ext.XTemplate(
     '<th>证监会行业二级分类</th>',
     '<td>{inv_indclass2}</td>',
     '</tr>',
-
     '<tr>',
     '<th>姓名</th>',
     '<td>{inv_contact}</td>',
@@ -769,7 +705,6 @@ var corp_investors_tpl = new Ext.XTemplate(
     '</table>',
     '</div>'
 );
-
 
 var corp_government_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
@@ -825,7 +760,6 @@ var corp_government_tpl = new Ext.XTemplate(
     '</div>'
 );
 
-
 var corp_refinancing_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<table class="enter_table" id="table_demand_rz">',
@@ -858,7 +792,6 @@ var corp_refinancing_tpl = new Ext.XTemplate(
     '</div>'
 );
 
-
 var corp_retrain_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<table class="enter_table" id="table_demand_px">',
@@ -887,7 +820,6 @@ var corp_retrain_tpl = new Ext.XTemplate(
     '</div>'
 );
 
-
 var corp_rehr_tpl = new Ext.XTemplate(
     '<div class="wrap_center">',
     '<table class="enter_table" id="table_demand_rl">',
@@ -915,10 +847,3 @@ var corp_rehr_tpl = new Ext.XTemplate(
     '</table>',
     '</div>'
 );
-
-
-//$(document).ready(function(){
-//    $(".btn1").click(function(){
-//        $("table").toggle(true);
-//    });
-//});

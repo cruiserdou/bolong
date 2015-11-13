@@ -36,8 +36,46 @@ Ext.define('app.view.query.enter.EnterInfoController', {
                     corp_refinancing_tpl.append('corp_refinancing', record.data);
                     corp_retrain_tpl.append('corp_retrain', record.data);
                     corp_rehr_tpl.append('corp_rehr', record.data);
+
+
+                    //查询股东信息
+                    var sh_store = Ext.create('Ext.data.Store', {
+                        extend: 'Ext.data.Store',
+                        model: 'app.model.corpall.ShareHolder',
+                        alias: 'store.shareholder',
+                        proxy: {
+                            type: 'ajax',
+                            actionMethods: {
+                                read: 'POST'
+                            },
+                            api: {
+                                read: '/bolong/shareholder_list'
+                            },
+                            reader: {
+                                type: 'json',
+                                rootProperty: 'list'
+                            }
+                        }
+                    });
+
+                    sh_store.load({
+                        params: {
+                            corp_id: record.data.id
+                        },
+                        callback: function (records, operation, success) {
+                            var data = [];
+
+                            sh_store.each(function (record) {
+                                data.push(record.getData());
+                            });
+
+                            //渲染股东信息
+                            corp_shareholder_dis_tpl.append('shareholder_edit', data);
+                        }
+                    });
                 }
             },
+
             autoScroll: true,
             layout: {
                 type: 'vbox',
@@ -52,6 +90,11 @@ Ext.define('app.view.query.enter.EnterInfoController', {
                 xtype: 'panel',
                 border: false,
                 html: '<div id="corp_contact"></div>'
+            }, {
+                xtype: 'panel',
+                border: false,
+                height: 360,
+                html: '<div id="shareholder_edit"></div>'
             }, {
                 xtype: 'panel',
                 border: false,
@@ -112,7 +155,7 @@ Ext.define('app.view.query.enter.EnterInfoController', {
             }]
         });
 
-        Ext.create('Ext.window.Window',{
+        Ext.create('Ext.window.Window', {
             layout: 'fit',
             id: 'enterprise_ch_id',
             modal: true,
