@@ -71,22 +71,22 @@ Ext.define('app.view.main.Main', {
         id:'main_header',
         hidden: true,
         items: [{
-            xtype: 'button',
-            text: '站内信息',
-            id: 'web_in_info',
-            listeners: {
-                afterrender: function(){
-                    Ext.fly('web_in_info').setStyle("background-color", "#E54757");
-                }
-            },
-            badgeText: '2',
-            menu: [{
-                text: '已阅',
-                handler: 'onToggleConfig'
-            }, {
-                text: '未阅'
-            }]
-        }, {
+        //    xtype: 'button',
+        //    text: '站内信息',
+        //    id: 'web_in_info',
+        //    listeners: {
+        //        afterrender: function(){
+        //            Ext.fly('web_in_info').setStyle("background-color", "#E54757");
+        //        }
+        //    },
+        //    badgeText: '2',
+        //    menu: [{
+        //        text: '已阅',
+        //        handler: 'onToggleConfig'
+        //    }, {
+        //        text: '未阅'
+        //    }]
+        //}, {
             xtype: 'button',
             id: 'login_user_btn'
         }, {
