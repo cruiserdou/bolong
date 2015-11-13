@@ -30,7 +30,7 @@
 
         h1 {
             text-align: center;
-            margin-top: 6em;
+            margin-top: 8em;
         }
 
         a {
@@ -46,9 +46,9 @@
             transition: all 200ms;
         }
 
-        a:hover{
-        color: #333;
-        background-color: whitesmoke;
+        a:hover {
+            color: #333;
+            background-color: whitesmoke;
         }
 
         .wrap img {
