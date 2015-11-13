@@ -88,6 +88,25 @@
   background-color: #9ABCE6;
 }
 
+.enter_table td a{
+  display: inline-block;
+  border:1px solid #CCC;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 9px;
+  color: #333;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.enter_table td a:hover{
+  background-color: #F2F2F2;
+  color: #222;
+}
+
 .enter_table_sh {
   border-collapse: collapse;
   width: 1200px;
