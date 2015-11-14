@@ -83,7 +83,6 @@
         var pluginController = function (element, theOptions) {
 
             var $container = $(element);
-
             var defaults = {
                 imgClass: "centerImage"
             };
@@ -169,9 +168,6 @@
             $container.data(pluginName, that);
         };
 
-//
-// jQuery function
-//
         $.fn[pluginName] = function (options) {
             this.each(function () {
                 pluginController(this, options);
@@ -182,7 +178,6 @@
     })(jQuery);
 
     $(document).ready(function () {
-//debugger;
         jQuery("#image-background").centerImage();
     });
 </script>

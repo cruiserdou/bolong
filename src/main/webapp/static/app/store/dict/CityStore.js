@@ -17,5 +17,9 @@ Ext.define('app.store.dict.CityStore', {
             type: 'json',
             rootProperty: 'list'
         }
+        //,
+        //params: {
+        //    provinceid: Ext.getCmp('province_id').getValue()
+        //}
     }
 });

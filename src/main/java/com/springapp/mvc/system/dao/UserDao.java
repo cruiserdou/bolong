@@ -30,8 +30,8 @@ public interface UserDao {
 
             where += " ;";
 
-            return " SELECT *  " +
-                    "  FROM work.users " +
+            return " SELECT * " +
+                    " FROM work.users " +
                     " WHERE 1 = 1  " + where;
         }
     }
