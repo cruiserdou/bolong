@@ -17,6 +17,7 @@ public interface DictsDao {
 
     @SelectProvider(type = DictsDaoEmberSql.class, method = "listDictsInfo")
     List<Dicts> list(
+            @Param(value = "field") String field,
             @Param(value = "fieldnm") String fieldnm
     );
 
@@ -26,6 +27,8 @@ public interface DictsDao {
             String where = "";
             if (null != para.get("fieldnm").toString() && 0 != para.get("fieldnm").toString().length())
                 where += " and fieldnm like '%" + para.get("fieldnm").toString() + "%' ";
+            if (null != para.get("field").toString() && 0 != para.get("field").toString().length())
+                where += " and field like '%" + para.get("field").toString() + "%' ";
 
             where += " ;";
 

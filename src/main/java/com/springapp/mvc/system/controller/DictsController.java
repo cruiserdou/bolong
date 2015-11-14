@@ -20,10 +20,11 @@ public class DictsController {
     public
     @ResponseBody
     DataShop listMenu(
+            @RequestParam(value = "field", required = false, defaultValue = "") String field,
             @RequestParam(value = "fieldnm", required = false, defaultValue = "") String fieldnm
     ) throws Exception{
         DataShop dataShop = new DataShop();
-        List list = dictsService.list(fieldnm);
+        List list = dictsService.list(field,fieldnm);
         dataShop.setList(list);
         dataShop.setSuccess(true);
         return dataShop;

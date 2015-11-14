@@ -17,8 +17,8 @@ public class DictsServiceImpl implements DictsService {
     private DictsDao dictsDao;
 
     @Override
-    public List<Dicts> list(String fieldnm){
-        return dictsDao.list(fieldnm);
+    public List<Dicts> list(String field,String fieldnm){
+        return dictsDao.list(field,fieldnm);
     }
 
     @Override

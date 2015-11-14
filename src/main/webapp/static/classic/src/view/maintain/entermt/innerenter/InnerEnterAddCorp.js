@@ -123,7 +123,25 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }, {
                 allowBlank: false,
                 name: 'unit',
-                fieldLabel: '单位类别'
+                fieldLabel: '单位类别',
+                xtype: 'combobox',
+                store: {
+                    type: 'dictsstore'
+                },
+                displayField: 'fieldvaldis',
+                valueField: 'fieldvaldis',
+                editable : false,
+                multiSelect:true,
+                //queryMode: 'local',
+                listeners: {
+                    expand: function (_this) {
+                        _this.getStore().load({
+                            params: {
+                                field: 'etype'
+                            }
+                        });
+                    }
+                }
             }, {
                 allowBlank: false,
                 name: 'legrep',
@@ -661,11 +679,43 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 fieldLabel: '企业等级'
             }, {
                 name: 'mai_maintain',
-                fieldLabel: '企业维护状态'
+                fieldLabel: '企业维护状态',
+                    xtype: 'combobox',
+                    store: {
+                        type: 'dictsstore'
+                    },
+                    displayField: 'fieldvaldis',
+                    valueField: 'fieldvaldis',
+                    editable : false,
+                    listeners: {
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    field: 'mtstate'
+                                }
+                            });
+                        }
+                    }
             }, {
-                name: 'mai_reserve',
-                fieldLabel: '所属后备库'
-            }, {
+                    name: 'mai_reserve',
+                    fieldLabel: '所属后备库',
+                    xtype: 'combobox',
+                    store: {
+                        type: 'dictsstore'
+                    },
+                    displayField: 'fieldvaldis',
+                    valueField: 'fieldvaldis',
+                    editable: false,
+                    listeners: {
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    field: 'reservedb'
+                                }
+                            });
+                        }
+                    }
+                }, {
                 name: 'mai_emaint',
                 fieldLabel: '企业接待人'
             }, {
@@ -1421,7 +1471,23 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 fieldLabel: '服务机构名称'
             }, {
                 name: 'srv_type',
-                fieldLabel: '服务机构类别'
+                fieldLabel: '服务机构类别',
+                    xtype: 'combobox',
+                    store: {
+                        type: 'dictsstore'
+                    },
+                    displayField: 'fieldvaldis',
+                    valueField: 'fieldvaldis',
+                    editable: false,
+                    listeners: {
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    field: 'service'
+                                }
+                            });
+                        }
+                    }
             }, {
                 name: 'srv_content',
                 fieldLabel: '业务内容'
