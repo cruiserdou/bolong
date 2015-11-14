@@ -49,8 +49,11 @@ public interface DictDao {
     @Delete(" Delete FROM work.dicts  where id = #{id}")
     void delete(@Param(value = "id") Integer id);
 
-    @Select("SELECT * FROM  work.tb_industry1;")
-    List<Industry1> listIndustry1();
+    @Select("SELECT * FROM  work.tb_industry1 where id <20;")
+    List<Industry1> listIndustry1hy();
+
+    @Select("SELECT * FROM  work.tb_industry1 where id >19 ;")
+    List<Industry1> listIndustry1zjh();
 
     @Select("SELECT * FROM work.tb_industry2 WHERE parentid=#{parentid};")
     List<Industry2> listIndustry2(@Param(value = "parentid")int parentid);

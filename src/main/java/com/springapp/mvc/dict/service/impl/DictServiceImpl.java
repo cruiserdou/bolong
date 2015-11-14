@@ -32,8 +32,13 @@ public class DictServiceImpl implements DictService{
     }
 
     @Override
-    public List<Industry1> listIndustry1(){
-        return dictDao.listIndustry1();
+    public List<Industry1> listIndustry1zjy(){
+        return dictDao.listIndustry1zjh();
+    }
+
+    @Override
+    public List<Industry1> listIndustry1hy(){
+        return dictDao.listIndustry1hy();
     }
 
     @Override

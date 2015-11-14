@@ -62,13 +62,25 @@ public class DictController {
     }
 
 
-    @RequestMapping(value = "/industry1",method = RequestMethod.GET)
+    @RequestMapping(value = "/industry1hy",method = RequestMethod.GET)
     public
     @ResponseBody
-    DataShop industry1(
+    DataShop industry1hy(
     ) throws Exception{
         DataShop dataShop = new DataShop();
-        List list = dictService.listIndustry1();
+        List list = dictService.listIndustry1hy();
+        dataShop.setList(list);
+        dataShop.setSuccess(true);
+        return dataShop;
+    }
+
+    @RequestMapping(value = "/industry1zjy",method = RequestMethod.GET)
+    public
+    @ResponseBody
+    DataShop industry1zjy(
+    ) throws Exception{
+        DataShop dataShop = new DataShop();
+        List list = dictService.listIndustry1zjy();
         dataShop.setList(list);
         dataShop.setSuccess(true);
         return dataShop;

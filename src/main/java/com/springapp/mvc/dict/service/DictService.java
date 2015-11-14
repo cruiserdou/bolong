@@ -12,6 +12,7 @@ public interface DictService {
     List<City> listCity(int provinceid);
     List<County> listDistrict(int cityid);
 
-    List<Industry1> listIndustry1();
+    List<Industry1> listIndustry1zjy();
+    List<Industry1> listIndustry1hy();
     List<Industry2> listIndustry2(int parentid);
 }

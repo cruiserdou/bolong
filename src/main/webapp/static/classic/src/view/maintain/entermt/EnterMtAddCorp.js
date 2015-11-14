@@ -8,7 +8,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         'app.store.dict.ProvinceStore',
         'app.store.dict.CityStore',
         'app.store.dict.DistrictStore',
-        'app.store.dict.Industry1Store',
+        'app.store.dict.Industry1HYStore',
+        'app.store.dict.Industry1ZYJStore',
         'app.store.dict.Industry2Store',
         'app.store.system.DictsMtStore'
     ],
@@ -407,7 +408,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 name: 'indclass1',
                 fieldLabel: '行业一级分类',
                 store: {
-                    type: 'industry1store'
+                    type: 'industry1hystore'
                 },
                 autoRender: true,
                 queryMode: 'remote',
@@ -530,7 +531,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             fieldLabel: '证监会行业一级分类',
             xtype: 'combo',
             store: {
-                type: 'industry1store'
+                type: 'industry1zjystore'
             },
             autoRender: true,
             autoShow: true,
@@ -1494,7 +1495,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 fieldLabel: '行业一级分类',
                 xtype: 'combo',
                 store: {
-                    type: 'industry1store'
+                    type: 'industry1hystore'
                 },
                 autoRender: true,
                 autoShow: true,
@@ -1594,7 +1595,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 fieldLabel: '证监会行业一级分类',
                 xtype: 'combo',
                 store: {
-                    type: 'industry1store'
+                    type: 'industry1zjystore'
                 },
                 autoRender: true,
                 autoShow: true,
