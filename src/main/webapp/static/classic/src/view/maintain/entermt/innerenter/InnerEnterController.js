@@ -701,12 +701,6 @@ function corp_maintain_info() {
             {
                 name: 'remark',
                 fieldLabel: '备注'
-            },
-            {
-                name: 'img',
-                id: 'maintain_user_img_id',
-                //hidden: true
-                fieldLabel: 'img'
             }
             //{
             //    xtype: 'fieldset',
@@ -760,7 +754,7 @@ function corp_maintain_info() {
         title: '维护人信息',
         id: 'corp_maintain_window',
         width: 350,
-        height: 500,
+        height: 370,
         modal: true,
         frame: true,
         border: false,
