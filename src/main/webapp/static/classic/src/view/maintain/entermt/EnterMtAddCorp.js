@@ -388,6 +388,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                     type: 'industry1store'
                 },
                 autoRender: true,
+                queryMode: 'remote',
                 autoShow: true,
                 displayField: 'name',
                 valueField: 'id',

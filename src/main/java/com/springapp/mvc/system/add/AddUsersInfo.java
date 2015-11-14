@@ -69,7 +69,7 @@ public class AddUsersInfo {
 
                 file.transferTo(new File(projectPath + "/" + account+".jpg"));
 
-                filename = file.getOriginalFilename();
+                filename = account+".jpg";
 
             }else{
                 filename = "per.png";

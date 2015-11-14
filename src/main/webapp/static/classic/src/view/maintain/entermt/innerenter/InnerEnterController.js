@@ -703,29 +703,40 @@ function corp_maintain_info() {
                 fieldLabel: '备注'
             },
             {
-                xtype: 'fieldset',
-                title: '图片预览',
-                defaults: {margin: '0 0 0 80', width: 100, height: 100},
-                items: [
-                    {
-                        xtype: 'image',
-                        id: 'staffavatar',
-                        border: 1,
-                        //src: 'static/upload/annex/'+store.getAt(0).data['photo'],
-                        src: '/bolong/static/resources/per.png',
-                        style: {
-                            borderColor: 'blue',
-                            borderStyle: 'solid'
-                        }
-                    }
-                ]
+                name: 'img',
+                id: 'maintain_user_img_id',
+                //hidden: true
+                fieldLabel: 'img'
             }
+            //{
+            //    xtype: 'fieldset',
+            //    title: '图片预览',
+            //    defaults: {margin: '0 0 0 80', width: 100, height: 100},
+            //    items: [
+            //        {
+            //            xtype: 'image',
+            //            id: 'staffavatar',
+            //            border: 1,
+            //            src: 'static/upload/annex/'+Ext.getCmp('maintain_user_img_id').getValue(),
+            //            //src: '/bolong/static/resources/per.png',
+            //            style: {
+            //                borderColor: 'blue',
+            //                borderStyle: 'solid'
+            //            }
+            //        }
+            //    ]
+            //}
         ],
         buttonAlign: "center",
         buttons: [
             {
                 text: '关闭',
-                iconCls: 'icon_save'
+                iconCls: 'icon_save',
+                listeners: {
+                    click: function () {
+                        Ext.getCmp('corp_maintain_window').close();
+                    }
+                }
             }
         ]
     });
@@ -740,6 +751,7 @@ function corp_maintain_info() {
                 for (var i = 0; i < store.getCount(); i++) {
                 }
                 editForm.getForm().loadRecord(store.getAt(0));
+
             }
         }
     });
