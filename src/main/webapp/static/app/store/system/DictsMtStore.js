@@ -17,5 +17,6 @@ Ext.define('app.store.system.DictsMtStore', {
             type: 'json',
             rootProperty: 'list'
         }
-    }
+    },
+    autoLoad: false
 });

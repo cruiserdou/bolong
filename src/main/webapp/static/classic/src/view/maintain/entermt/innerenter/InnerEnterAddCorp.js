@@ -9,7 +9,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
         'app.store.dict.CityStore',
         'app.store.dict.DistrictStore',
         'app.store.dict.Industry1Store',
-        'app.store.dict.Industry2Store'
+        'app.store.dict.Industry2Store',
+        'app.store.system.DictsMtStore'
     ],
     width: 960,
     id: 'inner_corp_edit_form_id',
@@ -124,7 +125,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 allowBlank: false,
                 name: 'unit',
                 fieldLabel: '单位类别',
-                xtype: 'combobox',
+                xtype: 'combo',
                 store: {
                     type: 'dictsstore'
                 },
@@ -132,7 +133,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 valueField: 'fieldvaldis',
                 editable : false,
                 multiSelect:true,
-                //queryMode: 'local',
+                queryMode: 'local',
                 listeners: {
                     expand: function (_this) {
                         _this.getStore().load({
@@ -426,36 +427,20 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             items: [
                 {
                     id: 'indclass1_id',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     name: 'indclass1',
                     fieldLabel: '行业一级分类',
                     store: {
                         type: 'industry1store'
                     },
                     autoRender: true,
+                    queryMode: 'remote',
                     autoShow: true,
                     displayField: 'name',
                     valueField: 'id',
                     listConfig: {
                         getInnerTpl: function () {
                             return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
-                    listeners: {
-                        select: function (combo, record, index) {
-                            try {
-                                var indclass2 = Ext.getCmp('indclass2_id');
-                                indclass2.clearValue();
-                                indclass2.store.load(
-                                    {
-                                        params: {
-                                            parentid: Ext.getCmp('indclass1_id').getValue("id")
-                                        }
-                                    }
-                                );
-                            } catch (ex) {
-                                alert("数据加载失败！");
-                            }
                         }
                     }
                 },
@@ -463,7 +448,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     id: 'indclass2_id',
                     name: 'indclass2',
                     fieldLabel: '行业二级分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
+                    queryMode: 'local',
                     store: {
                         type: 'industry2store'
                     },
@@ -471,36 +457,58 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     autoShow: true,
                     displayField: 'name',
                     valueField: 'id',
+                    queryMode: 'local',
                     listConfig: {
                         getInnerTpl: function () {
                             return '<div><span style="color: green;">' + '({name})</span></div>'
                         }
                     },
                     listeners: {
-                        select: function (combo, record, index) {
-                            try {
-                                var indclass3 = Ext.getCmp('indclass3_id');
-                                indclass3.clearValue();
-                                indclass3.store.load(
-                                    {
-                                        params: {
-                                            parentid: Ext.getCmp('indclass2_id').getValue("id")
-                                        }
-                                    }
-                                );
-                            } catch (ex) {
-                                alert("数据加载失败！");
-                            }
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    parentid: Ext.getCmp('indclass1_id').getValue("id")
+                                }
+                            });
                         }
                     }
                 }, {
                     id: 'indclass3_id',
                     name: 'indclass3',
                     fieldLabel: '行业三级分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
+                    queryMode: 'local',
                     store: {
                         type: 'industry2store'
                     },
+                    autoRender: true,
+                    autoShow: true,
+                    displayField: 'name',
+                    valueField: 'id',
+                    queryMode: 'local',
+                    listConfig: {
+                        getInnerTpl: function () {
+                            return '<div><span style="color: green;">' + '({name})</span></div>'
+                        }
+                    },
+                    listeners: {
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    parentid: Ext.getCmp('indclass2_id').getValue("id")
+                                }
+                            });
+                        }
+                    }
+                }, {
+                    id: 'indclass4_id',
+                    name: 'indclass4',
+                    fieldLabel: '行业四级分类',
+                    xtype: 'combo',
+                    store: {
+                        type: 'industry2store'
+                    },
+                    queryMode: 'local',
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
@@ -511,37 +519,12 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                         }
                     },
                     listeners: {
-                        select: function (combo, record, index) {
-                            try {
-                                var indclass4 = Ext.getCmp('indclass4_id');
-                                indclass4.clearValue();
-                                indclass4.store.load(
-                                    {
-                                        params: {
-                                            parentid: Ext.getCmp('indclass3_id').getValue("id")
-                                        }
-                                    }
-                                );
-                            } catch (ex) {
-                                alert("数据加载失败！");
-                            }
-                        }
-                    }
-                }, {
-                    id: 'indclass4_id',
-                    name: 'indclass4',
-                    fieldLabel: '行业四级分类',
-                    xtype: 'combobox',
-                    store: {
-                        type: 'industry2store'
-                    },
-                    autoRender: true,
-                    autoShow: true,
-                    displayField: 'name',
-                    valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    parentid: Ext.getCmp('indclass3_id').getValue("id")
+                                }
+                            });
                         }
                     }
                 }]
@@ -570,7 +553,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 id: 'csrc_type1_id',
                 name: 'csrc_type1',
                 fieldLabel: '证监会行业一级分类',
-                xtype: 'combobox',
+                xtype: 'combo',
                 store: {
                     type: 'industry1store'
                 },
@@ -582,33 +565,17 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     getInnerTpl: function () {
                         return '<div><span style="color: green;">' + '({name})</span></div>'
                     }
-                },
-                listeners: {
-                    select: function (combo, record, index) {
-                        try {
-                            var csrc_type2 = Ext.getCmp('csrc_type2_id');
-                            csrc_type2.clearValue();
-                            csrc_type2.store.load(
-                                {
-                                    params: {
-                                        parentid: Ext.getCmp('csrc_type1_id').getValue("id")
-                                    }
-                                }
-                            );
-                        } catch (ex) {
-                            alert("数据加载失败！");
-                        }
-                    }
                 }
             },
                 {
                     id: 'csrc_type2_id',
                     name: 'csrc_type2',
                     fieldLabel: '证监会行业二级分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'industry2store'
                     },
+                    queryMode: 'local',
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
@@ -616,6 +583,15 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     listConfig: {
                         getInnerTpl: function () {
                             return '<div><span style="color: green;">' + '({name})</span></div>'
+                        }
+                    },
+                    listeners: {
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    parentid: Ext.getCmp('csrc_type1_id').getValue("id")
+                                }
+                            });
                         }
                     }
                 }
@@ -680,13 +656,14 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }, {
                 name: 'mai_maintain',
                 fieldLabel: '企业维护状态',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'dictsstore'
                     },
                     displayField: 'fieldvaldis',
                     valueField: 'fieldvaldis',
                     editable : false,
+                    queryMode: 'local',
                     listeners: {
                         expand: function (_this) {
                             _this.getStore().load({
@@ -699,13 +676,14 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }, {
                     name: 'mai_reserve',
                     fieldLabel: '所属后备库',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'dictsstore'
                     },
                     displayField: 'fieldvaldis',
                     valueField: 'fieldvaldis',
                     editable: false,
+                    queryMode: 'local',
                     listeners: {
                         expand: function (_this) {
                             _this.getStore().load({
@@ -1472,13 +1450,14 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }, {
                 name: 'srv_type',
                 fieldLabel: '服务机构类别',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'dictsstore'
                     },
                     displayField: 'fieldvaldis',
                     valueField: 'fieldvaldis',
                     editable: false,
+                    queryMode: 'local',
                     listeners: {
                         expand: function (_this) {
                             _this.getStore().load({
@@ -1559,7 +1538,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     id: 'inv_csrc_type1_id',
                     name: 'inv_csrc_type1',
                     fieldLabel: '行业一级分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'industry1store'
                     },
@@ -1571,33 +1550,17 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                         getInnerTpl: function () {
                             return '<div><span style="color: green;">' + '({name})</span></div>'
                         }
-                    },
-                    listeners: {
-                        select: function (combo, record, index) {
-                            try {
-                                var inv_csrc_type2 = Ext.getCmp('inv_csrc_type2_id');
-                                inv_csrc_type2.clearValue();
-                                inv_csrc_type2.store.load(
-                                    {
-                                        params: {
-                                            parentid: Ext.getCmp('inv_csrc_type1_id').getValue("id")
-                                        }
-                                    }
-                                );
-                            } catch (ex) {
-                                alert("数据加载失败！");
-                            }
-                        }
                     }
                 },
                 {
                     id: 'inv_csrc_type2_id',
                     name: 'inv_csrc_type2',
                     fieldLabel: '行业二级分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'industry2store'
                     },
+                    queryMode: 'local',
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
@@ -1608,30 +1571,23 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                         }
                     },
                     listeners: {
-                        select: function (combo, record, index) {
-                            try {
-                                var inv_csrc_type3 = Ext.getCmp('inv_csrc_type3_id');
-                                inv_csrc_type3.clearValue();
-                                inv_csrc_type3.store.load(
-                                    {
-                                        params: {
-                                            parentid: Ext.getCmp('inv_csrc_type2_id').getValue("id")
-                                        }
-                                    }
-                                );
-                            } catch (ex) {
-                                alert("数据加载失败！");
-                            }
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    parentid: Ext.getCmp('inv_csrc_type1_id').getValue("id")
+                                }
+                            });
                         }
                     }
                 }, {
                     id: 'inv_csrc_type3_id',
                     name: 'inv_csrc_type3',
                     fieldLabel: '行业三级分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'industry2store'
                     },
+                    queryMode: 'local',
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
@@ -1642,30 +1598,23 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                         }
                     },
                     listeners: {
-                        select: function (combo, record, index) {
-                            try {
-                                var inv_csrc_type4 = Ext.getCmp('inv_csrc_type4_id');
-                                inv_csrc_type4.clearValue();
-                                inv_csrc_type4.store.load(
-                                    {
-                                        params: {
-                                            parentid: Ext.getCmp('inv_csrc_type3_id').getValue("id")
-                                        }
-                                    }
-                                );
-                            } catch (ex) {
-                                alert("数据加载失败！");
-                            }
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    parentid: Ext.getCmp('inv_csrc_type2_id').getValue("id")
+                                }
+                            });
                         }
                     }
                 }, {
                     id: 'inv_csrc_type4_id',
                     name: 'inv_csrc_type4',
                     fieldLabel: '行业四级分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'industry2store'
                     },
+                    queryMode: 'local',
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
@@ -1674,12 +1623,21 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                         getInnerTpl: function () {
                             return '<div><span style="color: green;">' + '({name})</span></div>'
                         }
+                    },
+                    listeners: {
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    parentid: Ext.getCmp('inv_csrc_type3_id').getValue("id")
+                                }
+                            });
+                        }
                     }
                 }, {
                     id: 'inv_indclass1_id',
                     name: 'inv_indclass1',
                     fieldLabel: '证监会行业一级分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'industry1store'
                     },
@@ -1691,32 +1649,16 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                         getInnerTpl: function () {
                             return '<div><span style="color: green;">' + '({name})</span></div>'
                         }
-                    },
-                    listeners: {
-                        select: function (combo, record, index) {
-                            try {
-                                var inv_indclass2 = Ext.getCmp('inv_indclass2_id');
-                                inv_indclass2.clearValue();
-                                inv_indclass2.store.load(
-                                    {
-                                        params: {
-                                            parentid: Ext.getCmp('inv_indclass1_id').getValue("id")
-                                        }
-                                    }
-                                );
-                            } catch (ex) {
-                                alert("数据加载失败！");
-                            }
-                        }
                     }
                 }, {
                     id: 'inv_indclass2_id',
                     name: 'inv_indclass2',
                     fieldLabel: '证监会行业二类分类',
-                    xtype: 'combobox',
+                    xtype: 'combo',
                     store: {
                         type: 'industry2store'
                     },
+                    queryMode: 'local',
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
@@ -1724,6 +1666,15 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     listConfig: {
                         getInnerTpl: function () {
                             return '<div><span style="color: green;">' + '({name})</span></div>'
+                        }
+                    },
+                    listeners: {
+                        expand: function (_this) {
+                            _this.getStore().load({
+                                params: {
+                                    parentid: Ext.getCmp('inv_indclass1_id').getValue("id")
+                                }
+                            });
                         }
                     }
                 }, {

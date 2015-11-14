@@ -17,5 +17,7 @@ Ext.define('app.store.dict.Industry2Store', {
             type: 'json',
             rootProperty: 'list'
         }
-    }
+    },
+    autoLoad: false
 });
+
