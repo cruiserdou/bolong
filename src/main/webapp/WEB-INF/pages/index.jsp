@@ -74,7 +74,7 @@
 
 <div id="banner"></div>
 <div style="width: 100%;" id="image-background" class="image-background">
-    <img style="width: 100%;" src="static/resources/login-back.png" class="centerImage">
+    <img style="width: 100%;" src="static/resources/images/login_bak_t.jpg" class="centerImage">
 </div>
 <script>
     (function ($) {

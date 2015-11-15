@@ -157,6 +157,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'province',
             fieldLabel: '省',
             xtype: 'combobox',
+            forceSelection: true,
             allowBlank: false,
             store: {
                 type: 'provincestore'
@@ -165,56 +166,67 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             valueField: 'id',
             editable : false,
             listeners: {
-                change: function(){
+                change: function(_this, nVal){
                     Ext.getCmp('city_id').clearValue();
                     Ext.getCmp('county_id').clearValue();
+                    Ext.getCmp('city_id').getStore().load({
+                        params: {
+                            provinceid: Ext.getCmp('province_id').getValue()
+                        }
+                    })
                 }
             }
         }, {
             id: 'city_id',
             name: 'city',
             fieldLabel: '市',
-            xtype: 'combobox',
+            autoLoadOnValue: true,
+            xtype: 'combo',
             allowBlank: false,
+            typeAhead: false,
+            editable: false,
+            queryMode: 'local',
+            forceSelection: true,
+            multiSelect: false,
+            triggerAction: 'all',
+            selectOnFocus: false,
             store: {
                 type: 'citystore'
             },
             displayField: 'name',
             valueField: 'id',
-            editable : false,
             listeners: {
-                expand: function (_this) {
-                    _this.getStore().load({
-                        params: {
-                            provinceid: Ext.getCmp('province_id').getValue()
-                        }
-                    });
-                },
-                change: function(){
+                change: function(_this, nVal){
                     Ext.getCmp('county_id').clearValue();
+                    console.log(nVal + "me");
+                    Ext.getCmp('county_id').getStore().load({
+                            params: {
+                                cityid: nVal
+                            }
+                        }
+
+                    );
                 }
             }
         }, {
             id: 'county_id',
             name: 'county',
             fieldLabel: '县',
-            xtype: 'combobox',
+            xtype: 'combo',
             allowBlank: false,
+            typeAhead: false,
+            editable: false,
+            queryMode: 'local',
+            forceSelection: true,
+            multiSelect: false,
+            triggerAction: 'all',
+            selectOnFocus: false,
             store: {
                 type: 'districtstore'
             },
             displayField: 'name',
             valueField: 'name',
-            editable : false,
-            listeners: {
-                expand: function (_this) {
-                    _this.getStore().load({
-                        params: {
-                            cityid: Ext.getCmp('city_id').getValue()
-                        }
-                    });
-                }
-            }
+            editable : false
         }, {
             name: 'nos',
             fieldLabel: '公司简称'

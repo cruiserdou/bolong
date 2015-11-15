@@ -17,9 +17,14 @@ Ext.define('app.store.dict.CityStore', {
             type: 'json',
             rootProperty: 'list'
         }
-        //,
-        //params: {
-        //    provinceid: Ext.getCmp('province_id').getValue()
-        //}
     }
+    //,
+    //listeners: {
+    //    load: function(store, operation, eOpts){
+    //        var provinceCode=Ext.getCmp('province_id').getValue();
+    //        store.filterBy(function(record) {
+    //            return record.get('provinceid') == provinceCode;
+    //        });
+    //    }
+    //}
 });
