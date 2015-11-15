@@ -121,8 +121,39 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             }, {
                 allowBlank: false,
                 name: 'name',
-                fieldLabel: '企业名称'
+                fieldLabel: '企业名称',
+                listeners: {
+                    afterrender: function () {
+
+                        Ext.getCmp('unit_edit_id').clearValue();
+                        Ext.getCmp('unit_edit_id').getStore().load({
+                            params: {
+                                field: 'etype'
+                            }
+                        });
+                        Ext.getCmp('mai_edit_maintain_id').clearValue();
+                        Ext.getCmp('mai_edit_maintain_id').getStore().load({
+                            params: {
+                                field: 'mtstate'
+                            }
+                        });
+                        Ext.getCmp('mai_edit_reserve_id').clearValue();
+                        Ext.getCmp('mai_edit_reserve_id').getStore().load({
+                            params: {
+                                field: 'reservedb'
+                            }
+                        });
+                        Ext.getCmp('srv_edit_type_id').clearValue();
+                        Ext.getCmp('srv_edit_type_id').getStore().load({
+                            params: {
+                                field: 'service'
+                            }
+                        });
+                        Ext.getCmp('province_edit_id').setValue(1);
+                    }
+                }
             }, {
+                id:'unit_edit_id',
                 allowBlank: false,
                 name: 'unit',
                 fieldLabel: '单位类别',
@@ -134,86 +165,83 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 valueField: 'fieldvaldis',
                 editable : false,
                 multiSelect:true,
-                queryMode: 'local',
-                listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
-                            params: {
-                                field: 'etype'
-                            }
-                        });
-                    }
-                }
+                queryMode: 'local'
             }, {
                 allowBlank: false,
                 name: 'legrep',
                 fieldLabel: '法定代表人'
             }, {
-                id: 'edit_province_id',
+                id: 'province_edit_id',
                 name: 'province',
                 fieldLabel: '省',
-                xtype: 'combobox',
+                xtype: 'combo',
+                forceSelection: true,
                 allowBlank: false,
                 store: {
                     type: 'provincestore'
                 },
-                autoRender: true,
-                autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
+                editable : false,
                 listeners: {
-                    change: function(){
-                        Ext.getCmp('city_id').clearValue();
-                        Ext.getCmp('county_id').clearValue();
+                    change: function(_this, nVal){
+                        Ext.getCmp('city_edit_id').clearValue();
+                        Ext.getCmp('county_edit_id').clearValue();
+                        Ext.getCmp('city_edit_id').getStore().load({
+                            params: {
+                                provinceid: Ext.getCmp('province_edit_id').getValue()
+                            }
+                        })
                     }
                 }
             }, {
-                id: 'edit_city_id',
+                id: 'city_edit_id',
                 name: 'city',
                 fieldLabel: '市',
-                xtype: 'combobox',
+                autoLoadOnValue: true,
+                xtype: 'combo',
                 allowBlank: false,
+                typeAhead: false,
+                editable: false,
+                queryMode: 'local',
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: false,
                 store: {
                     type: 'citystore'
                 },
-                autoRender: true,
-                autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
+                valueField: 'id',
                 listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
-                            params: {
-                                provinceid: Ext.getCmp('edit_province_id').getValue()
+                    change: function(_this, nVal){
+                        Ext.getCmp('county_edit_id').clearValue();
+                        Ext.getCmp('county_edit_id').getStore().load({
+                                params: {
+                                    cityid: nVal
+                                }
                             }
-                        });
-                    },
-                    change: function(){
-                        Ext.getCmp('edit_county_id').clearValue();
+                        );
                     }
                 }
             }, {
-                id: 'edit_county_id',
+                id: 'county_edit_id',
                 name: 'county',
                 fieldLabel: '县',
-                xtype: 'combobox',
+                xtype: 'combo',
                 allowBlank: false,
+                typeAhead: false,
+                editable: false,
+                queryMode: 'local',
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: false,
                 store: {
                     type: 'districtstore'
                 },
-                autoRender: true,
-                autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
-                listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
-                            params: {
-                                cityid: Ext.getCmp('edit_city_id').getValue()
-                            }
-                        });
-                    }
-                }
+                valueField: 'name'
             }, {
                 name: 'nos',
                 fieldLabel: '公司简称'
@@ -427,107 +455,107 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
             },
             items: [
                 {
-                    id: 'indclass1_id',
+
+                    id: 'indclass1_edit_id',
                     xtype: 'combo',
                     name: 'indclass1',
                     fieldLabel: '行业一级分类',
                     store: {
                         type: 'industry1hystore'
                     },
-                    autoRender: true,
-                    queryMode: 'remote',
-                    autoShow: true,
+                    typeAhead: true,
+                    editable: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
                     displayField: 'name',
                     valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
+                    listeners: {
+                        change: function(_this, nVal){
+                            Ext.getCmp('indclass2_edit_id').clearValue();
+                            Ext.getCmp('indclass3_edit_id').clearValue();
+                            Ext.getCmp('indclass4_edit_id').clearValue();
+                            Ext.getCmp('indclass2_edit_id').getStore().load({
+                                params: {
+                                    parentid: nVal
+                                }
+                            })
                         }
                     }
                 },
                 {
-                    id: 'indclass2_id',
+                    id: 'indclass2_edit_id',
                     name: 'indclass2',
                     fieldLabel: '行业二级分类',
                     xtype: 'combo',
-                    queryMode: 'local',
                     store: {
                         type: 'industry2store'
                     },
-                    autoRender: true,
-                    autoShow: true,
+                    typeAhead: true,
+                    editable: true,
+                    queryMode: 'local',
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: false,
                     displayField: 'name',
                     valueField: 'id',
-                    queryMode: 'local',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
                     listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
+                        change: function (_this, nVal) {
+                            Ext.getCmp('indclass3_edit_id').clearValue();
+                            Ext.getCmp('indclass4_edit_id').clearValue();
+                            Ext.getCmp('indclass3_edit_id').getStore().load({
                                 params: {
-                                    parentid: Ext.getCmp('indclass1_id').getValue("id")
+                                    parentid: nVal
                                 }
-                            });
+                            })
                         }
                     }
                 }, {
-                    id: 'indclass3_id',
+                    id: 'indclass3_edit_id',
                     name: 'indclass3',
                     fieldLabel: '行业三级分类',
                     xtype: 'combo',
-                    queryMode: 'local',
                     store: {
                         type: 'industry2store'
                     },
-                    autoRender: true,
-                    autoShow: true,
+                    typeAhead: true,
+                    editable: true,
+                    queryMode: 'local',
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: false,
                     displayField: 'name',
                     valueField: 'id',
-                    queryMode: 'local',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
                     listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
+                        change: function (_this, nVal) {
+                            Ext.getCmp('indclass4_edit_id').clearValue();
+                            Ext.getCmp('indclass4_edit_id').getStore().load({
                                 params: {
-                                    parentid: Ext.getCmp('indclass2_id').getValue("id")
+                                    parentid: nVal
                                 }
-                            });
+                            })
                         }
                     }
                 }, {
-                    id: 'indclass4_id',
+                    id: 'indclass4_edit_id',
                     name: 'indclass4',
                     fieldLabel: '行业四级分类',
                     xtype: 'combo',
                     store: {
                         type: 'industry2store'
                     },
+                    typeAhead: true,
+                    editable: true,
                     queryMode: 'local',
-                    autoRender: true,
-                    autoShow: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: false,
                     displayField: 'name',
-                    valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    parentid: Ext.getCmp('indclass3_id').getValue("id")
-                                }
-                            });
-                        }
-                    }
+                    valueField: 'name'
                 }]
         },
         {
@@ -551,7 +579,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 }
             },
             items: [{
-                id: 'csrc_type1_id',
+                id: 'csrc_type1_edit_id',
                 name: 'csrc_type1',
                 fieldLabel: '证监会行业一级分类',
                 xtype: 'combo',
@@ -561,42 +589,44 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'id',
-                listConfig: {
-                    getInnerTpl: function () {
-                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                valueField: 'id' ,
+                typeAhead: true,
+                editable: true,
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: true,
+                listeners: {
+                    change: function(_this, nVal){
+                        Ext.getCmp('csrc_type2_edit_id').clearValue();
+                        Ext.getCmp('csrc_type2_edit_id').getStore().load({
+                            params: {
+                                parentid: nVal
+                            }
+                        })
                     }
                 }
             },
                 {
-                    id: 'csrc_type2_id',
+                    id: 'csrc_type2_edit_id',
                     name: 'csrc_type2',
                     fieldLabel: '证监会行业二级分类',
                     xtype: 'combo',
                     store: {
                         type: 'industry2store'
                     },
-                    queryMode: 'local',
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
-                    valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    parentid: Ext.getCmp('csrc_type1_id').getValue("id")
-                                }
-                            });
-                        }
-                    }
+                    valueField: 'name',
+                    queryMode: 'local',
+                    editable: true,
+                    typeAhead: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: false
                 }
-
             ]
         },
         {
@@ -655,8 +685,9 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 name: 'mai_eclass',
                 fieldLabel: '企业等级'
             }, {
-                name: 'mai_maintain',
-                fieldLabel: '企业维护状态',
+                    id:'mai_edit_maintain_id',
+                    name: 'mai_maintain',
+                    fieldLabel: '企业维护状态',
                     xtype: 'combo',
                     store: {
                         type: 'dictsstore'
@@ -664,17 +695,9 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     displayField: 'fieldvaldis',
                     valueField: 'fieldvaldis',
                     editable : false,
-                    queryMode: 'local',
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    field: 'mtstate'
-                                }
-                            });
-                        }
-                    }
+                    queryMode: 'local'
             }, {
+                    id:'mai_edit_reserve_id',
                     name: 'mai_reserve',
                     fieldLabel: '所属后备库',
                     xtype: 'combo',
@@ -683,17 +706,8 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     },
                     displayField: 'fieldvaldis',
                     valueField: 'fieldvaldis',
-                    editable: false,
-                    queryMode: 'local',
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    field: 'reservedb'
-                                }
-                            });
-                        }
-                    }
+                    editable : false,
+                    queryMode: 'local'
                 }, {
                 name: 'mai_emaint',
                 fieldLabel: '企业接待人'
@@ -1449,8 +1463,9 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 name: 'srv_name',
                 fieldLabel: '服务机构名称'
             }, {
-                name: 'srv_type',
-                fieldLabel: '服务机构类别',
+                    id: 'srv_edit_type_id',
+                    name: 'srv_type',
+                    fieldLabel: '服务机构类别',
                     xtype: 'combo',
                     store: {
                         type: 'dictsstore'
@@ -1458,16 +1473,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     displayField: 'fieldvaldis',
                     valueField: 'fieldvaldis',
                     editable: false,
-                    queryMode: 'local',
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    field: 'service'
-                                }
-                            });
-                        }
-                    }
+                    queryMode: 'local'
             }, {
                 name: 'srv_content',
                 fieldLabel: '业务内容'
@@ -1536,7 +1542,7 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                 colspan: 2
             },
                 {
-                    id: 'inv_csrc_type1_id',
+                    id: 'inv_csrc_type1_edit_id',
                     name: 'inv_csrc_type1',
                     fieldLabel: '行业一级分类',
                     xtype: 'combo',
@@ -1547,95 +1553,105 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     autoShow: true,
                     displayField: 'name',
                     valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
+                    typeAhead: true,
+                    editable: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    listeners: {
+                        change: function(_this, nVal){
+                            Ext.getCmp('inv_csrc_type2_edit_id').clearValue();
+                            Ext.getCmp('inv_csrc_type3_edit_id').clearValue();
+                            Ext.getCmp('inv_csrc_type4_edit_id').clearValue();
+                            Ext.getCmp('inv_csrc_type2_edit_id').getStore().load({
+                                params: {
+                                    parentid: nVal
+                                }
+                            })
                         }
                     }
                 },
                 {
-                    id: 'inv_csrc_type2_id',
+                    id: 'inv_csrc_type2_edit_id',
                     name: 'inv_csrc_type2',
                     fieldLabel: '行业二级分类',
                     xtype: 'combo',
+                    queryMode: 'local',
                     store: {
                         type: 'industry2store'
                     },
+                    autoRender: true,
+                    autoShow: true,
+                    displayField: 'name',
+                    valueField: 'id',
+                    typeAhead: true,
+                    editable: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: false,
+                    listeners: {
+                        change: function (_this, nVal) {
+                            Ext.getCmp('inv_csrc_type3_edit_id').clearValue();
+                            Ext.getCmp('inv_csrc_type4_edit_id').clearValue();
+                            Ext.getCmp('inv_csrc_type3_edit_id').getStore().load({
+                                params: {
+                                    parentid: nVal
+                                }
+                            })
+                        }
+                    }
+                }, {
+                    id: 'inv_csrc_type3_edit_id',
+                    name: 'inv_csrc_type3',
+                    fieldLabel: '行业三级分类',
+                    xtype: 'combo',
                     queryMode: 'local',
+                    store: {
+                        type: 'industry2store'
+                    },
+                    autoRender: true,
+                    autoShow: true,
+                    displayField: 'name',
+                    valueField: 'id',
+                    typeAhead: true,
+                    editable: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: false,
+                    listeners: {
+                        change: function (_this, nVal) {
+                            Ext.getCmp('inv_csrc_type4_edit_id').clearValue();
+                            Ext.getCmp('inv_csrc_type4_edit_id').getStore().load({
+                                params: {
+                                    parentid: nVal
+                                }
+                            })
+                        }
+                    }
+                }, {
+                    id: 'inv_csrc_type4_edit_id',
+                    name: 'inv_csrc_type4',
+                    fieldLabel: '行业四级分类',
+                    xtype: 'combo',
+                    queryMode: 'local',
+                    store: {
+                        type: 'industry2store'
+                    },
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
                     valueField: 'name',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    parentid: Ext.getCmp('inv_csrc_type1_id').getValue("id")
-                                }
-                            });
-                        }
-                    }
+                    typeAhead: true,
+                    editable: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: false
                 }, {
-                    id: 'inv_csrc_type3_id',
-                    name: 'inv_csrc_type3',
-                    fieldLabel: '行业三级分类',
-                    xtype: 'combo',
-                    store: {
-                        type: 'industry2store'
-                    },
-                    queryMode: 'local',
-                    autoRender: true,
-                    autoShow: true,
-                    displayField: 'name',
-                    valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    parentid: Ext.getCmp('inv_csrc_type2_id').getValue("id")
-                                }
-                            });
-                        }
-                    }
-                }, {
-                    id: 'inv_csrc_type4_id',
-                    name: 'inv_csrc_type4',
-                    fieldLabel: '行业四级分类',
-                    xtype: 'combo',
-                    store: {
-                        type: 'industry2store'
-                    },
-                    queryMode: 'local',
-                    autoRender: true,
-                    autoShow: true,
-                    displayField: 'name',
-                    valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    parentid: Ext.getCmp('inv_csrc_type3_id').getValue("id")
-                                }
-                            });
-                        }
-                    }
-                }, {
-                    id: 'inv_indclass1_id',
+                    id: 'inv_indclass1_edit_id',
                     name: 'inv_indclass1',
                     fieldLabel: '证监会行业一级分类',
                     xtype: 'combo',
@@ -1646,38 +1662,41 @@ Ext.define('app.view.maintain.entermt.innerenter.InnerEnterAddCorp', {
                     autoShow: true,
                     displayField: 'name',
                     valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
+                    typeAhead: true,
+                    editable: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    listeners: {
+                        change: function(_this, nVal){
+                            Ext.getCmp('inv_indclass2_edit_id').clearValue();
+                            Ext.getCmp('inv_indclass2_edit_id').getStore().load({
+                                params: {
+                                    parentid: nVal
+                                }
+                            })
                         }
                     }
                 }, {
-                    id: 'inv_indclass2_id',
+                    id: 'inv_indclass2_edit_id',
                     name: 'inv_indclass2',
                     fieldLabel: '证监会行业二类分类',
                     xtype: 'combo',
+                    queryMode: 'local',
                     store: {
                         type: 'industry2store'
                     },
-                    queryMode: 'local',
                     autoRender: true,
                     autoShow: true,
                     displayField: 'name',
-                    valueField: 'id',
-                    listConfig: {
-                        getInnerTpl: function () {
-                            return '<div><span style="color: green;">' + '({name})</span></div>'
-                        }
-                    },
-                    listeners: {
-                        expand: function (_this) {
-                            _this.getStore().load({
-                                params: {
-                                    parentid: Ext.getCmp('inv_indclass1_id').getValue("id")
-                                }
-                            });
-                        }
-                    }
+                    valueField: 'name',
+                    editable: true,
+                    typeAhead: true,
+                    forceSelection: true,
+                    multiSelect: false,
+                    triggerAction: 'all',
+                    selectOnFocus: false
                 }, {
                     name: 'inv_contact',
                     fieldLabel: '姓名'

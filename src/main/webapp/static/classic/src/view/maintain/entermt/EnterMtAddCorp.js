@@ -121,8 +121,38 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
         }, {
             allowBlank: false,
             name: 'name',
-            fieldLabel: '企业名称'
+            fieldLabel: '企业名称',
+            listeners: {
+                afterrender: function () {
+
+                    Ext.getCmp('unit_id').clearValue();
+                    Ext.getCmp('unit_id').getStore().load({
+                        params: {
+                            field: 'etype'
+                        }
+                    });
+                    Ext.getCmp('mai_maintain_id').clearValue();
+                    Ext.getCmp('mai_maintain_id').getStore().load({
+                        params: {
+                            field: 'mtstate'
+                        }
+                    });
+                    Ext.getCmp('mai_reserve_id').clearValue();
+                    Ext.getCmp('mai_reserve_id').getStore().load({
+                        params: {
+                            field: 'reservedb'
+                        }
+                    });
+                    Ext.getCmp('srv_type_id').clearValue();
+                    Ext.getCmp('srv_type_id').getStore().load({
+                        params: {
+                            field: 'service'
+                        }
+                    })
+                }
+            }
         }, {
+            id:'unit_id',
             allowBlank: false,
             name: 'unit',
             fieldLabel: '单位类别',
@@ -130,22 +160,11 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             store: {
                 type: 'dictsstore'
             },
-            autoRender: true,
-            autoShow: true,
             displayField: 'fieldvaldis',
             valueField: 'fieldvaldis',
             editable : false,
             multiSelect:true,
-            queryMode: 'local',
-            listeners: {
-                expand: function (_this) {
-                    _this.getStore().load({
-                        params: {
-                            field: 'etype'
-                        }
-                    });
-                }
-            }
+            queryMode: 'local'
         }, {
             allowBlank: false,
             name: 'legrep',
@@ -221,8 +240,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 type: 'districtstore'
             },
             displayField: 'name',
-            valueField: 'name',
-            editable : false
+            valueField: 'name'
         }, {
             name: 'nos',
             fieldLabel: '公司简称'
@@ -510,7 +528,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 triggerAction: 'all',
                 selectOnFocus: false,
                 displayField: 'name',
-                valueField: 'id'
+                valueField: 'name'
             }]
     },
         {
@@ -545,10 +563,21 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             autoRender: true,
             autoShow: true,
             displayField: 'name',
-            valueField: 'id',
-            listConfig: {
-                getInnerTpl: function () {
-                    return '<div><span style="color: green;">' + '({name})</span></div>'
+            valueField: 'id' ,
+            typeAhead: true,
+            editable: true,
+            forceSelection: true,
+            multiSelect: false,
+            triggerAction: 'all',
+            selectOnFocus: true,
+            listeners: {
+                change: function(_this, nVal){
+                    Ext.getCmp('csrc_type2_id').clearValue();
+                    Ext.getCmp('csrc_type2_id').getStore().load({
+                        params: {
+                            parentid: nVal
+                        }
+                    })
                 }
             }
         },
@@ -563,22 +592,14 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'id',
+                valueField: 'name',
                 queryMode: 'local',
-                listConfig: {
-                    getInnerTpl: function () {
-                        return '<div><span style="color: green;">' + '({name})</span></div>'
-                    }
-                },
-                listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
-                            params: {
-                                parentid: Ext.getCmp('csrc_type1_id').getValue("id")
-                            }
-                        });
-                    }
-                }
+                editable: true,
+                typeAhead: true,
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: false
             }
 
         ]
@@ -626,6 +647,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'mai_eclass',
             fieldLabel: '企业等级'
         }, {
+            id:'mai_maintain_id',
             name: 'mai_maintain',
             fieldLabel: '企业维护状态',
             xtype: 'combo',
@@ -635,17 +657,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             displayField: 'fieldvaldis',
             valueField: 'fieldvaldis',
             editable : false,
-            queryMode: 'local',
-            listeners: {
-                expand: function (_this) {
-                    _this.getStore().load({
-                        params: {
-                            field: 'mtstate'
-                        }
-                    });
-                }
-            }
+            queryMode: 'local'
         }, {
+            id:'mai_reserve_id',
             name: 'mai_reserve',
             fieldLabel: '所属后备库',
             xtype: 'combo',
@@ -655,16 +669,7 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             displayField: 'fieldvaldis',
             valueField: 'fieldvaldis',
             editable : false,
-            queryMode: 'local',
-            listeners: {
-                expand: function (_this) {
-                    _this.getStore().load({
-                        params: {
-                            field: 'reservedb'
-                        }
-                    });
-                }
-            }
+            queryMode: 'local'
         }, {
             name: 'mai_emaint',
             fieldLabel: '企业接待人'
@@ -1416,8 +1421,9 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
             name: 'srv_name',
             fieldLabel: '服务机构名称'
         }, {
-            name: 'srv_type',
-            fieldLabel: '服务机构类别',
+                id: 'srv_type_id',
+                name: 'srv_type',
+                fieldLabel: '服务机构类别',
                 xtype: 'combo',
                 store: {
                     type: 'dictsstore'
@@ -1425,17 +1431,8 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 displayField: 'fieldvaldis',
                 valueField: 'fieldvaldis',
                 editable: false,
-                queryMode: 'local',
-                listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
-                            params: {
-                                field: 'service'
-                            }
-                        });
-                    }
-                }
-        }, {
+                queryMode: 'local'
+            }, {
             name: 'srv_content',
             fieldLabel: '业务内容'
         }, {
@@ -1510,10 +1507,22 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoShow: true,
                 displayField: 'name',
                 valueField: 'id',
-
-                listConfig: {
-                    getInnerTpl: function () {
-                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                typeAhead: true,
+                editable: true,
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: true,
+                listeners: {
+                    change: function(_this, nVal){
+                        Ext.getCmp('inv_csrc_type2_id').clearValue();
+                        Ext.getCmp('inv_csrc_type3_id').clearValue();
+                        Ext.getCmp('inv_csrc_type4_id').clearValue();
+                        Ext.getCmp('inv_csrc_type2_id').getStore().load({
+                            params: {
+                                parentid: nVal
+                            }
+                        })
                     }
                 }
             },
@@ -1529,19 +1538,22 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'name',
-                listConfig: {
-                    getInnerTpl: function () {
-                        return '<div><span style="color: green;">' + '({name})</span></div>'
-                    }
-                },
+                valueField: 'id',
+                typeAhead: true,
+                editable: true,
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: false,
                 listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
+                    change: function (_this, nVal) {
+                        Ext.getCmp('inv_csrc_type3_id').clearValue();
+                        Ext.getCmp('inv_csrc_type4_id').clearValue();
+                        Ext.getCmp('inv_csrc_type3_id').getStore().load({
                             params: {
-                                parentid: Ext.getCmp('inv_csrc_type1_id').getValue("id")
+                                parentid: nVal
                             }
-                        });
+                        })
                     }
                 }
             }, {
@@ -1557,18 +1569,20 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoShow: true,
                 displayField: 'name',
                 valueField: 'id',
-                listConfig: {
-                    getInnerTpl: function () {
-                        return '<div><span style="color: green;">' + '({name})</span></div>'
-                    }
-                },
+                typeAhead: true,
+                editable: true,
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: false,
                 listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
+                    change: function (_this, nVal) {
+                        Ext.getCmp('inv_csrc_type4_id').clearValue();
+                        Ext.getCmp('inv_csrc_type4_id').getStore().load({
                             params: {
-                                parentid: Ext.getCmp('inv_csrc_type2_id').getValue("id")
+                                parentid: nVal
                             }
-                        });
+                        })
                     }
                 }
             }, {
@@ -1583,21 +1597,13 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'id',
-                listConfig: {
-                    getInnerTpl: function () {
-                        return '<div><span style="color: green;">' + '({name})</span></div>'
-                    }
-                },
-                listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
-                            params: {
-                                parentid: Ext.getCmp('inv_csrc_type3_id').getValue("id")
-                            }
-                        });
-                    }
-                }
+                valueField: 'name',
+                typeAhead: true,
+                editable: true,
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: false
             }, {
                 id: 'inv_indclass1_id',
                 name: 'inv_indclass1',
@@ -1610,9 +1616,20 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoShow: true,
                 displayField: 'name',
                 valueField: 'id',
-                listConfig: {
-                    getInnerTpl: function () {
-                        return '<div><span style="color: green;">' + '({name})</span></div>'
+                typeAhead: true,
+                editable: true,
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: true,
+                listeners: {
+                    change: function(_this, nVal){
+                        Ext.getCmp('inv_indclass2_id').clearValue();
+                        Ext.getCmp('inv_indclass2_id').getStore().load({
+                            params: {
+                                parentid: nVal
+                            }
+                        })
                     }
                 }
             }, {
@@ -1627,21 +1644,13 @@ Ext.define('app.view.maintain.entermt.EnterMtAddCorp', {
                 autoRender: true,
                 autoShow: true,
                 displayField: 'name',
-                valueField: 'id',
-                listConfig: {
-                    getInnerTpl: function () {
-                        return '<div><span style="color: green;">' + '({name})</span></div>'
-                    }
-                },
-                listeners: {
-                    expand: function (_this) {
-                        _this.getStore().load({
-                            params: {
-                                parentid: Ext.getCmp('inv_indclass1_id').getValue("id")
-                            }
-                        });
-                    }
-                }
+                valueField: 'name',
+                editable: true,
+                typeAhead: true,
+                forceSelection: true,
+                multiSelect: false,
+                triggerAction: 'all',
+                selectOnFocus: false
             }, {
                 name: 'inv_contact',
                 fieldLabel: '姓名'

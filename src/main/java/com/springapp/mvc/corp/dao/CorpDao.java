@@ -372,11 +372,13 @@ public interface CorpDao {
             "            indclass2, indclass3, indclass4, csrc_type1, csrc_type2,inputid ,inputdt," +
             "            type_server, type_investors, type_govermt,demand_rz, demand_px, demand_rl " +
             "            )" +
-            "    VALUES (#{corpId}, #{corpBase.buslicno}, #{corpBase.name}, #{corpBase.unit}, #{corpBase.legrep}, #{corpBase.province}, #{corpBase.city}, #{corpBase.county}, #{corpBase.nos}, " +
+            "    VALUES (#{corpId}, #{corpBase.buslicno}, #{corpBase.name}, #{corpBase.unit}, #{corpBase.legrep},(SELECT name FROM dict.tb_province where id=cast(#{corpBase.province} as integer)), " +
+            "            (SELECT name FROM dict.tb_city where id=cast(#{corpBase.city} as integer)) ,#{corpBase.county}, #{corpBase.nos}, " +
             "            #{corpBase.postal}, #{corpBase.nature}, #{corpBase.regcap}, #{corpBase.bustermfdt}, #{corpBase.bustremtdt},#{corpBase.regdt}, #{corpBase.list_area}, " +
             "            #{corpBase.listcode}, #{corpBase.listprice}, #{corpBase.listdt}, #{corpBase.channels}, #{corpBase.webchat}, #{corpBase.staffnum}, #{corpBase.regist_organ}, " +
-            "            #{corpBase.regaddr}, #{corpBase.offaddr}, #{corpBase.scope}, #{corpBase.mbus}, #{corpBase.eprofile}, #{corpBase.phoinf}, #{corpBase.remark}, #{corpBase.indclass1}, " +
-            "            #{corpBase.indclass2}, #{corpBase.indclass3}, #{corpBase.indclass4}, #{corpBase.csrc_type1}, #{corpBase.csrc_type2},#{inputid},#{currentTime}," +
+            "            #{corpBase.regaddr}, #{corpBase.offaddr}, #{corpBase.scope}, #{corpBase.mbus}, #{corpBase.eprofile}, #{corpBase.phoinf}, #{corpBase.remark},  (SELECT name FROM dict.tb_industry1 where id=cast(#{corpBase.indclass1} as integer)), " +
+            "            (SELECT name FROM dict.tb_industry2 where id=cast(#{corpBase.indclass2} as integer)) ,  (SELECT name FROM dict.tb_industry2 where id=cast(#{corpBase.indclass3} as integer)) , " +
+            "            #{corpBase.indclass4}, (SELECT name FROM dict.tb_industry1 where id=cast(#{corpBase.csrc_type1} as integer)) , #{corpBase.csrc_type2},#{inputid},#{currentTime}," +
             "            #{corpBase.type_server}, #{corpBase.type_investors}, #{corpBase.type_govermt}, #{corpBase.demand_rz}, #{corpBase.demand_px}, #{corpBase.demand_rl}     " +
             "            );" +
 
@@ -466,10 +468,12 @@ public interface CorpDao {
             "            inv_contact, inv_psotion, inv_doctype,  inv_docnum,  " +
             "            inv_phone, inv_fax, inv_email, inv_qq, inv_webchat,  " +
             "            inv_tel, inv_remark) " +
-            "   VALUES (#{corpId},  #{corpInvestor.inv_domain}, #{corpInvestor.inv_csrc_type1}, #{corpInvestor.inv_csrc_type2},  " +
-            "           #{corpInvestor.inv_csrc_type3}, #{corpInvestor.inv_csrc_type4}, #{corpInvestor.inv_indclass1}, #{corpInvestor.inv_indclass2}, " +
-            "           #{corpInvestor.inv_contact}, #{corpInvestor.inv_psotion}, #{corpInvestor.inv_doctype}, #{corpInvestor.inv_docnum}, " +
-            "           #{corpInvestor.inv_phone}, #{corpInvestor.inv_fax}, #{corpInvestor.inv_email}, #{corpInvestor.inv_qq}, " +
+            "   VALUES (#{corpId},  #{corpInvestor.inv_domain},(SELECT name FROM dict.tb_industry1 where id=cast(#{corpInvestor.inv_csrc_type1} as integer)), " +
+            "           (SELECT name FROM dict.tb_industry2 where id=cast(#{corpInvestor.inv_csrc_type2} as integer)),  " +
+            "           (SELECT name FROM dict.tb_industry2 where id=cast(#{corpInvestor.inv_csrc_type3} as integer)), " +
+            "           #{corpInvestor.inv_csrc_type4}, (SELECT name FROM work.tb_industry1 where id=cast(#{corpInvestor.inv_indclass1} as integer)) , " +
+            "           #{corpInvestor.inv_indclass2},  #{corpInvestor.inv_contact}, #{corpInvestor.inv_psotion}, #{corpInvestor.inv_doctype}, " +
+            "           #{corpInvestor.inv_docnum}, #{corpInvestor.inv_phone}, #{corpInvestor.inv_fax}, #{corpInvestor.inv_email}, #{corpInvestor.inv_qq}, " +
             "           #{corpInvestor.inv_webchat}, #{corpInvestor.inv_tel}, #{corpInvestor.inv_remark} ); "+
 
             " INSERT INTO work.tb_corp_refinancing( " +
@@ -536,8 +540,8 @@ public interface CorpDao {
     @Update("begin;" +
 
             " UPDATE work.tb_corp " +
-            "   SET buslicno=#{corpBase.buslicno},name=#{corpBase.name},unit=#{corpBase.unit},legrep=#{corpBase.legrep},province=#{corpBase.province}, " +
-            "       city=#{corpBase.city},county=#{corpBase.county},nos=#{corpBase.nos},postal=#{corpBase.postal},nature=#{corpBase.nature}, " +
+            "   SET buslicno=#{corpBase.buslicno},name=#{corpBase.name},unit=#{corpBase.unit},legrep=#{corpBase.legrep},province=(SELECT name FROM work.tb_province where id=cast(#{corpBase.province} as integer)), " +
+            "       city=(SELECT name FROM dict.tb_city where id=cast(#{corpBase.city} as integer)),county=#{corpBase.county},nos=#{corpBase.nos},postal=#{corpBase.postal},nature=#{corpBase.nature}, " +
             "       regcap=#{corpBase.regcap},bustermfdt=#{corpBase.bustermfdt},bustremtdt=#{corpBase.bustremtdt},regdt=#{corpBase.regdt},list_area=#{corpBase.list_area}, " +
             "       listcode=#{corpBase.listcode},listprice=#{corpBase.listprice},listdt=#{corpBase.listdt},channels=#{corpBase.channels},webchat=#{corpBase.webchat}, " +
             "       staffnum=#{corpBase.staffnum},regist_organ=#{corpBase.regist_organ},regaddr=#{corpBase.regaddr},offaddr=#{corpBase.offaddr},scope=#{corpBase.scope}," +
@@ -609,7 +613,7 @@ public interface CorpDao {
             " WHERE gov_id=#{corpGov.gov_id};"+
 
             " UPDATE work.tb_corp_investors " +
-            "   SET inv_domain=#{corpInvestor.inv_domain},inv_csrc_type1=#{corpInvestor.inv_csrc_type1},inv_csrc_type2=#{corpInvestor.inv_csrc_type2}, " +
+            "   SET inv_domain=#{corpInvestor.inv_domain},inv_csrc_type1=(SELECT name FROM dict.tb_industry1 where id=cast(#{corpInvestor.inv_csrc_type1} as integer)) ,inv_csrc_type2=#{corpInvestor.inv_csrc_type2}, " +
             "       inv_csrc_type3=#{corpInvestor.inv_csrc_type3},inv_csrc_type4=#{corpInvestor.inv_csrc_type4},inv_indclass1=#{corpInvestor.inv_indclass1}, " +
             "       inv_indclass2=#{corpInvestor.inv_indclass2},inv_contact=#{corpInvestor.inv_contact},inv_psotion=#{corpInvestor.inv_psotion}, " +
             "       inv_doctype=#{corpInvestor.inv_doctype},inv_docnum=#{corpInvestor.inv_docnum},inv_phone=#{corpInvestor.inv_phone}, " +
